@@ -15,24 +15,33 @@ V1 chỉ đọc dữ liệu từ PLC/Gateway. Không triển khai dashboard prod
 
 MAIN sở hữu kiến trúc, phân rã task, quyết định tích hợp, giải quyết xung đột, review
 cuối và các approval gate. MAIN phải review các kết luận quan trọng trước khi integrate.
+Route ưu tiên là GPT-6 Astra (`gpt-6-astra`) với reasoning effort `ultra`, gồm cả
+difficult cross-task reasoning. Không dùng MAIN cho mechanical search/extraction khi có
+thể delegate.
 
 ### Luna low/medium
 
 Dùng cho trích xuất PDF/tài liệu, tìm kiếm repo hẹp, inventory, kiểm checklist, thu thập
 bằng chứng và trích xuất dữ liệu có cấu trúc. Dùng low cho thao tác cơ học; medium khi cần
 diễn giải có giới hạn. Không dùng Luna để quyết định kiến trúc cuối hoặc debug khó xuyên
-nhiều hệ thống.
+nhiều hệ thống. Route ưu tiên là `gpt-5.6-luna`: effort `low`, tăng lên `medium` khi
+bounded interpretation cần thêm reasoning.
 
 ### Terra medium
 
 Dùng cho code tracing, phân tích implementation, builder/widget và debug runtime thông
-thường.
+thường. Route ưu tiên là `gpt-5.6-terra` với effort `medium`.
 
 ### Terra high
 
 Chỉ dùng khi cần cho bug state khó, DOM/browser, race condition, debug xuyên hệ thống
 hoặc review implementation phức tạp. Việc tăng effort phải có lý do và được ghi trong
 handoff.
+
+Exact model availability phải được kiểm tại runtime. Nếu route ưu tiên không khả dụng,
+MAIN chọn model gần nhất theo role/capability, giữ nguyên role boundary và ghi model thay
+thế cùng lý do dưới `MODELS USED`. Model rẻ hơn không được âm thầm nhận approval authority
+của MAIN.
 
 ## Quy tắc orchestration
 
