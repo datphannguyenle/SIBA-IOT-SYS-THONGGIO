@@ -1,0 +1,41 @@
+{
+  "contract_version": "0.1-draft",
+  "scope": "VENT-001 read-only design baseline",
+  "classification": {
+    "confirmed": "Direct repository, document, runtime, or vendor evidence exists.",
+    "derived": "Reasoned from evidence; requires confirmation before runtime use.",
+    "uncertain": "Insufficient mapping or runtime evidence. Must not be treated as fact."
+  },
+  "global_rules": {
+    "semantic_keys_only": true,
+    "bind_raw_plc_register_in_ui": false,
+    "missing_display": "--",
+    "null_equals_zero": false,
+    "stale_equals_offline": false,
+    "unknown_equals_stopped": false,
+    "last_command_equals_feedback": false
+  },
+  "fields": [
+    {"key":"temperature_indoor","display_name":"Nhiệt độ trong nhà","source_system":"PLC/Gateway","raw_tag":null,"data_type":null,"unit":"°C","scale":null,"category":"environment","status":"uncertain","stale_after_sec":null,"origin":"pdf","notes":"Field existence and °C examples confirmed (pp.12-15,59-60); raw mapping/type/scale/freshness absent."},
+    {"key":"temperature_outdoor","display_name":"Nhiệt độ ngoài trời","source_system":"PLC/Gateway","raw_tag":null,"data_type":null,"unit":"°C","scale":null,"category":"environment","status":"uncertain","stale_after_sec":null,"origin":"pdf","notes":"Field existence confirmed (pp.12-15,21-25); mapping absent."},
+    {"key":"temperature_feel","display_name":"Nhiệt độ cảm nhận","source_system":"PLC/Gateway","raw_tag":null,"data_type":null,"unit":"°C","scale":null,"category":"environment","status":"uncertain","stale_after_sec":null,"origin":"pdf","notes":"Field existence confirmed (pp.12,15,21-22,32); mapping absent."},
+    {"key":"humidity","display_name":"Độ ẩm trong nhà","source_system":"PLC/Gateway","raw_tag":null,"data_type":null,"unit":"%RH","scale":null,"category":"environment","status":"uncertain","stale_after_sec":null,"origin":"pdf","notes":"Field existence and percent example confirmed (pp.12-14,21-26,61); mapping absent."},
+    {"key":"air_speed","display_name":"Tốc độ gió","source_system":"PLC/Gateway","raw_tag":null,"data_type":null,"unit":null,"scale":null,"category":"air","status":"uncertain","stale_after_sec":null,"origin":"pdf","notes":"Monitoring field named on p.16; sensor/tag/formula/unit not specified."},
+    {"key":"air_flow","display_name":"Lưu lượng gió","source_system":"PLC/Gateway","raw_tag":null,"data_type":null,"unit":null,"scale":null,"category":"air","status":"uncertain","stale_after_sec":null,"origin":"pdf","notes":"Monitoring field named on p.16; source/formula/unit not specified."},
+    {"key":"water_consumption","display_name":"Lượng nước tiêu thụ","source_system":"PLC/Gateway","raw_tag":null,"data_type":null,"unit":null,"scale":null,"category":"consumption","status":"uncertain","stale_after_sec":null,"origin":"pdf","notes":"Water pulse and displayed total confirmed (pp.9,16); pulse scale/reset/unit absent."},
+    {"key":"fan_01_status","display_name":"Trạng thái quạt 01","source_system":"PLC/Gateway","raw_tag":null,"data_type":null,"unit":null,"scale":null,"category":"equipment","status":"uncertain","stale_after_sec":null,"origin":"pdf","notes":"Fan exists; feedback provenance versus command state is unknown."},
+    {"key":"fan_02_status","display_name":"Trạng thái quạt 02","source_system":"PLC/Gateway","raw_tag":null,"data_type":null,"unit":null,"scale":null,"category":"equipment","status":"uncertain","stale_after_sec":null,"origin":"pdf","notes":"Fan exists; feedback provenance versus command state is unknown."},
+    {"key":"fan_03_status","display_name":"Trạng thái quạt 03","source_system":"PLC/Gateway","raw_tag":null,"data_type":null,"unit":null,"scale":null,"category":"equipment","status":"uncertain","stale_after_sec":null,"origin":"pdf","notes":"Fan exists; feedback provenance versus command state is unknown."},
+    {"key":"fan_04_status","display_name":"Trạng thái quạt 04","source_system":"PLC/Gateway","raw_tag":null,"data_type":null,"unit":null,"scale":null,"category":"equipment","status":"uncertain","stale_after_sec":null,"origin":"pdf","notes":"Fan exists; feedback provenance versus command state is unknown."},
+    {"key":"fan_05_status","display_name":"Trạng thái quạt 05","source_system":"PLC/Gateway","raw_tag":null,"data_type":null,"unit":null,"scale":null,"category":"equipment","status":"uncertain","stale_after_sec":null,"origin":"pdf","notes":"Fan exists; feedback provenance versus command state is unknown."},
+    {"key":"fan_06_status","display_name":"Trạng thái quạt 06","source_system":"PLC/Gateway","raw_tag":null,"data_type":null,"unit":null,"scale":null,"category":"equipment","status":"uncertain","stale_after_sec":null,"origin":"pdf","notes":"Fan exists; feedback provenance versus command state is unknown."},
+    {"key":"pump_01_status","display_name":"Trạng thái bơm 01","source_system":"PLC/Gateway","raw_tag":null,"data_type":null,"unit":null,"scale":null,"category":"equipment","status":"uncertain","stale_after_sec":null,"origin":"pdf","notes":"Pump exists; feedback provenance versus command state is unknown."},
+    {"key":"pump_02_status","display_name":"Trạng thái bơm 02","source_system":"PLC/Gateway","raw_tag":null,"data_type":null,"unit":null,"scale":null,"category":"equipment","status":"uncertain","stale_after_sec":null,"origin":"pdf","notes":"Pump exists; feedback provenance versus command state is unknown."},
+    {"key":"roof_louver_position","display_name":"Vị trí cửa chớp trần","source_system":"PLC/Gateway","raw_tag":null,"data_type":null,"unit":null,"scale":null,"category":"equipment_feedback","status":"uncertain","stale_after_sec":null,"origin":"pdf","notes":"0-10V feedback existence confirmed (pp.6,10); engineering scale/unit absent."},
+    {"key":"side_louver_position","display_name":"Vị trí cửa chớp hông","source_system":"PLC/Gateway","raw_tag":null,"data_type":null,"unit":null,"scale":null,"category":"equipment_feedback","status":"uncertain","stale_after_sec":null,"origin":"pdf","notes":"0-10V feedback existence confirmed (pp.6,10); engineering scale/unit absent."},
+    {"key":"operation_mode","display_name":"Chế độ vận hành","source_system":"PLC/Gateway","raw_tag":null,"data_type":null,"unit":null,"scale":null,"category":"controller_state","status":"uncertain","stale_after_sec":null,"origin":"pdf","notes":"Manual/Automatic display confirmed (pp.38-40); enum/tag absent."},
+    {"key":"fan_control_mode","display_name":"Kiểu điều khiển quạt","source_system":"PLC/Gateway","raw_tag":null,"data_type":null,"unit":null,"scale":null,"category":"controller_state","status":"uncertain","stale_after_sec":null,"origin":"pdf","notes":"Step/VFD modes confirmed (pp.29,41,52); enum/tag absent."},
+    {"key":"ventilation_stage","display_name":"Cấp thông gió hiện tại","source_system":"PLC/Gateway","raw_tag":null,"data_type":null,"unit":"level","scale":null,"category":"controller_state","status":"uncertain","stale_after_sec":null,"origin":"pdf","notes":"6 levels in step mode and 9 in VFD mode confirmed on p.52; runtime stage/count mapping absent."},
+    {"key":"controller_online","display_name":"Kết nối bộ điều khiển","source_system":"ThingsBoard connectivity or Gateway","raw_tag":null,"data_type":null,"unit":null,"scale":null,"category":"connectivity","status":"derived","stale_after_sec":null,"origin":"derived","notes":"Required by design; source and inactivity threshold must be confirmed."}
+  ]
+}
