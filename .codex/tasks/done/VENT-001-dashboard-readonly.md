@@ -2,7 +2,7 @@
 
 ## Status
 
-`review`
+`done`
 
 ## Objective
 
@@ -111,8 +111,10 @@ gió V1 trước implementation.
 
 `APPROVED — DESIGN ONLY`
 
-Implementation is forbidden before this gate. Passing it does not authorize production
-deployment or any V2 write/control capability.
+Gate result recorded on 2026-09-16: `APPROVED — DESIGN ONLY`.
+
+This approval accepts the VENT-001 baseline/design package only. It does not authorize
+production dashboard implementation, deployment or any V2 write/control capability.
 
 ## Ownership
 
