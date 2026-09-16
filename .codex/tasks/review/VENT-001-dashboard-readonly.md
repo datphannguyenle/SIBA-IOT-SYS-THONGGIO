@@ -2,7 +2,7 @@
 
 ## Status
 
-`backlog`
+`review`
 
 ## Objective
 
@@ -90,15 +90,15 @@ gió V1 trước implementation.
 
 ## Acceptance criteria
 
-- [ ] Repo baseline and reusable inventory have paths/evidence.
-- [ ] No V1 mutation path is proposed or implemented.
-- [ ] Semantic telemetry inventory distinguishes confirmed/derived/uncertain.
-- [ ] Missing, stale, offline, unknown and stopped states remain distinct.
-- [ ] Entity topology is evidenced instead of assumed.
-- [ ] Four state briefs cover desktop, tablet and mobile behavior.
-- [ ] Design reuses only components proven general-purpose.
-- [ ] MAIN review records unresolved conflicts and risks.
-- [ ] No production code or ThingsBoard state changed.
+- [x] Repo baseline and reusable inventory have paths/evidence.
+- [x] No V1 mutation path is proposed or implemented.
+- [x] Semantic telemetry inventory distinguishes confirmed/derived/uncertain.
+- [x] Missing, stale, offline, unknown and stopped states remain distinct.
+- [x] Entity topology is evidenced instead of assumed.
+- [x] Four state briefs cover desktop, tablet and mobile behavior.
+- [x] Design reuses only components proven general-purpose.
+- [x] MAIN review records unresolved conflicts and risks.
+- [x] No production code or ThingsBoard state changed.
 
 ## Required evidence
 
