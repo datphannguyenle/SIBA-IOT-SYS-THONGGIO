@@ -1,10 +1,20 @@
 {
-  "contract_version": "0.1-draft",
-  "scope": "VENT-001 read-only design baseline",
+  "contract_version": "0.2-vent-002-review",
+  "scope": "VENT-002 read-only runtime and data-binding verification",
   "classification": {
     "confirmed": "Direct repository, document, runtime, or vendor evidence exists.",
     "derived": "Reasoned from evidence; requires confirmation before runtime use.",
-    "uncertain": "Insufficient mapping or runtime evidence. Must not be treated as fact."
+    "uncertain": "Insufficient mapping or runtime evidence. Must not be treated as fact.",
+    "rejected": "Direct evidence establishes that the field is unavailable or excluded from V1."
+  },
+  "runtime_verification": {
+    "date": "2026-09-16",
+    "status": "blocked_no_authenticated_read_session",
+    "authenticated_get_available": false,
+    "observed_runtime_samples": 0,
+    "confirmed_fields": 0,
+    "rejected_fields": 0,
+    "notes": "ThingsBoard was reachable, but unauthenticated read probes returned HTTP 401. No field was promoted or rejected."
   },
   "global_rules": {
     "semantic_keys_only": true,
