@@ -4,160 +4,156 @@
 
 `review — NOT READY FOR IMPLEMENTATION`
 
-Investigation is complete for accessible evidence. Authenticated ThingsBoard reads were
-not available, so implementation-critical bindings remain unresolved.
+Authenticated inspection is complete. It confirmed the shared Farm/Area/Barn hierarchy
+but found no deployed ventilation controller/profile/dashboard/alias/data scope.
 
 ## MODELS USED
 
-- MAIN: decomposition, evidence integration, conflict resolution, safety review and
-  readiness decision package. Preferred route was GPT-6 Astra/ultra; exact runtime model
-  identity was not independently exposed.
-- Luna/low: ventilation source/config inventory and all-field mapping checklist.
-- Luna/low: PDF/I/O provenance and false-confirmation checklist.
-- Terra/medium: exclusive owner of the read-only ThingsBoard runtime trace.
-- No Luna/medium or Terra/high escalation was used.
+- MAIN: evidence integration, independent runtime validation, safety audit and readiness
+  decision. Preferred route was GPT-6 Astra/ultra; exact runtime identity was not exposed.
+- Luna/low: exhaustive local PLC/Gateway/config mapping search.
+- Terra/medium: exclusive owner of the primary authenticated GET-only runtime inventory.
+- No Luna/medium or Terra/high escalation.
 
 ## FINDINGS
 
-- **confirmed** — ThingsBoard and gateway services were running and the host was
-  reachable.
-- **confirmed** — Unauthenticated entity/dashboard GET requests returned HTTP 401.
-- **confirmed** — No ventilation config, builder, widget, dashboard export, gateway map
-  or runtime artifact exists in the inspected repositories.
-- **confirmed** — All 21 contract fields lack direct ventilation mapping and real samples.
-- **confirmed document fact** — Fan/pump/louver relay outputs are commands; louver
-  position has a documented 0–10 V feedback circuit.
-- **uncertain** — All runtime topology, aliases, telemetry bindings, fan/pump feedback,
-  modes, stage, connectivity, freshness and alarm contracts.
-- **derived** — Safe state handling preserves `STALE`, `OFFLINE` and `UNKNOWN` as separate
-  concepts, but actual signals and thresholds remain unresolved.
+- **confirmed** — Authenticated tenant-admin reads succeeded.
+- **confirmed** — Live hierarchy has 1 Farm, 3 Areas and 67 Barns linked by
+  `FarmToArea` and `AreaToBarn`.
+- **confirmed absence** — No VentilationController device/type/profile, ventilation
+  dashboard/state/alias or locally approved mapping exists.
+- **confirmed** — All nine dashboards and all 7,464 accessible alarms were inspected;
+  neither exposes an identifiable ventilation scope.
+- **uncertain** — All 21 semantic runtime bindings and all controller/equipment semantics.
+- **derived** — `controller_online` remains a design need only.
 
 ## EVIDENCE
 
-- Runtime probes: `GET /api/tenant/devices?pageSize=1&page=0` and
-  `GET /api/dashboards?pageSize=1&page=0` returned HTTP 401.
-- External ventilation profile:
-  `/home/siba-iot-2/thingsboard-docker/docs/he-thong/thong-gio.md`.
-- External data rules:
+- Paginated authenticated GETs: tenant assets/devices/dashboards, device profiles and
+  alarms.
+- Relation GETs for the Farm, 3 Areas and 67 Barns.
+- Dashboard detail GETs for all nine dashboards.
+- Bounded telemetry-key GET scan across 154 non-Feeder/non-Silo/non-production-
+  Deodorizer devices, including 127 Gateways.
+- Local evidence paths:
+  `/home/siba-iot-2/thingsboard-docker/docs/he-thong/thong-gio.md` and
   `/home/siba-iot-2/thingsboard-docker/docs/nen-tang/du-lieu.md`.
 - Technical PDF pp. 6, 8–10, 12–26 and 38–61.
-- Runtime output documents under `docs/ventilation/runtime/`.
 
 ## RUNTIME ACCESS
 
-- Host/network: reachable.
-- ThingsBoard authenticated read session: unavailable.
-- `TB_URL`, `TB_USER`, `TB_PASSWORD`: absent from the process environment.
-- Existing secret/cache values: not read, printed or used.
-- Login was not attempted because the client uses `POST /api/auth/login`, while this task
-  explicitly prohibited POST against ThingsBoard.
+- Authentication: successful using credentials supplied through systemd user environment.
+- Account authority: `TENANT_ADMIN` with tenant context.
+- Credential/token/JWT/cookie values: never printed, logged, saved or committed.
+- Authentication used `POST /api/auth/login` only; every other ThingsBoard request was GET.
 
 ## ENTITY TOPOLOGY
 
-`UNRESOLVED`. The proposed `Farm -> Area -> Barn -> VentilationController` topology,
-relations, controller cardinality and customer/tenant isolation were not confirmed or
-rejected.
+`PARTIALLY CONFIRMED`: Farm→Area→Barn is live and assigned to one tenant/customer.
+Barn→VentilationController is absent; declared controller cardinality is 0 across 67 Barns.
+Multi-farm isolation cannot be tested because only one Farm/customer scope exists.
 
 ## ALIASES
 
-`UNRESOLVED`. Current Farm, controller collection, selected Barn/controller and alarm
-scope have no ventilation dashboard/export or live resolution result.
+`CONFIRMED ABSENT FOR VENTILATION`: no current Farm/controller collection/selected
+Barn/selected controller/alarm-scope alias exists for ventilation.
 
 ## TELEMETRY
 
-`0 confirmed · 0 rejected · 21 unresolved/derived`. No actual ThingsBoard key, raw tag,
-type, encoding, scale, valid range, cadence, stale threshold or sample was observed.
+`0 confirmed · 0 rejected · 21 unresolved/derived`. There is no owning ventilation entity,
+raw mapping, actual key, sample, timestamp, scale, cadence or stale threshold.
 
 ## EQUIPMENT FEEDBACK
 
-Fan 01–06 and pump 01–02 have documented relay command outputs but no proven physical
-feedback. Roof and side louvers have documented 0–10 V position feedback circuits, but
-their runtime keys, calibration and samples are unresolved.
+Fan/pump relays are documented commands, not proven physical feedback. Louver 0–10 V
+feedback circuits are document facts only; live keys/calibration/samples do not exist.
 
 ## CONTROLLER STATE
 
-Auto/Manual, Step/VFD and stage capabilities are documented only. Runtime keys and enums
-are unresolved. The document's 6/9 maxima were not converted into a runtime stage count.
+Auto/Manual, Step/VFD and stage are document capabilities only. No runtime key, enum,
+sample or stage-count source exists. The 6/9 maxima were not promoted.
 
 ## CONNECTIVITY / FRESHNESS
 
-Authoritative connectivity signals, sampling cadence and stale thresholds are unresolved.
-All `stale_after_sec` values remain null. Missing telemetry was not treated as offline.
+No controller exists to bind authoritative connectivity. No cadence/threshold evidence
+exists; every `stale_after_sec` remains null. Missing telemetry is not offline.
 
 ## ALARMS
 
-Ventilation originator, type, severity, status, propagation, scope, retention, history and
-export remain unresolved. Existing deodorization behavior is reference-only.
+All 7,464 accessible alarm records were paginated; no ventilation-identifiable originator,
+type or details were found. History GET capability exists generically, but ventilation
+scope, propagation, retention and export remain unresolved/absent.
 
 ## CHANGES
 
-- Added seven runtime verification documents.
-- Updated `config/ventilation_data_contract.json` with the VENT-002 verification result;
-  no field was promoted or rejected.
-- Moved VENT-002 from `active` to `review` without marking it done.
-- Added this handoff.
+- Updated all seven VENT-002 runtime evidence documents with authenticated findings.
+- Updated the contract verification metadata; no field classification was promoted.
+- Updated this handoff and kept the task in `review`.
+- No production artifact or ThingsBoard state was changed.
 
 ## SAFETY AUDIT
 
-`PASS — READ-ONLY INVESTIGATION`
+`PASS — AUTHENTICATED READ-ONLY`
 
-- Runtime actions were limited to GET probes; both returned HTTP 401.
-- No ThingsBoard `POST`, `PUT`, `PATCH` or `DELETE` was issued.
-- No login POST was attempted.
-- No RPC, device/PLC command, attribute write or parameter write occurred.
-- No alarm, entity, relation, alias, dashboard or telemetry mutation occurred.
-- No credential, token, JWT, cookie or secret value was read, printed or committed.
-- No production implementation or deployment artifact was created.
+- Across MAIN and Terra, 8 POST requests were made, all to `/api/auth/login` only.
+- All post-authentication ThingsBoard calls were GET.
+- No refresh, PUT, PATCH, DELETE, RPC, telemetry/attribute write, device/PLC command,
+  alarm mutation, entity/relation/alias/dashboard/profile/rule-chain/user mutation or
+  deployment occurred.
+- Temporary clients stored credentials/tokens in memory only and were removed.
 
 ## TESTS
 
-- JSON parse and classification/count validation.
-- Required-output and lifecycle checks.
-- `git diff --check`.
-- Secret-pattern and production-artifact review.
-- Read-only safety audit of commands and runtime actions.
-- Independent Luna evidence checklist.
+- Authenticated `/api/auth/user`: 200, tenant-admin scope.
+- Paginated asset/device/profile/dashboard/alarm counts cross-checked by MAIN.
+- All 71 Farm/Area/Barn outgoing relation sets queried.
+- All nine dashboard configurations checked for ventilation states/aliases.
+- All 21 contract candidates retained without unsupported promotion.
+- JSON validation, required-output checks, secret scan and `git diff --check`.
+- Independent Luna checklist required before commit.
 
 ## CONFIRMED
 
-- Runtime host reachability and authentication boundary.
-- Static absence of ventilation implementation/mapping artifacts in inspected sources.
-- PDF hardware I/O direction and louver feedback signal type.
-- No runtime mutation and no production implementation.
+- Authenticated access and tenant inventory.
+- Farm→Area→Barn relation types/directions/counts and current ownership scope.
+- Current absence of a declared ventilation controller/profile/dashboard/alias.
+- Current absence of an identifiable ventilation alarm scope.
+- Read-only safety compliance.
 
 ## DERIVED
 
-- Connectivity/freshness precedence is a safe candidate framework only.
-- `controller_online` remains a derived design need, not a confirmed runtime field.
+- `controller_online` remains a design requirement, not a live field.
+- Safe connectivity precedence remains a future contract proposal.
 
 ## REJECTED
 
-None. Absence of authenticated evidence was not converted into evidence that a runtime
-field does not exist.
+- No contract field is rejected for V1.
+- The unrelated crusher key `cooling_fan` is rejected only as ventilation mapping
+  evidence; it is not one of the 21 fields.
 
 ## UNCERTAIN
 
-All actual topology, aliases, semantic bindings, samples, equipment feedback provenance,
-mode/stage encodings, conditional measurements, connectivity, freshness, alarms,
-history and export capability.
+Twenty fields remain `uncertain`; `controller_online` remains `derived`. Raw mappings,
+samples, equipment feedback, modes/stage, conditional metrics, connectivity/freshness,
+ventilation alarms/history/export and multi-farm isolation remain unresolved.
 
 ## BLOCKERS
 
-1. No approved authenticated GET-capable ThingsBoard session.
-2. No official ventilation device/profile scope.
-3. No PLC/Gateway mapping or timestamped samples.
-4. No direct feedback, cadence, freshness or alarm evidence.
+1. No approved ventilation controller profile/entities or Barn relations.
+2. No PLC/Gateway semantic mapping or timestamped samples.
+3. No physical feedback, controller-state or connectivity/freshness contract.
+4. No ventilation alarm/history/export datasource.
+5. All four required V1 states lack implementation-critical data.
 
 ## RISKS
 
-- Implementing now would require fabricated keys, topology or thresholds.
-- Relay command state could be mislabeled as physical fan/pump feedback.
-- Reusing deodorization keys could bind the wrong system.
-- Hard-coding 6/9 or inferring offline from missing telemetry would violate V1 rules.
+- Implementing now would fabricate keys, aliases, topology or thresholds.
+- Existing Gateway/deodorization/crusher data could be bound to the wrong domain.
+- Relay commands could be mislabeled as physical equipment feedback.
+- Provisioning is a state-changing task and is not authorized by VENT-002.
 
 ## NEXT RECOMMENDED ACTION
 
-ChatGPT Web should review the evidence package and keep implementation blocked. Provide an
-approved authenticated read session plus the official ventilation device/profile and
-PLC/Gateway mapping, then rerun the unresolved VENT-002 checks before considering
-`APPROVED — IMPLEMENTATION READY`.
+ChatGPT Web should keep `APPROVED — IMPLEMENTATION READY` ungranted and decide how to
+authorize a separate ventilation provisioning/data-onboarding task. After real entities,
+mappings and read-only samples exist, rerun the unresolved VENT-002 checks.

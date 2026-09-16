@@ -2,48 +2,31 @@
 
 ## Result
 
-`UNRESOLVED FOR RUNTIME`
+`UNRESOLVED — no live ventilation controller or mapping`
 
-The technical document distinguishes relay outputs from louver analog feedback, but no
-live key or sample was available. Command/request state is not classified as physical
-feedback.
+Authenticated runtime evidence confirms that no ventilation device/profile exists. The
+PDF distinguishes relay outputs from louver analog inputs, but cannot provide a live key,
+sample or provenance chain.
 
-## Fans and pumps
-
-| Equipment | Command state | Requested state | Actual feedback | Fault feedback | Observed sample/timestamp | Classification |
+| Equipment | Command state | Requested state | Physical feedback | Fault feedback | Runtime sample | Classification |
 |---|---|---|---|---|---|---|
-| Fan 01 | relay output documented; runtime key unknown | unknown | not evidenced | shared equipment-fault input documented; attribution unknown | unavailable | uncertain |
-| Fan 02 | relay output documented; runtime key unknown | unknown | not evidenced | shared equipment-fault input documented; attribution unknown | unavailable | uncertain |
-| Fan 03 | relay output documented; runtime key unknown | unknown | not evidenced | shared equipment-fault input documented; attribution unknown | unavailable | uncertain |
-| Fan 04 | relay output documented; runtime key unknown | unknown | not evidenced | shared equipment-fault input documented; attribution unknown | unavailable | uncertain |
-| Fan 05 | relay output documented; runtime key unknown | unknown | not evidenced | shared equipment-fault input documented; attribution unknown | unavailable | uncertain |
-| Fan 06 | relay output documented; runtime key unknown | unknown | not evidenced | shared equipment-fault input documented; attribution unknown | unavailable | uncertain |
-| Pump 01 | relay output documented; runtime key unknown | unknown | not evidenced | shared equipment-fault input documented; attribution unknown | unavailable | uncertain |
-| Pump 02 | relay output documented; runtime key unknown | unknown | not evidenced | shared equipment-fault input documented; attribution unknown | unavailable | uncertain |
+| Fan 01–06 | relay outputs documented; no key | unknown | not evidenced | shared equipment-fault input documented; attribution unknown | unavailable | uncertain |
+| Pump 01–02 | relay outputs documented; no key | unknown | not evidenced | shared equipment-fault input documented; attribution unknown | unavailable | uncertain |
+| Roof louver | open/close relays documented | unknown | 0–10 V circuit documented; runtime key absent | not evidenced | unavailable | uncertain runtime mapping |
+| Side louver | open/close relays documented | unknown | 0–10 V circuit documented; runtime key absent | not evidenced | unavailable | uncertain runtime mapping |
 
-The PDF HMI uses running/stopped presentation, but it does not prove a separate electrical
-feedback input. Until a PLC/Gateway mapping demonstrates otherwise, all fan and pump
-`*_status` candidates remain uncertain and must not be labeled physical running feedback.
-
-## Louvers
-
-| Equipment | Command state | Requested state | Actual feedback | Fault feedback | Range/conversion | Sample/timestamp | Classification |
-|---|---|---|---|---|---|---|---|
-| Roof louver | open/close relay outputs documented | runtime key unknown | 0–10 V position input documented | not evidenced | endpoints, calibration and percent conversion unknown | unavailable | uncertain runtime mapping |
-| Side louver | open/close relay outputs documented | runtime key unknown | 0–10 V position input documented | not evidenced | endpoints, calibration and percent conversion unknown | unavailable | uncertain runtime mapping |
-
-The existence of an analog feedback circuit is a confirmed hardware fact, not a confirmed
-ThingsBoard telemetry binding. Do not display percent position without calibration and a
-real timestamped sample.
+The fan/pump HMI running/stopped presentation is not proof of physical feedback. No
+`*_status` field is promoted. Louver position cannot be shown as percent until endpoints,
+calibration, invalid range, key and timestamped sample are confirmed.
 
 ## Evidence
 
-- Technical PDF pp. 8–10: fan/pump/louver relay outputs and louver 0–10 V feedback inputs.
-- No ventilation gateway mapping, live telemetry response or device profile was found.
-- Runtime GET access was blocked by HTTP 401.
+- Authenticated GET inventory: zero ventilation controllers/profiles.
+- Approved local mapping search: no ventilation connector/map/export.
+- Technical PDF pp. 8–10: relay commands and louver 0–10 V feedback circuits.
 
 ## Blockers
 
-- Official PLC/Gateway mapping separating command/request/feedback/fault signals.
-- Runtime keys, enum/value semantics and one timestamped sample per equipment group.
-- Confirmation whether the shared equipment-fault input can identify a specific device.
+- Controller entity/profile and official PLC/Gateway mapping.
+- Independent command/request/feedback/fault signals and value semantics.
+- One timestamped read-only sample per equipment group.

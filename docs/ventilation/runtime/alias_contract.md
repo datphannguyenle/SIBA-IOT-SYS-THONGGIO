@@ -2,31 +2,30 @@
 
 ## Result
 
-`UNRESOLVED — no ventilation dashboard or authenticated alias response`
+`CONFIRMED ABSENT FOR VENTILATION`
 
-No alias was created or updated. The entries below are verification requirements, not
-approved production alias definitions.
+All nine live dashboards and their configuration were read through authenticated GETs.
+None is a ventilation dashboard and none contains a `vent_*` state or ventilation alias.
+No alias was created or updated.
 
-| Purpose | Entity filter type | Root/source | Relation query/direction | Entity type | State parameter | Cardinality | Boundary | Runtime result | Classification |
-|---|---|---|---|---|---|---|---|---|---|
-| Current Farm | unresolved | current customer/dashboard context unresolved | unresolved | Farm candidate | none expected, unverified | exactly 1 required | customer + tenant | HTTP 401 prevented inspection | uncertain |
-| Ventilation controller collection | unresolved | Current Farm candidate | relation or scoped device query unresolved | VentilationController candidate | none expected | 0..N, actual count unknown | must remain within current Farm/customer | no live alias/config found | uncertain |
-| Selected Barn | unresolved | state/navigation candidate | unresolved | Barn candidate | name and wrapped entity shape unresolved | exactly 1 required | current Farm/customer | no ventilation dashboard state exists in source | uncertain |
-| Selected controller | unresolved | selected Barn candidate | relation query unresolved | VentilationController candidate | selected entity parameter unresolved | exactly 1 required for detail | current Barn/Farm/customer | no live result | uncertain |
-| Farm alarm scope | unresolved | Current Farm candidate | propagation/query unresolved | mixed originators possible | none expected | N alarms | current Farm/customer only | no ventilation alarm query | uncertain |
-| Barn alarm scope | unresolved | Selected Barn candidate | propagation/query unresolved | Barn/controller originators unresolved | selected Barn candidate | N alarms | selected Barn only | no ventilation alarm query | uncertain |
+| Purpose | Entity filter / root source | Relation / direction | Entity type / state parameter | Cardinality | Customer/tenant boundary | Runtime result | Classification |
+|---|---|---|---|---|---|---|---|
+| Current Farm | fixed/current entity; root is dashboard/user scope | none expected | ASSET `Farm`; no parameter expected | exactly 1 | current user customer + tenant | no ventilation alias exists; one assigned Farm is live | confirmed absent alias |
+| Controller collection | relations query rooted at Current Farm/Barns | future Barn → controller relation; exact type absent | DEVICE `VentilationController`; no parameter expected | 0..N required; current declared count 0 | must remain inside current Farm/customer | no controller type, relation or alias | confirmed absent |
+| Selected Barn | state entity filter rooted in controller/Barn navigation | hierarchy context Farm → Area → Barn | ASSET `Barn`; wrapped state parameter name unresolved | exactly 1 | current Farm/customer only | no `vent_*` state or parameter | confirmed absent |
+| Selected controller | state entity or relations query rooted at Selected Barn | future Barn → controller relation | DEVICE `VentilationController`; wrapped selected-entity parameter unresolved | exactly 1 | selected Barn/Farm/customer | no controller entity or alias | confirmed absent |
+| Farm alarm scope | entity/alarm source rooted at Current Farm | propagation or scoped query unresolved | Farm/controller originators unresolved; no state parameter | 0..N alarms | current Farm/customer only | no ventilation alarm alias/widget | confirmed absent |
+| Barn alarm scope | entity/alarm source rooted at Selected Barn/controller | propagation/query direction unresolved | Barn/controller originators unresolved; selected Barn parameter required | 0..N alarms | selected Barn only | no ventilation alarm alias/widget | confirmed absent |
 
-## Evidence
+## Dashboard evidence
 
-- **confirmed static evidence** — No `vent_*` source, ventilation dashboard export or
-  `ventilation.json` exists in the inspected workspace.
-- **confirmed runtime boundary** — Dashboard/entity GET probes returned HTTP 401.
-- **external/reference only** — The deodorization dashboard demonstrates Farm,
-  all-device and selected-device alias patterns. Those filters and device types do not
-  confirm ventilation aliases.
+The nine dashboards are system statistics, Thermostats, Firmware, Software, crusher,
+deodorization production/simulation, MUGE and irrigation. Existing Farm/selected-device
+aliases belong to other domains and are reference patterns only.
 
-## Implementation constraint
+## Implementation impact
 
-Do not implement overview or detail datasources until each alias has an observed resolution
-result, cardinality, relation direction and tenant/customer isolation test. A filter by
-device type alone is not evidence of Farm isolation.
+Alias resolution cannot be implemented safely because its controller root and final
+relation do not exist. A later approved provisioning/configuration task must establish the
+entity/profile/relation contract before aliases are created. Device-type-only filtering is
+not sufficient evidence of Farm isolation.

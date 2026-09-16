@@ -2,46 +2,59 @@
 
 ## Result
 
-`UNRESOLVED`
+`PARTIALLY CONFIRMED`
 
-The proposed `Farm -> Area -> Barn -> VentilationController` topology is neither
-confirmed nor rejected. The ThingsBoard host was reachable, but read-only entity and
-dashboard endpoints returned HTTP 401 without an authenticated session.
+Authenticated tenant inventory confirms the shared `Farm -> Area -> Barn` hierarchy.
+The proposed final edge to `VentilationController` is not deployed: no matching device,
+device type or device profile exists.
 
-## Verification matrix
+## Live inventory
 
-| Entity | Type | Name pattern | Relation type/direction | Parent/child behavior | Ownership/isolation | Classification |
-|---|---|---|---|---|---|---|
-| Farm | unresolved | unresolved | unresolved | unresolved | customer/tenant boundary unresolved | uncertain |
-| Area | unresolved | unresolved | unresolved | unresolved | customer/tenant boundary unresolved | uncertain |
-| Barn | unresolved | unresolved | unresolved | unresolved | customer/tenant boundary unresolved | uncertain |
-| VentilationController | unresolved | unresolved | unresolved | unresolved | controller cardinality per Barn unresolved | uncertain |
+| Entity | Count | Entity type | Relation from parent | Direction | Ownership | Classification |
+|---|---:|---|---|---|---|---|
+| Farm | 1 | ASSET / `Farm` | root for inspected hierarchy | from Farm to children | one tenant, one assigned customer | confirmed |
+| Area | 3 | ASSET / `Area` | `FarmToArea` | Farm → Area | same tenant/customer scope | confirmed |
+| Barn | 67 | ASSET / `Barn` | `AreaToBarn` | Area → Barn | same tenant/customer scope | confirmed |
+| VentilationController | 0 | no device type/profile found | none | none | no ownership record exists | confirmed absence in current tenant |
 
-No entity IDs are recorded because no authenticated entity response was obtained. No IDs
-may be hard-coded into a future design contract.
+All 1 Farm, 3 Areas and 67 Barns are assigned rather than customer-unassigned. Only one
+Farm/customer scope exists, so isolation across multiple farms/customers remains
+unverified.
 
-## Evidence
+## Relation evidence
 
-- **confirmed** — The live ThingsBoard service was network-reachable.
-- **confirmed** — Unauthenticated `GET /api/tenant/devices?pageSize=1&page=0` and
-  `GET /api/dashboards?pageSize=1&page=0` returned HTTP 401.
-- **confirmed static evidence** — External
-  `/home/siba-iot-2/thingsboard-docker/docs/he-thong/thong-gio.md` states that no
-  ventilation config, builder, widget or runtime artifact had been found.
-- **external/reference only** — The shared platform documentation describes a general
-  Customer/Farm/Area/Barn tree. It does not establish a ventilation controller relation.
+- `FarmToArea`: 3 outgoing relations from the Farm to Area assets.
+- `AreaToBarn`: 67 outgoing relations from Areas to Barn assets.
+- Barn device children are limited to existing domains: 66 Deodorizers, 88 Gateways,
+  66 Silos and 1 `default` device relation.
+- No Barn relation targets a `VentilationController` or ventilation-declared device.
 
 ## Comparison with proposed topology
 
-| Question | Result | Reason |
-|---|---|---|
-| Farm exists for ventilation scope | unresolved | no authenticated response |
-| Area and Barn relations exist | unresolved | no relation query result |
-| VentilationController exists | unresolved | no device/profile inventory |
-| One controller per Barn | unresolved | no cardinality evidence |
-| Multi-farm isolation is enforced | unresolved | no customer/tenant-scoped query |
+```text
+Farm -> Area -> Barn -> VentilationController
+```
+
+| Segment | Result |
+|---|---|
+| Farm → Area | confirmed |
+| Area → Barn | confirmed |
+| Barn → VentilationController | rejected as a currently deployed relation |
+| One controller per Barn | not satisfied: 0 declared controllers across 67 Barns |
+| Tenant/customer ownership | confirmed for existing Farm/Area/Barn assets |
+| Multi-farm isolation | unresolved because only one live Farm/customer scope exists |
+
+## Runtime evidence
+
+- Authenticated `GET /api/tenant/assets` paginated across 8,412 assets.
+- Authenticated `GET /api/tenant/devices` paginated across 8,186 devices.
+- Authenticated `GET /api/deviceProfiles` returned 11 profiles, none ventilation-scoped.
+- Authenticated `GET /api/relations/info` was executed for the Farm, 3 Areas and 67 Barns.
+
+No entity ID is hard-coded into the design contract.
 
 ## Blocker
 
-Provide an approved authenticated read session and the official ventilation device/profile
-scope. Then execute entity, relation, owner and customer queries using GET/read-only APIs.
+An approved provisioning task must define/create the ventilation controller entity/profile
+and Barn relation before aliases, telemetry or dashboard implementation can be verified.
+VENT-002 does not authorize that mutation.

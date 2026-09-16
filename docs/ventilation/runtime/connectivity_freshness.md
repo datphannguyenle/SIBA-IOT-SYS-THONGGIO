@@ -2,52 +2,44 @@
 
 ## Result
 
-`UNRESOLVED — candidate semantics only`
+`UNRESOLVED FOR VENTILATION`
 
-No ventilation device, connectivity attribute or telemetry timestamp was readable. The
-following is a safe decision framework for later verification, not an implementation-ready
-binding.
+Authenticated runtime inventory found no ventilation controller entity. Generic
+ThingsBoard device activity semantics cannot be assigned to a non-existent controller,
+and no sampling cadence exists from which to derive stale thresholds.
 
-| State | Evidence required | Current result | Classification |
+| State | Evidence required | Runtime result | Classification |
 |---|---|---|---|
-| `ONLINE` | confirmed controller entity plus authoritative active/connect event or Gateway connection signal | no ventilation signal observed | uncertain |
-| `OFFLINE` | authoritative inactive/disconnect signal under a confirmed platform contract | no ventilation signal observed | uncertain |
-| `STALE` | latest telemetry timestamp older than a threshold derived from evidenced sampling/transport cadence | no cadence or threshold observed | uncertain |
-| `UNKNOWN` | missing/unmapped/invalid connectivity evidence or inability to resolve controller | evidence framework is valid; runtime cause unresolved | derived handling rule |
+| `ONLINE` | declared controller plus authoritative active/connect or Gateway signal | no controller/signal | uncertain |
+| `OFFLINE` | authoritative inactive/disconnect signal under confirmed contract | no controller/signal | uncertain |
+| `STALE` | telemetry age beyond evidence-backed cadence threshold | no samples/cadence | uncertain |
+| `UNKNOWN` | controller or signal cannot be resolved | safe current handling for absent binding | derived |
 
-## Candidate ThingsBoard signals to verify
+## Candidate platform signals for a future controller
 
-- Device `active` state.
-- `lastActivityTime`, `lastConnectTime` and `lastDisconnectTime`.
-- Connectivity lifecycle events or inactivity alarm.
-- Gateway connection state for the specific ventilation device.
-- Latest telemetry timestamp by semantic group.
-- A documented device attribute only if it is the approved platform contract.
+- Device `active`, `lastActivityTime`, `lastConnectTime`, `lastDisconnectTime`.
+- Connectivity lifecycle/inactivity events.
+- Gateway connection state assigned to the ventilation device.
+- Latest timestamp per semantic telemetry group.
 
-These are generic platform candidates. Existing feeding/deodorization behavior is
-external/reference evidence and cannot set ventilation timeouts.
+These are platform candidates only. Existing feeding/deodorization timeout behavior is
+not ventilation evidence.
 
-## Precedence proposal pending evidence
+## Safe precedence pending a real contract
 
-1. If no controller or authoritative connectivity source resolves: `UNKNOWN`.
-2. If an authoritative connectivity source explicitly reports disconnected/inactive:
-   `OFFLINE`.
-3. If connectivity is online but a telemetry group exceeds its confirmed threshold:
-   connectivity remains `ONLINE` while that group is `STALE`.
-4. Otherwise the controller may be `ONLINE` and the group current.
+1. Unresolved controller or authoritative signal → `UNKNOWN`.
+2. Explicit authoritative disconnect/inactive evidence → `OFFLINE`.
+3. Connected controller plus telemetry older than a confirmed threshold → controller
+   `ONLINE`, affected telemetry group `STALE`.
+4. Otherwise a confirmed connected/current signal may be `ONLINE`/current.
 
-This proposal preserves the required distinctions but must not be coded until the actual
-signals and thresholds are verified.
+| Group | Observed cadence | `stale_after_sec` | Result |
+|---|---|---|---|
+| Environment | unavailable | null | blocker |
+| Equipment feedback | unavailable | null | blocker |
+| Mode/stage | unavailable | null | blocker |
+| Louver position | unavailable | null | blocker |
+| Conditional measurements | unavailable | null | blocker |
 
-## Stale thresholds
-
-| Telemetry group | Sampling cadence | Observed update interval | Recommended `stale_after_sec` | Result |
-|---|---|---|---|---|
-| Environment | unknown | unavailable | null | blocker |
-| Equipment feedback | unknown | unavailable | null | blocker |
-| Controller mode/stage | unknown | unavailable | null | blocker |
-| Louver position | unknown | unavailable | null | blocker |
-| Conditional measurements | unknown | unavailable | null | blocker |
-
-Hard rules remain: `STALE != OFFLINE`, `UNKNOWN != OFFLINE`, `UNKNOWN != STOPPED`, and
-missing telemetry does not establish `OFFLINE`.
+`STALE != OFFLINE`, `UNKNOWN != OFFLINE`, `UNKNOWN != STOPPED`, and missing telemetry
+does not establish `OFFLINE`.

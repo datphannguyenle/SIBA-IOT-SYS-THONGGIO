@@ -4,50 +4,53 @@
 
 `0 confirmed · 0 rejected · 21 unresolved/derived`
 
-The host was reachable, but no authenticated read session was available. Therefore no
-actual ThingsBoard key, PLC/Gateway source, raw tag, type, encoding, range, cadence,
-timestamp or sample could be observed. PDF presence alone was not used as runtime proof.
+Authenticated inventory found no ventilation controller device/profile and the approved
+local repositories contain no ventilation PLC/Gateway mapping. Therefore there is no
+owning entity from which a V1 runtime sample can be attributed. PDF presence alone was
+not used as binding evidence.
 
-`—` below means no direct runtime/config evidence was available; it does not mean the
-field is absent.
+`—` means no direct ventilation runtime/config evidence; it does not mean zero or prove
+that a future source cannot exist.
 
-| Semantic key | ThingsBoard key | Source device / PLC-Gateway / raw tag | Type / encoding | Unit / scale / valid range | Timestamp / cadence / observed interval | Stale threshold | Sample timestamp / value | Classification | Evidence / notes |
+| Semantic key | ThingsBoard key | Source device / PLC-Gateway / raw tag | Type / encoding | Unit / scale / valid range | Timestamp / cadence | Stale threshold | Sample | Classification | Evidence |
 |---|---|---|---|---|---|---|---|---|---|
-| `temperature_indoor` | — | — / — / — | — | °C from PDF only / — / — | — | null | — / — | uncertain | No runtime sample; PDF does not bind a key |
-| `temperature_outdoor` | — | — / — / — | — | °C from PDF only / — / — | — | null | — / — | uncertain | No runtime sample |
-| `temperature_feel` | — | — / — / — | — | °C from PDF only / — / — | — | null | — / — | uncertain | Source/calculation unknown |
-| `humidity` | — | — / — / — | — | %RH from PDF only / — / — | — | null | — / — | uncertain | No runtime sample |
-| `air_speed` | — | — / — / — | — | — / — / — | — | null | — / — | uncertain | `UNRESOLVED`; no listed sensor/mapping |
-| `air_flow` | — | — / — / — | — | — / — / — | — | null | — / — | uncertain | `UNRESOLVED`; deodorization key is not ventilation evidence |
-| `water_consumption` | — | — / — / — | — | — / pulse conversion unknown / — | — | null | — / — | uncertain | `UNRESOLVED`; PDF names a pulse input only |
-| `fan_01_status` | — | — / — / — | — | — | — | null | — / — | uncertain | Command-versus-feedback unresolved |
-| `fan_02_status` | — | — / — / — | — | — | — | null | — / — | uncertain | Command-versus-feedback unresolved |
-| `fan_03_status` | — | — / — / — | — | — | — | null | — / — | uncertain | Command-versus-feedback unresolved |
-| `fan_04_status` | — | — / — / — | — | — | — | null | — / — | uncertain | Command-versus-feedback unresolved |
-| `fan_05_status` | — | — / — / — | — | — | — | null | — / — | uncertain | Command-versus-feedback unresolved |
-| `fan_06_status` | — | — / — / — | — | — | — | null | — / — | uncertain | Command-versus-feedback unresolved |
-| `pump_01_status` | — | — / — / — | — | — | — | null | — / — | uncertain | Command-versus-feedback unresolved |
-| `pump_02_status` | — | — / — / — | — | — | — | null | — / — | uncertain | Command-versus-feedback unresolved |
-| `roof_louver_position` | — | — / — / — | — | 0–10 V hardware signal / conversion unknown / range unknown | — | null | — / — | uncertain | Feedback path documented; runtime mapping absent |
-| `side_louver_position` | — | — / — / — | — | 0–10 V hardware signal / conversion unknown / range unknown | — | null | — / — | uncertain | Feedback path documented; runtime mapping absent |
-| `operation_mode` | — | — / — / — | enum unknown | — | — | null | — / — | uncertain | Manual/Auto document capability only |
-| `fan_control_mode` | — | — / — / — | enum unknown | — | — | null | — / — | uncertain | Step/VFD document capability only |
-| `ventilation_stage` | — | — / — / — | numeric/enum unknown | level / — / runtime count unknown | — | null | — / — | uncertain | Do not infer count 6 or 9 |
-| `controller_online` | — | ThingsBoard/Gateway candidate / — / not a PLC tag | boolean candidate | — | — | null | — / — | derived | Design need only; source and timeout unresolved |
+| `temperature_indoor` | — | — / — / — | — | °C PDF label / — / — | — | null | — | uncertain | no controller/mapping |
+| `temperature_outdoor` | — | — / — / — | — | °C PDF label / — / — | — | null | — | uncertain | no controller/mapping |
+| `temperature_feel` | — | — / — / — | — | °C PDF label / — / — | — | null | — | uncertain | calculation/source unknown |
+| `humidity` | — | — / — / — | — | %RH PDF label / — / — | — | null | — | uncertain | no controller/mapping |
+| `air_speed` | — | — / — / — | — | — / — / — | — | null | — | uncertain | `UNRESOLVED FOR V1` |
+| `air_flow` | — | — / — / — | — | — / — / — | — | null | — | uncertain | `UNRESOLVED FOR V1`; deodorization data excluded |
+| `water_consumption` | — | — / — / — | — | — / pulse conversion unknown / — | — | null | — | uncertain | `UNRESOLVED FOR V1`; PDF pulse only |
+| `fan_01_status` | — | — / — / — | — | — | — | null | — | uncertain | command/feedback unresolved |
+| `fan_02_status` | — | — / — / — | — | — | — | null | — | uncertain | command/feedback unresolved |
+| `fan_03_status` | — | — / — / — | — | — | — | null | — | uncertain | command/feedback unresolved |
+| `fan_04_status` | — | — / — / — | — | — | — | null | — | uncertain | command/feedback unresolved |
+| `fan_05_status` | — | — / — / — | — | — | — | null | — | uncertain | command/feedback unresolved |
+| `fan_06_status` | — | — / — / — | — | — | — | null | — | uncertain | command/feedback unresolved |
+| `pump_01_status` | — | — / — / — | — | — | — | null | — | uncertain | command/feedback unresolved |
+| `pump_02_status` | — | — / — / — | — | — | — | null | — | uncertain | command/feedback unresolved |
+| `roof_louver_position` | — | — / — / — | — | 0–10 V hardware / conversion unknown / range unknown | — | null | — | uncertain | feedback circuit only; no runtime key |
+| `side_louver_position` | — | — / — / — | — | 0–10 V hardware / conversion unknown / range unknown | — | null | — | uncertain | feedback circuit only; no runtime key |
+| `operation_mode` | — | — / — / — | enum unknown | — | — | null | — | uncertain | Manual/Auto capability only |
+| `fan_control_mode` | — | — / — / — | enum unknown | — | — | null | — | uncertain | Step/VFD capability only |
+| `ventilation_stage` | — | — / — / — | numeric/enum unknown | level / — / runtime count unknown | — | null | — | uncertain | do not infer count 6 or 9 |
+| `controller_online` | — | no controller / — / not a PLC tag | boolean candidate | — | — | null | — | derived | design need; source unavailable |
 
-## Conditional measurements decision
+## Authenticated key scan
+
+- Tenant inventory: 8,186 devices across 11 non-ventilation device types/profiles.
+- A bounded GET-only key scan covered all 154 non-Feeder/non-Silo/non-production-
+  Deodorizer devices, including 127 Gateways.
+- The only fan-like key found was unrelated `cooling_fan` on a crusher device. It is
+  rejected as ventilation mapping evidence and is not one of the 21 contract fields.
+- No local raw-tag → gateway-key → ThingsBoard-key chain exists for ventilation.
+
+## Conditional measurements
 
 | Field | V1 decision | Reason |
 |---|---|---|
-| `air_speed` | `UNRESOLVED` | no key, source, unit, conversion or sample |
-| `air_flow` | `UNRESOLVED` | no ventilation source/formula/sample; external domain data cannot be reused |
-| `water_consumption` | `UNRESOLVED` | pulse exists in documentation but pulse scale/reset/unit/sample are unknown |
+| `air_speed` | `UNRESOLVED` | no source, unit, conversion or sample |
+| `air_flow` | `UNRESOLVED` | no ventilation source/formula/sample |
+| `water_consumption` | `UNRESOLVED` | pulse scale, reset, unit and sample absent |
 
-None can be displayed in V1 until the evidence set required by the task is complete.
-
-## Runtime access evidence
-
-- Unauthenticated entity and dashboard GET probes returned HTTP 401.
-- `TB_URL`, `TB_USER` and `TB_PASSWORD` were not present in the process environment.
-- Existing device-token cache values were neither read nor used; device tokens are a
-  telemetry-write transport, not tenant read authorization.
+They are not confirmed, rejected or eligible for display.

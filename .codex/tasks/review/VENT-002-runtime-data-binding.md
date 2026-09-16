@@ -155,7 +155,12 @@ implementation and deployment remain outside this task.
 
 ## Investigation outcome
 
-Runtime host reachability was confirmed, but authenticated read access was unavailable;
-unauthenticated entity and dashboard GET probes returned HTTP 401. The task is submitted
-for review with `NOT READY FOR IMPLEMENTATION`. Unmet acceptance criteria remain unchecked
-and are blockers, not silently waived.
+The first investigation pass was blocked by missing authenticated read access. The
+continuation used an approved authentication-only POST followed by GET-only runtime
+inspection. Live evidence confirms the shared `Farm -> Area -> Barn` hierarchy, but no
+`VentilationController`, ventilation profile, dashboard, state or alias exists in the
+tenant. All 21 runtime bindings remain unresolved.
+
+The task remains in review with `NOT READY FOR IMPLEMENTATION`. Unmet acceptance criteria
+remain unchecked and are blockers, not silently waived. The reviewer decision was
+`NOT APPROVED — IMPLEMENTATION READY`; Codex has not granted the gate.

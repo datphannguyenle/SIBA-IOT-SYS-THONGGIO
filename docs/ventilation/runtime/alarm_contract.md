@@ -2,43 +2,34 @@
 
 ## Result
 
-`UNRESOLVED FOR VENTILATION`
+`NO DEPLOYED VENTILATION ALARM SCOPE; CONTRACT UNRESOLVED`
 
-No authenticated ventilation alarm query was possible. No alarm was created,
-acknowledged, cleared, shelved or updated.
+Authenticated GET inventory found no ventilation entity/profile/dashboard/alias. All
+7,464 accessible alarm records were paginated read-only; no ventilation term matched the
+alarm type, name, originator name or details. This confirms absence of an identifiable
+deployed ventilation alarm scope, not that future alarms are impossible.
 
-| Contract item | Runtime result | Classification | Blocker |
-|---|---|---|---|
-| Originator | unknown | uncertain | controller/Barn entity scope unavailable |
-| Alarm type | unknown | uncertain | no ventilation alarm response/profile |
-| Severity values | unknown | uncertain | no ventilation alarm response/profile |
-| Active semantics | generic ThingsBoard behavior exists externally; ventilation use unknown | external/reference | query/profile evidence required |
-| Cleared semantics | generic ThingsBoard behavior exists externally; ventilation use unknown | external/reference | query/profile evidence required |
-| Propagation | unknown | uncertain | relation and alarm-rule configuration unavailable |
-| Farm scoping | unknown | uncertain | alias/relation/customer evidence unavailable |
-| Barn scoping | unknown | uncertain | selected Barn/controller scope unavailable |
-| Controller scoping | unknown | uncertain | controller entity unavailable |
-| Retention | unknown | uncertain | server/runtime policy unavailable |
-| History availability | unknown | uncertain | no successful alarm/history GET |
-| Export capability | unknown | uncertain | deployed widget/edition/permission not inspected |
+| Contract item | Runtime result | Classification |
+|---|---|---|
+| Originator | no declared ventilation entity | confirmed absent for current deployment |
+| Alarm type/severity | no identifiable ventilation record | confirmed absent for current deployment |
+| Active/cleared semantics | platform records exist; no ventilation scope | external/platform only |
+| Propagation | no ventilation profile/rule/relation | unresolved |
+| Farm/Barn/controller scope | no ventilation alias/originator | unresolved |
+| Retention policy | not exposed by alarm records | unresolved |
+| History query | GET pagination works globally; no ventilation datasource | platform capability confirmed, ventilation unresolved |
+| Export | no ventilation dashboard/widget | confirmed absent for current deployment |
 
-## Read-only query shape to verify later
+## Evidence
 
-An approved authenticated session must first resolve the ventilation originator and
-relation scope, then use documented GET alarm list/history endpoints with valid OpenAPI
-query parameters. The project evidence warns that ThingsBoard may ignore unknown query
-parameters, so result scoping must be independently checked.
+- `GET /api/alarms` paginated across 7,464 records.
+- `GET /api/tenant/dashboards` plus nine dashboard detail GETs found no ventilation state,
+  alias, alarm widget or export configuration.
+- No alarm mutation endpoint was invoked.
 
-## External/reference evidence
+## V1 constraint
 
-- The deployed deodorization dashboard uses a read-only system alarm table.
-- The technical PDF describes current alarms, date-filtered alarm history and HMI export.
-
-Neither proves ventilation alarm originators, types, propagation, retention or
-ThingsBoard export support.
-
-## V1 safety boundary
-
-The V1 alarm surface may provide filtering, sorting, paging, time-window selection and
-row inspection only. Acknowledge, clear, shelve, assign, create and update operations
-remain prohibited.
+The planned `vent_alarms` state cannot be populated safely. A future approved task must
+first establish originators, rules, scope, query semantics and retention. Filtering,
+sorting, paging and inspection may later be read-only; acknowledge, clear, shelve, assign,
+create and update remain prohibited.

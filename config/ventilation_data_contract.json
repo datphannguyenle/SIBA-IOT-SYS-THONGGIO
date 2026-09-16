@@ -1,5 +1,5 @@
 {
-  "contract_version": "0.2-vent-002-review",
+  "contract_version": "0.3-vent-002-authenticated-review",
   "scope": "VENT-002 read-only runtime and data-binding verification",
   "classification": {
     "confirmed": "Direct repository, document, runtime, or vendor evidence exists.",
@@ -9,12 +9,20 @@
   },
   "runtime_verification": {
     "date": "2026-09-16",
-    "status": "blocked_no_authenticated_read_session",
-    "authenticated_get_available": false,
+    "status": "authenticated_runtime_checked_no_ventilation_scope",
+    "authenticated_get_available": true,
     "observed_runtime_samples": 0,
     "confirmed_fields": 0,
     "rejected_fields": 0,
-    "notes": "ThingsBoard was reachable, but unauthenticated read probes returned HTTP 401. No field was promoted or rejected."
+    "inventory": {
+      "farm_assets": 1,
+      "area_assets": 3,
+      "barn_assets": 67,
+      "ventilation_controller_devices": 0,
+      "ventilation_device_profiles": 0,
+      "ventilation_dashboards": 0
+    },
+    "notes": "Authenticated TENANT_ADMIN GET inventory found no declared ventilation controller/profile/dashboard or mapping. No field was promoted or rejected."
   },
   "global_rules": {
     "semantic_keys_only": true,
