@@ -2,7 +2,7 @@
 
 ## Status
 
-`backlog`
+`review`
 
 ## Objective
 
@@ -130,16 +130,16 @@ in the technical PDF alone is not sufficient evidence for promotion.
 
 - [ ] Actual entity topology, relations, cardinality and isolation are evidenced.
 - [ ] Required ThingsBoard aliases and scopes are evidenced.
-- [ ] Every V1 semantic key has the required mapping fields and a read-only sample, or a
+- [x] Every V1 semantic key has the required mapping fields and a read-only sample, or a
       clearly recorded unresolved evidence gap.
-- [ ] Equipment feedback and fault provenance are distinguished from command state.
+- [x] Equipment feedback and fault provenance are distinguished from command state.
 - [ ] Controller modes, stage and valid stage count are runtime-evidenced.
 - [ ] Conditional measurements are confirmed or explicitly rejected for V1.
 - [ ] Connectivity and freshness states have evidence-backed definitions.
 - [ ] Alarm scope, queries, retention and history/export capability are evidenced.
-- [ ] No uncertain field is promoted without direct evidence.
-- [ ] No write, command, alarm mutation, production implementation or deployment occurs.
-- [ ] On completion, the task moves from `active` to `review` with a handoff.
+- [x] No uncertain field is promoted without direct evidence.
+- [x] No write, command, alarm mutation, production implementation or deployment occurs.
+- [x] On completion, the task moves from `active` to `review` with a handoff.
 
 ## Gate
 
@@ -150,5 +150,17 @@ dashboard implementation begins.
 
 ## Activation
 
-This task is intentionally left in `backlog`. Activation and execution are outside the
-scope of the VENT-001 closure turn.
+Activated on 2026-09-16 for read-only runtime and data-binding verification. Production
+implementation and deployment remain outside this task.
+
+## Investigation outcome
+
+The first investigation pass was blocked by missing authenticated read access. The
+continuation used an approved authentication-only POST followed by GET-only runtime
+inspection. Live evidence confirms the shared `Farm -> Area -> Barn` hierarchy, but no
+`VentilationController`, ventilation profile, dashboard, state or alias exists in the
+tenant. All 21 runtime bindings remain unresolved.
+
+The task remains in review with `NOT READY FOR IMPLEMENTATION`. Unmet acceptance criteria
+remain unchecked and are blockers, not silently waived. The reviewer decision was
+`NOT APPROVED — IMPLEMENTATION READY`; Codex has not granted the gate.
