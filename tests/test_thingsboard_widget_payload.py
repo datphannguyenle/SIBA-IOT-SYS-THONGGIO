@@ -1,4 +1,4 @@
-"""VENT-006: kiểm payload widget/dashboard trước khi ghi lên ThingsBoard (không gọi mạng TB)."""
+"""VENT-006/007: kiểm payload widget/dashboard dựng cục bộ (không gọi mạng TB, không deploy)."""
 import json
 import pathlib
 import re
@@ -47,7 +47,7 @@ class PayloadStaticTest(unittest.TestCase):
         self.assertEqual(self.dashboard["title"], "DB-30-VEN-DETAIL-V1-DEMO")
         self.assertNotIn("id", self.dashboard)
         c = self.dashboard["configuration"]
-        self.assertEqual(list(c["states"]), ["default", "vent_detail", "vent_history", "vent_alarms"])
+        self.assertEqual(list(c["states"]), vent_demo_common.STATES)
         self.assertTrue(c["states"]["default"]["root"])
         self.assertEqual(c["entityAliases"], {})
         self.assertEqual(c["settings"]["stateControllerId"], "default")
@@ -161,15 +161,17 @@ class WidgetRuntimeHarnessTest(unittest.TestCase):
           var root = document.querySelector('.vent-demo-root');
           return {fans: [...root.querySelectorAll('.fan')].map(g => g.getAttribute('class')),
                   secondary: [...root.querySelectorAll('.secondary-row b')].map(b => b.innerText),
-                  stage: root.innerText.indexOf('4 / 6') >= 0,
+                  stage: [...root.querySelectorAll('.summary-row')].filter(r => r.innerText.indexOf('Cấp hiện tại') === 0).map(r => r.querySelector('b').innerText),
+                  noRatio: !/\d+ \/ \d+/.test(root.innerText),
                   tabBorder: getComputedStyle(root.querySelector('.state-tabs a:not(.active)')).borderBottomColor,
                   activeBorder: getComputedStyle(root.querySelector('.state-tabs a.active')).borderBottomColor,
                   linkBorder: getComputedStyle(root.querySelector('.text-link')).borderBottomWidth,
                   h2Spacing: getComputedStyle(root.querySelector('h2')).letterSpacing,
                   scrolls: root.scrollHeight > root.clientHeight && getComputedStyle(root).overflowY};""")
-        self.assertEqual(info["fans"], ["fan RUNNING", "fan RUNNING", "fan RUNNING", "fan STOPPED", "fan UNKNOWN", "fan FAULT"])
-        self.assertEqual(info["secondary"], ["--", "--", "--"])
-        self.assertTrue(info["stage"])
+        self.assertEqual(info["fans"], ["fan RUNNING", "fan RUNNING", "fan RUNNING", "fan STOPPED", "fan UNKNOWN", "fan STOPPED"])
+        self.assertEqual(info["secondary"], ["--", "--", "--", "NOT CONFIGURED"])
+        self.assertEqual(info["stage"], ["4"])
+        self.assertTrue(info["noRatio"])
         self.assertEqual(info["tabBorder"], "rgba(0, 0, 0, 0)")
         self.assertEqual(info["activeBorder"], "rgb(0, 212, 224)")
         self.assertEqual(info["linkBorder"], "0px")
@@ -210,21 +212,35 @@ class WidgetRuntimeHarnessTest(unittest.TestCase):
           return header.right - root.querySelector('.demo-badge').getBoundingClientRect().right;""")
         self.assertGreaterEqual(gap, 60)
 
-    def test_refinement_changes_only_widget_css(self):
-        def at(rev, path):
-            return json.loads(subprocess.run(["git", "show", "%s:%s" % (rev, path)], cwd=ROOT, check=True,
-                                             capture_output=True, text=True).stdout)
-        deployed_dash = at("7cb9621", "deploy/thingsboard/build/dashboard.json")
-        deployed_widget = at("7cb9621", "deploy/thingsboard/build/widget_type.json")
+    def test_build_preserves_identity_and_adds_read_only_settings_state(self):
+        deployed = json.loads(subprocess.run(["git", "show", "7cb9621:deploy/thingsboard/build/dashboard.json"], cwd=ROOT,
+                                             check=True, capture_output=True, text=True).stdout)
         dashboard = json.loads((BUILD / "dashboard.json").read_text())
         widget = json.loads((BUILD / "widget_type.json").read_text())
-        self.assertEqual(dashboard, deployed_dash)
-        self.assertEqual(widget["fqn"], deployed_widget["fqn"])
-        changed = {k for k in set(widget["descriptor"]) | set(deployed_widget["descriptor"])
-                   if widget["descriptor"].get(k) != deployed_widget["descriptor"].get(k)}
-        self.assertEqual(changed, {"templateCss"})
-        self.assertEqual({k: v for k, v in widget.items() if k != "descriptor"},
-                         {k: v for k, v in deployed_widget.items() if k != "descriptor"})
+        self.assertEqual(dashboard["title"], deployed["title"])
+        self.assertEqual(widget["fqn"], "siba_vent_demo.vent_demo_view")
+        self.assertEqual(list(dashboard["configuration"]["states"]), vent_demo_common.STATES)
+        self.assertEqual(vent_demo_common.STATES[-1], "vent_settings")
+        # ID widget của 4 state cũ giữ nguyên (uuid5 xác định); chỉ thêm một widget cho vent_settings.
+        old_ids, new_ids = set(deployed["configuration"]["widgets"]), set(dashboard["configuration"]["widgets"])
+        self.assertTrue(old_ids < new_ids)
+        self.assertEqual(len(new_ids - old_ids), 1)
+        self.assertIn("VentilationContract", widget["descriptor"]["controllerScript"])
+
+    def test_settings_state_is_read_only_in_widget_runtime(self):
+        self.mount("vent_settings")
+        info = self.browser.run("""
+          var root = document.querySelector('.vent-demo-root');
+          root.querySelector('.settings-index a[data-scroll]').click();
+          return {cells: root.querySelectorAll('[data-setting-key]').length,
+                  controls: root.querySelectorAll('input,select,textarea,form,button').length,
+                  values: [...new Set([...root.querySelectorAll('[data-setting-key]')].map(e => e.innerText))],
+                  opened: window.__opened.length, hash: location.hash};""")
+        self.assertEqual(info["cells"], 224)
+        self.assertEqual(info["controls"], 0)
+        self.assertEqual(info["values"], ["--"])
+        self.assertEqual(info["opened"], 0)
+        self.assertEqual(info["hash"], "")
 
     def test_history_gap_and_alarms_read_only(self):
         self.mount("vent_history")

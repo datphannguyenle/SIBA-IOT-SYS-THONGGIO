@@ -1,0 +1,25 @@
+{
+  "contractVersion": "0.2",
+  "contractSha256": "f25cd7ab9608f1fa04560274a4ff5e39c7428b9ee6049f3335fc1392870c60db",
+  "classification": "APPROVED PROJECT INTERFACE TEMPLATE (not runtime verified PLC mapping)",
+  "enums": {
+    "operatingMode": {"0": "MANUAL", "1": "AUTO"},
+    "controlBasis": {"0": "ACTUAL_TEMPERATURE", "1": "PERCEIVED_TEMPERATURE"},
+    "fanControlMode": {"0": "STEP", "1": "VFD"},
+    "dehumidificationEnabled": {"0": "DISABLED", "1": "ENABLED"}
+  },
+  "settingEnumAliases": {
+    "settingControlBasis": "controlBasis",
+    "settingFanControlMode": "fanControlMode",
+    "settingDehumidificationEnabled": "dehumidificationEnabled"
+  },
+  "equipmentRunCodes": {"0": "STOPPED", "1": "RUNNING"},
+  "flagDisplayCodes": {"0": "NORMAL", "1": "ACTIVE"},
+  "invalidOrMissing": "UNKNOWN",
+  "notConfigured": "NOT_CONFIGURED",
+  "platformDerived": ["controllerOnline", "dataQuality"],
+  "removedFromDashboardModel": ["fan01Fault", "fan02Fault", "fan03Fault", "fan04Fault", "fan05Fault", "fan06Fault",
+                               "coolingPump01Fault", "coolingPump02Fault", "stageCount"],
+  "plcEngineerTbd": ["plcModel", "ipPortUnitId", "float32WordOrder", "waterPulseFactor", "pollingInterval"],
+  "missingArtifacts": ["SIBA_Ventilation_PLC_HMI_TB_Mapping_TEMPLATE_v0.2.xlsx"]
+}

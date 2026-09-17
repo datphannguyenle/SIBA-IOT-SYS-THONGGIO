@@ -127,6 +127,37 @@
           "widgetCss": ":host ::ng-deep .tb-widget { background: transparent !important; border: none !important; box-shadow: none !important; }",
           "mobileHeight": 12
         }
+      },
+      "2026fdb9-6bd1-53e2-b10d-95d80ccda410": {
+        "id": "2026fdb9-6bd1-53e2-b10d-95d80ccda410",
+        "typeFullFqn": "tenant.siba_vent_demo.vent_demo_view",
+        "type": "static",
+        "sizeX": 24,
+        "sizeY": 24,
+        "row": 0,
+        "col": 0,
+        "config": {
+          "configMode": "basic",
+          "title": "Thông gió DEMO · vent_settings",
+          "showTitle": false,
+          "showTitleIcon": false,
+          "dropShadow": false,
+          "enableFullscreen": false,
+          "enableDataExport": false,
+          "backgroundColor": "#0c1622",
+          "color": "#edf5f9",
+          "padding": "0px",
+          "margin": "0px",
+          "borderRadius": "0px",
+          "widgetStyle": {},
+          "actions": {},
+          "settings": {
+            "viewState": "vent_settings"
+          },
+          "datasources": [],
+          "widgetCss": ":host ::ng-deep .tb-widget { background: transparent !important; border: none !important; box-shadow: none !important; }",
+          "mobileHeight": 12
+        }
       }
     },
     "states": {
@@ -218,6 +249,33 @@
           "main": {
             "widgets": {
               "8501c438-4cc5-5cea-991d-5894476c9325": {
+                "sizeX": 24,
+                "sizeY": 24,
+                "row": 0,
+                "col": 0
+              }
+            },
+            "gridSettings": {
+              "layoutType": "default",
+              "backgroundColor": "#0c1622",
+              "columns": 24,
+              "margin": 0,
+              "outerMargin": false,
+              "backgroundSizeMode": "100%",
+              "autoFillHeight": true,
+              "mobileAutoFillHeight": true,
+              "mobileRowHeight": 70
+            }
+          }
+        }
+      },
+      "vent_settings": {
+        "name": "Cài đặt thông gió · chỉ đọc (DEMO)",
+        "root": false,
+        "layouts": {
+          "main": {
+            "widgets": {
+              "2026fdb9-6bd1-53e2-b10d-95d80ccda410": {
                 "sizeX": 24,
                 "sizeY": 24,
                 "row": 0,

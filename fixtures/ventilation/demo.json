@@ -1,75 +1,540 @@
 {
-  "fixtureVersion":"1.2.0","generatedAt":"2026-09-17T08:30:00+07:00","demo":true,"badgeLabel":"DEMO DATA",
-  "scope":{"farm":"Trại SIBA · Đông Anh","area":"Khu ND2","selectedBarn":"ND2-1"},
-  "summary":{"barns":6,"online":4,"attention":3,"activeAlarms":3},
-  "barns":[
-    {"id":"barn-nd2-1","label":"ND2-1","identity":"PILOT","synthetic":false,"connectivity":"ONLINE","freshness":"CURRENT","mode":"AUTO","stage":4,"stageCount":6,"alarm":"NONE"},
-    {"id":"barn-nd2-2","label":"ND2-2","identity":"LIVE_BARN_SIMULATED_STATE","synthetic":false,"connectivity":"ONLINE","freshness":"STALE","mode":"AUTO","stage":3,"stageCount":6,"alarm":"WARNING"},
-    {"id":"barn-nd2-3","label":"ND2-3","identity":"LIVE_BARN_SIMULATED_STATE","synthetic":false,"connectivity":"OFFLINE","freshness":"UNKNOWN","mode":"UNKNOWN","stage":null,"stageCount":null,"alarm":"UNKNOWN"},
-    {"id":"barn-nd2-4","label":"ND2-4","identity":"LIVE_BARN_SIMULATED_STATE","synthetic":false,"connectivity":"ONLINE","freshness":"CURRENT","mode":"MANUAL","stage":2,"stageCount":6,"alarm":"MAJOR"},
-    {"id":"demo-05","label":"DEMO-05","identity":"SYNTHETIC","synthetic":true,"connectivity":"UNKNOWN","freshness":"UNKNOWN","mode":"UNKNOWN","stage":null,"stageCount":null,"alarm":"UNKNOWN"},
-    {"id":"demo-06","label":"DEMO-06","identity":"SYNTHETIC","synthetic":true,"connectivity":"ONLINE","freshness":"CURRENT","mode":"AUTO","stage":5,"stageCount":9,"alarm":"WARNING"}
-  ],
-  "latest":{
-    "temperature_indoor_01":{"value":27.6,"unit":"°C","quality":"CURRENT","ts":"2026-09-17T08:29:42+07:00"},
-    "temperature_indoor_02":{"value":28.0,"unit":"°C","quality":"CURRENT","ts":"2026-09-17T08:29:42+07:00"},
-    "temperature_indoor":{"value":27.8,"unit":"°C","quality":"CURRENT","ts":"2026-09-17T08:29:42+07:00"},
-    "temperature_outdoor":{"value":31.2,"unit":"°C","quality":"CURRENT","ts":"2026-09-17T08:29:40+07:00"},
-    "temperature_feel":{"value":29.1,"unit":"°C","quality":"CURRENT","ts":"2026-09-17T08:29:42+07:00"},
-    "humidity":{"value":74,"unit":"%RH","quality":"CURRENT","ts":"2026-09-17T08:29:41+07:00"},
-    "air_speed":{"value":null,"unit":null,"quality":"UNKNOWN","ts":null},
-    "air_flow":{"value":null,"unit":null,"quality":"UNKNOWN","ts":null},
-    "water_consumption":{"value":null,"unit":null,"quality":"UNKNOWN","ts":null},
-    "operation_mode":{"value":"AUTO","unit":null,"quality":"CURRENT","ts":"2026-09-17T08:29:42+07:00"},
-    "fan_control_mode":{"value":"STEP","unit":null,"quality":"CURRENT","ts":"2026-09-17T08:29:42+07:00"},
-    "ventilation_stage":{"value":4,"unit":"level","quality":"CURRENT","ts":"2026-09-17T08:29:42+07:00"},
-    "ventilation_stage_count":{"value":6,"unit":"level","quality":"CURRENT","ts":"2026-09-17T08:29:42+07:00"},
-    "controller_online":{"value":true,"unit":null,"quality":"CURRENT","ts":"2026-09-17T08:29:45+07:00"},
-    "data_quality":{"value":"CURRENT","unit":null,"quality":"CURRENT","ts":"2026-09-17T08:29:45+07:00"},
-    "roof_louver_position":{"value":65,"unit":"% demo","quality":"STALE","ts":"2026-09-17T08:22:02+07:00"},
-    "side_louver_position":{"value":40,"unit":"% demo","quality":"CURRENT","ts":"2026-09-17T08:29:41+07:00"},
-    "fan_01_run":{"value":true,"quality":"CURRENT"},"fan_01_fault":{"value":false,"quality":"CURRENT"},
-    "fan_02_run":{"value":true,"quality":"CURRENT"},"fan_02_fault":{"value":false,"quality":"CURRENT"},
-    "fan_03_run":{"value":true,"quality":"CURRENT"},"fan_03_fault":{"value":false,"quality":"CURRENT"},
-    "fan_04_run":{"value":false,"quality":"CURRENT"},"fan_04_fault":{"value":false,"quality":"CURRENT"},
-    "fan_05_run":{"value":null,"quality":"UNKNOWN"},"fan_05_fault":{"value":null,"quality":"UNKNOWN"},
-    "fan_06_run":{"value":false,"quality":"CURRENT"},"fan_06_fault":{"value":true,"quality":"CURRENT"},
-    "pump_01_run":{"value":true,"quality":"CURRENT"},"pump_01_fault":{"value":false,"quality":"CURRENT"},
-    "pump_02_run":{"value":null,"quality":"UNKNOWN"},"pump_02_fault":{"value":null,"quality":"UNKNOWN"}
+ "fixtureVersion": "2.0.0",
+ "generatedAt": "2026-09-17T08:30:00+07:00",
+ "demo": true,
+ "badgeLabel": "DEMO DATA",
+ "contract": {
+  "version": "0.2",
+  "sha256": "f25cd7ab9608f1fa04560274a4ff5e39c7428b9ee6049f3335fc1392870c60db",
+  "classification": "APPROVED PROJECT INTERFACE TEMPLATE — not runtime verified"
+ },
+ "scope": {
+  "farm": "Trại SIBA · Đông Anh",
+  "area": "Khu ND2",
+  "selectedBarn": "ND2-1"
+ },
+ "summary": {
+  "barns": 6,
+  "online": 4,
+  "attention": 3,
+  "activeAlarms": 3
+ },
+ "barns": [
+  {
+   "id": "barn-nd2-1",
+   "label": "ND2-1",
+   "identity": "PILOT",
+   "synthetic": false,
+   "connectivity": "ONLINE",
+   "freshness": "CURRENT",
+   "mode": "AUTO",
+   "stage": 4,
+   "alarm": "MAJOR"
   },
-  "history":[
-    {"ts":"2026-09-17T02:30:00+07:00","temperature_indoor":26.4,"temperature_outdoor":27.3,"temperature_feel":27.1,"humidity":78,"quality":"CURRENT"},
-    {"ts":"2026-09-17T03:30:00+07:00","temperature_indoor":26.7,"temperature_outdoor":27.9,"temperature_feel":27.5,"humidity":77,"quality":"CURRENT"},
-    {"ts":"2026-09-17T04:30:00+07:00","temperature_indoor":27.0,"temperature_outdoor":28.6,"temperature_feel":28.0,"humidity":76,"quality":"CURRENT"},
-    {"ts":"2026-09-17T05:30:00+07:00","temperature_indoor":27.2,"temperature_outdoor":29.3,"temperature_feel":28.3,"humidity":75,"quality":"CURRENT"},
-    {"ts":"2026-09-17T06:30:00+07:00","temperature_indoor":27.5,"temperature_outdoor":30.1,"temperature_feel":28.7,"humidity":75,"quality":"CURRENT"},
-    {"ts":"2026-09-17T07:30:00+07:00","temperature_indoor":null,"temperature_outdoor":30.7,"temperature_feel":28.9,"humidity":74,"quality":"MISSING"},
-    {"ts":"2026-09-17T08:30:00+07:00","temperature_indoor":27.8,"temperature_outdoor":31.2,"temperature_feel":29.1,"humidity":74,"quality":"CURRENT"}
-  ],
-  "alarms":[
-    {"severity":"MAJOR","type":"VEN_FAN_FAULT","message":"Quạt 06 báo lỗi (dữ liệu demo)","originator":"ND2-1 / bộ điều khiển demo","created":"2026-09-17T08:18:00+07:00","status":"ACTIVE"},
-    {"severity":"WARNING","type":"VEN_ROOF_INLET_STALE","message":"Phản hồi cửa chớp trần đã cũ (dữ liệu demo)","originator":"ND2-1 / bộ điều khiển demo","created":"2026-09-17T08:23:00+07:00","status":"ACTIVE"},
-    {"severity":"WARNING","type":"VEN_HIGH_HUMIDITY","message":"Độ ẩm cao (dữ liệu demo)","originator":"ND2-2 / bộ điều khiển demo","created":"2026-09-17T07:51:00+07:00","status":"ACTIVE"}
-  ],
-  "adapterTestVariants":{
-    "_note":"Bản vá cho latest, chỉ dùng trong test adapter. 6/9 là ví dụ fixture, không phải cấu hình runtime.",
-    "step":{"fan_control_mode":{"value":"STEP","quality":"CURRENT"},"ventilation_stage":{"value":3,"quality":"CURRENT"},"ventilation_stage_count":{"value":6,"quality":"CURRENT"}},
-    "vfd":{"fan_control_mode":{"value":"VFD","quality":"CURRENT"},"ventilation_stage":{"value":5,"quality":"CURRENT"},"ventilation_stage_count":{"value":9,"quality":"CURRENT"}},
-    "unknownStageCount":{"fan_control_mode":{"value":"STEP","quality":"CURRENT"},"ventilation_stage":{"value":4,"quality":"CURRENT"},"ventilation_stage_count":{"value":null,"quality":"UNKNOWN"}},
-    "zeroStage":{"ventilation_stage":{"value":0,"quality":"CURRENT"},"ventilation_stage_count":{"value":6,"quality":"CURRENT"}},
-    "edgeCases":{
-      "side_louver_position":{"value":0,"unit":"% demo","quality":"CURRENT"},
-      "roof_louver_position":{"value":null,"unit":"% demo","quality":"STALE"},
-      "controller_online":{"value":false,"quality":"OFFLINE"},
-      "data_quality":{"value":"OFFLINE","quality":"OFFLINE"},
-      "air_flow":{"value":0,"unit":"m³/h demo","quality":"CURRENT"},
-      "fan_01_run":{"value":false,"quality":"CURRENT"},"fan_01_fault":{"value":false,"quality":"CURRENT"},
-      "fan_02_run":{"value":true,"quality":"CURRENT"},"fan_02_fault":{"value":true,"quality":"CURRENT"},
-      "fan_03_run":{"value":null,"quality":"UNKNOWN"},"fan_03_fault":{"value":false,"quality":"CURRENT"},
-      "fan_04_run":{"value":false,"quality":"STALE"},"fan_04_fault":{"value":false,"quality":"OFFLINE"},
-      "fan_05_run":{"value":true,"quality":"CURRENT"},
-      "fan_06_run":{"value":0,"quality":"CURRENT"},"fan_06_fault":{"value":0,"quality":"CURRENT"}
-    },
-    "_edgeCasesMissing":["temperature_feel","water_consumption","fan_05_fault"]
+  {
+   "id": "barn-nd2-2",
+   "label": "ND2-2",
+   "identity": "LIVE_BARN_SIMULATED_STATE",
+   "synthetic": false,
+   "connectivity": "ONLINE",
+   "freshness": "STALE",
+   "mode": "AUTO",
+   "stage": 3,
+   "alarm": "WARNING"
+  },
+  {
+   "id": "barn-nd2-3",
+   "label": "ND2-3",
+   "identity": "LIVE_BARN_SIMULATED_STATE",
+   "synthetic": false,
+   "connectivity": "OFFLINE",
+   "freshness": "UNKNOWN",
+   "mode": "UNKNOWN",
+   "stage": null,
+   "alarm": "MAJOR"
+  },
+  {
+   "id": "barn-nd2-4",
+   "label": "ND2-4",
+   "identity": "LIVE_BARN_SIMULATED_STATE",
+   "synthetic": false,
+   "connectivity": "ONLINE",
+   "freshness": "CURRENT",
+   "mode": "MANUAL",
+   "stage": 2,
+   "alarm": "NONE"
+  },
+  {
+   "id": "demo-05",
+   "label": "DEMO-05",
+   "identity": "SYNTHETIC",
+   "synthetic": true,
+   "connectivity": "UNKNOWN",
+   "freshness": "UNKNOWN",
+   "mode": "UNKNOWN",
+   "stage": null,
+   "alarm": "UNKNOWN"
+  },
+  {
+   "id": "demo-06",
+   "label": "DEMO-06",
+   "identity": "SYNTHETIC",
+   "synthetic": true,
+   "connectivity": "ONLINE",
+   "freshness": "CURRENT",
+   "mode": "AUTO",
+   "stage": 5,
+   "alarm": "NONE"
   }
+ ],
+ "mapping": {
+  "_note": "N/A do kỹ sư PLC khai báo (mô phỏng). Chỉ danh sách này mới tạo NOT_CONFIGURED; thiếu telemetry không phải N/A.",
+  "notConfigured": [
+   "coolingPump02Run",
+   "waterFlow",
+   "fan01SpeedSetpoint",
+   "fan02SpeedSetpoint",
+   "fan01SpeedFeedback",
+   "fan02SpeedFeedback",
+   "perceivedTemperatureLowAlarmActive",
+   "perceivedTemperatureHighAlarmActive"
+  ]
+ },
+ "latest": {
+  "indoorTemperature01": {
+   "value": 27.6,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:42+07:00"
+  },
+  "indoorTemperature02": {
+   "value": 28.0,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:42+07:00"
+  },
+  "indoorTemperatureAvg": {
+   "value": 27.8,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:42+07:00"
+  },
+  "outdoorTemperature": {
+   "value": 31.2,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:40+07:00"
+  },
+  "perceivedTemperature": {
+   "value": 29.1,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:42+07:00"
+  },
+  "temperatureSetpointCurrent": {
+   "value": null,
+   "quality": "UNKNOWN",
+   "ts": null
+  },
+  "perceivedTemperatureSetpointCurrent": {
+   "value": null,
+   "quality": "UNKNOWN",
+   "ts": null
+  },
+  "relativeHumidity": {
+   "value": 74,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:41+07:00"
+  },
+  "humiditySetpointCurrent": {
+   "value": null,
+   "quality": "UNKNOWN",
+   "ts": null
+  },
+  "airSpeed": {
+   "value": null,
+   "quality": "UNKNOWN",
+   "ts": null
+  },
+  "airFlow": {
+   "value": null,
+   "quality": "UNKNOWN",
+   "ts": null
+  },
+  "waterConsumptionTotal": {
+   "value": null,
+   "quality": "UNKNOWN",
+   "ts": null
+  },
+  "pigCount": {
+   "value": null,
+   "quality": "UNKNOWN",
+   "ts": null
+  },
+  "pigDeathCount": {
+   "value": null,
+   "quality": "UNKNOWN",
+   "ts": null
+  },
+  "pigAgeDay": {
+   "value": null,
+   "quality": "UNKNOWN",
+   "ts": null
+  },
+  "operatingMode": {
+   "value": 1,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:42+07:00"
+  },
+  "controlBasis": {
+   "value": 0,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:42+07:00"
+  },
+  "dehumidificationEnabled": {
+   "value": 0,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:42+07:00"
+  },
+  "fanControlMode": {
+   "value": 0,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:42+07:00"
+  },
+  "fanStage": {
+   "value": 4,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:42+07:00"
+  },
+  "roofInletPosition": {
+   "value": 65,
+   "quality": "STALE",
+   "ts": "2026-09-17T08:22:02+07:00"
+  },
+  "sideInletPosition": {
+   "value": 40,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:41+07:00"
+  },
+  "equipmentFaultActive": {
+   "value": 1,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:42+07:00"
+  },
+  "externalHighTemperatureAlarm": {
+   "value": 0,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:42+07:00"
+  },
+  "fan01Run": {
+   "value": 1,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:42+07:00"
+  },
+  "fan02Run": {
+   "value": 1,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:42+07:00"
+  },
+  "fan03Run": {
+   "value": 1,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:42+07:00"
+  },
+  "fan04Run": {
+   "value": 0,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:42+07:00"
+  },
+  "fan05Run": {
+   "value": null,
+   "quality": "UNKNOWN",
+   "ts": null
+  },
+  "fan06Run": {
+   "value": 0,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:42+07:00"
+  },
+  "coolingPump01Run": {
+   "value": 1,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:42+07:00"
+  },
+  "temperatureLowAlarmActive": {
+   "value": 0,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:42+07:00"
+  },
+  "temperatureHighAlarmActive": {
+   "value": 0,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:42+07:00"
+  }
+ },
+ "platform": {
+  "_note": "PLATFORM_DERIVED: kết nối/độ tươi từ ThingsBoard/Gateway, không có D-register.",
+  "controllerOnline": {
+   "value": true,
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:45+07:00"
+  },
+  "dataQuality": {
+   "value": "CURRENT",
+   "quality": "CURRENT",
+   "ts": "2026-09-17T08:29:45+07:00"
+  }
+ },
+ "history": [
+  {
+   "ts": "2026-09-17T02:30:00+07:00",
+   "indoorTemperatureAvg": 26.4,
+   "outdoorTemperature": 27.3,
+   "perceivedTemperature": 27.1,
+   "relativeHumidity": 78,
+   "airSpeed": null,
+   "airFlow": null,
+   "waterConsumptionTotal": null,
+   "quality": "CURRENT"
+  },
+  {
+   "ts": "2026-09-17T03:30:00+07:00",
+   "indoorTemperatureAvg": 26.7,
+   "outdoorTemperature": 27.9,
+   "perceivedTemperature": 27.5,
+   "relativeHumidity": 77,
+   "airSpeed": null,
+   "airFlow": null,
+   "waterConsumptionTotal": null,
+   "quality": "CURRENT"
+  },
+  {
+   "ts": "2026-09-17T04:30:00+07:00",
+   "indoorTemperatureAvg": 27.0,
+   "outdoorTemperature": 28.6,
+   "perceivedTemperature": 28.0,
+   "relativeHumidity": 76,
+   "airSpeed": null,
+   "airFlow": null,
+   "waterConsumptionTotal": null,
+   "quality": "CURRENT"
+  },
+  {
+   "ts": "2026-09-17T05:30:00+07:00",
+   "indoorTemperatureAvg": 27.2,
+   "outdoorTemperature": 29.3,
+   "perceivedTemperature": 28.3,
+   "relativeHumidity": 75,
+   "airSpeed": null,
+   "airFlow": null,
+   "waterConsumptionTotal": null,
+   "quality": "CURRENT"
+  },
+  {
+   "ts": "2026-09-17T06:30:00+07:00",
+   "indoorTemperatureAvg": 27.5,
+   "outdoorTemperature": 30.1,
+   "perceivedTemperature": 28.7,
+   "relativeHumidity": 75,
+   "airSpeed": null,
+   "airFlow": null,
+   "waterConsumptionTotal": null,
+   "quality": "CURRENT"
+  },
+  {
+   "ts": "2026-09-17T07:30:00+07:00",
+   "indoorTemperatureAvg": null,
+   "outdoorTemperature": 30.7,
+   "perceivedTemperature": 28.9,
+   "relativeHumidity": 74,
+   "airSpeed": null,
+   "airFlow": null,
+   "waterConsumptionTotal": null,
+   "quality": "MISSING"
+  },
+  {
+   "ts": "2026-09-17T08:30:00+07:00",
+   "indoorTemperatureAvg": 27.8,
+   "outdoorTemperature": 31.2,
+   "perceivedTemperature": 29.1,
+   "relativeHumidity": 74,
+   "airSpeed": null,
+   "airFlow": null,
+   "waterConsumptionTotal": null,
+   "quality": "CURRENT"
+  }
+ ],
+ "settings": {},
+ "alarms": [
+  {
+   "severity": "MAJOR",
+   "type": "EQUIPMENT_FAULT_ACTIVE",
+   "source": "PLC",
+   "sourceKey": "equipmentFaultActive",
+   "message": "Tín hiệu lỗi thiết bị tổng đang bật; PLC không cho biết thiết bị nào (dữ liệu demo)",
+   "originator": "ND2-1 / bộ điều khiển demo",
+   "created": "2026-09-17T08:18:00+07:00",
+   "status": "ACTIVE"
+  },
+  {
+   "severity": "WARNING",
+   "type": "TELEMETRY_STALE",
+   "source": "PLATFORM",
+   "sourceKey": null,
+   "message": "Dữ liệu từ bộ điều khiển đã cũ (dữ liệu demo)",
+   "originator": "ND2-2 / bộ điều khiển demo",
+   "created": "2026-09-17T08:23:00+07:00",
+   "status": "ACTIVE"
+  },
+  {
+   "severity": "MAJOR",
+   "type": "DEVICE_OFFLINE",
+   "source": "PLATFORM",
+   "sourceKey": null,
+   "message": "Mất kết nối gateway/bộ điều khiển (dữ liệu demo)",
+   "originator": "ND2-3 / bộ điều khiển demo",
+   "created": "2026-09-17T07:51:00+07:00",
+   "status": "ACTIVE"
+  }
+ ],
+ "adapterTestVariants": {
+  "_note": "Bản vá cho latest/mapping/platform, chỉ dùng trong test adapter.",
+  "enumsVfdPerceived": {
+   "latest": {
+    "operatingMode": {
+     "value": 0,
+     "quality": "CURRENT"
+    },
+    "controlBasis": {
+     "value": 1,
+     "quality": "CURRENT"
+    },
+    "fanControlMode": {
+     "value": 1,
+     "quality": "CURRENT"
+    },
+    "dehumidificationEnabled": {
+     "value": 1,
+     "quality": "CURRENT"
+    }
+   }
+  },
+  "enumsInvalid": {
+   "latest": {
+    "operatingMode": {
+     "value": 7,
+     "quality": "CURRENT"
+    },
+    "controlBasis": {
+     "value": "AUTO",
+     "quality": "CURRENT"
+    },
+    "fanControlMode": {
+     "value": 1.5,
+     "quality": "CURRENT"
+    },
+    "dehumidificationEnabled": {
+     "value": -1,
+     "quality": "CURRENT"
+    }
+   }
+  },
+  "equipmentEdges": {
+   "latest": {
+    "fan01Run": {
+     "value": 0,
+     "quality": "CURRENT"
+    },
+    "fan02Run": {
+     "value": 1,
+     "quality": "STALE"
+    },
+    "fan03Run": {
+     "value": 2,
+     "quality": "CURRENT"
+    },
+    "fan04Run": {
+     "value": true,
+     "quality": "CURRENT"
+    },
+    "fan06Run": {
+     "value": null,
+     "quality": "UNKNOWN"
+    }
+   },
+   "drop": [
+    "fan05Run"
+   ],
+   "notConfigured": [
+    "fan06Run"
+   ]
+  },
+  "stageZero": {
+   "latest": {
+    "fanStage": {
+     "value": 0,
+     "quality": "CURRENT"
+    }
+   }
+  },
+  "stageMissing": {
+   "drop": [
+    "fanStage"
+   ]
+  },
+  "flagsCleared": {
+   "latest": {
+    "equipmentFaultActive": {
+     "value": 0,
+     "quality": "CURRENT"
+    },
+    "externalHighTemperatureAlarm": {
+     "value": 1,
+     "quality": "CURRENT"
+    }
+   }
+  },
+  "zeroMeasurements": {
+   "latest": {
+    "sideInletPosition": {
+     "value": 0,
+     "quality": "CURRENT"
+    },
+    "airFlow": {
+     "value": 0,
+     "quality": "CURRENT"
+    },
+    "waterConsumptionTotal": {
+     "value": 0,
+     "quality": "CURRENT"
+    }
+   }
+  },
+  "platformOffline": {
+   "platform": {
+    "controllerOnline": {
+     "value": false,
+     "quality": "OFFLINE"
+    },
+    "dataQuality": {
+     "value": "OFFLINE",
+     "quality": "OFFLINE"
+    }
+   }
+  },
+  "settingsSample": {
+   "settings": {
+    "settingControlBasis": {
+     "value": 1,
+     "quality": "CURRENT"
+    },
+    "stage03Fan02Enabled": {
+     "value": 0,
+     "quality": "CURRENT"
+    },
+    "temperatureProfile02Setpoint": {
+     "value": 0,
+     "quality": "CURRENT"
+    }
+   },
+   "notConfigured": [
+    "stage01Fan01Frequency"
+   ]
+  }
+ }
 }

@@ -29,7 +29,7 @@ WIDGET_FQN = "siba_vent_demo.vent_demo_view"          # fqn lưu trong TB (khôn
 WIDGET_FULL_FQN = "tenant." + WIDGET_FQN              # typeFullFqn / tra cứu theo fqn
 WIDGET_NAMESPACE_PREFIX = "tenant.siba_vent_demo."
 DASHBOARD_TITLE = "DB-30-VEN-DETAIL-V1-DEMO"
-STATES = ["default", "vent_detail", "vent_history", "vent_alarms"]
+STATES = ["default", "vent_detail", "vent_history", "vent_alarms", "vent_settings"]
 
 # fqn có thật dùng để hiệu chuẩn: tra cứu đúng cú pháp phải trả 200, để 404 của ta có nghĩa.
 CALIBRATION_FQN = "tenant.siba_custom_ui.header_bar"

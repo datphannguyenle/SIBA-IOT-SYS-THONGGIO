@@ -17,6 +17,8 @@ SHOTS = [
     ("vent_alarms", 1920, 1080, "vent-alarms-1920.png"),
     ("default", 390, 844, "default-390.png"),
     ("vent_detail", 390, 844, "vent-detail-390.png"),
+    ("vent_settings", 1920, 1080, "vent-settings-1920.png"),
+    ("vent_settings", 390, 844, "vent-settings-390.png"),
 ]
 
 

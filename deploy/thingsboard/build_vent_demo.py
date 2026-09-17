@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """VENT-006 — dựng payload widget type + dashboard DEMO từ nguồn repo (không gọi mạng).
 
-Nguồn: widgets/ventilation-adapter.js, dashboard/app.js, fixtures/ventilation/demo.json,
+Nguồn: widgets/ventilation-contract-v02.js, widgets/ventilation-adapter.js, dashboard/app.js, fixtures/ventilation/demo.json,
 dashboard/thingsboard-reset.css, dashboard/dashboard.css, dashboard/thingsboard-widget.css.
 Đầu ra (xác định, không timestamp): deploy/thingsboard/build/widget_type.json, dashboard.json.
 
@@ -17,7 +17,8 @@ from vent_demo_common import (BUILD_DIR, DASHBOARD_TITLE, ROOT, STATES, WIDGET_F
                               write_json)
 
 STATE_NAMES = {"default": "Tổng quan thông gió (DEMO)", "vent_detail": "Giám sát thông gió (DEMO)",
-               "vent_history": "Lịch sử thông gió (DEMO)", "vent_alarms": "Cảnh báo thông gió (DEMO)"}
+               "vent_history": "Lịch sử thông gió (DEMO)", "vent_alarms": "Cảnh báo thông gió (DEMO)",
+               "vent_settings": "Cài đặt thông gió · chỉ đọc (DEMO)"}
 UUID_NS = uuid.UUID("7c1e8f3a-0b6d-4c1e-9a52-5e0d7a1f0006")
 BG = "#0c1622"
 
@@ -54,6 +55,7 @@ def build_controller():
         "// Demo fixture cô lập: không datasource, không telemetry, không RPC, không ghi attribute.\n"
         "self.onInit = function () {\n"
         "  var __vent = {};\n"
+        + scope_iife(read("widgets/ventilation-contract-v02.js"), "contract") + "\n"
         + scope_iife(read("widgets/ventilation-adapter.js"), "adapter") + "\n"
         + scope_iife(read("dashboard/app.js"), "app") + "\n"
         "  var FIXTURE = " + json.dumps(fixture, ensure_ascii=False, separators=(",", ":")) + ";\n"
