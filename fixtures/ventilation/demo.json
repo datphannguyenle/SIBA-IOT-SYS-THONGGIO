@@ -1,0 +1,49 @@
+{
+  "fixtureVersion": "1.0.0",
+  "generatedAt": "2026-09-17T08:30:00+07:00",
+  "demo": true,
+  "badgeLabel": "DEMO DATA",
+  "scope": {"farm": "Trại SIBA · Đông Anh", "area": "Khu ND2", "selectedBarn": "ND2-1"},
+  "summary": {"barns": 6, "online": 4, "attention": 3, "activeAlarms": 3},
+  "barns": [
+    {"id":"barn-nd2-1","label":"ND2-1","connectivity":"ONLINE","freshness":"CURRENT","mode":"AUTO","stage":4,"stageCount":null,"alarm":"NONE"},
+    {"id":"barn-nd2-2","label":"ND2-2","connectivity":"ONLINE","freshness":"STALE","mode":"AUTO","stage":3,"stageCount":null,"alarm":"WARNING"},
+    {"id":"barn-nd2-3","label":"ND2-3","connectivity":"OFFLINE","freshness":"UNKNOWN","mode":"UNKNOWN","stage":null,"stageCount":null,"alarm":"UNKNOWN"},
+    {"id":"barn-nd2-4","label":"ND2-4","connectivity":"ONLINE","freshness":"CURRENT","mode":"MANUAL","stage":2,"stageCount":null,"alarm":"MAJOR"},
+    {"id":"barn-nd2-5","label":"ND2-5","connectivity":"UNKNOWN","freshness":"UNKNOWN","mode":"UNKNOWN","stage":null,"stageCount":null,"alarm":"UNKNOWN"},
+    {"id":"barn-nd2-6","label":"ND2-6","connectivity":"ONLINE","freshness":"CURRENT","mode":"AUTO","stage":5,"stageCount":null,"alarm":"WARNING"}
+  ],
+  "latest": {
+    "temperature_indoor":{"value":27.8,"unit":"°C","quality":"CURRENT","ts":"2026-09-17T08:29:42+07:00"},
+    "temperature_outdoor":{"value":31.2,"unit":"°C","quality":"CURRENT","ts":"2026-09-17T08:29:40+07:00"},
+    "temperature_feel":{"value":29.1,"unit":"°C","quality":"CURRENT","ts":"2026-09-17T08:29:42+07:00"},
+    "humidity":{"value":74,"unit":"%RH","quality":"CURRENT","ts":"2026-09-17T08:29:41+07:00"},
+    "air_speed":{"value":null,"unit":null,"quality":"UNKNOWN","ts":null},
+    "air_flow":{"value":null,"unit":null,"quality":"UNKNOWN","ts":null},
+    "water_consumption":{"value":null,"unit":null,"quality":"UNKNOWN","ts":null},
+    "operation_mode":{"value":"AUTO","unit":null,"quality":"CURRENT","ts":"2026-09-17T08:29:42+07:00"},
+    "fan_control_mode":{"value":"STEP","unit":null,"quality":"CURRENT","ts":"2026-09-17T08:29:42+07:00"},
+    "ventilation_stage":{"value":4,"unit":"level","quality":"CURRENT","ts":"2026-09-17T08:29:42+07:00"},
+    "controller_online":{"value":true,"unit":null,"quality":"CURRENT","ts":"2026-09-17T08:29:45+07:00"},
+    "roof_louver_position":{"value":65,"unit":"% demo","quality":"STALE","ts":"2026-09-17T08:22:02+07:00"},
+    "side_louver_position":{"value":40,"unit":"% demo","quality":"CURRENT","ts":"2026-09-17T08:29:41+07:00"},
+    "fan_01_status":{"value":"RUNNING","quality":"CURRENT"},"fan_02_status":{"value":"RUNNING","quality":"CURRENT"},
+    "fan_03_status":{"value":"RUNNING","quality":"CURRENT"},"fan_04_status":{"value":"STOPPED","quality":"CURRENT"},
+    "fan_05_status":{"value":null,"quality":"UNKNOWN"},"fan_06_status":{"value":"FAULT","quality":"CURRENT"},
+    "pump_01_status":{"value":"RUNNING","quality":"CURRENT"},"pump_02_status":{"value":null,"quality":"UNKNOWN"}
+  },
+  "history": [
+    {"ts":"2026-09-17T02:30:00+07:00","temperature_indoor":26.4,"temperature_outdoor":27.3,"humidity":78},
+    {"ts":"2026-09-17T03:30:00+07:00","temperature_indoor":26.7,"temperature_outdoor":27.9,"humidity":77},
+    {"ts":"2026-09-17T04:30:00+07:00","temperature_indoor":27.0,"temperature_outdoor":28.6,"humidity":76},
+    {"ts":"2026-09-17T05:30:00+07:00","temperature_indoor":27.2,"temperature_outdoor":29.3,"humidity":75},
+    {"ts":"2026-09-17T06:30:00+07:00","temperature_indoor":27.5,"temperature_outdoor":30.1,"humidity":75},
+    {"ts":"2026-09-17T07:30:00+07:00","temperature_indoor":null,"temperature_outdoor":30.7,"humidity":74},
+    {"ts":"2026-09-17T08:30:00+07:00","temperature_indoor":27.8,"temperature_outdoor":31.2,"humidity":74}
+  ],
+  "alarms": [
+    {"severity":"MAJOR","type":"FAN_06_FAULT","message":"Quạt 06 báo lỗi (dữ liệu demo)","originator":"ND2-1 / VEN-PLC-01","created":"2026-09-17T08:18:00+07:00","status":"ACTIVE"},
+    {"severity":"WARNING","type":"ROOF_LOUVER_STALE","message":"Phản hồi cửa chớp trần đã cũ (dữ liệu demo)","originator":"ND2-1 / VEN-PLC-01","created":"2026-09-17T08:23:00+07:00","status":"ACTIVE"},
+    {"severity":"WARNING","type":"HUMIDITY_HIGH","message":"Độ ẩm cao (dữ liệu demo)","originator":"ND2-2 / VEN-PLC-01","created":"2026-09-17T07:51:00+07:00","status":"ACTIVE"}
+  ]
+}
