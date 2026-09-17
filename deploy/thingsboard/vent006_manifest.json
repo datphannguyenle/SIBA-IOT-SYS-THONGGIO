@@ -45,5 +45,46 @@
       "method": "POST",
       "path": "/api/dashboard"
     }
+  ],
+  "refinements": [
+    {
+      "task": "VENT-006 visual refinement",
+      "approval": "APPROVED — VENT-006 CONTROLLED VISUAL REFINEMENT UPDATE",
+      "repository_commit": "8543e52068106b99b098abbba1540604d109d4aa",
+      "started_at": "2026-09-17T15:03:47+07:00",
+      "mutations": [
+        {
+          "method": "POST",
+          "path": "/api/widgetType",
+          "id": "b9fa9280-b26a-11f1-83ad-9912edc644d2",
+          "status": 200,
+          "at": "2026-09-17T15:03:47+07:00"
+        }
+      ],
+      "results": {
+        "widget_type": {
+          "update_needed": true,
+          "version_before": 1,
+          "descriptor_fields_changed": [
+            "templateCss"
+          ],
+          "version_after": 2,
+          "verification": "ok"
+        },
+        "dashboard": {
+          "update_needed": false,
+          "version_before": 1,
+          "version_after": 1,
+          "unchanged": true
+        }
+      },
+      "finished_at": "2026-09-17T15:03:47+07:00",
+      "guard_mutation_log": [
+        {
+          "method": "POST",
+          "path": "/api/widgetType"
+        }
+      ]
+    }
   ]
 }

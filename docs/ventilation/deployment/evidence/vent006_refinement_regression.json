@@ -1,0 +1,63 @@
+{
+  "at": "2026-09-17T15:03:55+07:00",
+  "dashboards": {
+    "bb585f20-a835-11f1-9683-f9c2621c1a59": {
+      "title": "SIBA · Khử mùi",
+      "version": [
+        27,
+        27
+      ],
+      "unchanged": true
+    },
+    "916ba6a0-acb7-11f1-9683-f9c2621c1a59": {
+      "title": "SIBA · Khử mùi · SIMULATION",
+      "version": [
+        9,
+        9
+      ],
+      "unchanged": true
+    },
+    "a66660b0-9a04-11f1-a0fc-e93bd628a87f": {
+      "title": "MUGE · Tổng quan trại",
+      "version": [
+        107,
+        107
+      ],
+      "unchanged": true
+    }
+  },
+  "counts": {
+    "assets": {
+      "before": 8412,
+      "after": 8412,
+      "ok": true
+    },
+    "devices": {
+      "before": 8186,
+      "after": 8186,
+      "ok": true
+    },
+    "dashboards": {
+      "before": 10,
+      "after": 10,
+      "ok": true
+    },
+    "tenant_widget_types": {
+      "before": 20,
+      "after": 20,
+      "ok": true
+    }
+  },
+  "bundle": {
+    "count": [
+      15,
+      15
+    ],
+    "unchanged": true
+  },
+  "tenant_bundle_count": [
+    1,
+    1
+  ],
+  "ok": true
+}

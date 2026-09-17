@@ -82,3 +82,24 @@ phải badge — tệ hơn. Vì vậy KHÔNG đổi dashboard; giữ toolbar và
 Chỉ 1 UPDATE widget type `b9fa9280-…` (thay `templateCss`; `defaultConfig` giữ nguyên chuỗi live vì
 TB nén JSON, nội dung giống hệt). Dashboard `b9ff4d70-…` không cần update (cấu hình live = build).
 Standalone VENT-003 giống từng pixel (6/6).
+
+### Refinement 1 — kết quả sau update
+
+**Hồi quy** (`evidence/vent006_refinement_regression.json`) — ĐẠT: Khử mùi v27, SIMULATION v9, MUGE
+v107 không đổi (sha256 đầy đủ); bundle `siba_custom_ui` 15 không đổi; asset 8412, device 8186,
+dashboard 10, widget type tenant 20, bundle tenant 1 — không đổi, không object mới.
+
+**Computed style trên live** (`evidence/vent006_refinement_typography_diff.json`): so 380 phần tử
+(4 state, 1920) với harness sạch → **0 loại lệch** (trước refinement: 15). Giá trị đo:
+`h2` ['700', 'normal', 'Arial', '17px'], `h3` ['700', 'normal', 'Arial', '13px'], `p` ['400', 'normal', 'Arial', '12px'], tiêu đề `strong` ['700', 'normal', 'Arial', '18px'], `.kpi__value` ['600', 'normal', 'Arial', '26px'],
+`th` ['700', 'normal', 'Arial', '12px'], `td` ['400', 'normal', 'Arial', '14px'], `td b` ['700', 'normal', 'Arial', '14px'] (định dạng: weight, line-height, font, size).
+
+**UI** (`evidence/vent006_refinement_ui_verification.json`) — ĐẠT 4 state × 1920 (cửa sổ) và 390
+(iframe, innerWidth 390): 4 góc badge `DEMO DATA` đều là phần tử badge (`elementFromPoint`), không
+bị FAB che; typography như trên; điều hướng qua `stateController` (`?state=`, hash rỗng) và quay về
+`default`; 1 side menu; không tràn ngang; giá trị fixture, màu quạt, khoảng trống lịch sử, cảnh
+báo chỉ đọc giữ nguyên.
+
+Ảnh mới (không ghi đè ảnh lần tạo): `evidence/vent006r-{default,vent-detail,vent-history,vent-alarms}-{1920,390}.png`.
+
+Kết luận: `VISUAL PARITY: PASS` — hai lệch đã hết. Không khẳng định giống từng pixel.

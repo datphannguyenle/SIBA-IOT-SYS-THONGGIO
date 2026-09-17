@@ -1,0 +1,15 @@
+{
+  "method": "computed style of every widget element (svg internals excluded), live TB vs clean local harness, 4 states, 1920x1080",
+  "properties": [
+    "fontWeight",
+    "lineHeight",
+    "letterSpacing",
+    "fontFamily",
+    "textTransform",
+    "textDecorationLine",
+    "borderBottom",
+    "fontSize"
+  ],
+  "elements_compared": 380,
+  "diff_kinds": []
+}

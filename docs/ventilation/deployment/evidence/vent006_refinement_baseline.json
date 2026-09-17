@@ -1,0 +1,58 @@
+{
+  "at": "2026-09-17T15:03:47+07:00",
+  "stop": [],
+  "checks": {
+    "widget": {
+      "id": "b9fa9280-b26a-11f1-83ad-9912edc644d2",
+      "fqn": "siba_vent_demo.vent_demo_view",
+      "version": 1,
+      "fqn_lookup_status": 200,
+      "fqn_lookup_id": "b9fa9280-b26a-11f1-83ad-9912edc644d2"
+    },
+    "dashboard": {
+      "id": "b9ff4d70-b26a-11f1-83ad-9912edc644d2",
+      "title": "DB-30-VEN-DETAIL-V1-DEMO",
+      "version": 1,
+      "sha16": "f700e52541ac18e0",
+      "assignedCustomers": null
+    }
+  },
+  "baseline": {
+    "dashboards": {
+      "bb585f20-a835-11f1-9683-f9c2621c1a59": {
+        "title": "SIBA · Khử mùi",
+        "version": 27,
+        "sha256": "99c899a8188f05b4c0a7da3fec9e4245be10b8ab9b723555f99512e0e024f6db",
+        "sha16": "99c899a8188f05b4"
+      },
+      "916ba6a0-acb7-11f1-9683-f9c2621c1a59": {
+        "title": "SIBA · Khử mùi · SIMULATION",
+        "version": 9,
+        "sha256": "faccbe9141863dd0cef012a12b39650cfc38253571919856c058f212b13e0b37",
+        "sha16": "faccbe9141863dd0"
+      },
+      "a66660b0-9a04-11f1-a0fc-e93bd628a87f": {
+        "title": "MUGE · Tổng quan trại",
+        "version": 107,
+        "sha256": "ed99833e5fa97194cefaa2db8572e013c877532a5413acdea1ce865cac0a4f7a",
+        "sha16": "ed99833e5fa97194"
+      }
+    },
+    "bundle": {
+      "alias": "siba_custom_ui",
+      "id": "38509b40-99f5-11f1-a0fc-e93bd628a87f",
+      "version": 1,
+      "count": 15,
+      "sha256": "af87a8ba7849ac09c9d7f39992f760b88da5340c8adb026b24c746cfafd63dd7",
+      "sha16": "af87a8ba7849ac09"
+    },
+    "counts": {
+      "assets": 8412,
+      "devices": 8186,
+      "dashboards": 10,
+      "tenant_widget_types": 20
+    },
+    "tenant_bundle_count": 1
+  },
+  "ok": true
+}

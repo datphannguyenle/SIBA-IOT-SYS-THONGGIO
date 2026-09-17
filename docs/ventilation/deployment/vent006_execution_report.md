@@ -48,4 +48,12 @@ Bản ghi tạo ở trên giữ nguyên. Refinement được ghi vào `vent006_m
 - Duyệt: `APPROVED — VENT-006 CONTROLLED VISUAL REFINEMENT UPDATE`.
 - Lệnh: `deploy_vent_demo.py refine --confirm-update` — rào chắn chỉ cho POST có `id` đúng manifest;
   dashboard chỉ được cập nhật khi cấu hình live khác build (hiện không khác → không gửi).
-- Kết quả thực thi: xem mục bổ sung sau khi chạy.
+- Commit: `8543e52068106b99b098abbba1540604d109d4aa`.
+- Kết quả thực thi (2026-09-17T15:03:47+07:00):
+
+| # | Lệnh | ID | HTTP | Kết quả |
+|---|---|---|---|---|
+| 1 | `POST /api/widgetType` (update, kèm id/version/tenantId/createdTime hiện có) | `b9fa9280-b26a-11f1-83ad-9912edc644d2` | 200 | version 1 → 2; chỉ `templateCss` đổi; fqn/tenant/createdTime/name giữ nguyên; tra theo fqn đầy đủ trả đúng ID |
+
+Dashboard `b9ff4d70-b26a-11f1-83ad-9912edc644d2`: KHÔNG update (cấu hình live = build); đọc lại version 1, sha không đổi.
+Nhật ký rào chắn: đúng 1 lệnh ghi. Không create, không delete.

@@ -2,7 +2,7 @@
 
 ## Status
 
-`active — visual refinement (APPROVED — VENT-006 CONTROLLED VISUAL REFINEMENT UPDATE)`
+`done — APPROVED — DEMO DEPLOYED AND VISUALLY VERIFIED` (not IMPLEMENTATION READY)
 
 ## Objective
 
@@ -58,7 +58,8 @@ production entity binding; `deploy_widgets.py`.
 - [x] Exactly two creates executed and verified by re-read (widget `b9fa9280-…`, dashboard `b9ff4d70-…`).
 - [x] Live UI verified at 1920 and 390 (iframe) for all four states; screenshots captured.
 - [x] Regression: protected dashboards/bundle unchanged, asset/device counts unchanged.
-- [ ] ChatGPT Web review.
+- [x] ChatGPT Web review: `APPROVED — VENT-006 DEMO DEPLOYED`.
+- [x] Visual refinement: widget type v2 (templateCss only), dashboard unchanged; typography diff 0; badge unobstructed; regression passed.
 
 ## Required evidence
 
@@ -67,7 +68,7 @@ production entity binding; `deploy_widgets.py`.
 
 ## Gate
 
-`active — visual refinement (APPROVED — VENT-006 CONTROLLED VISUAL REFINEMENT UPDATE)` only after creates, UI verification and regression pass.
+`done — APPROVED — DEMO DEPLOYED AND VISUALLY VERIFIED` (not IMPLEMENTATION READY) only after creates, UI verification and regression pass.
 Never `APPROVED — IMPLEMENTATION READY`.
 
 ## Ownership
@@ -96,6 +97,9 @@ Headless Firefox sessions started by the scripts; coordination locks `thong-gio.
   REFINEMENT UPDATE`. Repository fix: TB typography reset scoped to `.vent-demo-root`; header
   right reservation for the toolbar FAB (hideToolbar rejected after read-only `?hideToolbar=true`
   probe showed an edit FAB covering the badge). Only the widget type needs an update.
+- 2026-09-17 15:03: `refine --confirm-update` sent exactly one update (widget type v1 -> v2).
+  Refinement regression, live typography diff (0 kinds over 380 elements) and UI verification
+  (4 states x 1920/390 iframe) passed. VENT-002 remains NOT READY FOR REAL DATA; VENT-005 PAUSED.
 
 ## Notes
 
