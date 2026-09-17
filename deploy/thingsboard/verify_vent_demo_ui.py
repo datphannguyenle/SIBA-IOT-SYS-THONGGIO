@@ -13,7 +13,7 @@ import tempfile
 import time
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2] / "tests"))
-from webdriver_support import Browser  # noqa: E402
+from webdriver_support import Browser, StaticServer  # noqa: E402
 from vent_demo_common import EVIDENCE_DIR, MANIFEST, STATES, TB_URL, TB_USER, read_password, write_json  # noqa: E402
 
 ELEMENT_KEY = "element-6066-11e4-a52e-4f735466cecf"
@@ -61,8 +61,15 @@ def find(browser, css):
     return browser._session("POST", "/element", {"using": "css selector", "value": css})[ELEMENT_KEY]
 
 
-def login(browser):
-    browser._session("POST", "/url", {"url": TB_URL + "/login"})
+def navigate(browser, url, in_frame):
+    if in_frame:
+        browser.run("location.href = arguments[0]", url)
+    else:
+        browser._session("POST", "/url", {"url": url})
+
+
+def login(browser, in_frame=False):
+    navigate(browser, TB_URL + "/login", in_frame)
     browser.wait_for("return !!document.querySelector('input[type=password]')", timeout=60)
     user = find(browser, "input[formcontrolname=username], input[type=email], input[name=username]")
     pwd = find(browser, "input[type=password]")
@@ -72,10 +79,14 @@ def login(browser):
     browser.wait_for("return location.pathname.indexOf('/login') < 0", timeout=60)
 
 
-def open_dashboard(browser, dash_id):
-    browser._session("POST", "/url", {"url": "%s/dashboards/%s" % (TB_URL, dash_id)})
+def open_dashboard(browser, dash_id, in_frame=False):
+    navigate(browser, "%s/dashboards/%s" % (TB_URL, dash_id), in_frame)
     browser.wait_for("return !!document.querySelector('.vent-demo-root .demo-badge')", timeout=90)
-    browser._session("POST", "/refresh", {})
+    if in_frame:
+        browser.run("location.reload()")
+        time.sleep(2)
+    else:
+        browser._session("POST", "/refresh", {})
     browser.wait_for("return !!document.querySelector('.vent-demo-root .demo-badge')", timeout=90)
     time.sleep(1.5)
 
@@ -127,42 +138,58 @@ def evaluate(state, info, mobile):
     return problems
 
 
+def check_states(browser, dash_id, tmp, label, mobile, shoot):
+    viewport = {"innerWidth": browser.run("return window.innerWidth"), "states": {}}
+    for state in STATES:
+        go_state(browser, state)
+        info = browser.run(STATE_CHECK, state)
+        name = "vent006-%s-%s.png" % (state.replace("_", "-"), label)
+        target = pathlib.Path(tmp) / name
+        shoot(target)
+        EVIDENCE_DIR.mkdir(parents=True, exist_ok=True)
+        (EVIDENCE_DIR / name).write_bytes(target.read_bytes())
+        problems = evaluate(state, info, mobile)
+        info.pop("text", None)
+        viewport["states"][state] = {"problems": problems, "observed": info, "screenshot": name}
+    # Quay về default bằng tab để kiểm điều hướng hai chiều.
+    go_state(browser, "default")
+    viewport["returned_to_default"] = browser.run(STATE_CHECK, "default")["active"] == "default"
+    return viewport
+
+
 def main():
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     dash_id = manifest["created"]["dashboard"]["id"]
-    results = {"dashboard_id": dash_id, "at": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "viewports": {}}
-    shots = {(1920, 1080): STATES, (390, 844): STATES}
-    with tempfile.TemporaryDirectory(dir=pathlib.Path.home()) as tmp:
+    results = {"dashboard_id": dash_id, "at": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "viewports": {},
+               "method": "desktop: top-level window 1920x1080; mobile: TB inside a 390x844 iframe "
+                         "(Firefox cannot shrink a window below ~500px), fresh profile = hard refresh"}
+    with tempfile.TemporaryDirectory(dir=pathlib.Path.home()) as tmp, StaticServer() as server:
         browser = Browser(1920, 1080)
         try:
             login(browser)
-            for (width, height), states in shots.items():
-                mobile = width < 700
-                browser.resize(width, height)
-                open_dashboard(browser, dash_id)
-                viewport = results["viewports"]["%dx%d" % (width, height)] = {
-                    "innerWidth": browser.run("return window.innerWidth"), "states": {}}
-                for state in states:
-                    go_state(browser, state)
-                    info = browser.run(STATE_CHECK, state)
-                    name = "vent006-%s-%d.png" % (state.replace("_", "-"), width)
-                    target = pathlib.Path(tmp) / name
-                    browser.screenshot_full(target)
-                    EVIDENCE_DIR.mkdir(parents=True, exist_ok=True)
-                    (EVIDENCE_DIR / name).write_bytes(target.read_bytes())
-                    info.pop("text", None)
-                    viewport["states"][state] = {"problems": evaluate(state, browser.run(STATE_CHECK, state), mobile),
-                                                 "observed": info, "screenshot": name}
-                # Quay về default bằng tab để kiểm điều hướng hai chiều.
-                go_state(browser, "default")
-                viewport["returned_to_default"] = browser.run(STATE_CHECK, "default")["active"] == "default"
+            open_dashboard(browser, dash_id)
+            results["viewports"]["1920x1080"] = check_states(browser, dash_id, tmp, "1920", False, browser.screenshot_full)
+
+            browser._session("POST", "/url", {"url": server.base_url + "/deploy/thingsboard/mobile_frame.html"})
+            frame = find(browser, "#device")
+            def shoot_frame(target):
+                browser._session("POST", "/frame/parent", {})
+                png = browser._session("GET", "/element/%s/screenshot" % find(browser, "#device"))
+                import base64
+                target.write_bytes(base64.b64decode(png))
+                browser._session("POST", "/frame", {"id": {ELEMENT_KEY: find(browser, "#device")}})
+            browser._session("POST", "/frame", {"id": {ELEMENT_KEY: frame}})
+            login(browser, in_frame=True)
+            open_dashboard(browser, dash_id, in_frame=True)
+            results["viewports"]["390x844"] = check_states(browser, dash_id, tmp, "390", True, shoot_frame)
         finally:
             browser.close()
     results["ok"] = all(not s["problems"] for v in results["viewports"].values() for s in v["states"].values()) and \
-        all(v["returned_to_default"] for v in results["viewports"].values())
+        all(v["returned_to_default"] for v in results["viewports"].values()) and \
+        results["viewports"]["390x844"]["innerWidth"] == 390
     write_json(EVIDENCE_DIR / "vent006_ui_verification.json", results)
-    print(json.dumps({k: {s: v["problems"] for s, v in vp["states"].items()} for k, vp in results["viewports"].items()},
-                     ensure_ascii=False, indent=1))
+    print(json.dumps({k: {"innerWidth": vp["innerWidth"], "problems": {s: v["problems"] for s, v in vp["states"].items()}}
+                      for k, vp in results["viewports"].items()}, ensure_ascii=False, indent=1))
     print("ok:", results["ok"])
     if not results["ok"]:
         raise SystemExit(1)

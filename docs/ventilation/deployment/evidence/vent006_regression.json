@@ -1,0 +1,83 @@
+{
+  "at": "2026-09-17T14:38:31+07:00",
+  "dashboards": {
+    "bb585f20-a835-11f1-9683-f9c2621c1a59": {
+      "title": "SIBA · Khử mùi",
+      "version": [
+        27,
+        27
+      ],
+      "sha16": [
+        "99c899a8188f05b4",
+        "99c899a8188f05b4"
+      ],
+      "unchanged": true
+    },
+    "916ba6a0-acb7-11f1-9683-f9c2621c1a59": {
+      "title": "SIBA · Khử mùi · SIMULATION",
+      "version": [
+        9,
+        9
+      ],
+      "sha16": [
+        "faccbe9141863dd0",
+        "faccbe9141863dd0"
+      ],
+      "unchanged": true
+    },
+    "a66660b0-9a04-11f1-a0fc-e93bd628a87f": {
+      "title": "MUGE · Tổng quan trại",
+      "version": [
+        107,
+        107
+      ],
+      "sha16": [
+        "ed99833e5fa97194",
+        "ed99833e5fa97194"
+      ],
+      "unchanged": true
+    }
+  },
+  "bundle": {
+    "count": [
+      15,
+      15
+    ],
+    "sha16": [
+      "af87a8ba7849ac09",
+      "af87a8ba7849ac09"
+    ],
+    "unchanged": true
+  },
+  "counts": {
+    "assets": {
+      "before": 8412,
+      "after": 8412,
+      "expected_delta": 0,
+      "ok": true
+    },
+    "devices": {
+      "before": 8186,
+      "after": 8186,
+      "expected_delta": 0,
+      "ok": true
+    },
+    "dashboards": {
+      "before": 9,
+      "after": 10,
+      "expected_delta": 1,
+      "ok": true
+    },
+    "tenant_widget_types": {
+      "before": 19,
+      "after": 20,
+      "expected_delta": 1,
+      "ok": true
+    }
+  },
+  "tenant_bundle_count": [
+    1,
+    1
+  ],
+  "ok": true
+}

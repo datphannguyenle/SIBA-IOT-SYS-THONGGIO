@@ -1,0 +1,234 @@
+{
+  "dashboard_id": "b9ff4d70-b26a-11f1-83ad-9912edc644d2",
+  "at": "2026-09-17T14:40:02+0700",
+  "viewports": {
+    "1920x1080": {
+      "innerWidth": 1920,
+      "states": {
+        "default": {
+          "problems": [],
+          "observed": {
+            "badge": "DEMO DATA",
+            "active": "default",
+            "hash": "",
+            "search": "",
+            "previewShell": 0,
+            "platformSideMenus": 1,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "widgetHeight": 930,
+            "viewportHeight": 994,
+            "headerBg": "rgb(21, 39, 55)",
+            "identityTags": [
+              "PILOT · DEMO",
+              "DEMO",
+              "DEMO",
+              "DEMO",
+              "SYNTHETIC",
+              "SYNTHETIC"
+            ]
+          },
+          "screenshot": "vent006-default-1920.png"
+        },
+        "vent_detail": {
+          "problems": [],
+          "observed": {
+            "badge": "DEMO DATA",
+            "active": "vent_detail",
+            "hash": "",
+            "search": "?state=W3siaWQiOiJ2ZW50X2RldGFpbCIsInBhcmFtcyI6e319XQ%253D%253D",
+            "previewShell": 0,
+            "platformSideMenus": 1,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "widgetHeight": 930,
+            "viewportHeight": 994,
+            "headerBg": "rgb(21, 39, 55)",
+            "fans": [
+              "fan RUNNING",
+              "fan RUNNING",
+              "fan RUNNING",
+              "fan STOPPED",
+              "fan UNKNOWN",
+              "fan FAULT"
+            ],
+            "fanStrokes": [
+              "rgb(46, 230, 168)",
+              "rgb(46, 230, 168)",
+              "rgb(46, 230, 168)",
+              "rgb(96, 125, 139)",
+              "rgb(174, 196, 209)",
+              "rgb(255, 59, 66)"
+            ],
+            "secondary": [
+              "--",
+              "--",
+              "--"
+            ],
+            "stage": true
+          },
+          "screenshot": "vent006-vent-detail-1920.png"
+        },
+        "vent_history": {
+          "problems": [],
+          "observed": {
+            "badge": "DEMO DATA",
+            "active": "vent_history",
+            "hash": "",
+            "search": "?state=W3siaWQiOiJ2ZW50X2hpc3RvcnkiLCJwYXJhbXMiOnt9fV0%253D",
+            "previewShell": 0,
+            "platformSideMenus": 1,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "widgetHeight": 930,
+            "viewportHeight": 994,
+            "headerBg": "rgb(21, 39, 55)",
+            "indoorMoves": 2,
+            "perceivedPath": true,
+            "missingCell": true
+          },
+          "screenshot": "vent006-vent-history-1920.png"
+        },
+        "vent_alarms": {
+          "problems": [],
+          "observed": {
+            "badge": "DEMO DATA",
+            "active": "vent_alarms",
+            "hash": "",
+            "search": "?state=W3siaWQiOiJ2ZW50X2FsYXJtcyIsInBhcmFtcyI6e319XQ%253D%253D",
+            "previewShell": 0,
+            "platformSideMenus": 1,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "widgetHeight": 930,
+            "viewportHeight": 994,
+            "headerBg": "rgb(21, 39, 55)",
+            "controls": 0,
+            "alarmTypes": [
+              "VEN_FAN_FAULT",
+              "VEN_ROOF_INLET_STALE",
+              "VEN_HIGH_HUMIDITY"
+            ]
+          },
+          "screenshot": "vent006-vent-alarms-1920.png"
+        }
+      },
+      "returned_to_default": true
+    },
+    "390x844": {
+      "innerWidth": 390,
+      "states": {
+        "default": {
+          "problems": [],
+          "observed": {
+            "badge": "DEMO DATA",
+            "active": "default",
+            "hash": "",
+            "search": "",
+            "previewShell": 0,
+            "platformSideMenus": 1,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "widgetHeight": 788,
+            "viewportHeight": 844,
+            "headerBg": "rgb(21, 39, 55)",
+            "identityTags": [
+              "PILOT · DEMO",
+              "DEMO",
+              "DEMO",
+              "DEMO",
+              "SYNTHETIC",
+              "SYNTHETIC"
+            ]
+          },
+          "screenshot": "vent006-default-390.png"
+        },
+        "vent_detail": {
+          "problems": [],
+          "observed": {
+            "badge": "DEMO DATA",
+            "active": "vent_detail",
+            "hash": "",
+            "search": "?state=W3siaWQiOiJ2ZW50X2RldGFpbCIsInBhcmFtcyI6e319XQ%253D%253D",
+            "previewShell": 0,
+            "platformSideMenus": 1,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "widgetHeight": 788,
+            "viewportHeight": 844,
+            "headerBg": "rgb(21, 39, 55)",
+            "fans": [
+              "fan RUNNING",
+              "fan RUNNING",
+              "fan RUNNING",
+              "fan STOPPED",
+              "fan UNKNOWN",
+              "fan FAULT"
+            ],
+            "fanStrokes": [
+              "rgb(46, 230, 168)",
+              "rgb(46, 230, 168)",
+              "rgb(46, 230, 168)",
+              "rgb(96, 125, 139)",
+              "rgb(174, 196, 209)",
+              "rgb(255, 59, 66)"
+            ],
+            "secondary": [
+              "--",
+              "--",
+              "--"
+            ],
+            "stage": true
+          },
+          "screenshot": "vent006-vent-detail-390.png"
+        },
+        "vent_history": {
+          "problems": [],
+          "observed": {
+            "badge": "DEMO DATA",
+            "active": "vent_history",
+            "hash": "",
+            "search": "?state=W3siaWQiOiJ2ZW50X2hpc3RvcnkiLCJwYXJhbXMiOnt9fV0%253D",
+            "previewShell": 0,
+            "platformSideMenus": 1,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "widgetHeight": 788,
+            "viewportHeight": 844,
+            "headerBg": "rgb(21, 39, 55)",
+            "indoorMoves": 2,
+            "perceivedPath": true,
+            "missingCell": true
+          },
+          "screenshot": "vent006-vent-history-390.png"
+        },
+        "vent_alarms": {
+          "problems": [],
+          "observed": {
+            "badge": "DEMO DATA",
+            "active": "vent_alarms",
+            "hash": "",
+            "search": "?state=W3siaWQiOiJ2ZW50X2FsYXJtcyIsInBhcmFtcyI6e319XQ%253D%253D",
+            "previewShell": 0,
+            "platformSideMenus": 1,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "widgetHeight": 788,
+            "viewportHeight": 844,
+            "headerBg": "rgb(21, 39, 55)",
+            "controls": 0,
+            "alarmTypes": [
+              "VEN_FAN_FAULT",
+              "VEN_ROOF_INLET_STALE",
+              "VEN_HIGH_HUMIDITY"
+            ]
+          },
+          "screenshot": "vent006-vent-alarms-390.png"
+        }
+      },
+      "returned_to_default": true
+    }
+  },
+  "method": "desktop: top-level window 1920x1080; mobile: TB inside a 390x844 iframe (Firefox cannot shrink a window below ~500px), fresh profile = hard refresh",
+  "ok": true
+}

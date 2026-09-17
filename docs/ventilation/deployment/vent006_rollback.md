@@ -36,4 +36,6 @@ và báo, người vận hành chạy lệnh trên sau khi xem lại.
 
 ## Trạng thái
 
-Chưa thực hiện rollback nào.
+Chưa thực hiện rollback nào (không cần: cả hai lệnh tạo và mọi xác minh đều đạt).
+Manifest hiện có: widget type `b9fa9280-b26a-11f1-83ad-9912edc644d2`, dashboard
+`b9ff4d70-b26a-11f1-83ad-9912edc644d2`.

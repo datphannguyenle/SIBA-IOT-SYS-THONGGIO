@@ -2,7 +2,7 @@
 
 ## Status
 
-`active — tooling committed, awaiting controlled execution`
+`review — DEMO DEPLOYED`
 
 ## Objective
 
@@ -55,15 +55,15 @@ production entity binding; `deploy_widgets.py`.
 - [x] Payloads built deterministically and validated locally (static + namespaced-CSS harness).
 - [x] Guard blocks every call except the two authorized creates and manifest-scoped deletes.
 - [x] Read-only preflight passes (no collision, protected baseline matches plan).
-- [ ] Exactly two creates executed and verified by re-read.
-- [ ] Live UI verified at 1920 and 390 for all four states; screenshots captured.
-- [ ] Regression: protected dashboards/bundle unchanged, asset/device counts unchanged.
+- [x] Exactly two creates executed and verified by re-read (widget `b9fa9280-…`, dashboard `b9ff4d70-…`).
+- [x] Live UI verified at 1920 and 390 (iframe) for all four states; screenshots captured.
+- [x] Regression: protected dashboards/bundle unchanged, asset/device counts unchanged.
 - [ ] ChatGPT Web review.
 
 ## Required evidence
 
-- [ ] `docs/ventilation/deployment/evidence/vent006_baseline_pre_mutation.json`
-- [ ] `vent006_manifest.json`, `vent006_regression.json`, `vent006_ui_verification.json`, screenshots.
+- [x] `docs/ventilation/deployment/evidence/vent006_baseline_pre_mutation.json`
+- [x] `vent006_manifest.json`, `vent006_regression.json`, `vent006_ui_verification.json`, screenshots.
 
 ## Gate
 
@@ -81,6 +81,16 @@ Never `APPROVED — IMPLEMENTATION READY`.
 
 Headless Firefox sessions started by the scripts; coordination locks `thong-gio.lock` and
 `deploy.lock` in `/home/siba-iot-2/thingsboard-docker/docs/phoi-hop/khoa/` during execution.
+
+## Handoff log
+
+- 2026-09-17 14:33: agent's own `execute` call was blocked by Claude Code auto-mode permission
+  (production deploy). No mutation had been sent. The user ran
+  `deploy_vent_demo.py execute --confirm-create` locally at 14:38.
+- Creates, read-back verification, regression and live UI verification all passed.
+- Two minor visual drifts found (TB global typography on h2/b; dashboard toolbar FAB overlaps
+  the DEMO badge). Fix requires an UPDATE of the created artifacts: outside this approval, not
+  performed. See `docs/ventilation/deployment/vent006_verification.md`.
 
 ## Notes
 
