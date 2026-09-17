@@ -2,7 +2,7 @@
 
 ## Status
 
-`active — completion corrections implemented; awaiting review`
+`done — APPROVED — VENT-003 DASHBOARD DEMO (commit c30ade1, 2026-09-17)`
 
 ## Objective
 
@@ -42,7 +42,7 @@ relation/dashboard mutation, production binding or deployment.
 - [x] Desktop and mobile visual evidence captured (regenerated 2026-09-17 after the final change).
 - [x] Barn identity is explicit (`PILOT`, `LIVE_BARN_SIMULATED_STATE`, `SYNTHETIC`).
 - [x] Adapter and all four states executed in headless Firefox by `tests/test_dashboard_browser.py`.
-- [ ] ChatGPT Web review.
+- [x] ChatGPT Web review: `APPROVED — VENT-003 DASHBOARD DEMO`; no further standalone polishing unless packaging requires it.
 
 ## Handoff log
 

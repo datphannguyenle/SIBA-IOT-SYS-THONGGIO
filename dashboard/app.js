@@ -1,11 +1,11 @@
-(function () {
+(function (root) {
   "use strict";
   var STATES = ["default", "vent_detail", "vent_history", "vent_alarms"];
   var labels = {default: "Tổng quan", vent_detail: "Giám sát", vent_history: "Lịch sử", vent_alarms: "Cảnh báo"};
-  var app = document.getElementById("app"), vm;
+  var vm;
   function esc(value) { return String(value == null ? "" : value).replace(/[&<>"']/g, function (c) { return ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[c]; }); }
   function isMissing(value) { return value === null || value === undefined; }
-  function route() { var id = location.hash.replace(/^#/, "") || "default"; return STATES.indexOf(id) >= 0 ? id : "default"; }
+  function normalizeState(id) { return STATES.indexOf(id) >= 0 ? id : "default"; }
   function metric(key) { return vm.metrics[key] || {value: null, unit: "", quality: "UNKNOWN"}; }
   function value(item) { return isMissing(item.value) ? "--" : esc(item.value) + (item.unit ? " <small>" + esc(item.unit) + "</small>" : ""); }
   function plainValue(item) { return isMissing(item.value) ? "--" : esc(item.value) + (item.unit ? " " + esc(item.unit) : ""); }
@@ -13,7 +13,7 @@
     return '<header class="vent-header"><div class="vent-header__top"><strong class="vent-header__title">SIBA · Thông gió</strong>' +
       '<span class="vent-header__scope">' + esc(vm.scope.farm) + ' · ' + esc(vm.scope.area) + '</span>' +
       '<b class="demo-badge">' + esc(vm.badgeLabel) + '</b></div><nav class="state-tabs" aria-label="Trạng thái dashboard">' +
-      STATES.map(function (item) { return '<a href="#' + item + '" class="' + (item === state ? 'active' : '') + '">' + labels[item] + '</a>'; }).join("") + '</nav></header>';
+      STATES.map(function (item) { return '<a href="#' + item + '" data-nav="' + item + '" class="' + (item === state ? 'active' : '') + '">' + labels[item] + '</a>'; }).join("") + '</nav></header>';
   }
   function kpi(label, key, icon) {
     var item = metric(key);
@@ -39,11 +39,11 @@
       summaryKpi('Cảnh báo đang mở', 'activeAlarms', '△') + '</div><div class="overview-grid"><section class="panel">' +
       '<div class="panel__head"><div><h2>Toàn trại</h2><p>Chọn một nhà để xem giám sát thông gió.</p></div><span class="muted">Trạng thái mọi nhà là mô phỏng</span></div>' +
       '<div class="barn-grid">' + vm.barns.map(function (barn) {
-        return '<button class="barn-card" data-open-detail><b>' + esc(barn.label) + identityTag(barn) + '</b>' +
+        return '<button class="barn-card" data-nav="vent_detail"><b>' + esc(barn.label) + identityTag(barn) + '</b>' +
           '<span class="status-' + barn.connectivity + '">' + barn.connectivity + '</span><span class="quality-' + barn.freshness + '">Dữ liệu: ' + barn.freshness + '</span>' +
           '<span>Chế độ: ' + esc(barn.mode) + '</span><span class="status-' + barn.alarm + '">Cảnh báo: ' + barn.alarm + '</span></button>';
       }).join('') + '</div></section><section class="panel"><div class="panel__head"><div><h2>Cảnh báo ưu tiên</h2>' +
-      '<p>Chỉ xem; không có thao tác vòng đời.</p></div><a href="#vent_alarms" class="muted">Xem tất cả →</a></div><div class="alarm-list">' +
+      '<p>Chỉ xem; không có thao tác vòng đời.</p></div><a href="#vent_alarms" data-nav="vent_alarms" class="muted">Xem tất cả →</a></div><div class="alarm-list">' +
       vm.alarms.map(function (alarm) { return '<article class="alarm-mini ' + alarm.severity + '"><b>' + esc(alarm.type) + '</b><span>' +
         esc(alarm.message) + '</span><small>' + esc(alarm.originator) + '</small></article>'; }).join('') + '</div></section></div>' + footer() + '</section>';
   }
@@ -85,7 +85,7 @@
       summaryRow('Chất lượng dữ liệu', value(quality), 'quality-' + (isMissing(quality.value) ? 'UNKNOWN' : esc(quality.value))) + '</div><h3 class="subsection-title">Dữ liệu bổ sung</h3>' +
       '<div class="secondary-metrics">' + secondaryRow('Tốc độ gió', 'airSpeed') + secondaryRow('Lưu lượng gió', 'airFlow') +
       secondaryRow('Nước tiêu thụ', 'waterConsumptionTotal') + '</div><div class="notice compact-notice">Giá trị `--` là chưa có dữ liệu runtime; không quy đổi thành 0.</div>' +
-      '<a href="#vent_history" class="text-link">Xem lịch sử →</a></aside></div>' + footer() + '</section>';
+      '<a href="#vent_history" data-nav="vent_history" class="text-link">Xem lịch sử →</a></aside></div>' + footer() + '</section>';
   }
   function seriesPath(key) {
     var values = vm.history.map(function (row) { return row[key]; });
@@ -125,12 +125,30 @@
         '</td><td>' + esc(alarm.status) + '</td></tr>'; }).join('') + '</tbody></table></div></section><p class="demo-limit">Fixture minh họa · alarm scope, retention và export production chưa được xác minh.</p>' + footer() + '</section>';
   }
   function footer() { return '<footer class="footer"><span>Giám sát chỉ đọc · Fixture ' + esc(vm.fixtureVersion) + '</span><span>Sinh lúc ' + new Date(vm.generatedAt).toLocaleString('vi-VN') + '</span></footer>'; }
-  function render() {
-    var state = route();
-    app.innerHTML = header(state) + (state === 'default' ? overview() : state === 'vent_detail' ? detail() : state === 'vent_history' ? history() : alarms());
-    app.querySelectorAll('[data-open-detail]').forEach(function (button) { button.addEventListener('click', function () { location.hash = 'vent_detail'; }); });
+  // Điều hướng đi qua navigate(): bản standalone đổi hash, ThingsBoard gọi stateController.
+  function render(container, viewModel, state, navigate) {
+    vm = viewModel;
+    state = normalizeState(state);
+    container.innerHTML = header(state) + (state === 'default' ? overview() : state === 'vent_detail' ? detail() : state === 'vent_history' ? history() : alarms());
+    container.__ventNavigate = navigate;
+    if (!container.__ventNavBound) {
+      container.__ventNavBound = true;
+      container.addEventListener('click', function (event) {
+        var target = event.target.closest('[data-nav]');
+        if (!target || !container.contains(target)) return;
+        event.preventDefault();
+        container.__ventNavigate(normalizeState(target.getAttribute('data-nav')));
+      });
+    }
+    return state;
   }
-  window.addEventListener('hashchange', render);
-  new window.VentilationAdapter.FixtureSource('../fixtures/ventilation/demo.json').load().then(function (data) { vm = data; render(); })
-    .catch(function (error) { app.innerHTML = '<p class="error">Không nạp được fixture demo: ' + esc(error.message) + '</p>'; });
-}());
+  root.VentilationDashboard = { STATES: STATES, render: render };
+  if (root !== window) return;
+  var app = document.getElementById("app");
+  if (!app) return;
+  function renderFromHash(data) { render(app, data, location.hash.replace(/^#/, "") || "default", function (next) { location.hash = next; }); }
+  new root.VentilationAdapter.FixtureSource('../fixtures/ventilation/demo.json').load().then(function (data) {
+    renderFromHash(data);
+    window.addEventListener('hashchange', function () { renderFromHash(data); });
+  }).catch(function (error) { app.innerHTML = '<p class="error">Không nạp được fixture demo: ' + esc(error.message) + '</p>'; });
+}(window));

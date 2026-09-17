@@ -1,0 +1,262 @@
+{
+  "title": "DB-30-VEN-DETAIL-V1-DEMO",
+  "name": "DB-30-VEN-DETAIL-V1-DEMO",
+  "configuration": {
+    "description": "VENT-006 DEMO · thông gió · dữ liệu fixture cô lập. Không PLC, không telemetry, không RPC. Không phải bằng chứng runtime.",
+    "widgets": {
+      "3d347e1d-c370-5560-86da-aeba72a99bb0": {
+        "id": "3d347e1d-c370-5560-86da-aeba72a99bb0",
+        "typeFullFqn": "tenant.siba_vent_demo.vent_demo_view",
+        "type": "static",
+        "sizeX": 24,
+        "sizeY": 24,
+        "row": 0,
+        "col": 0,
+        "config": {
+          "configMode": "basic",
+          "title": "Thông gió DEMO · default",
+          "showTitle": false,
+          "showTitleIcon": false,
+          "dropShadow": false,
+          "enableFullscreen": false,
+          "enableDataExport": false,
+          "backgroundColor": "#0c1622",
+          "color": "#edf5f9",
+          "padding": "0px",
+          "margin": "0px",
+          "borderRadius": "0px",
+          "widgetStyle": {},
+          "actions": {},
+          "settings": {
+            "viewState": "default"
+          },
+          "datasources": [],
+          "widgetCss": ":host ::ng-deep .tb-widget { background: transparent !important; border: none !important; box-shadow: none !important; }",
+          "mobileHeight": 12
+        }
+      },
+      "87f3cd0b-5311-51d5-97b1-dffe92bd2243": {
+        "id": "87f3cd0b-5311-51d5-97b1-dffe92bd2243",
+        "typeFullFqn": "tenant.siba_vent_demo.vent_demo_view",
+        "type": "static",
+        "sizeX": 24,
+        "sizeY": 24,
+        "row": 0,
+        "col": 0,
+        "config": {
+          "configMode": "basic",
+          "title": "Thông gió DEMO · vent_detail",
+          "showTitle": false,
+          "showTitleIcon": false,
+          "dropShadow": false,
+          "enableFullscreen": false,
+          "enableDataExport": false,
+          "backgroundColor": "#0c1622",
+          "color": "#edf5f9",
+          "padding": "0px",
+          "margin": "0px",
+          "borderRadius": "0px",
+          "widgetStyle": {},
+          "actions": {},
+          "settings": {
+            "viewState": "vent_detail"
+          },
+          "datasources": [],
+          "widgetCss": ":host ::ng-deep .tb-widget { background: transparent !important; border: none !important; box-shadow: none !important; }",
+          "mobileHeight": 12
+        }
+      },
+      "bfd82c51-023a-5006-a1f4-50aba44da785": {
+        "id": "bfd82c51-023a-5006-a1f4-50aba44da785",
+        "typeFullFqn": "tenant.siba_vent_demo.vent_demo_view",
+        "type": "static",
+        "sizeX": 24,
+        "sizeY": 24,
+        "row": 0,
+        "col": 0,
+        "config": {
+          "configMode": "basic",
+          "title": "Thông gió DEMO · vent_history",
+          "showTitle": false,
+          "showTitleIcon": false,
+          "dropShadow": false,
+          "enableFullscreen": false,
+          "enableDataExport": false,
+          "backgroundColor": "#0c1622",
+          "color": "#edf5f9",
+          "padding": "0px",
+          "margin": "0px",
+          "borderRadius": "0px",
+          "widgetStyle": {},
+          "actions": {},
+          "settings": {
+            "viewState": "vent_history"
+          },
+          "datasources": [],
+          "widgetCss": ":host ::ng-deep .tb-widget { background: transparent !important; border: none !important; box-shadow: none !important; }",
+          "mobileHeight": 12
+        }
+      },
+      "8501c438-4cc5-5cea-991d-5894476c9325": {
+        "id": "8501c438-4cc5-5cea-991d-5894476c9325",
+        "typeFullFqn": "tenant.siba_vent_demo.vent_demo_view",
+        "type": "static",
+        "sizeX": 24,
+        "sizeY": 24,
+        "row": 0,
+        "col": 0,
+        "config": {
+          "configMode": "basic",
+          "title": "Thông gió DEMO · vent_alarms",
+          "showTitle": false,
+          "showTitleIcon": false,
+          "dropShadow": false,
+          "enableFullscreen": false,
+          "enableDataExport": false,
+          "backgroundColor": "#0c1622",
+          "color": "#edf5f9",
+          "padding": "0px",
+          "margin": "0px",
+          "borderRadius": "0px",
+          "widgetStyle": {},
+          "actions": {},
+          "settings": {
+            "viewState": "vent_alarms"
+          },
+          "datasources": [],
+          "widgetCss": ":host ::ng-deep .tb-widget { background: transparent !important; border: none !important; box-shadow: none !important; }",
+          "mobileHeight": 12
+        }
+      }
+    },
+    "states": {
+      "default": {
+        "name": "Tổng quan thông gió (DEMO)",
+        "root": true,
+        "layouts": {
+          "main": {
+            "widgets": {
+              "3d347e1d-c370-5560-86da-aeba72a99bb0": {
+                "sizeX": 24,
+                "sizeY": 24,
+                "row": 0,
+                "col": 0
+              }
+            },
+            "gridSettings": {
+              "layoutType": "default",
+              "backgroundColor": "#0c1622",
+              "columns": 24,
+              "margin": 0,
+              "outerMargin": false,
+              "backgroundSizeMode": "100%",
+              "autoFillHeight": true,
+              "mobileAutoFillHeight": true,
+              "mobileRowHeight": 70
+            }
+          }
+        }
+      },
+      "vent_detail": {
+        "name": "Giám sát thông gió (DEMO)",
+        "root": false,
+        "layouts": {
+          "main": {
+            "widgets": {
+              "87f3cd0b-5311-51d5-97b1-dffe92bd2243": {
+                "sizeX": 24,
+                "sizeY": 24,
+                "row": 0,
+                "col": 0
+              }
+            },
+            "gridSettings": {
+              "layoutType": "default",
+              "backgroundColor": "#0c1622",
+              "columns": 24,
+              "margin": 0,
+              "outerMargin": false,
+              "backgroundSizeMode": "100%",
+              "autoFillHeight": true,
+              "mobileAutoFillHeight": true,
+              "mobileRowHeight": 70
+            }
+          }
+        }
+      },
+      "vent_history": {
+        "name": "Lịch sử thông gió (DEMO)",
+        "root": false,
+        "layouts": {
+          "main": {
+            "widgets": {
+              "bfd82c51-023a-5006-a1f4-50aba44da785": {
+                "sizeX": 24,
+                "sizeY": 24,
+                "row": 0,
+                "col": 0
+              }
+            },
+            "gridSettings": {
+              "layoutType": "default",
+              "backgroundColor": "#0c1622",
+              "columns": 24,
+              "margin": 0,
+              "outerMargin": false,
+              "backgroundSizeMode": "100%",
+              "autoFillHeight": true,
+              "mobileAutoFillHeight": true,
+              "mobileRowHeight": 70
+            }
+          }
+        }
+      },
+      "vent_alarms": {
+        "name": "Cảnh báo thông gió (DEMO)",
+        "root": false,
+        "layouts": {
+          "main": {
+            "widgets": {
+              "8501c438-4cc5-5cea-991d-5894476c9325": {
+                "sizeX": 24,
+                "sizeY": 24,
+                "row": 0,
+                "col": 0
+              }
+            },
+            "gridSettings": {
+              "layoutType": "default",
+              "backgroundColor": "#0c1622",
+              "columns": 24,
+              "margin": 0,
+              "outerMargin": false,
+              "backgroundSizeMode": "100%",
+              "autoFillHeight": true,
+              "mobileAutoFillHeight": true,
+              "mobileRowHeight": 70
+            }
+          }
+        }
+      }
+    },
+    "entityAliases": {},
+    "filters": {},
+    "timewindow": {
+      "realtime": {
+        "timewindowMs": 3600000
+      }
+    },
+    "settings": {
+      "stateControllerId": "default",
+      "showTitle": false,
+      "showDashboardsSelect": false,
+      "showEntitiesSelect": false,
+      "showDashboardTimewindow": false,
+      "showDashboardExport": false,
+      "toolbarAlwaysOpen": false,
+      "hideToolbar": false,
+      "showFilters": false,
+      "dashboardCss": ".tb-dashboard-page{background:#0c1622}\n.tb-dashboard-page .tb-widget-container>.tb-widget{background:#0c1622!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:0!important}\n"
+    }
+  }
+}

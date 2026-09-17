@@ -40,7 +40,7 @@ class DashboardDemoTest(unittest.TestCase):
         cls.app = (ROOT / "dashboard/app.js").read_text()
         cls.adapter = (ROOT / "widgets/ventilation-adapter.js").read_text()
         cls.html = (ROOT / "dashboard/index.html").read_text()
-        cls.css = (ROOT / "dashboard/dashboard.css").read_text()
+        cls.css = (ROOT / "dashboard/dashboard.css").read_text() + (ROOT / "dashboard/preview-shell.css").read_text()
 
     def test_fixture_is_explicit_and_identity_is_honest(self):
         self.assertIs(self.fixture["demo"], True)

@@ -1,0 +1,10 @@
+/* Bổ sung CHỈ cho widget ThingsBoard (VENT-006). Widget tự làm gốc cuộn duy nhất; khung nền tảng do ThingsBoard lo. */
+.vent-demo-root{display:block;height:100%;overflow-y:auto;overflow-x:hidden;padding:12px;background:var(--bg);font-size:14px;line-height:normal}
+.vent-demo-root>.view:first-of-type,.vent-demo-root .vent-header+.view{margin-top:10px}
+.vent-demo-root :where(h2,h3,p){letter-spacing:normal}
+/* Bẫy #7: CSS toàn cục của bản build SIBA gạch chân mọi thẻ a. */
+.vent-demo-root a{border-bottom:0;text-decoration:none}
+.vent-demo-root .state-tabs a{border-bottom:2px solid transparent}
+.vent-demo-root .state-tabs a.active{border-bottom-color:var(--teal)}
+.vent-demo-root :where(button){font:inherit}
+@media(max-width:700px){.vent-demo-root{padding:8px}}
