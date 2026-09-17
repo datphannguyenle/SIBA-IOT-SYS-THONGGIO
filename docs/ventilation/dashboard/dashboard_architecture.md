@@ -5,7 +5,8 @@ fixtures/ventilation/demo.json
         │ FixtureSource.load()
         ▼
 widgets/ventilation-adapter.js
-        │ createViewModel(): canonical null/quality-safe model
+        │ legacy compatibility mapping
+        │ createViewModel(): Rev A canonical, boolean/null-safe model
         ▼
 dashboard/app.js
         │ hash router + read-only renderers

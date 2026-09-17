@@ -8,6 +8,7 @@
 | Priority alarm summary | Adapted read-only table/list pattern | Implemented |
 | Ventilation schematic | New ventilation-specific surface | Implemented |
 | Equipment feedback strip | New ventilation-specific surface | Implemented |
+| Controller + secondary metrics | New canonical read-only summary | Implemented |
 | History chart and sample table | New fixture renderer; system chart is later option | Implemented |
 | Alarm table | Read-only adaptation of system alarm layout | Implemented |
 | Preview shell | Standalone review aid only | Implemented |

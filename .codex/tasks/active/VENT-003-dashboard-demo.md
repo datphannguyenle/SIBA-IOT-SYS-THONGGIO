@@ -2,7 +2,7 @@
 
 ## Status
 
-`active — fixture demo implemented; awaiting review`
+`active — completion corrections implemented; awaiting review`
 
 ## Objective
 
@@ -34,10 +34,24 @@ relation/dashboard mutation, production binding or deployment.
 - [x] Persistent configurable demo badge implemented.
 - [x] Null, stale, offline and unknown cases represented without null-to-zero coercion.
 - [x] Fixture source is separated from canonical view model.
+- [x] Dashboard renderer uses Rev A canonical semantic names only.
+- [x] Run/fault, false/zero/null and generic stage behavior are covered by tests.
+- [x] Secondary read-only metrics and perceived-temperature history are implemented.
 - [x] Responsive repository demo implemented without internal sidebar.
 - [x] Static safety and schema checks pass.
-- [x] Desktop and mobile visual evidence captured.
+- [x] Desktop and mobile visual evidence captured (regenerated 2026-09-17 after the final change).
+- [x] Barn identity is explicit (`PILOT`, `LIVE_BARN_SIMULATED_STATE`, `SYNTHETIC`).
+- [x] Adapter and all four states executed in headless Firefox by `tests/test_dashboard_browser.py`.
 - [ ] ChatGPT Web review.
+
+## Handoff log
+
+- 2026-09-17: a previous agent stopped with the canonical model, secondary metrics,
+  perceived-temperature history and DEMO-05/06 naming uncommitted and evidence stale.
+  The continuation preserved that work and added: equipment derived from canonical
+  metrics, history quality default `UNKNOWN`, explicit Barn identity, neutral alarm
+  originators, fixture edge-case/stage variants, synoptic spacing and semantic colors,
+  real browser tests, and regenerated evidence. No ThingsBoard access was used.
 
 ## Ownership
 
