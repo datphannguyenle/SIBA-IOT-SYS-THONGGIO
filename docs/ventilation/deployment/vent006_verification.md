@@ -48,3 +48,37 @@ nút/ô nhập.
 Cả hai cần một lệnh UPDATE (widget type và/hoặc dashboard), nằm ngoài phê duyệt hiện tại (chỉ
 CREATE). Không tự sửa. Kết luận parity: `VISUAL PARITY: PASS WITH MINOR REFINEMENT`, không khẳng
 định giống từng pixel.
+
+---
+
+## Refinement 1 — kế hoạch (APPROVED — VENT-006 CONTROLLED VISUAL REFINEMENT UPDATE)
+
+Phần trên giữ nguyên làm bằng chứng lần tạo. Refinement ghi nối tiếp tại đây.
+
+### Chẩn đoán đầy đủ trước khi sửa (chỉ đọc)
+
+So computed style MỌI phần tử của widget trên live với harness sạch (không CSS toàn cục),
+4 state: 15 loại lệch, cùng một nguồn là typography Material toàn cục của TB:
+`h2` 700/normal → 400/51.2px; `h3` 700 → 500; `p` line-height normal → 19.2/17.6px;
+`strong` 700 → 500; `table/th/td` (và `b`, `span` bên trong) Arial 14px → Roboto 16px.
+
+### Issue 1 — sửa trong phạm vi widget
+
+`dashboard/thingsboard-reset.css` (nạp TRƯỚC `dashboard.css` trong `templateCss`, chỉ selector có
+gốc `.vent-demo-root`): `h2,h3` 700/normal; `p` line-height normal; `:where(b,strong)` 700;
+`:where(table,th,td)` kế thừa font. Class của bản đã duyệt (vd `.kpi__value` 600, `.data-table th`
+12px) vẫn thắng nhờ thứ tự nguồn. Harness mới giả lập đúng các giá trị TB đo được: payload cũ
+`7cb9621` tái hiện lệch; payload mới cho computed style giống hệt harness sạch.
+
+### Issue 2 — quyết định
+
+Thử CHỈ ĐỌC qua query `?hideToolbar=true` (frontend đọc tham số này vào cùng getter với setting):
+toolbar FAB biến mất nhưng tenant admin nhận nút nổi `edit` (x 1872–1912, y 72–112) che CẢ hai góc
+phải badge — tệ hơn. Vì vậy KHÔNG đổi dashboard; giữ toolbar và chừa 48px bên phải hàng tiêu đề
+(`.vent-demo-root .vent-header__top{padding-right:64px}` trong `thingsboard-widget.css`).
+
+### Phạm vi ghi dự kiến
+
+Chỉ 1 UPDATE widget type `b9fa9280-…` (thay `templateCss`; `defaultConfig` giữ nguyên chuỗi live vì
+TB nén JSON, nội dung giống hệt). Dashboard `b9ff4d70-…` không cần update (cấu hình live = build).
+Standalone VENT-003 giống từng pixel (6/6).

@@ -7,4 +7,8 @@
 .vent-demo-root .state-tabs a{border-bottom:2px solid transparent}
 .vent-demo-root .state-tabs a.active{border-bottom-color:var(--teal)}
 .vent-demo-root :where(button){font:inherit}
+/* VENT-006 refinement: nút FAB toolbar của dashboard (36x36, cách mép phải ~18px) nằm đè góc phải hàng
+   tiêu đề. Chừa 48px bên phải để badge DEMO DATA không bị che; không ẩn toolbar (hideToolbar=true lại hiện
+   nút edit nổi cũng đè badge, đã thử qua query ?hideToolbar=true). */
+.vent-demo-root .vent-header__top{padding-right:64px}
 @media(max-width:700px){.vent-demo-root{padding:8px}}

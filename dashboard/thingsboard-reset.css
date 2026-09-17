@@ -1,0 +1,8 @@
+/* VENT-006 refinement: reset typography toàn cục của ThingsBoard rò vào widget (đo trên live 17/09/2026:
+   h2 400/51.2px, h3 500, p line-height 1.6, strong 500, table/th/td Roboto 16px).
+   Nạp TRƯỚC dashboard.css để các class của bản đã duyệt (vd .kpi__value 600, .data-table th 12px) vẫn thắng.
+   Giá trị = computed style của bản standalone VENT-003 (mặc định trình duyệt). */
+.vent-demo-root h2,.vent-demo-root h3{font-weight:700;line-height:normal}
+.vent-demo-root p{line-height:normal}
+.vent-demo-root :where(b,strong){font-weight:700}
+.vent-demo-root :where(table,th,td){font-family:inherit;font-size:inherit}

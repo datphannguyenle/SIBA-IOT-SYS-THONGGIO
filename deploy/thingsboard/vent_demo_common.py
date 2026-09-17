@@ -3,7 +3,8 @@
 Client chỉ cho phép:
   - GET bất kỳ (đọc)
   - POST /api/auth/login
-  - POST /api/widgetType, POST /api/dashboard    (chỉ khi allow_create=True, payload không có id)
+  - POST /api/widgetType, POST /api/dashboard    (tạo: chỉ khi allow_create=True, payload không có id)
+  - POST /api/widgetType, POST /api/dashboard    (cập nhật: chỉ khi id nằm trong allow_update_ids)
   - DELETE đúng ID trong manifest                (chỉ khi allow_delete_ids chứa ID đó)
 Mọi lệnh khác bị chặn trước khi gửi. Mật khẩu/token không bao giờ được in hay ghi file.
 """
@@ -64,8 +65,9 @@ def read_password():
 
 
 class GuardedTB:
-    def __init__(self, allow_create=False, allow_delete_ids=()):
+    def __init__(self, allow_create=False, allow_delete_ids=(), allow_update_ids=()):
         self.allow_create = allow_create
+        self.allow_update_ids = set(allow_update_ids)
         self.allow_delete_ids = set(allow_delete_ids)
         self.mutations = []          # nhật ký lệnh ghi đã gửi (không chứa payload nhạy cảm)
         self._token = None
@@ -76,10 +78,14 @@ class GuardedTB:
         if method == "POST" and path == "/api/auth/login":
             return
         if method == "POST" and path in ("/api/widgetType", "/api/dashboard"):
-            if not self.allow_create:
+            if not isinstance(body, dict):
+                raise Blocked("payload must be an object: POST %s" % path)
+            if "id" in body:
+                target = (body.get("id") or {}).get("id")
+                if target not in self.allow_update_ids:
+                    raise Blocked("update not enabled for id %s: POST %s" % (target, path))
+            elif not self.allow_create:
                 raise Blocked("create not enabled: POST %s" % path)
-            if not isinstance(body, dict) or "id" in body:
-                raise Blocked("create payload must not carry an id: POST %s" % path)
             if path == "/api/widgetType" and body.get("fqn") != WIDGET_FQN:
                 raise Blocked("unexpected widget fqn")
             if path == "/api/dashboard" and (body.get("title") != DASHBOARD_TITLE or body.get("assignedCustomers")):

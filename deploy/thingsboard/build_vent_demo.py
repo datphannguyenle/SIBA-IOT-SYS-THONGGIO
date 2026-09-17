@@ -2,7 +2,7 @@
 """VENT-006 — dựng payload widget type + dashboard DEMO từ nguồn repo (không gọi mạng).
 
 Nguồn: widgets/ventilation-adapter.js, dashboard/app.js, fixtures/ventilation/demo.json,
-dashboard/dashboard.css, dashboard/thingsboard-widget.css.
+dashboard/thingsboard-reset.css, dashboard/dashboard.css, dashboard/thingsboard-widget.css.
 Đầu ra (xác định, không timestamp): deploy/thingsboard/build/widget_type.json, dashboard.json.
 
   python3 deploy/thingsboard/build_vent_demo.py          # ghi file build
@@ -39,7 +39,9 @@ def strip_css_comments(css):
 
 
 def build_css():
-    css = strip_css_comments(read("dashboard/dashboard.css") + "\n" + read("dashboard/thingsboard-widget.css"))
+    # Reset typography nạp trước để class của bản đã duyệt vẫn thắng ở cùng độ đặc hiệu.
+    css = strip_css_comments(read("dashboard/thingsboard-reset.css") + "\n" + read("dashboard/dashboard.css") + "\n"
+                             + read("dashboard/thingsboard-widget.css"))
     return "\n".join(line for line in css.splitlines() if line.strip()) + "\n"
 
 

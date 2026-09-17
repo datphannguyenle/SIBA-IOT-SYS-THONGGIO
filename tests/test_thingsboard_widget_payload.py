@@ -77,6 +77,14 @@ class PayloadStaticTest(unittest.TestCase):
             creator._check("POST", "/api/widgetType", dict(self.widget, fqn="siba_custom_ui.header_bar"))
         with self.assertRaises(vent_demo_common.Blocked):
             creator._check("POST", "/api/widgetType?updateExistingByFqn=true", self.widget)
+        updater = vent_demo_common.GuardedTB(allow_update_ids={"wid-1"})
+        updater._check("POST", "/api/widgetType", dict(self.widget, id={"id": "wid-1"}))
+        for body in (dict(self.widget, id={"id": "other"}), dict(self.widget, fqn="siba_custom_ui.header_bar", id={"id": "wid-1"}),
+                     self.widget):
+            with self.assertRaises(vent_demo_common.Blocked):
+                updater._check("POST", "/api/widgetType", body)
+        with self.assertRaises(vent_demo_common.Blocked):
+            updater._check("POST", "/api/dashboard", dict(self.dashboard, id={"id": "bb585f20-a835-11f1-9683-f9c2621c1a59"}))
         deleter = vent_demo_common.GuardedTB(allow_delete_ids={"abc"})
         deleter._check("DELETE", "/api/dashboard/abc", None)
         with self.assertRaises(vent_demo_common.Blocked):
@@ -167,6 +175,56 @@ class WidgetRuntimeHarnessTest(unittest.TestCase):
         self.assertEqual(info["linkBorder"], "0px")
         self.assertEqual(info["h2Spacing"], "normal")
         self.assertEqual(info["scrolls"], "auto")
+
+    def computed_typography(self):
+        return self.browser.run("""
+          var root = document.querySelector('.vent-demo-root');
+          function cs(sel) { var e = root.querySelector(sel); if (!e) return null; var s = getComputedStyle(e);
+            return [s.fontWeight, s.lineHeight, s.fontFamily.split(',')[0].replace(/"/g, ''), s.fontSize]; }
+          return {h2: cs('.panel__head h2'), h3: cs('.subsection-title'), p: cs('.panel__head p'),
+                  strong: cs('.vent-header__title'), kpi: cs('.kpi__value'), th: cs('.data-table th'), td: cs('.data-table td'),
+                  alarmB: cs('.data-table td b')};""")
+
+    def test_tb_global_typography_is_neutralised(self):
+        expected = {}
+        for state in ("vent_detail", "vent_history", "vent_alarms"):
+            self.mount(state)
+            self.browser.run("document.body.classList.remove('mat-typography')")
+            clean = self.computed_typography()
+            self.browser.run("document.body.classList.add('mat-typography')")
+            hostile = self.computed_typography()
+            self.assertEqual(hostile, clean, state)
+            expected.update({k: v for k, v in clean.items() if v})
+        self.assertEqual(expected["h2"][:2], ["700", "normal"])
+        self.assertEqual(expected["h3"][0], "700")
+        self.assertEqual(expected["strong"][0], "700")
+        self.assertEqual(expected["kpi"][0], "600")          # class của bản đã duyệt vẫn thắng reset
+        self.assertEqual(expected["td"][2:], ["Arial", "14px"])
+        self.assertEqual(expected["th"][3], "12px")
+
+    def test_header_reserves_space_for_dashboard_toolbar_fab(self):
+        self.mount("default", 1650, 950)
+        gap = self.browser.run("""
+          var root = document.querySelector('.vent-demo-root');
+          var header = root.querySelector('.vent-header').getBoundingClientRect();
+          return header.right - root.querySelector('.demo-badge').getBoundingClientRect().right;""")
+        self.assertGreaterEqual(gap, 60)
+
+    def test_refinement_changes_only_widget_css(self):
+        def at(rev, path):
+            return json.loads(subprocess.run(["git", "show", "%s:%s" % (rev, path)], cwd=ROOT, check=True,
+                                             capture_output=True, text=True).stdout)
+        deployed_dash = at("7cb9621", "deploy/thingsboard/build/dashboard.json")
+        deployed_widget = at("7cb9621", "deploy/thingsboard/build/widget_type.json")
+        dashboard = json.loads((BUILD / "dashboard.json").read_text())
+        widget = json.loads((BUILD / "widget_type.json").read_text())
+        self.assertEqual(dashboard, deployed_dash)
+        self.assertEqual(widget["fqn"], deployed_widget["fqn"])
+        changed = {k for k in set(widget["descriptor"]) | set(deployed_widget["descriptor"])
+                   if widget["descriptor"].get(k) != deployed_widget["descriptor"].get(k)}
+        self.assertEqual(changed, {"templateCss"})
+        self.assertEqual({k: v for k, v in widget.items() if k != "descriptor"},
+                         {k: v for k, v in deployed_widget.items() if k != "descriptor"})
 
     def test_history_gap_and_alarms_read_only(self):
         self.mount("vent_history")

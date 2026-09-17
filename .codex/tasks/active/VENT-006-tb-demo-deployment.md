@@ -2,7 +2,7 @@
 
 ## Status
 
-`review — DEMO DEPLOYED`
+`active — visual refinement (APPROVED — VENT-006 CONTROLLED VISUAL REFINEMENT UPDATE)`
 
 ## Objective
 
@@ -67,7 +67,7 @@ production entity binding; `deploy_widgets.py`.
 
 ## Gate
 
-`review — DEMO DEPLOYED` only after creates, UI verification and regression pass.
+`active — visual refinement (APPROVED — VENT-006 CONTROLLED VISUAL REFINEMENT UPDATE)` only after creates, UI verification and regression pass.
 Never `APPROVED — IMPLEMENTATION READY`.
 
 ## Ownership
@@ -91,6 +91,11 @@ Headless Firefox sessions started by the scripts; coordination locks `thong-gio.
 - Two minor visual drifts found (TB global typography on h2/b; dashboard toolbar FAB overlaps
   the DEMO badge). Fix requires an UPDATE of the created artifacts: outside this approval, not
   performed. See `docs/ventilation/deployment/vent006_verification.md`.
+
+- 2026-09-17: `APPROVED — VENT-006 DEMO DEPLOYED` and `APPROVED — VENT-006 CONTROLLED VISUAL
+  REFINEMENT UPDATE`. Repository fix: TB typography reset scoped to `.vent-demo-root`; header
+  right reservation for the toolbar FAB (hideToolbar rejected after read-only `?hideToolbar=true`
+  probe showed an edit FAB covering the badge). Only the widget type needs an update.
 
 ## Notes
 

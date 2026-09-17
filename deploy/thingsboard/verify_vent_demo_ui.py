@@ -17,6 +17,10 @@ from webdriver_support import Browser, StaticServer  # noqa: E402
 from vent_demo_common import EVIDENCE_DIR, MANIFEST, STATES, TB_URL, TB_USER, read_password, write_json  # noqa: E402
 
 ELEMENT_KEY = "element-6066-11e4-a52e-4f735466cecf"
+# --refinement: ghi ảnh/JSON mới, không ghi đè bằng chứng lần deploy đầu.
+REFINEMENT = "--refinement" in sys.argv
+PREFIX = "vent006r" if REFINEMENT else "vent006"
+RESULT_NAME = "vent006_refinement_ui_verification.json" if REFINEMENT else "vent006_ui_verification.json"
 
 STATE_CHECK = """
 var state = arguments[0], root = document.querySelector('.vent-demo-root');
@@ -33,6 +37,17 @@ var out = {
   widgetOverflowX: root.scrollWidth - root.clientWidth,
   widgetHeight: root.clientHeight, viewportHeight: window.innerHeight,
   headerBg: getComputedStyle(root.querySelector('.vent-header')).backgroundColor,
+  typography: (function () {
+    function cs(sel) { var e = root.querySelector(sel); if (!e) return null; var s = getComputedStyle(e);
+      return [s.fontWeight, s.lineHeight, s.fontFamily.split(',')[0].replace(/"/g, ''), s.fontSize]; }
+    return {h2: cs('.panel__head h2'), h3: cs('.subsection-title'), p: cs('.panel__head p'), strong: cs('.vent-header__title'),
+            kpi: cs('.kpi__value'), th: cs('.data-table th'), td: cs('.data-table td'), tdB: cs('.data-table td b')};
+  })(),
+  badgeCornersVisible: (function () {
+    var r = root.querySelector('.demo-badge').getBoundingClientRect();
+    return [[r.left + 2, r.top + 2], [r.right - 2, r.top + 2], [r.right - 2, r.bottom - 2], [r.left + 2, r.bottom - 2]].map(function (pt) {
+      var e = document.elementFromPoint(pt[0], pt[1]); return !!(e && e.closest('.demo-badge')); });
+  })(),
   text: root.innerText.slice(0, 4000)
 };
 if (state === 'default') {
@@ -118,6 +133,23 @@ def evaluate(state, info, mobile):
         problems.append("duplicate platform side menu")
     if info["headerBg"] != "rgb(21, 39, 55)":
         problems.append("panel colour %s" % info["headerBg"])
+    if not all(info["badgeCornersVisible"]):
+        problems.append("DEMO badge covered %s" % info["badgeCornersVisible"])
+    ty = info["typography"]
+    if ty["h2"] and ty["h2"][:2] != ["700", "normal"]:
+        problems.append("h2 typography %s" % ty["h2"])
+    if ty["strong"][0] != "700":
+        problems.append("title strong weight %s" % ty["strong"])
+    if ty["p"] and ty["p"][1] != "normal":
+        problems.append("p line-height %s" % ty["p"])
+    if ty["h3"] and ty["h3"][0] != "700":
+        problems.append("h3 weight %s" % ty["h3"])
+    if ty["kpi"] and ty["kpi"][0] != "600":
+        problems.append("kpi weight %s" % ty["kpi"])
+    if ty["td"] and ty["td"][2:] != ["Arial", "14px"]:
+        problems.append("table cell font %s" % ty["td"])
+    if ty["tdB"] and ty["tdB"][0] != "700":
+        problems.append("table b weight %s" % ty["tdB"])
     if state == "default" and info["identityTags"] != ["PILOT · DEMO", "DEMO", "DEMO", "DEMO", "SYNTHETIC", "SYNTHETIC"]:
         problems.append("identity tags %s" % info["identityTags"])
     if state == "vent_detail":
@@ -143,7 +175,7 @@ def check_states(browser, dash_id, tmp, label, mobile, shoot):
     for state in STATES:
         go_state(browser, state)
         info = browser.run(STATE_CHECK, state)
-        name = "vent006-%s-%s.png" % (state.replace("_", "-"), label)
+        name = "%s-%s-%s.png" % (PREFIX, state.replace("_", "-"), label)
         target = pathlib.Path(tmp) / name
         shoot(target)
         EVIDENCE_DIR.mkdir(parents=True, exist_ok=True)
@@ -187,7 +219,7 @@ def main():
     results["ok"] = all(not s["problems"] for v in results["viewports"].values() for s in v["states"].values()) and \
         all(v["returned_to_default"] for v in results["viewports"].values()) and \
         results["viewports"]["390x844"]["innerWidth"] == 390
-    write_json(EVIDENCE_DIR / "vent006_ui_verification.json", results)
+    write_json(EVIDENCE_DIR / RESULT_NAME, results)
     print(json.dumps({k: {"innerWidth": vp["innerWidth"], "problems": {s: v["problems"] for s, v in vp["states"].items()}}
                       for k, vp in results["viewports"].items()}, ensure_ascii=False, indent=1))
     print("ok:", results["ok"])

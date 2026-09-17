@@ -37,3 +37,15 @@ relation, rule chain, alarm, customer, telemetry, attribute hay RPC.
   không alias, không datasource, không customer; cấu hình đọc lại giống hệt payload.
 
 Chi tiết UI: [vent006_verification.md](vent006_verification.md). Rollback: [vent006_rollback.md](vent006_rollback.md).
+
+---
+
+## Refinement 1 — CONTROLLED VISUAL REFINEMENT UPDATE
+
+Bản ghi tạo ở trên giữ nguyên. Refinement được ghi vào `vent006_manifest.json` dưới khóa
+`refinements` (không đổi `created`, không đổi timestamp tạo).
+
+- Duyệt: `APPROVED — VENT-006 CONTROLLED VISUAL REFINEMENT UPDATE`.
+- Lệnh: `deploy_vent_demo.py refine --confirm-update` — rào chắn chỉ cho POST có `id` đúng manifest;
+  dashboard chỉ được cập nhật khi cấu hình live khác build (hiện không khác → không gửi).
+- Kết quả thực thi: xem mục bổ sung sau khi chạy.

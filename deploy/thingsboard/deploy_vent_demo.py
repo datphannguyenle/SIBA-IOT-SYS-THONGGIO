@@ -4,6 +4,8 @@
   python3 deploy_vent_demo.py preflight                 # chỉ GET; ghi evidence/vent006_preflight.json
   python3 deploy_vent_demo.py execute --confirm-create  # preflight lại rồi tạo ĐÚNG 2 object
   python3 deploy_vent_demo.py regression                # chỉ GET; so với mốc trước khi ghi
+  python3 deploy_vent_demo.py refine --confirm-update   # refinement: CẬP NHẬT đúng ID trong manifest
+  python3 deploy_vent_demo.py refine-regression         # chỉ GET; so với mốc trước refinement
 
 Được phép ghi: POST /api/widgetType (fqn siba_vent_demo.vent_demo_view, không id, không
 updateExistingByFqn) và POST /api/dashboard (DB-30-VEN-DETAIL-V1-DEMO, không id). Không gì khác.
@@ -253,6 +255,148 @@ def regression():
         raise SystemExit("REGRESSION: có thay đổi ngoài dự kiến — DỪNG và điều tra")
 
 
+REFINE_BASELINE = EVIDENCE_DIR / "vent006_refinement_baseline.json"
+DEPLOY_REGRESSION = EVIDENCE_DIR / "vent006_regression.json"
+WIDGET_TOP_LEVEL = ("name", "description", "deprecated", "scada")
+
+
+def descriptor_key(descriptor):
+    """So descriptor theo ngữ nghĩa: TB lưu defaultConfig dạng JSON nén, nội dung vẫn như payload."""
+    d = dict(descriptor)
+    if isinstance(d.get("defaultConfig"), str):
+        d["defaultConfig"] = json.loads(d["defaultConfig"])
+    return d
+
+
+def refine_preflight(tb, manifest):
+    report = {"at": now(), "stop": [], "checks": {}}
+    wid = manifest["created"]["widget_type"]["id"]
+    did = manifest["created"]["dashboard"]["id"]
+    widget = tb.get_ok("/api/widgetType/" + wid)
+    status, by_fqn = tb.get("/api/widgetType?fqn=" + WIDGET_FULL_FQN)
+    dashboard = tb.get_ok("/api/dashboard/" + did)
+    report["checks"]["widget"] = {"id": widget["id"]["id"], "fqn": widget.get("fqn"), "version": widget.get("version"),
+                                  "fqn_lookup_status": status, "fqn_lookup_id": (by_fqn or {}).get("id", {}).get("id") if status == 200 else None}
+    report["checks"]["dashboard"] = {"id": dashboard["id"]["id"], "title": dashboard.get("title"), "version": dashboard.get("version"),
+                                     "sha16": config_sha(dashboard["configuration"])[:16],
+                                     "assignedCustomers": dashboard.get("assignedCustomers")}
+    if widget["id"]["id"] != wid or widget.get("fqn") != WIDGET_FQN or report["checks"]["widget"]["fqn_lookup_id"] != wid:
+        report["stop"].append("widget identity mismatch")
+    if dashboard["id"]["id"] != did or dashboard.get("title") != DASHBOARD_TITLE or dashboard.get("assignedCustomers"):
+        report["stop"].append("dashboard identity mismatch")
+    snap = snapshot(tb)
+    report["baseline"] = snap
+    for pid, expect in PROTECTED_DASHBOARDS.items():
+        got = snap["dashboards"][pid]
+        if (got["title"], got["version"], got["sha16"]) != (expect["title"], expect["version"], expect["sha16"]):
+            report["stop"].append("protected dashboard changed: %s" % expect["title"])
+    if (snap["bundle"]["count"], snap["bundle"]["sha16"]) != (PROTECTED_BUNDLE["count"], PROTECTED_BUNDLE["sha16"]):
+        report["stop"].append("siba_custom_ui bundle changed")
+    after_deploy = json.loads(DEPLOY_REGRESSION.read_text(encoding="utf-8"))["counts"]
+    for key in ("assets", "devices", "dashboards", "tenant_widget_types"):
+        if snap["counts"][key] != after_deploy[key]["after"]:
+            report["stop"].append("%s count changed since deployment (%s -> %s)" % (key, after_deploy[key]["after"], snap["counts"][key]))
+    report["ok"] = not report["stop"]
+    return report, widget, dashboard
+
+
+def refine():
+    if "--confirm-update" not in sys.argv:
+        raise SystemExit("Cần --confirm-update")
+    manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    head, dirty = git_state()
+    if dirty:
+        raise SystemExit("STOP: nguồn deploy có thay đổi chưa commit:\n" + dirty)
+    widget_payload, dashboard_payload = load_payloads()
+    reader = GuardedTB()
+    pre, live_widget, live_dashboard = refine_preflight(reader, manifest)
+    write_json(REFINE_BASELINE, pre)
+    if not pre["ok"]:
+        raise SystemExit("STOP refine preflight: " + "; ".join(pre["stop"]))
+
+    wid, did = live_widget["id"]["id"], live_dashboard["id"]["id"]
+    record = {"task": "VENT-006 visual refinement", "approval": "APPROVED — VENT-006 CONTROLLED VISUAL REFINEMENT UPDATE",
+              "repository_commit": head, "started_at": now(), "mutations": [], "results": {}}
+    widget_needed = descriptor_key(live_widget["descriptor"]) != descriptor_key(widget_payload["descriptor"]) or any(
+        live_widget.get(k) != widget_payload[k] for k in WIDGET_TOP_LEVEL)
+    dashboard_needed = config_sha(live_dashboard["configuration"]) != config_sha(dashboard_payload["configuration"])
+    record["results"]["widget_type"] = {"update_needed": widget_needed, "version_before": live_widget.get("version")}
+    record["results"]["dashboard"] = {"update_needed": dashboard_needed, "version_before": live_dashboard.get("version")}
+    updater = GuardedTB(allow_update_ids={x for x, needed in ((wid, widget_needed), (did, dashboard_needed)) if needed})
+    updater._token = reader.token
+
+    if widget_needed:
+        body = json.loads(json.dumps(live_widget))
+        for k in WIDGET_TOP_LEVEL:
+            body[k] = widget_payload[k]
+        body["descriptor"] = dict(widget_payload["descriptor"])
+        if descriptor_key({"defaultConfig": live_widget["descriptor"]["defaultConfig"]}) == descriptor_key(
+                {"defaultConfig": widget_payload["descriptor"]["defaultConfig"]}):
+            body["descriptor"]["defaultConfig"] = live_widget["descriptor"]["defaultConfig"]   # giữ nguyên chuỗi đang có
+        record["results"]["widget_type"]["descriptor_fields_changed"] = sorted(
+            k for k in body["descriptor"] if live_widget["descriptor"].get(k) != body["descriptor"][k])
+        status, res = updater.request("/api/widgetType", "POST", body)
+        record["mutations"].append({"method": "POST", "path": "/api/widgetType", "id": wid, "status": status, "at": now()})
+        if status != 200:
+            manifest.setdefault("refinements", []).append(record); write_json(MANIFEST, manifest)
+            raise SystemExit("STOP: update widgetType -> %s: %s" % (status, str(res)[:200]))
+        after = reader.get_ok("/api/widgetType/" + wid)
+        _, by_fqn = reader.get("/api/widgetType?fqn=" + WIDGET_FULL_FQN)
+        problems = []
+        if after["id"]["id"] != wid or after.get("fqn") != WIDGET_FQN or (by_fqn or {}).get("id", {}).get("id") != wid:
+            problems.append("identity")
+        if after.get("version") != (live_widget.get("version") or 0) + 1:
+            problems.append("version %s -> %s" % (live_widget.get("version"), after.get("version")))
+        if descriptor_key(after["descriptor"]) != descriptor_key(widget_payload["descriptor"]):
+            problems.append("descriptor round-trip")
+        for k in ("tenantId", "createdTime") + WIDGET_TOP_LEVEL:
+            if after.get(k) != body.get(k):
+                problems.append("field " + k)
+        record["results"]["widget_type"].update(version_after=after.get("version"), verification=problems or "ok")
+        if problems:
+            manifest.setdefault("refinements", []).append(record); write_json(MANIFEST, manifest)
+            raise SystemExit("STOP: xác minh widget sau update lỗi: %s" % problems)
+    if dashboard_needed:
+        record["results"]["dashboard"]["note"] = "not performed: dashboard update requires a separately reviewed code path"
+        manifest.setdefault("refinements", []).append(record); write_json(MANIFEST, manifest)
+        raise SystemExit("STOP: dashboard khác build; không nằm trong refinement dự kiến")
+
+    dash_after = reader.get_ok("/api/dashboard/" + did)
+    record["results"]["dashboard"].update(version_after=dash_after.get("version"),
+                                          unchanged=config_sha(dash_after["configuration"]) == config_sha(live_dashboard["configuration"])
+                                          and dash_after.get("version") == live_dashboard.get("version"))
+    record["finished_at"] = now()
+    record["guard_mutation_log"] = updater.mutations
+    manifest.setdefault("refinements", []).append(record)
+    write_json(MANIFEST, manifest)
+    print(json.dumps(record, ensure_ascii=False, indent=1))
+
+
+def refine_regression():
+    tb = GuardedTB()
+    pre = json.loads(REFINE_BASELINE.read_text(encoding="utf-8"))["baseline"]
+    post = snapshot(tb)
+    result = {"at": now(), "dashboards": {}, "counts": {}}
+    for pid, before in pre["dashboards"].items():
+        after = post["dashboards"][pid]
+        result["dashboards"][pid] = {"title": before["title"], "version": [before["version"], after["version"]],
+                                     "unchanged": (before["version"], before["sha256"]) == (after["version"], after["sha256"])}
+    result["bundle"] = {"count": [pre["bundle"]["count"], post["bundle"]["count"]],
+                        "unchanged": (pre["bundle"]["count"], pre["bundle"]["sha256"]) == (post["bundle"]["count"], post["bundle"]["sha256"])}
+    for key in ("assets", "devices", "dashboards", "tenant_widget_types"):
+        result["counts"][key] = {"before": pre["counts"][key], "after": post["counts"][key],
+                                 "ok": pre["counts"][key] == post["counts"][key]}
+    result["tenant_bundle_count"] = [pre["tenant_bundle_count"], post["tenant_bundle_count"]]
+    result["ok"] = (all(x["unchanged"] for x in result["dashboards"].values()) and result["bundle"]["unchanged"]
+                    and all(x["ok"] for x in result["counts"].values())
+                    and pre["tenant_bundle_count"] == post["tenant_bundle_count"]
+                    and post["counts"]["dashboards"] == 10 and post["counts"]["tenant_widget_types"] == 20)
+    write_json(EVIDENCE_DIR / "vent006_refinement_regression.json", result)
+    print(json.dumps(result, ensure_ascii=False, indent=1))
+    if not result["ok"]:
+        raise SystemExit("REGRESSION: có thay đổi ngoài dự kiến — DỪNG và điều tra")
+
+
 def main():
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
     if cmd == "preflight":
@@ -264,6 +408,10 @@ def main():
         execute()
     elif cmd == "regression":
         regression()
+    elif cmd == "refine":
+        refine()
+    elif cmd == "refine-regression":
+        refine_regression()
     else:
         raise SystemExit(__doc__)
 
