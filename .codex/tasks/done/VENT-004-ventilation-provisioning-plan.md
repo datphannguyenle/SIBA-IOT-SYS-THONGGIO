@@ -2,7 +2,7 @@
 
 ## Status
 
-`review`
+`done`
 
 ## Objective
 
@@ -73,7 +73,7 @@ ventilation entities and canonical data without executing ThingsBoard mutations.
 - [x] VENT-002 repository paths and authenticated runtime findings referenced.
 - [x] DOCX prose/table ambiguity recorded in the errata.
 - [x] Findings remain separated into target design and runtime evidence.
-- [ ] Reviewer decision on the plan gate.
+- [x] Reviewer decision on the plan gate.
 
 ## Gate
 
@@ -98,3 +98,6 @@ does not itself authorize ThingsBoard writes.
 - The production dashboard implementation gate remains separate.
 - Planning completed on 2026-09-17 and moved to review without executing a
   ThingsBoard mutation.
+- ChatGPT Web approved the plan on 2026-09-17 with decision
+  `APPROVED — VENTILATION PROVISIONING PLAN`. The approval covers the plan only and
+  does not authorize ThingsBoard mutations.
