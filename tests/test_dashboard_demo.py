@@ -1,11 +1,11 @@
-"""Kiểm tĩnh demo thông gió theo Data Contract v0.2 (VENT-007)."""
+"""Kiểm tĩnh demo thông gió theo Data Contract v0.3 (VENT-007)."""
 import json
 import pathlib
 import re
 import unittest
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-CONTRACT = json.loads((ROOT / "docs/ventilation/contract/SIBA_Ventilation_Agent_DataContract_v0.2.json").read_text())
+CONTRACT = json.loads((ROOT / "docs/ventilation/contract/SIBA_Ventilation_Agent_DataContract_v0.3.json").read_text())
 CONTRACT_KEYS = {v["key"]: v for v in CONTRACT["variables"]}
 REMOVED = {"stageCount", *(f"fan{i:02d}Fault" for i in range(1, 7)), "coolingPump01Fault", "coolingPump02Fault"}
 LEGACY_SNAKE = ("temperature_indoor", "temperature_outdoor", "temperature_feel", "air_speed", "air_flow",
@@ -25,7 +25,7 @@ class DashboardDemoTest(unittest.TestCase):
     def test_fixture_is_explicit_demo_v2_bound_to_contract(self):
         self.assertIs(self.fixture["demo"], True)
         self.assertEqual(self.fixture["fixtureVersion"], "2.0.0")
-        self.assertEqual(self.fixture["contract"]["version"], "0.2")
+        self.assertEqual(self.fixture["contract"]["version"], "0.3")
         self.assertEqual([b["label"] for b in self.fixture["barns"][:4]], ["ND2-1", "ND2-2", "ND2-3", "ND2-4"])
         self.assertEqual([b["identity"] for b in self.fixture["barns"]],
                          ["PILOT"] + ["LIVE_BARN_SIMULATED_STATE"] * 3 + ["SYNTHETIC"] * 2)
@@ -101,7 +101,7 @@ class DashboardDemoTest(unittest.TestCase):
         self.assertIn('vent_settings: "Cài đặt"', self.app)
         self.assertEqual(self.fixture["badgeLabel"], "DEMO DATA")
         self.assertEqual(self.html.count('class="tb-preview-sidebar"'), 1)
-        self.assertLess(self.html.index("ventilation-contract-v02.js"), self.html.index("ventilation-adapter.js"))
+        self.assertLess(self.html.index("ventilation-contract-v03.js"), self.html.index("ventilation-adapter.js"))
 
     def test_source_boundary_remains_unconfigured(self):
         self.assertIn("FixtureSource", self.adapter)

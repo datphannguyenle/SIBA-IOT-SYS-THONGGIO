@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """VENT-006 — xác minh UI thật trên ThingsBoard bằng Firefox headless (chỉ xem, không ghi).
 
+LƯU Ý QUAN TRỌNG (VENT-007):
+Script này CHỈ dùng để xác minh bản live ThingsBoard hiện tại của VENT-006 (4 state cũ).
+KHÔNG dùng để xác minh build VENT-007 (5 state, Data Contract v0.3) do VENT-007
+chưa được triển khai lên ThingsBoard (chờ gate phê duyệt và task deploy riêng).
+
 Hồ sơ trình duyệt mới mỗi lần chạy (tương đương nạp lại cứng, không cache template cũ).
 Đăng nhập qua form UI; mật khẩu lấy từ TB_PASSWORD hoặc file mật khẩu, không in, không lưu.
 

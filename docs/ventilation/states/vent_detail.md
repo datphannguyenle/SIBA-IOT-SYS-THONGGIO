@@ -1,58 +1,33 @@
-# State `vent_detail` — Giám sát một Barn
+# State `vent_detail` — Giám sát một Barn (Data Contract v0.3)
 
 ## Purpose
 
-Read-only view of one Barn’s environment, controller mode and equipment feedback.
+Read-only monitoring view of an individual barn's environmental metrics, controller status,
+and equipment feedback.
 
-## Layout plan
+## Layout Plan
 
-1. Shared header: back to overview, selected Barn/controller, tabs, connectivity/freshness.
-2. KPI row: indoor/outdoor/feel temperature and humidity.
-3. Conditional KPI row: air speed, airflow, water consumption only after mapping is
-   confirmed; otherwise omitted, not filled with demo values.
-4. Read-only schematic: six fans, two pumps, roof louver and side louver.
-5. Display-only controller summary: Auto/Manual, step/VFD, current level.
-6. Short read-only trend preview with navigation to `vent_history`.
+1. **Shared Header**: Barn selector, 5 navigation tabs, persistent demo badge, and connection indicators.
+2. **KPI Rows**:
+   - Primary: Indoor average temperature, feel temperature, outdoor temperature, relative humidity.
+   - Secondary / Optional: Air speed (`airSpeed`), airflow (`airFlow`), total water consumption (`waterConsumptionTotal`).
+3. **Read-Only Schematic**: Visualizes 6 fan positions, 2 cooling pumps, and roof/side louvers.
+4. **Equipment Feedback Strip**: Displays current status for each equipment unit:
+   - `RUNNING`: Green badge (`fanXXRun = 1` or `coolingPumpXXRun = 1`).
+   - `STOPPED`: Neutral off badge (`fanXXRun = 0` or `coolingPumpXXRun = 0`).
+   - `UNKNOWN`: Amber dashed badge (missing or invalid value).
+   - `NOT_CONFIGURED`: Muted grey badge with "NOT CONFIGURED" label (for equipment absent from barn configuration).
+5. **System Fault & Alarm Strip**: Displays system-level alarms:
+   - `equipmentFaultActive`: Consolidated PLC hardware/process fault flag.
+   - High/low temperature and sensor alarms with explicit `PLC` vs `PLATFORM` origin.
+6. **Controller Summary**:
+   - `operatingMode`: `MANUAL` / `AUTO` (PLC uint16 enum).
+   - `controlBasis`: `ACTUAL_TEMPERATURE` / `PERCEIVED_TEMPERATURE`.
+   - `fanControlMode`: `STEP` / `VFD`.
+   - `fanStage`: Current ventilation level as an absolute integer (e.g. `4`). No synthetic ratio (`4 / 6` is forbidden).
+   - `controllerOnline` & `dataQuality`: Explicitly marked `PLATFORM` tags.
 
-## Eligibility and classification
+## Explicit Exclusions
 
-- Environmental field existence is **confirmed from PDF**; semantic/raw mappings remain
-  **uncertain**.
-- Six fans, two pumps and two louvers are **confirmed document equipment counts**.
-- Louver feedback signal existence is **confirmed**; engineering conversion is uncertain.
-- Fan/pump running status provenance is **uncertain** and cannot be treated as feedback
-  until the PLC contract confirms it.
-- Current mode/level keys and enum encodings are **uncertain**.
-
-## Schematic state contract
-
-Each element resolves independently to:
-
-- `NORMAL`: confirmed healthy/running feedback under an approved interpretation;
-- `WARNING`: confirmed warning condition;
-- `FAULT`: confirmed fault feedback/alarm;
-- `OFFLINE`: controller/device connectivity confirmed lost;
-- `STALE`: value timestamp exceeds a confirmed freshness threshold;
-- `UNKNOWN`: missing, invalid or unmapped feedback.
-
-`STOPPED` may be displayed only from an explicit confirmed feedback value. `UNKNOWN` is
-never converted to `STOPPED`. Last command is never accepted as actual feedback.
-
-## Stage display
-
-- Step mode document maximum: 6 levels.
-- VFD mode document maximum: 9 levels.
-- Runtime label uses current mode + confirmed stage-count source. Until both exist, display
-  mode/level as `-- / UNKNOWN`; do not hard-code `x/6` or `x/9`.
-
-## Responsive behavior
-
-- Desktop: KPI then schematic and controller summary in the primary viewport.
-- Tablet: stack summary beneath schematic.
-- Mobile: one column; allow local horizontal pan for schematic if necessary, never root
-  page horizontal overflow.
-
-## Explicit exclusions
-
-No toggle, slider, momentary button, mode switch, setpoint, fan/pump/louver command, RPC,
-attribute write or control event.
+V1 contains no control inputs, setpoint writes, fan/pump toggle buttons, RPC triggers, or
+attribute modifications.

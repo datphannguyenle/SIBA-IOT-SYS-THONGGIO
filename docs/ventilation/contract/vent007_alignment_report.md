@@ -163,3 +163,23 @@ Phân loại toàn bộ 265 biến: {'SECONDARY_MONITORING': 10, 'PRIMARY_MONITO
 3. `vent_history`: thêm phần "Gió & nước" hay giữ 4 chuỗi môi trường?
 4. `vent_settings` demo: toàn `--` hay có vài giá trị DEMO minh họa?
 5. Vị trí tab `vent_settings`: tab thứ 5 sau "Cảnh báo"?
+
+---
+
+## 7. Quyết định bổ sung từ chủ dự án (18/09/2026) — Data Contract v0.3
+
+Vào ngày 18/09/2026, chủ dự án (ChatGPT Web / Project Owner) đã đưa ra quyết định chính thức:
+**Data Contract v0.3 thay thế v0.2 làm GIAO DIỆN HIỆN HÀNH (CURRENT ventilation interface).**
+
+### Chi tiết thay đổi:
+1. **Kiến trúc PLC**: Hệ thống thông gió sử dụng PLC riêng, độc lập với hệ khử mùi.
+2. **Dải địa chỉ mirror**:
+   - Vùng mirror PLC dịch chuyển `-450`: từ `D1000–D1409` về `D550–D959`.
+   - Modbus Holding Register giữ nguyên: `4x-1 .. 4x-410` (410 registers).
+3. **Tính tương thích**:
+   - Toàn bộ 265 keys giữ nguyên không đổi.
+   - Thứ tự, kiểu dữ liệu, độ rộng word, các enum và ngữ nghĩa dashboard hoàn toàn không đổi.
+4. **Hiện vật nguồn (Source Artifacts)**:
+   - `docs/ventilation/contract/SIBA_Ventilation_Agent_DataContract_v0.3.json` (sha256 `6cce2e264f5a698cbdd7ab157a21101c968671c55836dcde3ecdf6170f987244`).
+   - `docs/ventilation/contract/SIBA_Ventilation_PLC_HMI_TB_Mapping_TEMPLATE_v0.3.xlsx`.
+5. **Bảo lưu v0.2**: Bản v0.2 được giữ nguyên làm bằng chứng lịch sử, không xóa.

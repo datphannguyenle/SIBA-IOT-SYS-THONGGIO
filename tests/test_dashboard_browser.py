@@ -1,11 +1,11 @@
-"""Chạy adapter contract v0.2 và năm state thật trong Firefox headless (bỏ qua nếu thiếu geckodriver)."""
+"""Chạy adapter contract v0.3 và năm state thật trong Firefox headless (bỏ qua nếu thiếu geckodriver)."""
 import json
 import unittest
 
 from webdriver_support import ROOT, Browser, StaticServer, geckodriver_path
 
 FIXTURE = json.loads((ROOT / "fixtures/ventilation/demo.json").read_text())
-CONTRACT = json.loads((ROOT / "docs/ventilation/contract/SIBA_Ventilation_Agent_DataContract_v0.2.json").read_text())
+CONTRACT = json.loads((ROOT / "docs/ventilation/contract/SIBA_Ventilation_Agent_DataContract_v0.3.json").read_text())
 
 # Áp một biến thể: latest/platform/settings là bản vá; drop xóa khỏi latest; notConfigured thêm vào mapping.
 BUILD_VM = """
@@ -153,7 +153,7 @@ class DashboardBrowserTest(unittest.TestCase):
           var good = JSON.parse(arguments[0]); var wrong = JSON.parse(arguments[0]); wrong.contract.version = '0.1';
           return [attempt({demo: false}), attempt(wrong)];""", self.raw)
         self.assertIn("demo", errors[0])
-        self.assertIn("0.2", errors[1])
+        self.assertIn("0.3", errors[1])
 
     # --- DOM từng state ---
     def test_default_state(self):

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """VENT-006 — dựng payload widget type + dashboard DEMO từ nguồn repo (không gọi mạng).
 
-Nguồn: widgets/ventilation-contract-v02.js, widgets/ventilation-adapter.js, dashboard/app.js, fixtures/ventilation/demo.json,
+Nguồn: widgets/ventilation-contract-v03.js, widgets/ventilation-adapter.js, dashboard/app.js, fixtures/ventilation/demo.json,
 dashboard/thingsboard-reset.css, dashboard/dashboard.css, dashboard/thingsboard-widget.css.
 Đầu ra (xác định, không timestamp): deploy/thingsboard/build/widget_type.json, dashboard.json.
 
@@ -55,7 +55,7 @@ def build_controller():
         "// Demo fixture cô lập: không datasource, không telemetry, không RPC, không ghi attribute.\n"
         "self.onInit = function () {\n"
         "  var __vent = {};\n"
-        + scope_iife(read("widgets/ventilation-contract-v02.js"), "contract") + "\n"
+        + scope_iife(read("widgets/ventilation-contract-v03.js"), "contract") + "\n"
         + scope_iife(read("widgets/ventilation-adapter.js"), "adapter") + "\n"
         + scope_iife(read("dashboard/app.js"), "app") + "\n"
         "  var FIXTURE = " + json.dumps(fixture, ensure_ascii=False, separators=(",", ":")) + ";\n"
