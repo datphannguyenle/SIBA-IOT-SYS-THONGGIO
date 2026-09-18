@@ -38,8 +38,8 @@ Bản v0.2 được bảo lưu nguyên vẹn làm bằng chứng lịch sử (hi
 ## C. Nguồn artifact hiện hành
 
 - JSON hợp đồng: `docs/ventilation/contract/SIBA_Ventilation_Agent_DataContract_v0.3.json`
-  (sha256 `6cce2e264f5a698cbdd7ab157a21101c968671c55836dcde3ecdf6170f987244`).
-- Bảng mẫu Excel cho kỹ sư PLC: `docs/ventilation/contract/SIBA_Ventilation_PLC_HMI_TB_Mapping_TEMPLATE_v0.3.xlsx`.
+  (sha256 `a3cab3669962e988f42f94acee09260ec086deef4ee41210596483647ac23b68`).
+- Bảng mẫu Excel cho kỹ sư PLC: `docs/ventilation/contract/SIBA_Ventilation_PLC_HMI_TB_Mapping_TEMPLATE_v0.3.xlsx` (sha256 `fbe8a1c8901afa29286e0e95c110c972d2d810fc1233f4de15c7f80411303ba5`).
 
 ---
 

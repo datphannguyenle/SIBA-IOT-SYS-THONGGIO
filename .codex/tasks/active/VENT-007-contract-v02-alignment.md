@@ -33,7 +33,7 @@ write/RPC/parameter controls in `vent_settings`.
 
 ## Inputs
 
-- `docs/ventilation/contract/SIBA_Ventilation_Agent_DataContract_v0.3.json` (sha256 `6cce2e...7244`)
+- `docs/ventilation/contract/SIBA_Ventilation_Agent_DataContract_v0.3.json` (sha256 `a3cab3...3b68`)
 - `docs/ventilation/contract/SIBA_Ventilation_PLC_HMI_TB_Mapping_TEMPLATE_v0.3.xlsx`
 - `docs/ventilation/contract/contract_v0.3_decisions.json` / `.md`
 - `docs/ventilation/contract/SIBA_Ventilation_Agent_DataContract_v0.2.json` (historical baseline)

@@ -1,6 +1,6 @@
 {
   "contractVersion": "0.3",
-  "contractSha256": "6cce2e264f5a698cbdd7ab157a21101c968671c55836dcde3ecdf6170f987244",
+  "contractSha256": "a3cab3669962e988f42f94acee09260ec086deef4ee41210596483647ac23b68",
   "classification": "APPROVED PROJECT INTERFACE TEMPLATE (not runtime verified PLC mapping)",
   "plcArchitecture": "Separate PLC from deodorization system",
   "plcMirrorBlock": "D550-D959",
@@ -65,5 +65,6 @@
     "waterPulseFactor",
     "pollingInterval"
   ],
-  "missingArtifacts": []
+  "missingArtifacts": [],
+  "excelTemplateSha256": "fbe8a1c8901afa29286e0e95c110c972d2d810fc1233f4de15c7f80411303ba5"
 }

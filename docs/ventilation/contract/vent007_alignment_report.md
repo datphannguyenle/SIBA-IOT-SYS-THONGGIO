@@ -180,6 +180,6 @@ Vào ngày 18/09/2026, chủ dự án (ChatGPT Web / Project Owner) đã đưa r
    - Toàn bộ 265 keys giữ nguyên không đổi.
    - Thứ tự, kiểu dữ liệu, độ rộng word, các enum và ngữ nghĩa dashboard hoàn toàn không đổi.
 4. **Hiện vật nguồn (Source Artifacts)**:
-   - `docs/ventilation/contract/SIBA_Ventilation_Agent_DataContract_v0.3.json` (sha256 `6cce2e264f5a698cbdd7ab157a21101c968671c55836dcde3ecdf6170f987244`).
+   - `docs/ventilation/contract/SIBA_Ventilation_Agent_DataContract_v0.3.json` (sha256 `a3cab3669962e988f42f94acee09260ec086deef4ee41210596483647ac23b68`).
    - `docs/ventilation/contract/SIBA_Ventilation_PLC_HMI_TB_Mapping_TEMPLATE_v0.3.xlsx`.
 5. **Bảo lưu v0.2**: Bản v0.2 được giữ nguyên làm bằng chứng lịch sử, không xóa.

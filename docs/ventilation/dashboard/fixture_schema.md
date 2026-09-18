@@ -9,7 +9,7 @@ configurable `badgeLabel`, `scope`, `summary`, `barns`, `latest`, `platform`,
 
 The fixture explicitly declares its contract binding under `contract`:
 - `version`: `"0.3"`
-- `sha256`: `"6cce2e264f5a698cbdd7ab157a21101c968671c55836dcde3ecdf6170f987244"`
+- `sha256`: `"a3cab3669962e988f42f94acee09260ec086deef4ee41210596483647ac23b68"`
 - `classification`: `"APPROVED PROJECT INTERFACE TEMPLATE — not runtime verified"`
 
 If the fixture contract version does not match the loaded `VentilationContract.version`,

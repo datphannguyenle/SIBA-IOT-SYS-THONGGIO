@@ -4,8 +4,8 @@
 
 | File | Vai trò | Trạng thái |
 |---|---|---|
-| `SIBA_Ventilation_Agent_DataContract_v0.3.json` | Hợp đồng máy đọc cho agent/code (265 biến, mirror `D550–D959` ↔ `4x-1..4x-410`) | **HIỆN HÀNH**; sha256 `6cce2e264f5a698cbdd7ab157a21101c968671c55836dcde3ecdf6170f987244` |
-| `SIBA_Ventilation_PLC_HMI_TB_Mapping_TEMPLATE_v0.3.xlsx` | Bảng Excel mẫu ánh xạ PLC–HMI–ThingsBoard cho kỹ sư PLC | **HIỆN HÀNH**; đầy đủ 265 hàng biến |
+| `SIBA_Ventilation_Agent_DataContract_v0.3.json` | Hợp đồng máy đọc cho agent/code (265 biến, mirror `D550–D959` ↔ `4x-1..4x-410`) | **HIỆN HÀNH**; sha256 `a3cab3669962e988f42f94acee09260ec086deef4ee41210596483647ac23b68` |
+| `SIBA_Ventilation_PLC_HMI_TB_Mapping_TEMPLATE_v0.3.xlsx` | Bảng Excel mẫu ánh xạ PLC–HMI–ThingsBoard cho kỹ sư PLC | **HIỆN HÀNH**; đầy đủ 265 hàng biến; sha256 `fbe8a1c8901afa29286e0e95c110c972d2d810fc1233f4de15c7f80411303ba5` |
 | `contract_v0.3_decisions.md` | Quyết định dự án v0.3: kiến trúc PLC riêng, dịch mirror -450 về D550–D959 | **HIỆN HÀNH**; chốt 18/09/2026 |
 | `contract_v0.3_decisions.json` | Cấu hình máy đọc cho builder và bộ test | **HIỆN HÀNH** |
 

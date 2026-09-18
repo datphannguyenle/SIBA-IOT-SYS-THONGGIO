@@ -9,6 +9,7 @@ import unittest
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CONTRACT_PATH = ROOT / "docs/ventilation/contract/SIBA_Ventilation_Agent_DataContract_v0.3.json"
+EXCEL_PATH = ROOT / "docs/ventilation/contract/SIBA_Ventilation_PLC_HMI_TB_Mapping_TEMPLATE_v0.3.xlsx"
 HISTORICAL_V02_PATH = ROOT / "docs/ventilation/contract/SIBA_Ventilation_Agent_DataContract_v0.2.json"
 DECISIONS = json.loads((ROOT / "docs/ventilation/contract/contract_v0.3_decisions.json").read_text())
 
@@ -24,7 +25,12 @@ class ContractV03Test(unittest.TestCase):
     def test_source_contract_is_unmodified(self):
         self.assertEqual(hashlib.sha256(self.raw).hexdigest(), DECISIONS["contractSha256"])
         self.assertEqual(hashlib.sha256(self.raw).hexdigest(),
-                         "6cce2e264f5a698cbdd7ab157a21101c968671c55836dcde3ecdf6170f987244")
+                         "a3cab3669962e988f42f94acee09260ec086deef4ee41210596483647ac23b68")
+
+    def test_owner_excel_template_hash(self):
+        excel_raw = EXCEL_PATH.read_bytes()
+        self.assertEqual(hashlib.sha256(excel_raw).hexdigest(),
+                         "fbe8a1c8901afa29286e0e95c110c972d2d810fc1233f4de15c7f80411303ba5")
 
     def test_historical_v02_contract_preserved(self):
         v02_raw = HISTORICAL_V02_PATH.read_bytes()
@@ -39,8 +45,9 @@ class ContractV03Test(unittest.TestCase):
         for v in variables:
             self.assertEqual(v["mirror"]["plc_end"] - v["mirror"]["plc_start"] + 1, v["data_type"]["words"], v["key"])
             used += range(v["mirror"]["plc_start"], v["mirror"]["plc_end"] + 1)
-        # Interface v0.3 mirror is D550-D959 (shifted -450 from D1000-D1409 due to separate PLC)
+        # Interface v0.3 mirror is D550-D959 (410 contiguous words, shifted -450 from D1000-D1409 due to separate PLC)
         self.assertEqual(sorted(used), list(range(550, 960)))
+        self.assertEqual(len(used), 410)
         # Holding registers remain 4x-1..4x-410
         self.assertEqual(variables[0]["mirror"]["holding_register_start_1based"], 1)
         self.assertEqual(variables[-1]["mirror"]["holding_register_start_1based"], 410)
@@ -80,8 +87,7 @@ class ContractV03Test(unittest.TestCase):
         self.assertEqual(sorted(flags), sorted(org["alarm_candidates"]))
 
     def test_contract_artifacts_exist(self):
-        excel_path = ROOT / "docs/ventilation/contract/SIBA_Ventilation_PLC_HMI_TB_Mapping_TEMPLATE_v0.3.xlsx"
-        self.assertTrue(excel_path.is_file(), "Template Excel v0.3 must exist")
+        self.assertTrue(EXCEL_PATH.is_file(), "Template Excel v0.3 must exist")
         self.assertIn("v0.3", (ROOT / "docs/ventilation/contract/README.md").read_text())
 
 

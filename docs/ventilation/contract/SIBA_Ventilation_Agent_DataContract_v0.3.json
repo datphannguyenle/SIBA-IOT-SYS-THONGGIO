@@ -10,7 +10,8 @@
     "Do not infer missing/null values as zero.",
     "Fan and pump runtime status uses one variable per device: 0=STOPPED, 1=RUNNING.",
     "Current dashboard integration should remain read-only unless a separate write/control task is explicitly approved.",
-    "Mirror mapping in this file is the proposed integration contract; do not silently renumber it."
+    "Mirror mapping in this file is the proposed integration contract; do not silently renumber it.",
+    "The ventilation system uses a separate PLC. Project interface is fixed as proposed mirror D550-D959 mapped to Holding Registers 4x-1..4x-410; PLC engineer should implement this mapping unless a conflict is reported and the contract is formally revised."
   ],
   "mapping_convention": {
     "plc_mirror_block": "D550-D959",
@@ -22,7 +23,10 @@
       "tag",
       "domain",
       "source_type"
-    ]
+    ],
+    "interface_status": "PROPOSED_PROJECT_STANDARD",
+    "plc_topology": "DEDICATED_VENTILATION_PLC",
+    "address_change_policy": "PLC engineer maps to this interface. If D550-D959 conflicts with the PLC program, report before changing; do not silently renumber."
   },
   "dashboard_organization": {
     "overview_or_detail_primary": [
