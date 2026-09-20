@@ -1,0 +1,322 @@
+{
+  "task": "VENT-008",
+  "purpose": "Rollback backup of VENT-006 live state prior to VENT-008 update",
+  "saved_at": "2026-09-18T17:11:00+07:00",
+  "target": {
+    "widget_id": "b9fa9280-b26a-11f1-83ad-9912edc644d2",
+    "widget_fqn": "siba_vent_demo.vent_demo_view",
+    "dashboard_id": "b9ff4d70-b26a-11f1-83ad-9912edc644d2",
+    "dashboard_title": "DB-30-VEN-DETAIL-V1-DEMO"
+  },
+  "widget_type": {
+    "id": {
+      "entityType": "WIDGET_TYPE",
+      "id": "b9fa9280-b26a-11f1-83ad-9912edc644d2"
+    },
+    "createdTime": 1789630688168,
+    "tenantId": {
+      "entityType": "TENANT",
+      "id": "0abe2520-9528-11f1-af48-7566a705eb32"
+    },
+    "fqn": "siba_vent_demo.vent_demo_view",
+    "name": "SIBA vent demo view (DEMO)",
+    "deprecated": false,
+    "scada": false,
+    "version": 2,
+    "descriptor": {
+      "type": "static",
+      "sizeX": 24,
+      "sizeY": 24,
+      "resources": [],
+      "templateHtml": "<div class=\"vent-demo-root\"></div>",
+      "templateCss": ".vent-demo-root h2,.vent-demo-root h3{font-weight:700;line-height:normal}\n.vent-demo-root p{line-height:normal}\n.vent-demo-root :where(b,strong){font-weight:700}\n.vent-demo-root :where(table,th,td){font-family:inherit;font-size:inherit}\n:root,.vent-demo-root{--bg:#0c1622;--panel:#152737;--input:#203747;--border:#345163;--text:#edf5f9;--sub:#aec4d1;--teal:#00d4e0;--ok:#2ee6a8;--warn:#ffc857;--danger:#ff3b42;--off:#607d8b;font-family:Arial,\"Helvetica Neue\",sans-serif;color:var(--text);background:var(--bg)}\n*{box-sizing:border-box}\n.loading{color:var(--sub)}\n.vent-header,.panel,.kpi{background:var(--panel);border:1px solid var(--border);border-radius:6px}\n.vent-header{overflow:hidden}\n.vent-header__top{height:48px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--border)}\n.vent-header__title{font-size:18px;color:var(--teal)}\n.vent-header__scope{margin-left:auto;color:var(--sub);white-space:nowrap}\n.demo-badge{padding:4px 8px;border:1px solid var(--warn);border-radius:4px;color:var(--warn);font-size:12px}\n.state-tabs{min-height:48px;display:flex;align-items:stretch;overflow-x:auto;background:var(--bg)}\n.state-tabs a{display:flex;align-items:center;min-height:44px;padding:8px 14px;border-bottom:2px solid transparent;color:var(--text);text-decoration:none;white-space:nowrap}\n.state-tabs a.active{color:var(--teal);border-bottom-color:var(--teal)}\n.view{display:grid;gap:10px;margin-top:10px}\n.kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}\n.kpi{min-height:112px;padding:12px}\n.kpi__head{display:flex;align-items:center;gap:8px;color:var(--sub);font-size:13px}\n.kpi__icon{display:grid;place-items:center;width:24px;height:24px;border:1px solid var(--teal);border-radius:6px;color:var(--teal)}\n.kpi__value{display:block;margin:9px 0 4px;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums}\n.kpi__quality,.muted{color:var(--sub);font-size:12px}\n.quality-STALE,.status-WARNING{color:var(--warn)}\n.quality-OFFLINE,.status-MAJOR,.status-FAULT{color:var(--danger)}\n.quality-UNKNOWN,.status-UNKNOWN{color:var(--sub)}\n.quality-CURRENT,.status-ONLINE,.status-RUNNING{color:var(--ok)}\n.overview-grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(300px,.85fr);gap:10px}\n.panel{padding:14px;min-width:0}\n.panel__head{display:flex;justify-content:space-between;gap:12px;align-items:start;padding-bottom:10px;border-bottom:1px solid var(--border)}\n.panel__head h2{margin:0;font-size:17px}\n.panel__head p{margin:3px 0 0;color:var(--sub);font-size:12px}\n.barn-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:9px;margin-top:12px}\n.barn-card{appearance:none;min-height:108px;padding:11px;text-align:left;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;cursor:pointer}\n.barn-card:hover,.barn-card:focus-visible{outline:2px solid var(--teal);outline-offset:-2px}\n.barn-card b{display:block;font-size:16px;margin-bottom:9px}\n.barn-card span{display:block;font-size:12px;line-height:1.55}\n.alarm-list{display:grid;gap:8px;margin-top:12px}\n.alarm-mini{padding:9px;border-left:3px solid var(--warn);background:var(--bg)}\n.alarm-mini.MAJOR{border-color:var(--danger)}\n.alarm-mini b,.alarm-mini small{display:block}\n.alarm-mini small{margin-top:4px;color:var(--sub)}\n.detail-layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(270px,.7fr);gap:10px}\n.synoptic{overflow-x:auto;overscroll-behavior-x:contain}\n.synoptic svg{display:block;min-width:760px;width:100%;height:auto}\n.pipe{fill:none;stroke:#86a9bc;stroke-width:3}\n.zone{fill:var(--bg);stroke:var(--border);stroke-width:2}\n.fan circle,.pump rect,.louver rect{fill:var(--input);stroke:var(--ok);stroke-width:3}\n.fan.FAULT circle{stroke:var(--danger)}\n.fan.UNKNOWN circle,.pump.UNKNOWN rect{stroke:var(--sub);stroke-dasharray:5}\n.svg-label{fill:var(--text);font-size:13px;text-anchor:middle}\n.svg-sub{fill:var(--sub);font-size:11px;text-anchor:middle}\n.equipment-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:10px}\n.equipment-card{padding:9px;background:var(--bg);border:1px solid var(--border);border-radius:5px}\n.equipment-card small,.equipment-card b{display:block}\n.equipment-card small{color:var(--sub);margin-bottom:4px}\n.controller-summary{display:grid;gap:9px}\n.summary-row{display:flex;justify-content:space-between;gap:12px;padding:10px;background:var(--bg);border:1px solid var(--border);border-radius:5px}\n.summary-row span{color:var(--sub)}\n.notice{padding:10px;border-left:3px solid var(--warn);background:rgba(255,200,87,.08);color:var(--sub);font-size:12px}\n.chart-wrap{overflow-x:auto}\n.chart{display:block;min-width:720px;width:100%;height:310px}\n.chart .grid{stroke:var(--border);stroke-width:1}\n.chart text{fill:var(--sub);font-size:11px}\n.chart .inside{fill:none;stroke:var(--teal);stroke-width:3}\n.chart .outside{fill:none;stroke:var(--warn);stroke-width:3}\n.chart .humidity{fill:none;stroke:#6aa9ff;stroke-width:3}\n.legend{display:flex;gap:16px;flex-wrap:wrap;color:var(--sub);font-size:12px}\n.legend i{display:inline-block;width:14px;height:3px;margin-right:5px;vertical-align:middle}\n.table-wrap{overflow-x:auto}\n.data-table{width:100%;min-width:720px;border-collapse:collapse}\n.data-table th,.data-table td{padding:12px;text-align:left;border-bottom:1px solid var(--border)}\n.data-table th{color:var(--teal);font-size:12px}\n.pill{display:inline-block;padding:3px 7px;border:1px solid currentColor;border-radius:4px;font-size:11px;font-weight:700}\n.footer{display:flex;justify-content:space-between;gap:10px;color:var(--sub);font-size:12px;padding:2px 4px}\n.error{padding:18px;border:1px solid var(--danger);color:var(--danger)}\n@media(max-width:1100px){.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.overview-grid,.detail-layout{grid-template-columns:1fr}}\n@media(max-width:700px){.vent-header__top{padding:0 10px}.vent-header__title{font-size:16px}.vent-header__scope{display:none}.state-tabs a{padding:7px 10px;font-size:13px}.kpi-grid{grid-template-columns:1fr;gap:8px}.kpi{min-height:96px}.overview-grid{display:block}.overview-grid>.panel+.panel{margin-top:8px}.panel{padding:11px}.barn-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.equipment-grid{grid-template-columns:1fr}.footer{flex-direction:column}}\n.barn-card em{display:inline-block;margin-left:4px;padding:1px 4px;border:1px solid var(--warn);border-radius:3px;color:var(--warn);font-size:9px;font-style:normal;vertical-align:2px}\n.detail-main{align-self:start}\n.controller-panel{align-self:stretch}\n.controller-summary{gap:7px}\n.subsection-title{margin:14px 0 7px;padding-top:11px;border-top:1px solid var(--border);font-size:13px;color:var(--teal);text-transform:uppercase;letter-spacing:.5px}\n.secondary-metrics{display:grid;gap:7px}\n.secondary-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 10px;background:var(--bg);border:1px solid var(--border);border-radius:5px}\n.secondary-row>span{color:var(--sub)}\n.secondary-row small{display:block;margin-top:2px;font-size:10px}\n.secondary-row b{font-variant-numeric:tabular-nums}\n.compact-notice{margin-top:9px}\n.text-link{display:inline-block;margin-top:11px;color:var(--teal);text-decoration:none}\n.text-link:hover{text-decoration:underline}\n.equipment-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}\n.synoptic svg{min-width:760px}\n.chart .perceived{fill:none;stroke:#ff8fcf;stroke-width:3}\n.demo-limit{margin:0;padding:2px 4px;color:var(--sub);font-size:11px}\n.barn-card em.identity-PILOT{border-color:var(--teal);color:var(--teal)}\n.barn-card em.identity-SYNTHETIC{border-color:var(--sub);color:var(--sub)}\n.fan.STOPPED circle{stroke:var(--off)}\n.louver.quality-STALE rect{stroke:var(--warn)}\n.louver.quality-OFFLINE rect{stroke:var(--danger)}\n.louver.quality-UNKNOWN rect{stroke:var(--sub);stroke-dasharray:5}\n.svg-sub.state-RUNNING{fill:var(--ok)}\n.svg-sub.state-FAULT{fill:var(--danger)}\n.status-STOPPED{color:var(--text)}\n.synoptic,.chart-wrap,.table-wrap{scrollbar-color:var(--border) transparent}\n@media(max-width:1100px){.equipment-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.controller-panel{align-self:start}}\n@media(max-width:700px){.equipment-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.secondary-row{padding:8px}.demo-limit{padding:3px 1px}}\n.vent-demo-root{display:block;height:100%;overflow-y:auto;overflow-x:hidden;padding:12px;background:var(--bg);font-size:14px;line-height:normal}\n.vent-demo-root>.view:first-of-type,.vent-demo-root .vent-header+.view{margin-top:10px}\n.vent-demo-root :where(h2,h3,p){letter-spacing:normal}\n.vent-demo-root a{border-bottom:0;text-decoration:none}\n.vent-demo-root .state-tabs a{border-bottom:2px solid transparent}\n.vent-demo-root .state-tabs a.active{border-bottom-color:var(--teal)}\n.vent-demo-root :where(button){font:inherit}\n.vent-demo-root .vent-header__top{padding-right:64px}\n@media(max-width:700px){.vent-demo-root{padding:8px}}\n",
+      "controllerScript": "// SINH TỰ ĐỘNG bởi deploy/thingsboard/build_vent_demo.py (VENT-006). KHÔNG sửa trong Widget Editor.\n// Demo fixture cô lập: không datasource, không telemetry, không RPC, không ghi attribute.\nself.onInit = function () {\n  var __vent = {};\n(function (root) {\n  \"use strict\";\n  var QUALITY = [\"CURRENT\", \"STALE\", \"OFFLINE\", \"UNKNOWN\"];\n  var BARN_IDENTITY = [\"PILOT\", \"LIVE_BARN_SIMULATED_STATE\", \"SYNTHETIC\"];\n  var CANONICAL_MAP = {\n    indoorTemperature01: \"temperature_indoor_01\", indoorTemperature02: \"temperature_indoor_02\",\n    indoorTemperatureAvg: \"temperature_indoor\", outdoorTemperature: \"temperature_outdoor\",\n    perceivedTemperature: \"temperature_feel\", relativeHumidity: \"humidity\",\n    airSpeed: \"air_speed\", airFlow: \"air_flow\", waterConsumptionTotal: \"water_consumption\",\n    operatingMode: \"operation_mode\", fanControlMode: \"fan_control_mode\",\n    fanStage: \"ventilation_stage\", stageCount: \"ventilation_stage_count\",\n    controllerOnline: \"controller_online\", dataQuality: \"data_quality\",\n    roofInletPosition: \"roof_louver_position\", sideInletPosition: \"side_louver_position\"\n  };\n  var HISTORY_MAP = {\n    indoorTemperatureAvg: \"temperature_indoor\", outdoorTemperature: \"temperature_outdoor\",\n    perceivedTemperature: \"temperature_feel\", relativeHumidity: \"humidity\"\n  };\n  (function addEquipmentKeys() {\n    for (var i = 1; i <= 6; i += 1) {\n      var fan = String(i).padStart(2, \"0\");\n      CANONICAL_MAP[\"fan\" + fan + \"Run\"] = \"fan_\" + fan + \"_run\";\n      CANONICAL_MAP[\"fan\" + fan + \"Fault\"] = \"fan_\" + fan + \"_fault\";\n    }\n    for (var p = 1; p <= 2; p += 1) {\n      var pump = String(p).padStart(2, \"0\");\n      CANONICAL_MAP[\"coolingPump\" + pump + \"Run\"] = \"pump_\" + pump + \"_run\";\n      CANONICAL_MAP[\"coolingPump\" + pump + \"Fault\"] = \"pump_\" + pump + \"_fault\";\n    }\n  }());\n  function isMissing(value) { return value === null || value === undefined; }\n  // Giữ nguyên false/0; chỉ null/undefined mới là \"chưa có dữ liệu\".\n  function safeMetric(metric) {\n    metric = metric && typeof metric === \"object\" ? metric : {};\n    return { value: metric.value === undefined ? null : metric.value,\n      unit: isMissing(metric.unit) ? \"\" : metric.unit,\n      quality: QUALITY.indexOf(metric.quality) >= 0 ? metric.quality : \"UNKNOWN\",\n      ts: metric.ts === undefined ? null : metric.ts };\n  }\n  function combinedQuality(runMetric, faultMetric) {\n    var qualities = [runMetric.quality, faultMetric.quality];\n    if (qualities.indexOf(\"OFFLINE\") >= 0) return \"OFFLINE\";\n    if (qualities.indexOf(\"STALE\") >= 0) return \"STALE\";\n    if (qualities.indexOf(\"UNKNOWN\") >= 0) return \"UNKNOWN\";\n    return \"CURRENT\";\n  }\n  // Suy diễn hiển thị demo; không khẳng định phản hồi vật lý đã được xác minh.\n  function equipmentState(runMetric, faultMetric) {\n    if (faultMetric.value === true) return \"FAULT\";\n    if (faultMetric.value === false && runMetric.value === true) return \"RUNNING\";\n    if (faultMetric.value === false && runMetric.value === false) return \"STOPPED\";\n    return \"UNKNOWN\";\n  }\n  function equipment(metrics, canonicalPrefix, labelPrefix, count) {\n    var rows = [];\n    for (var i = 1; i <= count; i += 1) {\n      var suffix = String(i).padStart(2, \"0\");\n      var run = metrics[canonicalPrefix + suffix + \"Run\"], fault = metrics[canonicalPrefix + suffix + \"Fault\"];\n      rows.push({ key: canonicalPrefix + suffix, label: labelPrefix + \" \" + suffix,\n        run: run, fault: fault, state: equipmentState(run, fault),\n        quality: combinedQuality(run, fault) });\n    }\n    return rows;\n  }\n  // Chỉ hiện mẫu số khi stageCount có thật; không tự suy 6/9.\n  function stageDisplay(stageMetric, countMetric) {\n    if (isMissing(stageMetric.value)) return \"--\";\n    if (isMissing(countMetric.value)) return String(stageMetric.value);\n    return String(stageMetric.value) + \" / \" + String(countMetric.value);\n  }\n  function controllerOnlineState(metric) {\n    if (metric.value === true) return \"ONLINE\";\n    if (metric.value === false) return \"OFFLINE\";\n    return \"UNKNOWN\";\n  }\n  function mapHistory(row) {\n    var mapped = { ts: row.ts, quality: isMissing(row.quality) ? \"UNKNOWN\" : row.quality };\n    Object.keys(HISTORY_MAP).forEach(function (key) {\n      var sample = row[HISTORY_MAP[key]];\n      mapped[key] = sample === undefined ? null : sample;\n    });\n    return mapped;\n  }\n  // Nhà không khai báo danh tính rõ ràng bị coi là tổng hợp, không bao giờ là nhà live.\n  function mapBarn(barn) {\n    var copy = Object.assign({}, barn);\n    if (BARN_IDENTITY.indexOf(copy.identity) < 0) copy.identity = \"SYNTHETIC\";\n    copy.synthetic = copy.identity === \"SYNTHETIC\";\n    return copy;\n  }\n  function createViewModel(raw) {\n    if (!raw || raw.demo !== true) throw new Error(\"Fixture source must be explicitly marked demo\");\n    var latest = raw.latest || {}, metrics = {};\n    Object.keys(CANONICAL_MAP).forEach(function (canonicalKey) {\n      metrics[canonicalKey] = safeMetric(latest[CANONICAL_MAP[canonicalKey]]);\n    });\n    return { source: \"fixture\", demo: true, badgeLabel: raw.badgeLabel || \"DEMO DATA\",\n      fixtureVersion: raw.fixtureVersion, generatedAt: raw.generatedAt, scope: raw.scope || {},\n      summary: raw.summary || {}, barns: (raw.barns || []).map(mapBarn),\n      metrics: metrics,\n      controller: { online: controllerOnlineState(metrics.controllerOnline),\n        stageDisplay: stageDisplay(metrics.fanStage, metrics.stageCount) },\n      equipment: equipment(metrics, \"fan\", \"Quạt\", 6)\n        .concat(equipment(metrics, \"coolingPump\", \"Bơm làm mát\", 2)),\n      louvers: [Object.assign({key: \"roofInletPosition\", label: \"Cửa chớp trần\"}, metrics.roofInletPosition),\n        Object.assign({key: \"sideInletPosition\", label: \"Cửa chớp hông\"}, metrics.sideInletPosition)],\n      history: (raw.history || []).map(mapHistory),\n      alarms: (raw.alarms || []).map(function (alarm) { return Object.assign({}, alarm); }) };\n  }\n  function FixtureSource(url) { this.url = url; }\n  FixtureSource.prototype.load = function () {\n    try { var request = new XMLHttpRequest(); request.open(\"GET\", this.url, false); request.send(null);\n      if (request.status !== 200) throw new Error(\"Fixture load failed\");\n      return Promise.resolve(createViewModel(JSON.parse(request.responseText)));\n    } catch (error) { return Promise.reject(error); }\n  };\n  function ThingsBoardSource() {}\n  ThingsBoardSource.prototype.load = function () { return Promise.reject(new Error(\"ThingsBoard source is intentionally unconfigured until VENT-002 is implementation-ready\")); };\n  root.VentilationAdapter = { createViewModel: createViewModel, equipmentState: equipmentState,\n    stageDisplay: stageDisplay, safeMetric: safeMetric, mapHistory: mapHistory,\n    CANONICAL_MAP: CANONICAL_MAP, FixtureSource: FixtureSource, ThingsBoardSource: ThingsBoardSource };\n}(__vent));\n\n(function (root) {\n  \"use strict\";\n  var STATES = [\"default\", \"vent_detail\", \"vent_history\", \"vent_alarms\"];\n  var labels = {default: \"Tổng quan\", vent_detail: \"Giám sát\", vent_history: \"Lịch sử\", vent_alarms: \"Cảnh báo\"};\n  var vm;\n  function esc(value) { return String(value == null ? \"\" : value).replace(/[&<>\"']/g, function (c) { return ({\"&\":\"&amp;\",\"<\":\"&lt;\",\">\":\"&gt;\",\"\\\"\":\"&quot;\",\"'\":\"&#39;\"})[c]; }); }\n  function isMissing(value) { return value === null || value === undefined; }\n  function normalizeState(id) { return STATES.indexOf(id) >= 0 ? id : \"default\"; }\n  function metric(key) { return vm.metrics[key] || {value: null, unit: \"\", quality: \"UNKNOWN\"}; }\n  function value(item) { return isMissing(item.value) ? \"--\" : esc(item.value) + (item.unit ? \" <small>\" + esc(item.unit) + \"</small>\" : \"\"); }\n  function plainValue(item) { return isMissing(item.value) ? \"--\" : esc(item.value) + (item.unit ? \" \" + esc(item.unit) : \"\"); }\n  function header(state) {\n    return '<header class=\"vent-header\"><div class=\"vent-header__top\"><strong class=\"vent-header__title\">SIBA · Thông gió</strong>' +\n      '<span class=\"vent-header__scope\">' + esc(vm.scope.farm) + ' · ' + esc(vm.scope.area) + '</span>' +\n      '<b class=\"demo-badge\">' + esc(vm.badgeLabel) + '</b></div><nav class=\"state-tabs\" aria-label=\"Trạng thái dashboard\">' +\n      STATES.map(function (item) { return '<a href=\"#' + item + '\" data-nav=\"' + item + '\" class=\"' + (item === state ? 'active' : '') + '\">' + labels[item] + '</a>'; }).join(\"\") + '</nav></header>';\n  }\n  function kpi(label, key, icon) {\n    var item = metric(key);\n    return '<article class=\"kpi\"><div class=\"kpi__head\"><span class=\"kpi__icon\">' + icon + '</span>' + label + '</div>' +\n      '<b class=\"kpi__value\">' + value(item) + '</b><span class=\"kpi__quality quality-' + item.quality + '\">' + item.quality +\n      (item.ts ? ' · ' + new Date(item.ts).toLocaleTimeString('vi-VN', {hour:'2-digit', minute:'2-digit'}) : '') + '</span></article>';\n  }\n  function summaryValue(key) { var item = vm.summary[key]; return isMissing(item) ? \"--\" : item; }\n  function summaryKpi(label, key, icon) {\n    return '<article class=\"kpi\"><div class=\"kpi__head\"><span class=\"kpi__icon\">' + icon + '</span>' + label + '</div>' +\n      '<b class=\"kpi__value\">' + esc(summaryValue(key)) + '</b><span class=\"kpi__quality\">DEMO SUMMARY</span></article>';\n  }\n  var IDENTITY_TAGS = {PILOT: ['PILOT · DEMO', 'Nhà pilot có thật; trạng thái thông gió là dữ liệu demo'],\n    LIVE_BARN_SIMULATED_STATE: ['DEMO', 'Nhà có thật; hệ thông gió chưa xác minh, trạng thái mô phỏng'],\n    SYNTHETIC: ['SYNTHETIC', 'Nhà tổng hợp chỉ để minh họa bố cục; không tồn tại']};\n  function identityTag(barn) {\n    var tag = IDENTITY_TAGS[barn.identity] || IDENTITY_TAGS.SYNTHETIC;\n    return ' <em class=\"identity-' + esc(barn.identity) + '\" title=\"' + esc(tag[1]) + '\">' + esc(tag[0]) + '</em>';\n  }\n  function overview() {\n    return '<section class=\"view\"><div class=\"kpi-grid\">' + summaryKpi('Tổng số nhà', 'barns', '⌂') +\n      summaryKpi('Đang trực tuyến', 'online', '●') + summaryKpi('Cần chú ý', 'attention', '!') +\n      summaryKpi('Cảnh báo đang mở', 'activeAlarms', '△') + '</div><div class=\"overview-grid\"><section class=\"panel\">' +\n      '<div class=\"panel__head\"><div><h2>Toàn trại</h2><p>Chọn một nhà để xem giám sát thông gió.</p></div><span class=\"muted\">Trạng thái mọi nhà là mô phỏng</span></div>' +\n      '<div class=\"barn-grid\">' + vm.barns.map(function (barn) {\n        return '<button class=\"barn-card\" data-nav=\"vent_detail\"><b>' + esc(barn.label) + identityTag(barn) + '</b>' +\n          '<span class=\"status-' + barn.connectivity + '\">' + barn.connectivity + '</span><span class=\"quality-' + barn.freshness + '\">Dữ liệu: ' + barn.freshness + '</span>' +\n          '<span>Chế độ: ' + esc(barn.mode) + '</span><span class=\"status-' + barn.alarm + '\">Cảnh báo: ' + barn.alarm + '</span></button>';\n      }).join('') + '</div></section><section class=\"panel\"><div class=\"panel__head\"><div><h2>Cảnh báo ưu tiên</h2>' +\n      '<p>Chỉ xem; không có thao tác vòng đời.</p></div><a href=\"#vent_alarms\" data-nav=\"vent_alarms\" class=\"muted\">Xem tất cả →</a></div><div class=\"alarm-list\">' +\n      vm.alarms.map(function (alarm) { return '<article class=\"alarm-mini ' + alarm.severity + '\"><b>' + esc(alarm.type) + '</b><span>' +\n        esc(alarm.message) + '</span><small>' + esc(alarm.originator) + '</small></article>'; }).join('') + '</div></section></div>' + footer() + '</section>';\n  }\n  function equipmentCards() {\n    return vm.equipment.map(function (item) { return '<article class=\"equipment-card\"><small>' + esc(item.label) + '</small>' +\n      '<b class=\"status-' + esc(item.state) + '\">' + esc(item.state) + '</b><span class=\"muted\">Dữ liệu: ' + esc(item.quality) + '</span></article>'; }).join('');\n  }\n  function louverShape(item, y) {\n    return '<g class=\"louver quality-' + esc(item.quality) + '\"><rect x=\"300\" y=\"' + y + '\" width=\"300\" height=\"24\" rx=\"4\"/><text class=\"svg-sub\" x=\"450\" y=\"' + (y + 16) + '\">' +\n      esc(item.label) + ' · ' + plainValue(item) + ' · ' + esc(item.quality) + '</text></g>';\n  }\n  function synoptic() {\n    var fans = vm.equipment.slice(0, 6);\n    return '<div class=\"synoptic\" role=\"region\" aria-label=\"Sơ đồ thông gió có thể cuộn ngang\"><svg viewBox=\"0 0 900 244\" role=\"img\" aria-label=\"Sơ đồ thông gió chỉ đọc nhà ' + esc(vm.scope.selectedBarn) + '\">' +\n      '<rect class=\"zone\" x=\"45\" y=\"14\" width=\"810\" height=\"220\" rx=\"6\"/><path class=\"pipe\" d=\"M90 116H810\"/>' + fans.map(function (fan, index) {\n        var x = 130 + index * 128;\n        return '<g class=\"fan ' + esc(fan.state) + '\"><circle cx=\"' + x + '\" cy=\"116\" r=\"29\"/><path class=\"pipe\" d=\"M' + (x-13) + ' 103L' + (x+13) +\n          ' 129M' + (x+13) + ' 103L' + (x-13) + ' 129\"/><text class=\"svg-label\" x=\"' + x + '\" y=\"166\">' + esc(fan.label) +\n          '</text><text class=\"svg-sub state-' + esc(fan.state) + '\" x=\"' + x + '\" y=\"183\">' + esc(fan.state) + '</text></g>';\n      }).join('') + louverShape(vm.louvers[0], 26) + louverShape(vm.louvers[1], 198) + '</svg></div>';\n  }\n  function summaryRow(label, content, className) {\n    return '<div class=\"summary-row\"><span>' + label + '</span><b' + (className ? ' class=\"' + className + '\"' : '') + '>' + content + '</b></div>';\n  }\n  function secondaryRow(label, key) {\n    var item = metric(key);\n    return '<div class=\"secondary-row\"><span>' + label + '<small class=\"quality-' + item.quality + '\">' + item.quality + '</small></span><b>' + value(item) + '</b></div>';\n  }\n  function detail() {\n    var mode = metric('operatingMode'), control = metric('fanControlMode'), quality = metric('dataQuality');\n    return '<section class=\"view\"><div class=\"kpi-grid\">' + kpi('Nhiệt độ trung bình', 'indoorTemperatureAvg', '°') +\n      kpi('Nhiệt độ ngoài trời', 'outdoorTemperature', '°') + kpi('Nhiệt độ cảm nhận', 'perceivedTemperature', '≈') +\n      kpi('Độ ẩm trong nhà', 'relativeHumidity', '%') + '</div><div class=\"detail-layout\"><section class=\"panel detail-main\">' +\n      '<div class=\"panel__head\"><div><h2>Giám sát nhà ' + esc(vm.scope.selectedBarn) + '</h2><p>Sơ đồ read-only · trạng thái fixture có chủ đích</p></div>' +\n      '<span class=\"quality-' + esc(isMissing(quality.value) ? quality.quality : quality.value) + '\">' + esc(isMissing(quality.value) ? quality.quality : quality.value) + '</span></div>' + synoptic() +\n      '<div class=\"equipment-grid\">' + equipmentCards() + '</div></section><aside class=\"panel controller-panel\"><div class=\"panel__head\"><div><h2>Bộ điều khiển</h2>' +\n      '<p>Thông tin chỉ đọc</p></div></div><div class=\"controller-summary\">' + summaryRow('Kết nối', esc(vm.controller.online), 'status-' + vm.controller.online) +\n      summaryRow('Chế độ', value(mode)) + summaryRow('Điều khiển quạt', value(control)) + summaryRow('Cấp hiện tại', esc(vm.controller.stageDisplay)) +\n      summaryRow('Chất lượng dữ liệu', value(quality), 'quality-' + (isMissing(quality.value) ? 'UNKNOWN' : esc(quality.value))) + '</div><h3 class=\"subsection-title\">Dữ liệu bổ sung</h3>' +\n      '<div class=\"secondary-metrics\">' + secondaryRow('Tốc độ gió', 'airSpeed') + secondaryRow('Lưu lượng gió', 'airFlow') +\n      secondaryRow('Nước tiêu thụ', 'waterConsumptionTotal') + '</div><div class=\"notice compact-notice\">Giá trị `--` là chưa có dữ liệu runtime; không quy đổi thành 0.</div>' +\n      '<a href=\"#vent_history\" data-nav=\"vent_history\" class=\"text-link\">Xem lịch sử →</a></aside></div>' + footer() + '</section>';\n  }\n  function seriesPath(key) {\n    var values = vm.history.map(function (row) { return row[key]; });\n    var valid = values.filter(function (item) { return typeof item === 'number'; });\n    if (!valid.length) return '';\n    var min = Math.min.apply(null, valid), max = Math.max.apply(null, valid), penDown = false, step = 620 / Math.max(values.length - 1, 1);\n    return values.map(function (item, index) {\n      if (typeof item !== 'number') { penDown = false; return ''; }\n      var x = 55 + index * step;\n      var y = 245 - ((item - min) / (max - min || 1)) * 175;\n      var command = penDown ? 'L' : 'M'; penDown = true;\n      return command + x.toFixed(1) + ' ' + y.toFixed(1);\n    }).join(' ');\n  }\n  function historyQualityClass(quality) { return ['CURRENT', 'STALE', 'OFFLINE'].indexOf(quality) >= 0 ? quality : 'UNKNOWN'; }\n  function historyValue(item, unit) { return isMissing(item) ? '--' : esc(item) + ' ' + unit; }\n  function history() {\n    return '<section class=\"view\"><section class=\"panel\"><div class=\"panel__head\"><div><h2>Lịch sử môi trường · 6 giờ</h2>' +\n      '<p>Điểm thiếu tạo khoảng trống; không chuyển thành 0.</p></div><span class=\"muted\">°C · %RH</span></div><div class=\"legend\">' +\n      '<span><i style=\"background:#00d4e0\"></i>Trong nhà</span><span><i style=\"background:#ffc857\"></i>Ngoài trời</span>' +\n      '<span><i style=\"background:#ff8fcf\"></i>Cảm nhận</span><span><i style=\"background:#6aa9ff\"></i>Độ ẩm</span></div><div class=\"chart-wrap\">' +\n      '<svg class=\"chart\" viewBox=\"0 0 720 280\"><path class=\"grid\" d=\"M55 70H675M55 128H675M55 187H675M55 245H675\"/>' +\n      '<path class=\"inside\" d=\"' + seriesPath('indoorTemperatureAvg') + '\"/><path class=\"outside\" d=\"' + seriesPath('outdoorTemperature') + '\"/>' +\n      '<path class=\"perceived\" d=\"' + seriesPath('perceivedTemperature') + '\"/><path class=\"humidity\" d=\"' + seriesPath('relativeHumidity') + '\"/>' +\n      '<text x=\"55\" y=\"266\">02:30</text><text x=\"625\" y=\"266\">08:30</text></svg></div></section><section class=\"panel table-wrap\">' +\n      '<table class=\"data-table\"><thead><tr><th>Thời gian</th><th>Nhiệt độ trong</th><th>Nhiệt độ ngoài</th><th>Nhiệt độ cảm nhận</th><th>Độ ẩm</th><th>Chất lượng</th></tr></thead><tbody>' +\n      vm.history.slice().reverse().map(function (row) { return '<tr><td>' + new Date(row.ts).toLocaleString('vi-VN') + '</td><td>' + historyValue(row.indoorTemperatureAvg, '°C') +\n        '</td><td>' + historyValue(row.outdoorTemperature, '°C') + '</td><td>' + historyValue(row.perceivedTemperature, '°C') + '</td><td>' +\n        historyValue(row.relativeHumidity, '%RH') + '</td><td><span class=\"pill quality-' + historyQualityClass(row.quality) + '\">' + esc(row.quality) + '</span></td></tr>'; }).join('') +\n      '</tbody></table></section>' + footer() + '</section>';\n  }\n  function alarms() {\n    return '<section class=\"view\"><section class=\"panel\"><div class=\"panel__head\"><div><h2>Cảnh báo & lịch sử</h2><p>Read-only; không có thao tác vòng đời.</p></div></div>' +\n      '<div class=\"table-wrap\"><table class=\"data-table\"><thead><tr><th>Mức</th><th>Loại / nội dung</th><th>Nguồn</th><th>Thời gian</th><th>Trạng thái</th></tr></thead><tbody>' +\n      vm.alarms.map(function (alarm) { return '<tr><td><span class=\"pill status-' + alarm.severity + '\">' + esc(alarm.severity) + '</span></td><td><b>' + esc(alarm.type) +\n        '</b><br><span class=\"muted\">' + esc(alarm.message) + '</span></td><td>' + esc(alarm.originator) + '</td><td>' + new Date(alarm.created).toLocaleString('vi-VN') +\n        '</td><td>' + esc(alarm.status) + '</td></tr>'; }).join('') + '</tbody></table></div></section><p class=\"demo-limit\">Fixture minh họa · alarm scope, retention và export production chưa được xác minh.</p>' + footer() + '</section>';\n  }\n  function footer() { return '<footer class=\"footer\"><span>Giám sát chỉ đọc · Fixture ' + esc(vm.fixtureVersion) + '</span><span>Sinh lúc ' + new Date(vm.generatedAt).toLocaleString('vi-VN') + '</span></footer>'; }\n  // Điều hướng đi qua navigate(): bản standalone đổi hash, ThingsBoard gọi stateController.\n  function render(container, viewModel, state, navigate) {\n    vm = viewModel;\n    state = normalizeState(state);\n    container.innerHTML = header(state) + (state === 'default' ? overview() : state === 'vent_detail' ? detail() : state === 'vent_history' ? history() : alarms());\n    container.__ventNavigate = navigate;\n    if (!container.__ventNavBound) {\n      container.__ventNavBound = true;\n      container.addEventListener('click', function (event) {\n        var target = event.target.closest('[data-nav]');\n        if (!target || !container.contains(target)) return;\n        event.preventDefault();\n        container.__ventNavigate(normalizeState(target.getAttribute('data-nav')));\n      });\n    }\n    return state;\n  }\n  root.VentilationDashboard = { STATES: STATES, render: render };\n  if (root !== window) return;\n  var app = document.getElementById(\"app\");\n  if (!app) return;\n  function renderFromHash(data) { render(app, data, location.hash.replace(/^#/, \"\") || \"default\", function (next) { location.hash = next; }); }\n  new root.VentilationAdapter.FixtureSource('../fixtures/ventilation/demo.json').load().then(function (data) {\n    renderFromHash(data);\n    window.addEventListener('hashchange', function () { renderFromHash(data); });\n  }).catch(function (error) { app.innerHTML = '<p class=\"error\">Không nạp được fixture demo: ' + esc(error.message) + '</p>'; });\n}(__vent));\n\n  var FIXTURE = {\"fixtureVersion\":\"1.2.0\",\"generatedAt\":\"2026-09-17T08:30:00+07:00\",\"demo\":true,\"badgeLabel\":\"DEMO DATA\",\"scope\":{\"farm\":\"Trại SIBA · Đông Anh\",\"area\":\"Khu ND2\",\"selectedBarn\":\"ND2-1\"},\"summary\":{\"barns\":6,\"online\":4,\"attention\":3,\"activeAlarms\":3},\"barns\":[{\"id\":\"barn-nd2-1\",\"label\":\"ND2-1\",\"identity\":\"PILOT\",\"synthetic\":false,\"connectivity\":\"ONLINE\",\"freshness\":\"CURRENT\",\"mode\":\"AUTO\",\"stage\":4,\"stageCount\":6,\"alarm\":\"NONE\"},{\"id\":\"barn-nd2-2\",\"label\":\"ND2-2\",\"identity\":\"LIVE_BARN_SIMULATED_STATE\",\"synthetic\":false,\"connectivity\":\"ONLINE\",\"freshness\":\"STALE\",\"mode\":\"AUTO\",\"stage\":3,\"stageCount\":6,\"alarm\":\"WARNING\"},{\"id\":\"barn-nd2-3\",\"label\":\"ND2-3\",\"identity\":\"LIVE_BARN_SIMULATED_STATE\",\"synthetic\":false,\"connectivity\":\"OFFLINE\",\"freshness\":\"UNKNOWN\",\"mode\":\"UNKNOWN\",\"stage\":null,\"stageCount\":null,\"alarm\":\"UNKNOWN\"},{\"id\":\"barn-nd2-4\",\"label\":\"ND2-4\",\"identity\":\"LIVE_BARN_SIMULATED_STATE\",\"synthetic\":false,\"connectivity\":\"ONLINE\",\"freshness\":\"CURRENT\",\"mode\":\"MANUAL\",\"stage\":2,\"stageCount\":6,\"alarm\":\"MAJOR\"},{\"id\":\"demo-05\",\"label\":\"DEMO-05\",\"identity\":\"SYNTHETIC\",\"synthetic\":true,\"connectivity\":\"UNKNOWN\",\"freshness\":\"UNKNOWN\",\"mode\":\"UNKNOWN\",\"stage\":null,\"stageCount\":null,\"alarm\":\"UNKNOWN\"},{\"id\":\"demo-06\",\"label\":\"DEMO-06\",\"identity\":\"SYNTHETIC\",\"synthetic\":true,\"connectivity\":\"ONLINE\",\"freshness\":\"CURRENT\",\"mode\":\"AUTO\",\"stage\":5,\"stageCount\":9,\"alarm\":\"WARNING\"}],\"latest\":{\"temperature_indoor_01\":{\"value\":27.6,\"unit\":\"°C\",\"quality\":\"CURRENT\",\"ts\":\"2026-09-17T08:29:42+07:00\"},\"temperature_indoor_02\":{\"value\":28.0,\"unit\":\"°C\",\"quality\":\"CURRENT\",\"ts\":\"2026-09-17T08:29:42+07:00\"},\"temperature_indoor\":{\"value\":27.8,\"unit\":\"°C\",\"quality\":\"CURRENT\",\"ts\":\"2026-09-17T08:29:42+07:00\"},\"temperature_outdoor\":{\"value\":31.2,\"unit\":\"°C\",\"quality\":\"CURRENT\",\"ts\":\"2026-09-17T08:29:40+07:00\"},\"temperature_feel\":{\"value\":29.1,\"unit\":\"°C\",\"quality\":\"CURRENT\",\"ts\":\"2026-09-17T08:29:42+07:00\"},\"humidity\":{\"value\":74,\"unit\":\"%RH\",\"quality\":\"CURRENT\",\"ts\":\"2026-09-17T08:29:41+07:00\"},\"air_speed\":{\"value\":null,\"unit\":null,\"quality\":\"UNKNOWN\",\"ts\":null},\"air_flow\":{\"value\":null,\"unit\":null,\"quality\":\"UNKNOWN\",\"ts\":null},\"water_consumption\":{\"value\":null,\"unit\":null,\"quality\":\"UNKNOWN\",\"ts\":null},\"operation_mode\":{\"value\":\"AUTO\",\"unit\":null,\"quality\":\"CURRENT\",\"ts\":\"2026-09-17T08:29:42+07:00\"},\"fan_control_mode\":{\"value\":\"STEP\",\"unit\":null,\"quality\":\"CURRENT\",\"ts\":\"2026-09-17T08:29:42+07:00\"},\"ventilation_stage\":{\"value\":4,\"unit\":\"level\",\"quality\":\"CURRENT\",\"ts\":\"2026-09-17T08:29:42+07:00\"},\"ventilation_stage_count\":{\"value\":6,\"unit\":\"level\",\"quality\":\"CURRENT\",\"ts\":\"2026-09-17T08:29:42+07:00\"},\"controller_online\":{\"value\":true,\"unit\":null,\"quality\":\"CURRENT\",\"ts\":\"2026-09-17T08:29:45+07:00\"},\"data_quality\":{\"value\":\"CURRENT\",\"unit\":null,\"quality\":\"CURRENT\",\"ts\":\"2026-09-17T08:29:45+07:00\"},\"roof_louver_position\":{\"value\":65,\"unit\":\"% demo\",\"quality\":\"STALE\",\"ts\":\"2026-09-17T08:22:02+07:00\"},\"side_louver_position\":{\"value\":40,\"unit\":\"% demo\",\"quality\":\"CURRENT\",\"ts\":\"2026-09-17T08:29:41+07:00\"},\"fan_01_run\":{\"value\":true,\"quality\":\"CURRENT\"},\"fan_01_fault\":{\"value\":false,\"quality\":\"CURRENT\"},\"fan_02_run\":{\"value\":true,\"quality\":\"CURRENT\"},\"fan_02_fault\":{\"value\":false,\"quality\":\"CURRENT\"},\"fan_03_run\":{\"value\":true,\"quality\":\"CURRENT\"},\"fan_03_fault\":{\"value\":false,\"quality\":\"CURRENT\"},\"fan_04_run\":{\"value\":false,\"quality\":\"CURRENT\"},\"fan_04_fault\":{\"value\":false,\"quality\":\"CURRENT\"},\"fan_05_run\":{\"value\":null,\"quality\":\"UNKNOWN\"},\"fan_05_fault\":{\"value\":null,\"quality\":\"UNKNOWN\"},\"fan_06_run\":{\"value\":false,\"quality\":\"CURRENT\"},\"fan_06_fault\":{\"value\":true,\"quality\":\"CURRENT\"},\"pump_01_run\":{\"value\":true,\"quality\":\"CURRENT\"},\"pump_01_fault\":{\"value\":false,\"quality\":\"CURRENT\"},\"pump_02_run\":{\"value\":null,\"quality\":\"UNKNOWN\"},\"pump_02_fault\":{\"value\":null,\"quality\":\"UNKNOWN\"}},\"history\":[{\"ts\":\"2026-09-17T02:30:00+07:00\",\"temperature_indoor\":26.4,\"temperature_outdoor\":27.3,\"temperature_feel\":27.1,\"humidity\":78,\"quality\":\"CURRENT\"},{\"ts\":\"2026-09-17T03:30:00+07:00\",\"temperature_indoor\":26.7,\"temperature_outdoor\":27.9,\"temperature_feel\":27.5,\"humidity\":77,\"quality\":\"CURRENT\"},{\"ts\":\"2026-09-17T04:30:00+07:00\",\"temperature_indoor\":27.0,\"temperature_outdoor\":28.6,\"temperature_feel\":28.0,\"humidity\":76,\"quality\":\"CURRENT\"},{\"ts\":\"2026-09-17T05:30:00+07:00\",\"temperature_indoor\":27.2,\"temperature_outdoor\":29.3,\"temperature_feel\":28.3,\"humidity\":75,\"quality\":\"CURRENT\"},{\"ts\":\"2026-09-17T06:30:00+07:00\",\"temperature_indoor\":27.5,\"temperature_outdoor\":30.1,\"temperature_feel\":28.7,\"humidity\":75,\"quality\":\"CURRENT\"},{\"ts\":\"2026-09-17T07:30:00+07:00\",\"temperature_indoor\":null,\"temperature_outdoor\":30.7,\"temperature_feel\":28.9,\"humidity\":74,\"quality\":\"MISSING\"},{\"ts\":\"2026-09-17T08:30:00+07:00\",\"temperature_indoor\":27.8,\"temperature_outdoor\":31.2,\"temperature_feel\":29.1,\"humidity\":74,\"quality\":\"CURRENT\"}],\"alarms\":[{\"severity\":\"MAJOR\",\"type\":\"VEN_FAN_FAULT\",\"message\":\"Quạt 06 báo lỗi (dữ liệu demo)\",\"originator\":\"ND2-1 / bộ điều khiển demo\",\"created\":\"2026-09-17T08:18:00+07:00\",\"status\":\"ACTIVE\"},{\"severity\":\"WARNING\",\"type\":\"VEN_ROOF_INLET_STALE\",\"message\":\"Phản hồi cửa chớp trần đã cũ (dữ liệu demo)\",\"originator\":\"ND2-1 / bộ điều khiển demo\",\"created\":\"2026-09-17T08:23:00+07:00\",\"status\":\"ACTIVE\"},{\"severity\":\"WARNING\",\"type\":\"VEN_HIGH_HUMIDITY\",\"message\":\"Độ ẩm cao (dữ liệu demo)\",\"originator\":\"ND2-2 / bộ điều khiển demo\",\"created\":\"2026-09-17T07:51:00+07:00\",\"status\":\"ACTIVE\"}],\"adapterTestVariants\":{\"_note\":\"Bản vá cho latest, chỉ dùng trong test adapter. 6/9 là ví dụ fixture, không phải cấu hình runtime.\",\"step\":{\"fan_control_mode\":{\"value\":\"STEP\",\"quality\":\"CURRENT\"},\"ventilation_stage\":{\"value\":3,\"quality\":\"CURRENT\"},\"ventilation_stage_count\":{\"value\":6,\"quality\":\"CURRENT\"}},\"vfd\":{\"fan_control_mode\":{\"value\":\"VFD\",\"quality\":\"CURRENT\"},\"ventilation_stage\":{\"value\":5,\"quality\":\"CURRENT\"},\"ventilation_stage_count\":{\"value\":9,\"quality\":\"CURRENT\"}},\"unknownStageCount\":{\"fan_control_mode\":{\"value\":\"STEP\",\"quality\":\"CURRENT\"},\"ventilation_stage\":{\"value\":4,\"quality\":\"CURRENT\"},\"ventilation_stage_count\":{\"value\":null,\"quality\":\"UNKNOWN\"}},\"zeroStage\":{\"ventilation_stage\":{\"value\":0,\"quality\":\"CURRENT\"},\"ventilation_stage_count\":{\"value\":6,\"quality\":\"CURRENT\"}},\"edgeCases\":{\"side_louver_position\":{\"value\":0,\"unit\":\"% demo\",\"quality\":\"CURRENT\"},\"roof_louver_position\":{\"value\":null,\"unit\":\"% demo\",\"quality\":\"STALE\"},\"controller_online\":{\"value\":false,\"quality\":\"OFFLINE\"},\"data_quality\":{\"value\":\"OFFLINE\",\"quality\":\"OFFLINE\"},\"air_flow\":{\"value\":0,\"unit\":\"m³/h demo\",\"quality\":\"CURRENT\"},\"fan_01_run\":{\"value\":false,\"quality\":\"CURRENT\"},\"fan_01_fault\":{\"value\":false,\"quality\":\"CURRENT\"},\"fan_02_run\":{\"value\":true,\"quality\":\"CURRENT\"},\"fan_02_fault\":{\"value\":true,\"quality\":\"CURRENT\"},\"fan_03_run\":{\"value\":null,\"quality\":\"UNKNOWN\"},\"fan_03_fault\":{\"value\":false,\"quality\":\"CURRENT\"},\"fan_04_run\":{\"value\":false,\"quality\":\"STALE\"},\"fan_04_fault\":{\"value\":false,\"quality\":\"OFFLINE\"},\"fan_05_run\":{\"value\":true,\"quality\":\"CURRENT\"},\"fan_06_run\":{\"value\":0,\"quality\":\"CURRENT\"},\"fan_06_fault\":{\"value\":0,\"quality\":\"CURRENT\"}},\"_edgeCasesMissing\":[\"temperature_feel\",\"water_consumption\",\"fan_05_fault\"]}};\n  var ctx = self.ctx;\n  var container = ctx.$container[0].querySelector('.vent-demo-root');\n  var viewState = (ctx.settings && ctx.settings.viewState) || 'default';\n  var vm = __vent.VentilationAdapter.createViewModel(FIXTURE);\n  __vent.VentilationDashboard.render(container, vm, viewState, function (next) {\n    if (next === viewState) return;\n    ctx.stateController.openState(next, {}, false);\n  });\n};\nself.onResize = function () {};\nself.onDestroy = function () {};\n",
+      "settingsSchema": "",
+      "dataKeySettingsSchema": "",
+      "defaultConfig": "{\"datasources\":[],\"showTitle\":false,\"backgroundColor\":\"#0c1622\",\"color\":\"#edf5f9\",\"padding\":\"0px\",\"settings\":{\"viewState\":\"default\"},\"title\":\"SIBA vent demo view\"}"
+    },
+    "image": null,
+    "description": "VENT-006 DEMO: dashboard thông gió dữ liệu fixture cô lập. Không datasource, không telemetry, không RPC. Nguồn: repo SIBA-IOT-SYS-THONGGIO.",
+    "tags": null,
+    "externalId": null,
+    "resources": null
+  },
+  "dashboard": {
+    "id": {
+      "entityType": "DASHBOARD",
+      "id": "b9ff4d70-b26a-11f1-83ad-9912edc644d2"
+    },
+    "createdTime": 1789630688199,
+    "tenantId": {
+      "entityType": "TENANT",
+      "id": "0abe2520-9528-11f1-af48-7566a705eb32"
+    },
+    "title": "DB-30-VEN-DETAIL-V1-DEMO",
+    "name": "DB-30-VEN-DETAIL-V1-DEMO",
+    "image": null,
+    "mobileHide": false,
+    "mobileOrder": null,
+    "assignedCustomers": null,
+    "configuration": {
+      "description": "VENT-006 DEMO · thông gió · dữ liệu fixture cô lập. Không PLC, không telemetry, không RPC. Không phải bằng chứng runtime.",
+      "widgets": {
+        "3d347e1d-c370-5560-86da-aeba72a99bb0": {
+          "id": "3d347e1d-c370-5560-86da-aeba72a99bb0",
+          "typeFullFqn": "tenant.siba_vent_demo.vent_demo_view",
+          "type": "static",
+          "sizeX": 24,
+          "sizeY": 24,
+          "row": 0,
+          "col": 0,
+          "config": {
+            "configMode": "basic",
+            "title": "Thông gió DEMO · default",
+            "showTitle": false,
+            "showTitleIcon": false,
+            "dropShadow": false,
+            "enableFullscreen": false,
+            "enableDataExport": false,
+            "backgroundColor": "#0c1622",
+            "color": "#edf5f9",
+            "padding": "0px",
+            "margin": "0px",
+            "borderRadius": "0px",
+            "widgetStyle": {},
+            "actions": {},
+            "settings": {
+              "viewState": "default"
+            },
+            "datasources": [],
+            "widgetCss": ":host ::ng-deep .tb-widget { background: transparent !important; border: none !important; box-shadow: none !important; }",
+            "mobileHeight": 12
+          }
+        },
+        "87f3cd0b-5311-51d5-97b1-dffe92bd2243": {
+          "id": "87f3cd0b-5311-51d5-97b1-dffe92bd2243",
+          "typeFullFqn": "tenant.siba_vent_demo.vent_demo_view",
+          "type": "static",
+          "sizeX": 24,
+          "sizeY": 24,
+          "row": 0,
+          "col": 0,
+          "config": {
+            "configMode": "basic",
+            "title": "Thông gió DEMO · vent_detail",
+            "showTitle": false,
+            "showTitleIcon": false,
+            "dropShadow": false,
+            "enableFullscreen": false,
+            "enableDataExport": false,
+            "backgroundColor": "#0c1622",
+            "color": "#edf5f9",
+            "padding": "0px",
+            "margin": "0px",
+            "borderRadius": "0px",
+            "widgetStyle": {},
+            "actions": {},
+            "settings": {
+              "viewState": "vent_detail"
+            },
+            "datasources": [],
+            "widgetCss": ":host ::ng-deep .tb-widget { background: transparent !important; border: none !important; box-shadow: none !important; }",
+            "mobileHeight": 12
+          }
+        },
+        "bfd82c51-023a-5006-a1f4-50aba44da785": {
+          "id": "bfd82c51-023a-5006-a1f4-50aba44da785",
+          "typeFullFqn": "tenant.siba_vent_demo.vent_demo_view",
+          "type": "static",
+          "sizeX": 24,
+          "sizeY": 24,
+          "row": 0,
+          "col": 0,
+          "config": {
+            "configMode": "basic",
+            "title": "Thông gió DEMO · vent_history",
+            "showTitle": false,
+            "showTitleIcon": false,
+            "dropShadow": false,
+            "enableFullscreen": false,
+            "enableDataExport": false,
+            "backgroundColor": "#0c1622",
+            "color": "#edf5f9",
+            "padding": "0px",
+            "margin": "0px",
+            "borderRadius": "0px",
+            "widgetStyle": {},
+            "actions": {},
+            "settings": {
+              "viewState": "vent_history"
+            },
+            "datasources": [],
+            "widgetCss": ":host ::ng-deep .tb-widget { background: transparent !important; border: none !important; box-shadow: none !important; }",
+            "mobileHeight": 12
+          }
+        },
+        "8501c438-4cc5-5cea-991d-5894476c9325": {
+          "id": "8501c438-4cc5-5cea-991d-5894476c9325",
+          "typeFullFqn": "tenant.siba_vent_demo.vent_demo_view",
+          "type": "static",
+          "sizeX": 24,
+          "sizeY": 24,
+          "row": 0,
+          "col": 0,
+          "config": {
+            "configMode": "basic",
+            "title": "Thông gió DEMO · vent_alarms",
+            "showTitle": false,
+            "showTitleIcon": false,
+            "dropShadow": false,
+            "enableFullscreen": false,
+            "enableDataExport": false,
+            "backgroundColor": "#0c1622",
+            "color": "#edf5f9",
+            "padding": "0px",
+            "margin": "0px",
+            "borderRadius": "0px",
+            "widgetStyle": {},
+            "actions": {},
+            "settings": {
+              "viewState": "vent_alarms"
+            },
+            "datasources": [],
+            "widgetCss": ":host ::ng-deep .tb-widget { background: transparent !important; border: none !important; box-shadow: none !important; }",
+            "mobileHeight": 12
+          }
+        }
+      },
+      "states": {
+        "default": {
+          "name": "Tổng quan thông gió (DEMO)",
+          "root": true,
+          "layouts": {
+            "main": {
+              "widgets": {
+                "3d347e1d-c370-5560-86da-aeba72a99bb0": {
+                  "sizeX": 24,
+                  "sizeY": 24,
+                  "row": 0,
+                  "col": 0
+                }
+              },
+              "gridSettings": {
+                "layoutType": "default",
+                "backgroundColor": "#0c1622",
+                "columns": 24,
+                "margin": 0,
+                "outerMargin": false,
+                "backgroundSizeMode": "100%",
+                "autoFillHeight": true,
+                "mobileAutoFillHeight": true,
+                "mobileRowHeight": 70
+              }
+            }
+          }
+        },
+        "vent_detail": {
+          "name": "Giám sát thông gió (DEMO)",
+          "root": false,
+          "layouts": {
+            "main": {
+              "widgets": {
+                "87f3cd0b-5311-51d5-97b1-dffe92bd2243": {
+                  "sizeX": 24,
+                  "sizeY": 24,
+                  "row": 0,
+                  "col": 0
+                }
+              },
+              "gridSettings": {
+                "layoutType": "default",
+                "backgroundColor": "#0c1622",
+                "columns": 24,
+                "margin": 0,
+                "outerMargin": false,
+                "backgroundSizeMode": "100%",
+                "autoFillHeight": true,
+                "mobileAutoFillHeight": true,
+                "mobileRowHeight": 70
+              }
+            }
+          }
+        },
+        "vent_history": {
+          "name": "Lịch sử thông gió (DEMO)",
+          "root": false,
+          "layouts": {
+            "main": {
+              "widgets": {
+                "bfd82c51-023a-5006-a1f4-50aba44da785": {
+                  "sizeX": 24,
+                  "sizeY": 24,
+                  "row": 0,
+                  "col": 0
+                }
+              },
+              "gridSettings": {
+                "layoutType": "default",
+                "backgroundColor": "#0c1622",
+                "columns": 24,
+                "margin": 0,
+                "outerMargin": false,
+                "backgroundSizeMode": "100%",
+                "autoFillHeight": true,
+                "mobileAutoFillHeight": true,
+                "mobileRowHeight": 70
+              }
+            }
+          }
+        },
+        "vent_alarms": {
+          "name": "Cảnh báo thông gió (DEMO)",
+          "root": false,
+          "layouts": {
+            "main": {
+              "widgets": {
+                "8501c438-4cc5-5cea-991d-5894476c9325": {
+                  "sizeX": 24,
+                  "sizeY": 24,
+                  "row": 0,
+                  "col": 0
+                }
+              },
+              "gridSettings": {
+                "layoutType": "default",
+                "backgroundColor": "#0c1622",
+                "columns": 24,
+                "margin": 0,
+                "outerMargin": false,
+                "backgroundSizeMode": "100%",
+                "autoFillHeight": true,
+                "mobileAutoFillHeight": true,
+                "mobileRowHeight": 70
+              }
+            }
+          }
+        }
+      },
+      "entityAliases": {},
+      "filters": {},
+      "timewindow": {
+        "realtime": {
+          "timewindowMs": 3600000
+        }
+      },
+      "settings": {
+        "stateControllerId": "default",
+        "showTitle": false,
+        "showDashboardsSelect": false,
+        "showEntitiesSelect": false,
+        "showDashboardTimewindow": false,
+        "showDashboardExport": false,
+        "toolbarAlwaysOpen": false,
+        "hideToolbar": false,
+        "showFilters": false,
+        "dashboardCss": ".tb-dashboard-page{background:#0c1622}\n.tb-dashboard-page .tb-widget-container>.tb-widget{background:#0c1622!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:0!important}\n"
+      }
+    },
+    "resources": null,
+    "version": 1,
+    "externalId": null
+  }
+}

@@ -88,7 +88,8 @@ class DashboardDemoTest(unittest.TestCase):
             for key in LEGACY_SNAKE:
                 self.assertNotIn(key, source, key)
         self.assertNotIn("CANONICAL_MAP", self.adapter)
-        self.assertIsNone(re.search(r"\d+ / \d+", self.app))
+        # Reject a literal fake stage ratio, not legitimate chart arithmetic (175 / 3).
+        self.assertIsNone(re.search(r'''["']\d+ / \d+["']''', self.app))
 
     def test_false_zero_null_not_coerced(self):
         for source in (self.adapter, self.app):
@@ -109,6 +110,13 @@ class DashboardDemoTest(unittest.TestCase):
 
     def test_no_mutating_secret_or_alarm_action_surface(self):
         text = "\n".join([self.app, self.adapter, self.html])
+        # Exactly three local search inputs are authorized; no parameter editors.
+        inputs = re.findall(r'<input[^>]*>', text)
+        self.assertEqual(len(inputs), 3)
+        for item in inputs:
+            self.assertRegex(item, r'^<input type="search" data-filter-input="(?:barn|alarm|settings)" ')
+            self.assertNotRegex(item, r'on\w+\s*=|name=|value=')
+        text = re.sub(r'<input type="search" data-filter-input="(?:barn|alarm|settings)" [^>]*>', '', text)
         forbidden = [r"/api/rpc", r"/api/plugins/telemetry", r"TB_PASSWORD", r"accessToken", r"refreshToken",
                      r"X-Authorization", r"method\s*:\s*['\"](?:POST|PUT|PATCH|DELETE)",
                      r"acknowledgeAlarm", r"clearAlarm", r"shelveAlarm", r"assignAlarm",

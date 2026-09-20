@@ -55,13 +55,15 @@ class _QuietHandler(http.server.SimpleHTTPRequestHandler):
 class Browser:
     """Phiên Firefox headless; chỉ thao tác với trang demo cục bộ."""
 
-    def __init__(self, width=1920, height=1080):
+    def __init__(self, width=1920, height=1080, prefs=None):
         self.port = _free_port()
         self.proc = subprocess.Popen([geckodriver_path(), "--port", str(self.port)],
                                      stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         self.base = "http://127.0.0.1:%d" % self.port
         self._wait_ready()
         caps = {"capabilities": {"alwaysMatch": {"moz:firefoxOptions": {"args": ["-headless"]}}}}
+        if prefs:
+            caps["capabilities"]["alwaysMatch"]["moz:firefoxOptions"]["prefs"] = prefs
         self.session = self._call("POST", "/session", caps)["sessionId"]
         self.resize(width, height)
 

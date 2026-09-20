@@ -1,5 +1,21 @@
 # Visual parity report (VENT-007 / Data Contract v0.3)
 
+## VENT-008 local refinement — 20/09/2026
+
+Standalone parity: PASS for the bounded refinement. Navy/cyan flat SIBA shell, original
+panel radius, white preview sidebar and teal header remain. MAIN inspected new desktop
+overview/detail/history and mobile overview captures; all 20 captures passed measured
+viewport/overflow checks. New original barn illustration is labelled conceptual, below
+Barn selection; it does not replace status graphics. Reference review and provenance:
+`modern_reference_review.md`, `dashboard/assets/README.md`.
+
+Source tests: 64/64 PASS including same-state Barn recovery, embedded image load,
+actual fan animation/reduced-motion, 224 settings and 390px layout. Live ThingsBoard
+verification is separate; do not treat this standalone result as deployment evidence.
+
+The VENT-007 evidence section below is historical; measured VENT-008 captures supersede
+its unverified mobile-size claims. Contract data/fixture values remain unchanged.
+
 ## Result
 
 `VISUAL PARITY: PASS` (Updated for VENT-007, 2026-09-18).

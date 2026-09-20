@@ -18,6 +18,9 @@ NAMESPACE = "tb-widget-ns-test"
 
 def namespace_css(css):
     """Mô phỏng cssParser của TB: thêm tiền tố namespace cho từng selector, kể cả trong @media."""
+    animation_pattern = r'@keyframes[^{}]+\{(?:[^{}]*\{[^{}]*\})+\s*\}'
+    keyframes = re.findall(animation_pattern, css)
+    css = re.sub(animation_pattern, '', css)
     def scope(block):
         out = []
         for selector, body in re.findall(r"([^{}]+)\{([^{}]*)\}", block):
@@ -27,7 +30,7 @@ def namespace_css(css):
     result = []
     for media, inner, plain in re.findall(r"(@media[^{]+)\{((?:[^{}]*\{[^{}]*\})*)\s*\}|([^@{}]+\{[^{}]*\})", css):
         result.append("%s{%s}" % (media, scope(inner)) if media else scope(plain))
-    return "\n".join(result)
+    return "\n".join(result + keyframes)
 
 
 class PayloadStaticTest(unittest.TestCase):
@@ -92,7 +95,7 @@ class PayloadStaticTest(unittest.TestCase):
 
 
 HARNESS = """
-var payload = arguments[0], css = arguments[1], state = arguments[2];
+var payload = arguments[0], css = arguments[1], state = arguments[2], stateParams = arguments[3] || {};
 var style = document.getElementById('ns-style') || document.head.appendChild(Object.assign(document.createElement('style'), {id: 'ns-style'}));
 style.textContent = css;
 var host = document.getElementById('tb-widget');
@@ -102,7 +105,8 @@ window.__opened = [];
 window.__hashBefore = location.hash;
 var self = {ctx: {$container: [host], settings: {viewState: state},
   stateController: {openState: function (id, params, right) { window.__opened.push([id, params, right]); },
-                    getStateId: function () { return state; }}}};
+                    getStateId: function () { return state; },
+                    getStateParams: function () { return stateParams; }}}};
 new Function('self', payload.descriptor.controllerScript)(self);
 self.onInit();
 return true;
@@ -123,10 +127,10 @@ class WidgetRuntimeHarnessTest(unittest.TestCase):
         cls.browser.close()
         cls.server.__exit__(None, None, None)
 
-    def mount(self, state, width=1650, height=950):
+    def mount(self, state, width=1650, height=950, state_params=None):
         self.browser.resize(width, height)
         self.browser._session("POST", "/url", {"url": self.server.base_url + "/tests/tb_widget_harness.html"})
-        self.browser.run(HARNESS, self.payload, self.css, state)
+        self.browser.run(HARNESS, self.payload, self.css, state, state_params or {})
 
     def test_all_states_render_with_demo_badge_and_no_shell(self):
         for state in vent_demo_common.STATES:
@@ -146,18 +150,57 @@ class WidgetRuntimeHarnessTest(unittest.TestCase):
             self.assertEqual(info["bg"], "rgb(21, 39, 55)")
             self.assertIn("Arial", info["font"])
 
-    def test_navigation_uses_state_controller_not_hash(self):
+    def test_navigation_preserves_selected_barn_in_state_controller_params(self):
         self.mount("default")
+        ids = self.browser.run("return [...document.querySelectorAll('.barn-card')].map(function (card) { return card.getAttribute('data-barn-id'); })")
+        self.assertGreaterEqual(len(ids), 2)
         self.browser.run("document.querySelector('.state-tabs a[data-nav=\"vent_history\"]').click();"
-                         "document.querySelector('.barn-card').click();"
+                         "document.querySelectorAll('.barn-card')[1].click();"
                          "document.querySelector('.state-tabs a[data-nav=\"default\"]').click();")
         opened = self.browser.run("return window.__opened")
-        self.assertEqual(opened, [["vent_history", {}, False], ["vent_detail", {}, False]])
+        # Same-state selection changes preserve context; only an unchanged tab is a no-op.
+        self.assertEqual(opened, [["vent_history", {"barnId": ids[0]}, False],
+                                  ["vent_detail", {"barnId": ids[1]}, False],
+                                  ["default", {"barnId": ids[1]}, False]])
         self.assertEqual(self.browser.run("return location.hash"), "")
+
+    def test_non_pilot_barn_shows_context_not_pilot_detail(self):
+        self.mount("default")
+        non_pilot = self.browser.run("return document.querySelectorAll('.barn-card')[1].getAttribute('data-barn-id')")
+        self.mount("vent_detail", state_params={"barnId": non_pilot})
+        info = self.browser.run("""
+          var root = document.querySelector('.vent-demo-root');
+          return {context: root.querySelector('.selected-barn-context').innerText,
+                  detail: root.querySelectorAll('.detail-layout').length,
+                  pilotMetrics: root.innerText.indexOf('Nhiệt độ trung bình') >= 0};""")
+        self.assertIn("Chưa có dữ liệu chi tiết", info["context"])
+        self.assertEqual(info["detail"], 0)
+        self.assertFalse(info["pilotMetrics"])
+
+    def test_unknown_barn_parameter_does_not_silently_show_pilot_data(self):
+        self.mount("vent_detail", state_params={"barnId": "not-a-barn"})
+        info = self.browser.run("""
+          var root = document.querySelector('.vent-demo-root');
+          var link = root.querySelector('[data-nav=vent_detail][data-barn-id=barn-nd2-1]');
+          return {context: root.querySelector('.selected-barn-context').innerText,
+                  detail: root.querySelectorAll('.detail-layout').length,
+                  pilotLink: link && link.innerText};""")
+        self.assertIn("Không tìm thấy nhà", info["context"])
+        self.assertEqual(info["detail"], 0)
+        self.assertIn("Xem nhà mẫu ND2-1", info["pilotLink"])
+        self.browser.run("document.querySelector('[data-nav=vent_detail][data-barn-id=barn-nd2-1]').click()")
+        self.assertEqual(self.browser.run("return document.querySelectorAll('.detail-layout').length"), 1)
+        self.assertEqual(self.browser.run("return window.__opened"), [["vent_detail", {"barnId": "barn-nd2-1"}, False]])
+
+    def test_generated_illustration_is_embedded_and_loads_without_external_host(self):
+        self.mount("default")
+        self.browser.wait_for("var image=document.querySelector('.barn-illustration img'); return image && image.complete && image.naturalWidth > 0")
+        self.assertTrue(self.browser.run("return document.querySelector('.barn-illustration img').src.startsWith('data:image/png;base64,')"))
+        self.assertIn("MINH HỌA", self.browser.run("return document.querySelector('.barn-illustration figcaption').textContent"))
 
     def test_detail_values_and_global_css_isolation(self):
         self.mount("vent_detail", 1650, 600)   # thấp hơn nội dung: widget phải tự cuộn
-        info = self.browser.run("""
+        info = self.browser.run(r"""
           var root = document.querySelector('.vent-demo-root');
           return {fans: [...root.querySelectorAll('.fan')].map(g => g.getAttribute('class')),
                   secondary: [...root.querySelectorAll('.secondary-row b')].map(b => b.innerText),
@@ -168,7 +211,8 @@ class WidgetRuntimeHarnessTest(unittest.TestCase):
                   linkBorder: getComputedStyle(root.querySelector('.text-link')).borderBottomWidth,
                   h2Spacing: getComputedStyle(root.querySelector('h2')).letterSpacing,
                   scrolls: root.scrollHeight > root.clientHeight && getComputedStyle(root).overflowY};""")
-        self.assertEqual(info["fans"], ["fan RUNNING", "fan RUNNING", "fan RUNNING", "fan STOPPED", "fan UNKNOWN", "fan STOPPED"])
+        self.assertEqual([classes.split()[1] for classes in info["fans"]], ["RUNNING", "RUNNING", "RUNNING", "STOPPED", "UNKNOWN", "STOPPED"])
+        self.assertTrue(all("quality-" in classes and "connectivity-ONLINE" in classes for classes in info["fans"]))
         self.assertEqual(info["secondary"], ["--", "--", "--", "NOT CONFIGURED"])
         self.assertEqual(info["stage"], ["4"])
         self.assertTrue(info["noRatio"])
@@ -233,7 +277,7 @@ class WidgetRuntimeHarnessTest(unittest.TestCase):
           var root = document.querySelector('.vent-demo-root');
           root.querySelector('.settings-index a[data-scroll]').click();
           return {cells: root.querySelectorAll('[data-setting-key]').length,
-                  controls: root.querySelectorAll('input,select,textarea,form,button').length,
+                  controls: root.querySelectorAll('input:not([data-filter-input=settings]),select,textarea,form,button').length,
                   values: [...new Set([...root.querySelectorAll('[data-setting-key]')].map(e => e.innerText))],
                   opened: window.__opened.length, hash: location.hash};""")
         self.assertEqual(info["cells"], 224)
@@ -244,17 +288,73 @@ class WidgetRuntimeHarnessTest(unittest.TestCase):
 
     def test_history_gap_and_alarms_read_only(self):
         self.mount("vent_history")
-        path = self.browser.run("return document.querySelector('.chart .inside').getAttribute('d')")
-        self.assertEqual(path.count("M"), 2)
+        chart = self.browser.run("""
+          var root = document.querySelector('.vent-demo-root');
+          function path(cls) { return root.querySelector('.chart .' + cls).getAttribute('d'); }
+          return {inside: path('inside'), outside: path('outside'), perceived: path('perceived'), humidity: path('humidity'),
+                  left: root.querySelectorAll('.chart .axis-left').length,
+                  right: root.querySelectorAll('.chart .axis-right').length,
+                  samples: [...root.querySelectorAll('.chart-sample')].map(function (sample) { return {
+                    tabindex: sample.getAttribute('tabindex'), role: sample.getAttribute('role'), label: sample.getAttribute('aria-label'),
+                    title: (sample.querySelector('title') || {}).textContent, points: sample.querySelectorAll('.chart-point').length}; })};""")
+        self.assertEqual(chart["inside"].count("M"), 2)
+        self.assertEqual(chart["outside"].count("M"), 1)
+        self.assertEqual(chart["perceived"].count("M"), 1)
+        self.assertEqual(chart["humidity"].count("M"), 1)
+        self.assertEqual((chart["left"], chart["right"]), (4, 4))
+        self.assertTrue(chart["samples"])
+        self.assertTrue(all(s["tabindex"] == "0" and s["role"] == "img" and s["label"] and s["title"] and s["points"] for s in chart["samples"]))
         self.mount("vent_alarms")
-        self.assertEqual(self.browser.run("return document.querySelectorAll('.vent-demo-root button,.vent-demo-root input').length"), 0)
+        self.assertEqual(self.browser.run("return document.querySelectorAll('.vent-demo-root button,.vent-demo-root input:not([data-filter-input=alarm])').length"), 0)
 
-    def test_mobile_width_has_no_horizontal_overflow(self):
-        for state in vent_demo_common.STATES:
-            self.mount(state, 390, 844)
-            overflow = self.browser.run("var r=document.querySelector('.vent-demo-root');"
-                                        "return [document.documentElement.scrollWidth - document.documentElement.clientWidth, r.scrollWidth - r.clientWidth]")
-            self.assertEqual(overflow, [0, 0], state)
+    def test_filters_are_local_and_settings_remain_read_only(self):
+        self.mount("default")
+        info = self.browser.run("""
+          var root = document.querySelector('.vent-demo-root'), input = root.querySelector('[data-filter-input=barn]');
+          input.value = 'no-match'; input.dispatchEvent(new Event('input', {bubbles:true}));
+          return {hidden: [...root.querySelectorAll('.barn-card')].every(function (card) { return card.hidden; }),
+                  empty: !root.querySelector('[data-filter-empty=barn]').hidden};""")
+        self.assertEqual(info, {"hidden": True, "empty": True})
+        self.mount("vent_settings")
+        self.assertEqual(self.browser.run("""
+          var root = document.querySelector('.vent-demo-root');
+          return [root.querySelectorAll('[data-filter-input=settings]').length,
+                  root.querySelectorAll('button,select,textarea,form').length,
+                  root.querySelectorAll('input:not([data-filter-input=settings])').length];"""), [1, 0, 0])
+
+    def test_raw_states_are_machine_readable_but_labels_are_vietnamese(self):
+        self.mount("vent_detail")
+        states = self.browser.run("""
+          return [...document.querySelectorAll('[data-raw-state]')].map(function (el) {
+            return [el.getAttribute('data-raw-state'), el.textContent.trim(), el.className.baseVal || el.className];
+          });""")
+        running = [item for item in states if item[0] == "RUNNING"]
+        self.assertTrue(running)
+        self.assertTrue(any(item[1] == "Đang chạy" and "status-RUNNING" in item[2] for item in running))
+
+    def test_motion_rule_only_animates_current_online_running_fan(self):
+        self.assertIn(".fan.RUNNING.quality-CURRENT.connectivity-ONLINE .fan-blades{animation:vent-fan-spin", self.css)
+        self.assertIn("@media(prefers-reduced-motion:reduce)", self.css)
+        self.mount("vent_detail")
+        self.assertEqual(self.browser.run("return getComputedStyle(document.querySelector('.fan.RUNNING.quality-CURRENT.connectivity-ONLINE .fan-blades')).animationName"), "vent-fan-spin")
+
+    def test_mobile_iframe_has_real_390px_width_and_no_horizontal_overflow(self):
+        element_key = "element-6066-11e4-a52e-4f735466cecf"
+        self.browser.resize(1280, 1000)
+        try:
+            self.browser._session("POST", "/url", {"url": self.server.base_url + "/deploy/thingsboard/mobile_frame.html"})
+            frame = self.browser._session("POST", "/element", {"using": "css selector", "value": "#device"})[element_key]
+            self.browser._session("POST", "/frame", {"id": {element_key: frame}})
+            self.browser.run("location.href = arguments[0]", self.server.base_url + "/tests/tb_widget_harness.html")
+            self.browser.wait_for("return window.innerWidth === 390")
+            for state in vent_demo_common.STATES:
+                self.browser.run(HARNESS, self.payload, self.css, state, {})
+                overflow = self.browser.run("var r=document.querySelector('.vent-demo-root');"
+                                            "return [document.documentElement.scrollWidth - document.documentElement.clientWidth, r.scrollWidth - r.clientWidth]")
+                self.assertEqual(overflow, [0, 0], state)
+        finally:
+            self.browser._session("POST", "/frame/parent", {})
+            self.browser.resize(1920, 1080)
 
 
 if __name__ == "__main__":

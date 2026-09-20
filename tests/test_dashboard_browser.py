@@ -35,7 +35,8 @@ class DashboardBrowserTest(unittest.TestCase):
 
     def open_state(self, state):
         self.browser.open(self.url + "#" + state)
-        self.browser.run("location.hash = arguments[0]", state)
+        # Same-URL navigation does not reset a model intentionally modified by a test.
+        self.browser._session("POST", "/refresh", {})
         self.browser.wait_for("return !!document.querySelector('.state-tabs a.active[href=\"#%s\"]')" % state)
 
     def vm(self, variant=None):
@@ -146,6 +147,34 @@ class DashboardBrowserTest(unittest.TestCase):
         self.assertIsNone(mapped["airFlow"])
         self.assertEqual(mapped["quality"], "UNKNOWN")
 
+    def test_empty_history_renders_notice_without_invented_points(self):
+        self.open_state("default")
+        info = self.browser.run("""
+          var raw=JSON.parse(arguments[0]); raw.history=[];
+          var vm=VentilationAdapter.createViewModel(raw), app=document.getElementById('app');
+          VentilationDashboard.render(app,vm,'vent_history',function(){});
+          return {text:app.innerText, points:app.querySelectorAll('.chart-point').length};
+        """, self.raw)
+        self.assertIn("Chưa có mẫu lịch sử", info["text"])
+        self.assertEqual(info["points"], 0)
+
+    def test_fan_motion_actually_runs_and_respects_reduced_motion(self):
+        self.open_state("vent_detail")
+        moved = self.browser._session("POST", "/execute/async", {"script": """
+          var done=arguments[arguments.length-1], el=document.querySelector('.fan.RUNNING .fan-blades');
+          var initial=getComputedStyle(el).transform;
+          setTimeout(function(){done(initial!==getComputedStyle(el).transform);},180);
+        """, "args": []})
+        self.assertTrue(moved)
+        reduced = Browser(prefs={"ui.prefersReducedMotion": 1})
+        try:
+            reduced.open(self.url + "#vent_detail")
+            self.assertTrue(reduced.run("return matchMedia('(prefers-reduced-motion: reduce)').matches"))
+            names = reduced.run("return [...document.querySelectorAll('.fan-blades')].map(function(el){return getComputedStyle(el).animationName;})")
+            self.assertTrue(all(name == "none" for name in names))
+        finally:
+            reduced.close()
+
     def test_non_demo_or_wrong_contract_fixture_rejected(self):
         self.open_state("default")
         errors = self.browser.run("""
@@ -178,10 +207,11 @@ class DashboardBrowserTest(unittest.TestCase):
             secondary: [...app.querySelectorAll('.secondary-row b')].map(b => b.innerText),
             platformTags: app.querySelectorAll('.controller-summary .derived-tag').length,
             louvers: [...app.querySelectorAll('.louver text')].map(t => t.textContent)};""")
-        self.assertEqual(info["fans"], ["fan RUNNING", "fan RUNNING", "fan RUNNING", "fan STOPPED", "fan UNKNOWN", "fan STOPPED"])
-        self.assertEqual(info["cards"][-1], "NOT CONFIGURED")
+        self.assertEqual([classes.split()[1] for classes in info["fans"]], ["RUNNING", "RUNNING", "RUNNING", "STOPPED", "UNKNOWN", "STOPPED"])
+        self.assertTrue(all("quality-" in classes and "connectivity-ONLINE" in classes for classes in info["fans"]))
+        self.assertEqual(info["cards"][-1], "Chưa cấu hình")
         self.assertNotIn("FAULT", " ".join(info["cards"] + info["fanLabels"]))
-        self.assertEqual(info["flags"], ["ACTIVE", "NORMAL"])
+        self.assertEqual(info["flags"], ["Đang bật", "Bình thường"])
         self.assertEqual((info["stage"], info["mode"], info["basis"], info["online"]), ("4", "AUTO", "Nhiệt độ thực", "ONLINE"))
         self.assertEqual(info["secondary"], ["--", "--", "--", "NOT CONFIGURED"])
         self.assertEqual(info["platformTags"], 2)
@@ -199,8 +229,8 @@ class DashboardBrowserTest(unittest.TestCase):
           var g = document.querySelectorAll('.fan')[5];
           return {cls: g.getAttribute('class'), label: g.querySelector('.svg-sub').textContent, opacity: getComputedStyle(g).opacity,
                   visible: g.getBoundingClientRect().width > 0};""", self.raw)
-        self.assertEqual(info["cls"], "fan NOT_CONFIGURED")
-        self.assertEqual(info["label"], "NOT CONFIGURED")
+        self.assertEqual(info["cls"].split()[:2], ["fan", "NOT_CONFIGURED"])
+        self.assertEqual(info["label"], "Chưa cấu hình")
         self.assertTrue(info["visible"])
         self.assertLess(float(info["opacity"]), 1)
 
@@ -212,11 +242,16 @@ class DashboardBrowserTest(unittest.TestCase):
             airHeaders: [...app.querySelectorAll('.air-water th')].map(th => th.innerText),
             airCells: [...app.querySelectorAll('.air-water td')].map(td => td.innerText),
             indoor: app.querySelector('.chart .inside').getAttribute('d'), perceived: app.querySelector('.chart .perceived').getAttribute('d'),
+            axes: [app.querySelectorAll('.chart .axis-left').length, app.querySelectorAll('.chart .axis-right').length],
+            samples: [...app.querySelectorAll('.chart-sample')].map(sample => [sample.tabIndex, sample.getAttribute('role'), sample.getAttribute('aria-label'), sample.querySelectorAll('.chart-point').length]),
             notice: app.querySelector('.air-water .notice') && app.querySelector('.air-water .notice').innerText};""")
         self.assertEqual(info["envHeaders"], ["Thời gian", "Nhiệt độ trong", "Nhiệt độ ngoài", "Nhiệt độ cảm nhận", "Độ ẩm", "Chất lượng"])
         self.assertEqual(info["airHeaders"], ["Thời gian", "Tốc độ gió", "Lưu lượng gió", "Nước tiêu thụ (tổng)", "Chất lượng"])
         self.assertEqual(info["indoor"].count("M"), 2)
         self.assertEqual(info["perceived"].count("M"), 1)
+        self.assertEqual(info["axes"], [4, 4])
+        self.assertTrue(info["samples"])
+        self.assertTrue(all(sample[0] == 0 and sample[1] == "img" and sample[2] and sample[3] for sample in info["samples"]))
         values = [c for i, c in enumerate(info["airCells"]) if i % 5 in (1, 2, 3)]
         self.assertEqual(set(values), {"--"})
         self.assertIn("không hiển thị giá trị giả", info["notice"])
@@ -225,10 +260,12 @@ class DashboardBrowserTest(unittest.TestCase):
         self.open_state("vent_alarms")
         info = self.browser.run("""
           var app = document.getElementById('app');
-          return {controls: app.querySelectorAll('button, input, select, textarea, form').length,
+          return {controls: app.querySelectorAll('button, input:not([data-filter-input=alarm]), select, textarea, form').length,
+            filter: app.querySelectorAll('[data-filter-input=alarm]').length,
             types: [...app.querySelectorAll('.data-table tbody b')].map(b => b.innerText),
             sources: [...app.querySelectorAll('.data-table tbody .source-tag')].map(e => e.innerText)};""")
         self.assertEqual(info["controls"], 0)
+        self.assertEqual(info["filter"], 1)
         self.assertEqual(info["types"], ["EQUIPMENT_FAULT_ACTIVE", "TELEMETRY_STALE", "DEVICE_OFFLINE"])
         self.assertEqual(info["sources"], ["PLC", "PLATFORM", "PLATFORM"])
 
@@ -243,7 +280,8 @@ class DashboardBrowserTest(unittest.TestCase):
             cells: app.querySelectorAll('[data-setting-key]').length,
             unique: new Set([...app.querySelectorAll('[data-setting-key]')].map(e => e.getAttribute('data-setting-key'))).size,
             values: [...new Set([...app.querySelectorAll('[data-setting-key]')].map(e => e.innerText))],
-            controls: app.querySelectorAll('button, input, select, textarea, form').length,
+            controls: app.querySelectorAll('button, input:not([data-filter-input=settings]), select, textarea, form').length,
+            filter: app.querySelectorAll('[data-filter-input=settings]').length,
             note: app.innerText.indexOf('9 slot = năng lực cấu hình tối đa') >= 0,
             hashUnchanged: location.hash === hashBefore, text: app.innerText};""")
         self.assertEqual(info["tabs"], ["Tổng quan", "Giám sát", "Lịch sử", "Cảnh báo", "Cài đặt"])
@@ -251,19 +289,28 @@ class DashboardBrowserTest(unittest.TestCase):
         self.assertEqual((info["cells"], info["unique"]), (224, 224))
         self.assertEqual(info["values"], ["--"])
         self.assertEqual(info["controls"], 0)
+        self.assertEqual(info["filter"], 1)
         self.assertTrue(info["note"])
         self.assertTrue(info["hashUnchanged"])
-        self.assertIn("READ-ONLY · 224 thông số", info["text"])
+        self.assertIn("Chỉ xem · 224 thông số", info["text"])
         self.assertNotRegex(info["text"], r"\bD1[0-4]\d\d\b")
 
-    def test_mobile_has_no_page_overflow(self):
-        self.browser.resize(390, 844)
+    def test_mobile_iframe_has_real_390px_width_and_no_page_overflow(self):
+        element_key = "element-6066-11e4-a52e-4f735466cecf"
+        self.browser.resize(1280, 1000)
         try:
+            self.browser._session("POST", "/url", {"url": self.server.base_url + "/deploy/thingsboard/mobile_frame.html"})
+            frame = self.browser._session("POST", "/element", {"using": "css selector", "value": "#device"})[element_key]
+            self.browser._session("POST", "/frame", {"id": {element_key: frame}})
+            self.browser.run("location.href = arguments[0]", self.url + "#default")
+            self.browser.wait_for("return !!document.querySelector('.vent-header') && window.innerWidth === 390")
             for state in ("default", "vent_detail", "vent_history", "vent_alarms", "vent_settings"):
-                self.open_state(state)
+                self.browser.run("location.hash = arguments[0]", state)
+                self.browser.wait_for("return !!document.querySelector('.state-tabs a.active[href=\"#%s\"]')" % state)
                 overflow = self.browser.run("return document.documentElement.scrollWidth - document.documentElement.clientWidth")
                 self.assertLessEqual(overflow, 0, state)
         finally:
+            self.browser._session("POST", "/frame/parent", {})
             self.browser.resize(1920, 1080)
 
 

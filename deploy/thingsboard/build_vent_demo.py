@@ -8,6 +8,7 @@ dashboard/thingsboard-reset.css, dashboard/dashboard.css, dashboard/thingsboard-
   python3 deploy/thingsboard/build_vent_demo.py          # ghi file build
   python3 deploy/thingsboard/build_vent_demo.py --check  # báo lỗi nếu file build lệch nguồn
 """
+import base64
 import json
 import re
 import sys
@@ -55,6 +56,7 @@ def build_controller():
         "// Demo fixture cô lập: không datasource, không telemetry, không RPC, không ghi attribute.\n"
         "self.onInit = function () {\n"
         "  var __vent = {};\n"
+        "  __vent.VentilationAssets = {barnIllustration: " + json.dumps("data:image/png;base64," + base64.b64encode((ROOT / "dashboard/assets/ventilation-barn-v1.png").read_bytes()).decode("ascii")) + "};\n"
         + scope_iife(read("widgets/ventilation-contract-v03.js"), "contract") + "\n"
         + scope_iife(read("widgets/ventilation-adapter.js"), "adapter") + "\n"
         + scope_iife(read("dashboard/app.js"), "app") + "\n"
@@ -63,13 +65,18 @@ def build_controller():
         "  var container = ctx.$container[0].querySelector('.vent-demo-root');\n"
         "  var viewState = (ctx.settings && ctx.settings.viewState) || 'default';\n"
         "  var vm = __vent.VentilationAdapter.createViewModel(FIXTURE);\n"
-        "  __vent.VentilationDashboard.render(container, vm, viewState, function (next) {\n"
-        "    if (next === viewState) return;\n"
-        "    ctx.stateController.openState(next, {}, false);\n"
-        "  });\n"
+        "  var stateParams = ctx.stateController.getStateParams ? ctx.stateController.getStateParams() : {};\n"
+        "  var currentParams = {barnId: stateParams.barnId || (vm.barns[0] || {}).id};\n"
+        "  function draw() { __vent.VentilationDashboard.render(container, vm, viewState, function (next, params) {\n"
+        "    if (next === viewState && params && params.barnId === currentParams.barnId) return;\n"
+        "    ctx.stateController.openState(next, params || {}, false);\n"
+        "    if (next === viewState) { currentParams = params || {}; draw(); }\n"
+        "  }, currentParams); }\n"
+        "  draw();\n"
+        "  self._ventRedraw = viewState === 'vent_history' ? draw : null;\n"
         "};\n"
-        "self.onResize = function () {};\n"
-        "self.onDestroy = function () {};\n"
+        "self.onResize = function () { if (self._ventRedraw) self._ventRedraw(); };\n"
+        "self.onDestroy = function () { self._ventRedraw = null; };\n"
     )
 
 
@@ -188,7 +195,7 @@ def validate(widget, dashboard):
     # location.hash chỉ còn trong nhánh standalone, nhánh này return sớm khi root !== window.
     if "if (root !== window) return;" not in js:
         problems.append("standalone guard missing")
-    if "ctx.stateController.openState(next, {}, false)" not in js:
+    if "ctx.stateController.openState(next, params || {}, false)" not in js:
         problems.append("navigation must use stateController.openState")
     if ":root,.vent-demo-root{" not in d["templateCss"] or "tb-preview" in d["templateCss"] or "tb-topbar" in d["templateCss"]:
         problems.append("css scope / preview shell")
