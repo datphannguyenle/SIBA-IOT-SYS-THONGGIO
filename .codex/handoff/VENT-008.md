@@ -50,6 +50,12 @@ descriptor size budget and embedded original artwork. Actual live rollback was n
 
 ## UNCERTAIN / RISKS
 
+Fresh completion audit 20/09/2026 12:48 +07: demo still matches deployed source, but candidate
+controller/system names return 404, target profiles are absent in the inspected profile list,
+pilot relations have no ventilation controller, and all 265 PLC source mappings remain blank.
+See `docs/ventilation/deployment/vent008_completion_audit.md`. Await concrete owner/PLC evidence;
+do not substitute another UI polish loop for full-system completion. Blocked audit count: 1.
+
 Full live five-state browser verification and API regression passed. Physical-data readiness is not proven.
 PLC source/mapping and runtime freshness/alarms/export not promoted; VENT-002 not ready,
 VENT-005 paused. Never present illustrative building topology as physical installation.
