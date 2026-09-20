@@ -11,6 +11,7 @@ timed-out write automatically. An indeterminate result needs read-only investiga
 import argparse
 import copy
 import json
+import re
 import sys
 
 from deploy_vent_demo import (dashboards_referencing_namespace, descriptor_key,
@@ -196,11 +197,19 @@ def rollback():
 
 
 def main():
+    global BACKUP, RECORD, RESULT
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", choices=("preflight", "execute", "verify", "rollback"))
     parser.add_argument("--confirm-update", action="store_true")
     parser.add_argument("--confirm-rollback", action="store_true")
+    parser.add_argument("--run-id", default="initial", help="new explicit attempt only after read-only reconciliation")
     args = parser.parse_args()
+    if not re.fullmatch(r"[a-z0-9-]{1,32}", args.run_id):
+        parser.error("invalid run id")
+    if args.run_id != "initial":
+        BACKUP = EVIDENCE_DIR / ("vent008_before_update_%s.json" % args.run_id)
+        RECORD = EVIDENCE_DIR / ("vent008_execution_%s.json" % args.run_id)
+        RESULT = EVIDENCE_DIR / ("vent008_regression_%s.json" % args.run_id)
     if args.action == "preflight":
         result = preflight(GuardedTB())
         path = EVIDENCE_DIR / "vent008_readonly_preflight.json"

@@ -71,7 +71,7 @@
       esc(alarm.message) + '</span><small>' + esc(alarm.originator) + '</small></article>'; }).join('') + '</div></section></div>' + footer() + '</section>';
   }
   function overviewIllustration() {
-    var src = root.VentilationAssets ? root.VentilationAssets.barnIllustration : 'assets/ventilation-barn-v1.png';
+    var src = root.VentilationAssets ? root.VentilationAssets.barnIllustration : 'assets/ventilation-barn-v1.webp';
     return '<div class="overview-context"><div class="overview-context__copy"><p class="eyebrow">KHÔNG GIAN GIÁM SÁT</p><h3>Môi trường rõ ràng.<br>Vận hành trong tầm nhìn.</h3><p>Theo dõi môi trường, quạt và cửa khí trong cùng một giao diện.</p><a href="#vent_detail" data-nav="vent_detail" data-barn-id="' + esc(sampleBarnId()) + '" class="text-link">Xem nhà mẫu ND2-1 →</a></div><figure class="barn-illustration"><img src="' + esc(src) + '" width="1536" height="1024" alt="Minh họa kiến trúc nhà thông gió, không phải cấu hình thiết bị thực tế" decoding="async"><figcaption>MINH HỌA · Không phải bản vẽ hiện trạng</figcaption></figure></div>';
   }
   function equipmentCards() {

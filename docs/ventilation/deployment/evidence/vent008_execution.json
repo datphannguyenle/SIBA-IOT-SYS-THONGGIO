@@ -1,0 +1,19 @@
+{
+  "task": "VENT-008",
+  "repository_commit": "b3c647064fd9153a66dcdf2c5b914dffd982d420",
+  "started_at": "2026-09-20T07:35:15+07:00",
+  "authorization": "User authorization to finish current checkpoint; isolated demo only",
+  "mutations": [
+    {
+      "kind": "widget",
+      "method": "POST",
+      "path": "/api/widgetType",
+      "id": "b9fa9280-b26a-11f1-83ad-9912edc644d2",
+      "status": "response received",
+      "at": "2026-09-20T07:35:15+07:00",
+      "http_status": 500
+    }
+  ],
+  "written_fingerprints": {},
+  "results": {}
+}

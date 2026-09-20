@@ -43,6 +43,11 @@ class PayloadStaticTest(unittest.TestCase):
                        capture_output=True)
         self.assertEqual(build_vent_demo.validate(self.widget, self.dashboard), [])
 
+    def test_oversized_descriptor_is_rejected_before_deployment(self):
+        self.widget["descriptor"]["controllerScript"] += " " * 900001
+        self.assertIn("descriptor exceeds safe 900000-character embedding budget",
+                      build_vent_demo.validate(self.widget, self.dashboard))
+
     def test_identity_and_isolation(self):
         self.assertEqual(self.widget["fqn"], "siba_vent_demo.vent_demo_view")
         self.assertNotIn("id", self.widget)
@@ -195,7 +200,7 @@ class WidgetRuntimeHarnessTest(unittest.TestCase):
     def test_generated_illustration_is_embedded_and_loads_without_external_host(self):
         self.mount("default")
         self.browser.wait_for("var image=document.querySelector('.barn-illustration img'); return image && image.complete && image.naturalWidth > 0")
-        self.assertTrue(self.browser.run("return document.querySelector('.barn-illustration img').src.startsWith('data:image/png;base64,')"))
+        self.assertTrue(self.browser.run("return document.querySelector('.barn-illustration img').src.startsWith('data:image/webp;base64,')"))
         self.assertIn("MINH HỌA", self.browser.run("return document.querySelector('.barn-illustration figcaption').textContent"))
 
     def test_detail_values_and_global_css_isolation(self):

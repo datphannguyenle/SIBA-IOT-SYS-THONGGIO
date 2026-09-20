@@ -4,7 +4,11 @@
 Source: the tool's local generated artifact, copied into this repository without visual edits.
 Displayed as conceptual architecture only, with an explicit caption. Not a photograph,
 installation drawing, equipment inventory, airflow direction or live status evidence.
-The ThingsBoard builder embeds this local PNG; no third-party image request is needed.
+The ThingsBoard builder embeds `ventilation-barn-v1.webp`, encoded at the same resolution
+for transport by `tools/encode_dashboard_asset.py`; no third-party image request is needed.
+The original PNG is retained unchanged. The conversion changes compression, not geometry
+or composition. It is necessary because live TB rejects oversized descriptor strings
+with PostgreSQL `value too long for type character varying(1000000)`.
 
 ## Final generation prompt
 

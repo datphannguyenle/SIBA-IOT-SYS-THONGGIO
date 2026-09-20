@@ -56,7 +56,7 @@ def build_controller():
         "// Demo fixture cô lập: không datasource, không telemetry, không RPC, không ghi attribute.\n"
         "self.onInit = function () {\n"
         "  var __vent = {};\n"
-        "  __vent.VentilationAssets = {barnIllustration: " + json.dumps("data:image/png;base64," + base64.b64encode((ROOT / "dashboard/assets/ventilation-barn-v1.png").read_bytes()).decode("ascii")) + "};\n"
+        "  __vent.VentilationAssets = {barnIllustration: " + json.dumps("data:image/webp;base64," + base64.b64encode((ROOT / "dashboard/assets/ventilation-barn-v1.webp").read_bytes()).decode("ascii")) + "};\n"
         + scope_iife(read("widgets/ventilation-contract-v03.js"), "contract") + "\n"
         + scope_iife(read("widgets/ventilation-adapter.js"), "adapter") + "\n"
         + scope_iife(read("dashboard/app.js"), "app") + "\n"
@@ -185,6 +185,10 @@ def dashboard_payload():
 def validate(widget, dashboard):
     problems = []
     d = widget["descriptor"]
+    # Live TB 4.3.1.2 rejects a descriptor exceeding varchar(1000000).
+    # Keep margin for serialization/normalization, and block BEFORE any network write.
+    if len(json.dumps(d, ensure_ascii=False)) > 900000:
+        problems.append("descriptor exceeds safe 900000-character embedding budget")
     if widget["fqn"] != WIDGET_FQN or d["type"] != "static" or "id" in widget:
         problems.append("widget identity/type")
     js = d["controllerScript"]
