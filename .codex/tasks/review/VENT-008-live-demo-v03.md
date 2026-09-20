@@ -2,7 +2,15 @@
 
 ## Status
 
-`active — UI completion and controlled isolated-demo update` (20/09/2026).
+`review — isolated demo updated and live browser verification PASS` (20/09/2026).
+
+Latest checkpoint: source `4cb5eb2`, widget live version **3**, dashboard live version **2**,
+five states. Two updates succeeded; API read-back matches build and protected tenant baseline
+is unchanged. One earlier HTTP 500 size rejection was reconciled read-only (no state change)
+and preserved in its own journal. Do not rerun deployment; see `.codex/handoff/VENT-008.md`.
+Final report: `docs/ventilation/deployment/vent008_execution_report.md`.
+67/67 tests PASS; 20 live viewport/state checks + 4 Barn-navigation checks PASS.
+No self-granted implementation-ready gate; awaiting visual review and separate physical-data work.
 
 The preflight-only checkpoint below is historical. The user's subsequent instruction
 to continue the current checkpoint with full authority to finish the dashboard authorizes
@@ -16,7 +24,7 @@ Prepare and execute a controlled live update of the existing VENT-006 isolated T
 to the approved VENT-007 5-state Data Contract v0.3 build, with full rollback capability and zero
 production entity impact.
 
-## Target Entities Confirmed on Live Tenant
+## Historical preflight target versions — superseded by Status above
 
 - **Widget Type**:
   - ID: `b9fa9280-b26a-11f1-83ad-9912edc644d2`
@@ -44,7 +52,7 @@ production entity impact.
    - Confirm IDs, titles, state counts, isolation parameters.
    - Save sanitized rollback backup to `docs/ventilation/deployment/evidence/vent008_preflight_live_backup.json`.
    - Produce detailed diff and mutation plan.
-2. **Controlled live update** (authorized by subsequent user instruction; verification pending):
+2. **Controlled live update** (authorized by subsequent user instruction; DONE and verified):
    - Update widget type via `POST /api/widgetType`.
    - Update dashboard via `POST /api/dashboard`.
    - Re-verify UI in headless Firefox.
@@ -59,7 +67,7 @@ production entity impact.
 - Connecting to live PLC or Gateway.
 - Resuming VENT-005.
 
-## Pre-Flight Findings
+## Historical Pre-Flight Findings
 
 - Live widget type is intact at version 2, cleanly isolated.
 - Live dashboard is intact at version 1, containing 4 isolated widgets (`datasources: []`, `actions: {}`, `entityAliases: {}`).
@@ -72,7 +80,9 @@ production entity impact.
 ## Rollback Procedure
 
 In case of failure or visual regression:
-- Run guarded rollback script restoring payloads from `docs/ventilation/deployment/evidence/vent008_preflight_live_backup.json`.
+- Use `update_vent_demo.py rollback --confirm-rollback --run-id webp` under the deployment lock;
+  current rollback payloads are in `docs/ventilation/deployment/evidence/vent008_before_update_webp.json`.
+  The original `vent008_preflight_live_backup.json` remains historical and unchanged.
 - Restores widget type to VENT-006 refinement CSS / controller script.
 - Restores dashboard configuration to 4 states (`default`, `vent_detail`, `vent_history`, `vent_alarms`).
 

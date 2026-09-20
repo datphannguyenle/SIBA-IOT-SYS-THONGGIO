@@ -9,9 +9,11 @@ viewport/overflow checks. New original barn illustration is labelled conceptual,
 Barn selection; it does not replace status graphics. Reference review and provenance:
 `modern_reference_review.md`, `dashboard/assets/README.md`.
 
-Source tests: 64/64 PASS including same-state Barn recovery, embedded image load,
+Source tests: 67/67 PASS including same-state Barn recovery, embedded image load,
 actual fan animation/reduced-motion, 224 settings and 390px layout. Live ThingsBoard
 verification is separate; do not treat this standalone result as deployment evidence.
+The subsequent VENT-008 live verification also passed all 20 measured viewport/state checks
+and all four Barn-navigation checks; see `../deployment/vent008_execution_report.md`.
 
 The VENT-007 evidence section below is historical; measured VENT-008 captures supersede
 its unverified mobile-size claims. Contract data/fixture values remain unchanged.

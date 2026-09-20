@@ -66,6 +66,10 @@ var info = {
   }())
 };
 if (state === 'default') {
+  var illustration = root.querySelector('.barn-illustration img');
+  info.illustration = illustration && {loaded: illustration.complete && illustration.naturalWidth > 0,
+    width: illustration.naturalWidth, height: illustration.naturalHeight,
+    embedded: illustration.src.indexOf('data:image/webp;base64,') === 0};
   info.barns = [...root.querySelectorAll('.barn-card')].map(function (card) {
     return {id: card.getAttribute('data-barn-id'), label: card.querySelector('b').innerText};
   });
@@ -121,6 +125,8 @@ def validate(state, info, expected_width=None):
         problems.append("horizontal overflow")
     if not info["reducedMotionRule"]:
         problems.append("reduced-motion fan safety rule")
+    if state == "default" and info.get("illustration") != {"loaded": True, "width": 1536, "height": 1024, "embedded": True}:
+        problems.append("original embedded illustration")
     if state == "vent_detail" and info["runningAnimation"] != "vent-fan-spin":
         problems.append("current online running fan animation")
     if state == "vent_detail" and not any(item["raw"] == "RUNNING" and item["text"] == "Đang chạy"
@@ -154,28 +160,44 @@ def check_all_states(browser, label, temporary_dir, shoot, expected_width=None):
     result = {"innerWidth": browser.run("return window.innerWidth"), "states": {}}
     for state in STATES:
         go_state(browser, state)
+        if state == "default":
+            browser.wait_for("var img=document.querySelector('.barn-illustration img'); return img && img.complete && img.naturalWidth > 0")
         info = browser.run(STATE_CHECK, state)
+        if state == "vent_detail":
+            info["fanActuallyMoves"] = browser._session("POST", "/execute/async", {"script": """
+              var cb=arguments[arguments.length-1],el=document.querySelector('.fan.RUNNING .fan-blades');
+              var start=getComputedStyle(el).transform;
+              setTimeout(function(){cb(start!==getComputedStyle(el).transform);},220);
+            """, "args": []})
         filename = "vent008-%s-%s.png" % (label, state.replace("_", "-"))
         target = pathlib.Path(temporary_dir) / filename
         shoot(target)
         evidence = EVIDENCE_DIR / filename
         evidence.write_bytes(target.read_bytes())
-        result["states"][state] = {"problems": validate(state, info, expected_width), "observed": info, "screenshot": filename}
+        problems = validate(state, info, expected_width)
+        if state == "vent_detail" and not info["fanActuallyMoves"]:
+            problems.append("fan transform did not change over time")
+        result["states"][state] = {"problems": problems, "observed": info, "screenshot": filename}
     return result
 
 
 def verify_barn_navigation(browser):
     go_state(browser, "default")
-    barns = browser.run("return [...document.querySelectorAll('.vent-demo-root .barn-card')].map(function (card) { return {id:card.getAttribute('data-barn-id'), label:card.querySelector('b').innerText}; })")
+    barns = browser.run("return [...document.querySelectorAll('.vent-demo-root .barn-card')].map(function (card) { return {id:card.getAttribute('data-barn-id'), label:card.querySelector('b').firstChild.textContent.trim()}; })")
     if len(barns) < 2:
         return {"problems": ["insufficient barn cards"]}
     browser.run("document.querySelectorAll('.vent-demo-root .barn-card')[1].click()")
     browser.wait_for("return !!document.querySelector('.vent-demo-root .selected-barn-context')", timeout=60)
-    context = browser.run("var root=document.querySelector('.vent-demo-root'); return {text:root.querySelector('.selected-barn-context').innerText, detail:root.querySelectorAll('.detail-layout').length};")
+    context = browser.run("var root=document.querySelector('.vent-demo-root'); return {label:root.querySelector('.selected-barn-context h2').textContent.trim(), text:root.querySelector('.selected-barn-context').innerText, detail:root.querySelectorAll('.detail-layout').length};")
     problems = []
-    if barns[1]["label"].split("\n")[0] not in context["text"] or context["detail"]:
+    if barns[1]["label"] != context["label"] or context["detail"]:
         problems.append("barn navigation context")
-    return {"selected": barns[1], "context": context, "problems": problems}
+    browser.run("document.querySelector('.selected-barn-context [data-barn-id]').click()")
+    browser.wait_for("return !!document.querySelector('.detail-layout')", timeout=60)
+    recovered = browser.run("return document.querySelector('.detail-main h2').innerText")
+    if "ND2-1" not in recovered:
+        problems.append("same-state sample recovery")
+    return {"selected": barns[1], "context": context, "sampleRecovery": recovered, "problems": problems}
 
 
 def run_desktop(label, width, height, temporary_dir):

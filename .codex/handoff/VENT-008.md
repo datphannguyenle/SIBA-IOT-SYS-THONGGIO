@@ -2,8 +2,17 @@
 
 ## STATUS
 
-Active; UI completion, isolated demo deployment pending. Resume from actual worktree and
+Review; **isolated demo UPDATED and live browser VERIFIED**. Resume from actual worktree and
 live object versions, not from older VENT-003 instructions. Branch: `feat/VENT-008-live-demo-v03`.
+
+Latest source commit: `4cb5eb2`. At 07:38 +07, two successful updates: widget version 3,
+dashboard version 2, all five states; payload equality and protected regression PASS.
+See `vent008_execution_webp.json` / `vent008_regression_webp.json`. **Do not execute again.**
+Initial attempt HTTP 500 exceeded descriptor varchar(1000000); GET proved both original
+objects unchanged. Journal and reconciliation preserved. WebP encoding is 162478 bytes,
+original PNG retained. 67/67 tests PASS. Live verifier completed: 20 state/viewport checks
+and 4 Barn navigation/recovery checks PASS. Final report:
+`docs/ventilation/deployment/vent008_execution_report.md` with exact evidence filenames.
 
 ## MODELS USED
 
@@ -22,37 +31,35 @@ live object versions, not from older VENT-003 instructions. Branch: `feat/VENT-0
 - Fixed actual 390px settings overflow (wrapper min-width), Barn selection silently showing
   ND2-1, separately normalized temperature curves, and Firefox fan animation requiring
   explicit from/to rotation keyframes.
-- 64 tests passed before final chart-width refinement. Must rerun after latest source/build.
+- Final source/build passed 67 tests, including two offline reverse-rollback/concurrent-edit cases.
 - 20 standalone captures at 1920×1080,1366×768,820×1180,390×844 in dashboard/evidence;
-  actual viewport measurements in vent008_capture.json. Refresh after latest chart change.
+  actual viewport measurements in vent008_capture.json. Captures refreshed after chart refinement.
 
 ## CHANGES
 
-UI app/CSS, embedded original PNG in dashboard/assets, builder state params and resize,
+UI app/CSS, original PNG plus embedded optimized WebP in dashboard/assets, builder state params and resize,
 tests, reference/reuse docs; new `update_vent_demo.py` and `verify_vent008_ui.py`.
 User's original `vent008_preflight_live_backup.json` preserved unchanged.
 
 ## TESTS
 
-`PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v` — last completed
-64/64 PASS, 14 seconds. Includes actual motion/reduced-motion, missing history,
-safe search inputs, exact demo IDs, timeout non-retry, embedded original image.
+`PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -q` — last completed
+67/67 PASS, 11.789 seconds. Includes actual motion/reduced-motion, missing history,
+safe search inputs, exact demo IDs, timeout non-retry, reverse rollback/concurrent-edit guards,
+descriptor size budget and embedded original artwork. Actual live rollback was not executed.
 
 ## UNCERTAIN / RISKS
 
-No live update yet at this checkpoint. Full live five-state browser verification pending.
+Full live five-state browser verification and API regression passed. Physical-data readiness is not proven.
 PLC source/mapping and runtime freshness/alarms/export not promoted; VENT-002 not ready,
 VENT-005 paused. Never present illustrative building topology as physical installation.
 Remote PR #3 remains open on older branch; no merge or branch rewriting authorized here.
 
 ## NEXT RECOMMENDED ACTION
 
-1. Final build + 64-test suite + diff/secret/mutation checks; regenerate screenshots.
-2. Save source commit. Acquire shared `deploy.lock` (only own `thong-gio.lock` currently held).
-3. Fresh preflight, then `update_vent_demo.py execute --confirm-update` only under latest
-   user authorization for current-checkpoint isolated demo; exactly existing widget/dashboard.
-4. New updater writes backup+execution journal BEFORE network writes; if record already
-   exists inspect it and GET live objects before any retry. Never duplicate uncertain writes.
-5. Run new live verifier, inspect screenshots and actual browser interactions. Keep old verifier historical.
-6. Update source docs/task/profile and evidence, commit/push existing VENT-008 branch; no PR merge.
-7. Release owned locks only after handoff. Current source goal remains active until verified usable UI.
+1. User/ChatGPT Web visual review of the running five-state demo and reusable UI standard.
+2. If needed, GET-only reverify: `update_vent_demo.py verify --run-id webp`; never execute this run again.
+3. Task is in `.codex/tasks/review/VENT-008-live-demo-v03.md`. Check shared lock directory
+   before any new work; final handoff releases this task's locks.
+4. Physical integration requires evidence and separate gate; do not infer it from successful demo tests.
+5. Original full-system goal is not declared complete merely because this UI/demo milestone passed.

@@ -1,7 +1,9 @@
 """Offline safeguards for the bounded VENT-008 updater; no network calls."""
 import copy
+import json
 import pathlib
 import sys
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
@@ -73,6 +75,59 @@ class UpdateSafetyTest(unittest.TestCase):
             update.checked_write(writer, "/api/dashboard", {}, {}, {"mutations": []})
         self.assertNotIn("private", str(error.exception))
         self.assertEqual(writer.calls, 1)
+
+    def rollback_case(self, concurrent_edit=False):
+        old = {
+            "widget": {"id": {"id": update.WIDGET_ID}, "descriptor": {"defaultConfig": "{}"},
+                       "name": "old", "description": "old", "deprecated": False, "scada": False},
+            "dashboard": {"id": {"id": update.DASHBOARD_ID}, "configuration": {"version": "old"}},
+        }
+        current = copy.deepcopy(old)
+        current["widget"]["name"] = "new"
+        current["dashboard"]["configuration"] = {"version": "new"}
+        record = {"written_fingerprints": {k: update.fingerprint(v) for k, v in current.items()}, "mutations": []}
+        if concurrent_edit:
+            current["dashboard"]["configuration"] = {"version": "another-owner"}
+        sent, written = [], []
+
+        class FakeTB:
+            def __init__(self, **kwargs):
+                self.token = "offline-test-only"
+
+            def get_ok(self, path):
+                return copy.deepcopy(current["widget" if "/widgetType/" in path else "dashboard"])
+
+            def request(self, path, method, body):
+                kind = "widget" if path == "/api/widgetType" else "dashboard"
+                sent.append((path, method))
+                current[kind] = copy.deepcopy(body)
+                return 200, copy.deepcopy(body)
+
+        backup = {"objects": old, "protected": {}}
+        with patch.object(update, "GuardedTB", FakeTB), patch.object(update, "identity"), \
+                patch.object(update, "snapshot", return_value={}), \
+                patch.object(update, "BACKUP", SimpleNamespace(read_text=lambda **kw: json.dumps(backup))), \
+                patch.object(update, "RECORD", SimpleNamespace(read_text=lambda **kw: json.dumps(record))), \
+                patch.object(update, "write_json", side_effect=lambda path, value: written.append(copy.deepcopy(value))), \
+                patch("builtins.print"):
+            if concurrent_edit:
+                with self.assertRaisesRegex(RuntimeError, "changed since this run"):
+                    update.rollback()
+            else:
+                update.rollback()
+        return old, current, sent, written
+
+    def test_rollback_restores_in_reverse_order_without_deletes(self):
+        old, current, sent, written = self.rollback_case()
+        self.assertEqual(sent, [("/api/dashboard", "POST"), ("/api/widgetType", "POST")])
+        self.assertEqual(current, old)
+        self.assertTrue(written[-1]["rollback_protected_unchanged"])
+        self.assertEqual(written[-1]["written_fingerprints"], {})
+
+    def test_rollback_refuses_concurrent_edit_before_any_write(self):
+        old, current, sent, written = self.rollback_case(concurrent_edit=True)
+        self.assertEqual(sent, [])
+        self.assertEqual(current["dashboard"]["configuration"], {"version": "another-owner"})
 
 
 if __name__ == "__main__":

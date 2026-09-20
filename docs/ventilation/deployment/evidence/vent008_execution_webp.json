@@ -1,0 +1,51 @@
+{
+  "task": "VENT-008",
+  "repository_commit": "4cb5eb253a73cbe34d00e1699f47d4fa5b6975b0",
+  "started_at": "2026-09-20T07:38:39+07:00",
+  "authorization": "User authorization to finish current checkpoint; isolated demo only",
+  "mutations": [
+    {
+      "kind": "widget",
+      "method": "POST",
+      "path": "/api/widgetType",
+      "id": "b9fa9280-b26a-11f1-83ad-9912edc644d2",
+      "status": "verified",
+      "at": "2026-09-20T07:38:39+07:00",
+      "http_status": 200
+    },
+    {
+      "kind": "dashboard",
+      "method": "POST",
+      "path": "/api/dashboard",
+      "id": "b9ff4d70-b26a-11f1-83ad-9912edc644d2",
+      "status": "verified",
+      "at": "2026-09-20T07:38:39+07:00",
+      "http_status": 200
+    }
+  ],
+  "written_fingerprints": {
+    "widget": "de8a13821e2bb6a93567591f890c7b1a8cfb9ad6bf28caae9161f2ec80e48cdf",
+    "dashboard": "529b400490abef6640f8beb1e8651d879b26c8680dd4d50df0f6a47b111bf6d3"
+  },
+  "results": {
+    "widget": {
+      "verified": true,
+      "version": 3
+    },
+    "dashboard": {
+      "verified": true,
+      "version": 2
+    }
+  },
+  "finished_at": "2026-09-20T07:38:39+07:00",
+  "guard_mutations": [
+    {
+      "method": "POST",
+      "path": "/api/widgetType"
+    },
+    {
+      "method": "POST",
+      "path": "/api/dashboard"
+    }
+  ]
+}
