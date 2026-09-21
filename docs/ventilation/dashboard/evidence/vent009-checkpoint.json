@@ -1,0 +1,35 @@
+[
+  {
+    "width": 1672,
+    "height": 941,
+    "overflow": 0,
+    "fans": 6,
+    "title": "Giám sát nhà ND2-1",
+    "bodyHeight": 944,
+    "writableInputs": 0,
+    "screenshot": "vent009-detail-1672.png",
+    "scope": "local-only"
+  },
+  {
+    "width": 1366,
+    "height": 768,
+    "overflow": 0,
+    "fans": 6,
+    "title": "Giám sát nhà ND2-1",
+    "bodyHeight": 982,
+    "writableInputs": 0,
+    "screenshot": "vent009-detail-1366.png",
+    "scope": "local-only"
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "overflow": 0,
+    "fans": 6,
+    "title": "Giám sát nhà ND2-1",
+    "bodyHeight": 1971,
+    "writableInputs": 0,
+    "screenshot": "vent009-detail-390.png",
+    "scope": "local-only"
+  }
+]

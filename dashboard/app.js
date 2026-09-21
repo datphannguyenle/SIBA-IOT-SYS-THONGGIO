@@ -29,6 +29,7 @@
     return typeof item.value === "number" && item.unit ? text + " " + item.unit : text;
   }
   function header(state) {
+    if (state !== 'default') return '<header class="vent-header"><div class="vent-header__top"><a class="back-link" href="#default" data-nav="default">← Quay lại tổng quan</a><strong class="vent-header__title"><span>SIBA</span> · Thông gió</strong><span class="vent-header__scope">' + esc(vm.scope.farm) + ' · ' + esc(vm.scope.area) + (state === 'vent_alarms' ? ' · Toàn trại' : ' · ' + esc((selectedBarn() || {}).label || '')) + '</span><b class="demo-badge">' + esc(vm.badgeLabel) + '</b></div><nav class="state-tabs" aria-label="Trạng thái dashboard">' + STATES.slice(1).map(function (item, index) { return '<a href="#' + item + '" data-nav="' + item + '"' + (item === state ? ' class="active" aria-current="page"' : '') + '>' + designIcon(['home','clock','alert','gear'][index]) + labels[item] + '</a>'; }).join('') + '</nav></header>';
     return '<header class="vent-header"><div class="vent-header__top"><strong class="vent-header__title">SIBA · Thông gió</strong>' +
       '<span class="vent-header__scope">' + esc(vm.scope.farm) + ' · ' + esc(vm.scope.area) + '</span>' +
       '<b class="demo-badge">' + esc(vm.badgeLabel) + '</b></div><nav class="state-tabs" aria-label="Trạng thái dashboard">' +
@@ -40,10 +41,28 @@
       '<b class="kpi__value">' + value(item) + '</b><span class="kpi__quality quality-' + item.quality + '">' + item.quality +
       (item.ts ? ' · ' + new Date(item.ts).toLocaleTimeString('vi-VN', {hour:'2-digit', minute:'2-digit'}) : '') + '</span></article>';
   }
+  function designIcon(name) {
+    var paths = {
+      temperature:'<path d="M10 14V5a2 2 0 0 1 4 0v9a5 5 0 1 1-4 0Z"/><path d="M12 7v10"/><circle cx="12" cy="18" r="1.5"/>',
+      water:'<path d="M12 2C9 7 5 11 5 15a7 7 0 0 0 14 0c0-4-4-8-7-13Z"/><path d="M8 15c0 3 2 4 4 4"/>',
+      home:'<path d="m2 11 10-9 10 9M5 9v12h14V9M9 21v-7h6v7"/>',
+      clock:'<circle cx="12" cy="12" r="9"/><path d="M12 6v6l5 3"/>',
+      alert:'<path d="m12 3 10 18H2Z M12 9v5M12 17v1"/>',
+      gear:'<path d="m9 3 1-2h4l1 2 3 2 3 1v4l-2 2 2 3v3l-3 1-3 2h-5l-1-2-3-1-3-2v-4l2-2V6l4-1Z"/><circle cx="12" cy="12" r="4"/>',
+      wind:'<path d="M2 8h12a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M2 17h6a2 2 0 1 1-2 2"/>'
+    };
+    return '<svg class="design-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' + (paths[name] || paths.temperature) + '</svg>';
+  }
+  function designKpi(label, key, icon) {
+    var item = metric(key);
+    return '<article class="kpi"><span class="kpi__icon">' + designIcon(icon) + '</span><div class="kpi__content"><div class="kpi__head">' + esc(label) + '</div><b class="kpi__value">' + value(item) + '</b><span class="kpi__quality quality-' + esc(item.quality) + '">' + esc(stateLabel(item.quality)) + (item.ts ? ' · ' + new Date(item.ts).toLocaleTimeString('vi-VN', {hour:'2-digit',minute:'2-digit'}) : '') + '</span></div><span class="kpi__watermark">' + designIcon(icon === 'temperature' ? 'home' : icon) + '</span></article>';
+  }
   function summaryValue(key) { var item = vm.summary[key]; return isMissing(item) ? "--" : item; }
   function summaryKpi(label, key, icon) {
-    return '<article class="kpi"><div class="kpi__head"><span class="kpi__icon">' + icon + '</span>' + label + '</div>' +
-      '<b class="kpi__value">' + esc(summaryValue(key)) + '</b><span class="kpi__quality">TỔNG HỢP DEMO</span></article>';
+    return statCard(label, summaryValue(key), {barns:'home',online:'wind',attention:'alert',activeAlarms:'alert'}[key], 'TỔNG HỢP DEMO', key === 'activeAlarms' ? 'danger' : key === 'attention' ? 'warning' : '');
+  }
+  function statCard(label, content, icon, note, tone) {
+    return '<article class="kpi stat-' + (tone || 'neutral') + '"><span class="kpi__icon">' + designIcon(icon) + '</span><div class="kpi__content"><div class="kpi__head">' + esc(label) + '</div><b class="kpi__value">' + esc(content) + '</b><span class="kpi__quality">' + esc(note) + '</span></div><span class="kpi__watermark">' + designIcon(icon) + '</span></article>';
   }
   var IDENTITY_TAGS = {PILOT: ['PILOT · DEMO', 'Nhà pilot có thật; trạng thái thông gió là dữ liệu demo'],
     LIVE_BARN_SIMULATED_STATE: ['DEMO', 'Nhà có thật; hệ thông gió chưa xác minh, trạng thái mô phỏng'],
@@ -60,7 +79,7 @@
       '<span>Chế độ: ' + esc(barn.mode) + ' · Cấp: ' + (isMissing(barn.stage) ? '--' : esc(barn.stage)) + '</span><span class="status-' + esc(barn.alarm) + '" data-raw-state="' + esc(barn.alarm) + '">Cảnh báo: ' + esc(stateLabel(barn.alarm)) + '</span></button>';
   }
   function overview() {
-    return '<section class="view"><div class="kpi-grid">' + summaryKpi('Tổng số nhà', 'barns', '⌂') +
+    return '<section class="view"><div class="overview-heading"><div><p class="eyebrow">SIBA · THÔNG GIÓ</p><h1>Tổng quan toàn trại</h1><p>Giám sát môi trường và trạng thái thiết bị · Dữ liệu minh họa</p></div><span class="readonly-label">● Chỉ xem</span></div><div class="kpi-grid">' + summaryKpi('Tổng số nhà', 'barns', '⌂') +
       summaryKpi('Đang trực tuyến', 'online', '●') + summaryKpi('Cần chú ý', 'attention', '!') +
       summaryKpi('Cảnh báo đang mở', 'activeAlarms', '△') + '</div><div class="overview-grid"><section class="panel">' +
       '<div class="panel__head"><div><h2>Toàn trại</h2><p>Chọn một nhà để xem ngữ cảnh giám sát. ND2-1 có dữ liệu chi tiết minh họa.</p></div><span class="muted">Trạng thái mọi nhà là mô phỏng</span></div>' +
@@ -80,17 +99,21 @@
       (item.configured ? 'Dữ liệu: ' + esc(item.quality) : 'Mapping PLC: N/A') + '</span></article>'; }).join('');
   }
   function louverShape(item, y) {
-    return '<g class="louver quality-' + esc(item.quality) + '"><rect x="300" y="' + y + '" width="300" height="24" rx="4"/><text class="svg-sub" x="450" y="' + (y + 16) + '">' +
+    return '<g class="louver quality-' + esc(item.quality) + '"><rect x="155" y="' + y + '" width="590" height="29" rx="2"/>' + [5,11,17,23].map(function (dy) { return '<path class="louver-slat" d="M160 ' + (y+dy) + 'H740"/>'; }).join('') + '<text class="svg-sub" x="450" y="' + (y - 8) + '">' +
       esc(item.label) + ' · ' + esc(plainValue(item)) + ' · ' + esc(item.quality) + '</text></g>';
   }
   function synoptic() {
     var fans = vm.equipment.slice(0, 6);
-    return '<div class="synoptic" role="region" aria-label="Sơ đồ thông gió có thể cuộn ngang"><svg viewBox="0 0 900 244" role="img" aria-label="Sơ đồ thông gió chỉ đọc nhà ' + esc(vm.scope.selectedBarn) + '">' +
-      '<rect class="zone" x="45" y="14" width="810" height="220" rx="6"/><path class="pipe" d="M90 116H810"/>' + fans.map(function (fan, index) {
-        var x = 130 + index * 128;
-        return '<g class="fan ' + esc(fan.state) + ' quality-' + esc(fan.quality) + ' connectivity-' + esc(vm.controller.online) + '" data-raw-state="' + esc(fan.state) + '"><circle cx="' + x + '" cy="116" r="29"/><g class="fan-blades" transform="rotate(0 ' + x + ' 116)"><path d="M' + x + ' 112 C' + (x + 7) + ' 91 ' + (x + 25) + ' 91 ' + (x + 23) + ' 105 C' + (x + 21) + ' 119 ' + (x + 7) + ' 120 ' + x + ' 120Z"/><path d="M' + (x + 3) + ' 118 C' + (x - 9) + ' 128 ' + (x - 3) + ' 146 ' + (x + 9) + ' 139 C' + (x + 21) + ' 132 ' + (x + 14) + ' 119 ' + (x + 3) + ' 118Z"/><path d="M' + (x - 4) + ' 116 C' + (x - 19) + ' 113 ' + (x - 27) + ' 128 ' + (x - 15) + ' 136 C' + (x - 3) + ' 143 ' + (x + 5) + ' 127 ' + (x - 4) + ' 116Z"/><circle class="fan-hub" cx="' + x + '" cy="116" r="5"/></g><text class="svg-label" x="' + x + '" y="166">' + esc(fan.label) +
-          '</text><text class="svg-sub state-' + esc(fan.state) + '" data-raw-state="' + esc(fan.state) + '" x="' + x + '" y="183">' + esc(stateLabel(fan.state)) + '</text></g>';
-      }).join('') + louverShape(vm.louvers[0], 26) + louverShape(vm.louvers[1], 198) + '</svg></div>';
+    return '<div class="synoptic" role="region" aria-label="Sơ đồ thông gió có thể cuộn ngang"><svg viewBox="0 0 900 375" role="img" aria-label="Sơ đồ thông gió chỉ đọc nhà ' + esc(vm.scope.selectedBarn) + '">' +
+      '<defs><linearGradient id="vent-metal" x2="0" y2="1"><stop stop-color="#b1d4e9"/><stop offset=".3" stop-color="#356681"/><stop offset=".55" stop-color="#91bad1"/><stop offset="1" stop-color="#254b63"/></linearGradient><linearGradient id="vent-wall" x2="0" y2="1"><stop stop-color="#103a52"/><stop offset="1" stop-color="#032133"/></linearGradient><radialGradient id="vent-rotor"><stop stop-color="#153d54"/><stop offset=".8" stop-color="#001725"/><stop offset="1" stop-color="#467590"/></radialGradient></defs>' +
+      '<path class="barn-wall" d="M70 95 450 22 830 95V305H70Z"/><path class="barn-roof" d="M48 104 450 20 852 104 850 111 450 30 50 111Z"/>' +
+      '<path class="barn-frame" d="M75 105V304M825 105V304M75 115H825M75 295H825"/>' +
+      Array.from({length:30},function(_,i){return '<path class="wall-rib" d="M'+(88+i*25)+' 120v170"/>';}).join('') +
+      '<path class="barn-base" d="M60 301H840V312H60Z"/>' + fans.map(function (fan, index) {
+        var x = 150 + index * 120;
+        return '<g class="fan ' + esc(fan.state) + ' quality-' + esc(fan.quality) + ' connectivity-' + esc(vm.controller.online) + '" data-raw-state="' + esc(fan.state) + '"><rect class="fan-housing" x="' + (x-42) + '" y="151" width="84" height="84" rx="3"/><circle cx="' + x + '" cy="193" r="35"/><g class="fan-blades">' + [0,72,144,216,288].map(function(angle){return '<path transform="rotate('+angle+' '+x+' 193)" d="M'+x+' 188C'+(x+4)+' 151 '+(x+37)+' 158 '+(x+25)+' 175C'+(x+20)+' 185 '+(x+10)+' 193 '+x+' 193Z"/>';}).join('') + '</g><circle class="fan-hub" cx="' + x + '" cy="193" r="7"/><text class="svg-label" x="' + x + '" y="140">' + esc(fan.label) +
+          '</text><text class="svg-sub state-' + esc(fan.state) + '" data-raw-state="' + esc(fan.state) + '" x="' + x + '" y="249">' + esc(stateLabel(fan.state)) + '</text></g>';
+      }).join('') + louverShape(vm.louvers[0], 80) + louverShape(vm.louvers[1], 269) + vm.equipment.slice(6).map(function(pump,i){var x=260+i*340;return '<g class="pump '+esc(pump.state)+'"><path class="pump-pipe" d="M'+x+' 312v20h-40v14"/><rect x="'+(x-58)+'" y="342" width="35" height="24" rx="3"/><path class="pump-line" d="M'+(x-53)+' 343v22m6-22v22m6-22v22m6-22v22M'+(x-58)+' 368h44"/><text class="svg-label" x="'+(x+66)+'" y="351">'+esc(pump.label)+'</text><text class="svg-sub" x="'+(x+66)+'" y="368">'+esc(stateLabel(pump.state))+'</text></g>';}).join('') + '</svg></div>';
   }
   // Cờ cấp hệ thống: không suy ra quạt/bơm nào lỗi.
   function systemFlags() {
@@ -135,12 +158,12 @@
     var barn = selectedBarn();
     if (!barn || barn.label !== vm.scope.selectedBarn) return selectedBarnNotice(barn);
     var quality = metric('dataQuality');
-    return '<section class="view"><div class="kpi-grid">' + kpi('Nhiệt độ trung bình', 'indoorTemperatureAvg', '°') +
-      kpi('Nhiệt độ ngoài trời', 'outdoorTemperature', '°') + kpi('Nhiệt độ cảm nhận', 'perceivedTemperature', '≈') +
-      kpi('Độ ẩm trong nhà', 'relativeHumidity', '%') + '</div><div class="detail-layout"><section class="panel detail-main">' +
+    return '<section class="view"><div class="kpi-grid">' + designKpi('Nhiệt độ trong nhà', 'indoorTemperatureAvg', 'temperature') +
+      designKpi('Nhiệt độ ngoài trời', 'outdoorTemperature', 'temperature') + designKpi('Độ ẩm trong nhà', 'relativeHumidity', 'water') +
+      designKpi('Nhiệt độ cảm nhận', 'perceivedTemperature', 'temperature') + '</div><div class="detail-layout"><section class="panel detail-main">' +
       '<div class="panel__head"><div><h2>Giám sát nhà ' + esc(vm.scope.selectedBarn) + '</h2><p>Sơ đồ chỉ xem · dữ liệu minh họa</p></div>' +
       '<span class="quality-' + esc(isMissing(quality.value) ? quality.quality : quality.value) + '">' + esc(isMissing(quality.value) ? quality.quality : quality.value) + '</span></div>' +
-      systemFlags() + synoptic() + '<div class="equipment-grid">' + equipmentCards() + '</div>' +
+      systemFlags() + synoptic() + '<details class="equipment-disclosure"><summary>Chi tiết chất lượng dữ liệu thiết bị</summary><div class="equipment-grid">' + equipmentCards() + '</div></details>' +
       '<h3 class="subsection-title">Thông số vận hành</h3><div class="operation-grid">' +
       operationCell('Nhiệt độ đặt hiện tại', 'temperatureSetpointCurrent') + operationCell('Nhiệt độ cảm nhận đặt', 'perceivedTemperatureSetpointCurrent') +
       operationCell('Độ ẩm đặt hiện tại', 'humiditySetpointCurrent') + operationCell('Nhiệt độ cảm biến 1', 'indoorTemperature01') +
@@ -152,7 +175,7 @@
       summaryRow('Điều khiển quạt', value(metric('fanControlMode'))) + summaryRow('Cấp hiện tại', esc(vm.controller.stageDisplay)) +
       summaryRow('Khử ẩm', value(metric('dehumidificationEnabled'))) +
       summaryRow('Chất lượng dữ liệu', value(quality), 'quality-' + (isMissing(quality.value) ? 'UNKNOWN' : esc(quality.value)), 'PLATFORM') + '</div>' +
-      '<h3 class="subsection-title">Dữ liệu bổ sung</h3><div class="secondary-metrics">' + secondaryRow('Tốc độ gió', 'airSpeed') + secondaryRow('Lưu lượng gió', 'airFlow') +
+      '</aside><aside class="panel supplemental-panel"><div class="panel__head"><div><h2>Dữ liệu bổ sung</h2><p>Thông số vận hành và tiêu thụ (nếu có)</p></div></div><div class="secondary-metrics">' + secondaryRow('Tốc độ gió', 'airSpeed') + secondaryRow('Lưu lượng gió', 'airFlow') +
       secondaryRow('Nước tiêu thụ (tổng tích lũy)', 'waterConsumptionTotal') + secondaryRow('Lưu lượng nước', 'waterFlow') + '</div>' + vfdSection() +
       '<div class="notice compact-notice">Giá trị `--` là chưa có dữ liệu runtime; không quy đổi thành 0. NOT CONFIGURED = kỹ sư PLC khai báo N/A.</div>' +
       '<a href="#vent_history" data-nav="vent_history" class="text-link">Xem lịch sử →</a></aside></div>' + footer() + '</section>';
@@ -214,7 +237,11 @@
     var tempDomain = historyDomain(['indoorTemperatureAvg', 'outdoorTemperature', 'perceivedTemperature'], .12);
     var humidityDomain = historyDomain(['relativeHumidity'], .25);
     var first = vm.history[0], last = vm.history[vm.history.length - 1];
-    return '<section class="view"><section class="panel"><div class="panel__head"><div><h2>Lịch sử môi trường · 6 giờ</h2>' +
+    var stats = [['indoorTemperatureAvg','Nhiệt độ TB mẫu','temperature','°C'],['relativeHumidity','Độ ẩm TB mẫu','water','%RH'],['airSpeed','Tốc độ gió TB mẫu','wind','m/s']].map(function (spec) {
+      var values = vm.history.map(function(r){return r[spec[0]];}).filter(function(v){return typeof v === 'number' && isFinite(v);});
+      return statCard(spec[1], values.length ? (values.reduce(function(a,b){return a+b;},0)/values.length).toFixed(1)+' '+spec[3] : '--', spec[2], values.length+' mẫu hợp lệ · không phải TB theo thời gian');
+    }).join('') + statCard('Số mẫu trong khoảng', vm.history.length, 'clock', 'Dữ liệu demo · 6 giờ');
+    return '<section class="view"><div class="kpi-grid">' + stats + '</div><section class="panel"><div class="panel__head"><div><h2>Lịch sử môi trường · 6 giờ</h2>' +
       '<p>Ba đường nhiệt độ dùng cùng trục °C bên trái; %RH dùng trục riêng bên phải. Điểm thiếu tạo khoảng trống.</p></div><span class="muted">°C ↔ %RH</span></div><div class="legend">' +
       '<span><i style="background:#00d4e0"></i>Trong nhà</span><span><i style="background:#ffc857"></i>Ngoài trời</span>' +
       '<span><i style="background:#ff8fcf"></i>Cảm nhận</span><span><i style="background:#6aa9ff"></i>Độ ẩm</span></div><div class="chart-wrap">' +
@@ -231,11 +258,17 @@
       '</tbody></table></section>' + airWater() + footer() + '</section>';
   }
   function alarms() {
-    return '<section class="view"><section class="panel"><div class="panel__head"><div><h2>Cảnh báo & lịch sử</h2><p>Phạm vi toàn trại trong dữ liệu minh họa · chỉ xem; không có thao tác vòng đời. PLC = cờ quy trình/phần cứng; PLATFORM = kết nối/độ tươi dữ liệu.</p></div></div>' +
+    var active = vm.alarms.filter(function(a){return a.status === 'ACTIVE';});
+    var major = active.filter(function(a){return a.severity === 'MAJOR';}).length;
+    var warning = active.filter(function(a){return a.severity === 'WARNING';}).length;
+    var other = active.length-major-warning;
+    var angle = active.length ? 360*major/active.length : 0, warningEnd = active.length ? 360*(major+warning)/active.length : 0;
+    var stats = statCard('Đang báo động',active.length,'alert','Toàn trại · demo','danger') + statCard('Nghiêm trọng (MAJOR)',major,'alert','Cảnh báo đang bật','danger') + statCard('Cảnh báo (WARNING)',warning,'alert','Cảnh báo đang bật','warning') + statCard('Đã xử lý hôm nay','--','clock','Chưa có lịch sử xử lý');
+    return '<section class="view"><div class="kpi-grid">'+stats+'</div><div class="alarm-layout"><section class="panel"><div class="panel__head"><div><h2>Cảnh báo & lịch sử</h2><p>Phạm vi toàn trại trong dữ liệu minh họa · chỉ xem; không có thao tác vòng đời. PLC = cờ quy trình/phần cứng; PLATFORM = kết nối/độ tươi dữ liệu.</p></div></div>' +
       '<label class="local-filter"><span>Lọc cảnh báo</span><input type="search" data-filter-input="alarm" placeholder="Mức, loại hoặc đối tượng" autocomplete="off"></label><div class="table-wrap"><table class="data-table"><thead><tr><th>Mức</th><th>Loại / nội dung</th><th>Nguồn</th><th>Đối tượng</th><th>Thời gian</th><th>Trạng thái</th></tr></thead><tbody data-filter-list="alarm">' +
       vm.alarms.map(function (alarm) { return '<tr data-filter-text="' + esc([alarm.severity, alarm.type, alarm.message, alarm.source, alarm.originator, alarm.status].join(' ').toLowerCase()) + '"><td><span class="pill status-' + alarm.severity + '" data-raw-state="' + esc(alarm.severity) + '">' + esc(stateLabel(alarm.severity)) + '</span></td><td><b>' + esc(alarm.type) +
         '</b><br><span class="muted">' + esc(alarm.message) + '</span></td><td>' + sourceTag(alarm) + '</td><td>' + esc(alarm.originator) + '</td><td>' + new Date(alarm.created).toLocaleString('vi-VN') +
-        '</td><td data-raw-state="' + esc(alarm.status) + '">' + esc(stateLabel(alarm.status)) + '</td></tr>'; }).join('') + '</tbody></table></div><p class="filter-empty" data-filter-empty="alarm" hidden>Không có cảnh báo phù hợp.</p></section><p class="demo-limit">Dữ liệu minh họa · phạm vi, thời hạn lưu và xuất dữ liệu thực tế chưa được xác minh.</p>' + footer() + '</section>';
+        '</td><td data-raw-state="' + esc(alarm.status) + '">' + esc(stateLabel(alarm.status)) + '</td></tr>'; }).join('') + '</tbody></table></div><p class="filter-empty" data-filter-empty="alarm" hidden>Không có cảnh báo phù hợp.</p></section><aside class="panel alarm-summary"><div class="panel__head"><div><h2>Phân bố cảnh báo</h2><p>Toàn trại · không đổi theo ô tìm kiếm</p></div></div><div class="alarm-donut" role="img" aria-label="'+major+' nghiêm trọng, '+warning+' cảnh báo, '+other+' mức khác" style="background:conic-gradient(var(--danger) 0deg '+angle+'deg,var(--warn) '+angle+'deg '+warningEnd+'deg,var(--sub) '+warningEnd+'deg 360deg)"><div><b>'+active.length+'</b><span>đang bật</span></div></div><div class="alarm-count-row"><span>Nghiêm trọng</span><b>'+major+'</b></div><div class="alarm-count-row"><span>Cảnh báo</span><b>'+warning+'</b></div><div class="alarm-count-row"><span>Mức khác</span><b>'+other+'</b></div><p class="notice">Chỉ đọc · không xác nhận, xóa hoặc tạm ẩn cảnh báo.</p><p class="muted">Chưa có dữ liệu lịch sử xử lý; không suy ra thiết bị cụ thể từ cờ lỗi tổng.</p></aside></div><p class="demo-limit">Dữ liệu minh họa · phạm vi, thời hạn lưu và xuất dữ liệu thực tế chưa được xác minh.</p>' + footer() + '</section>';
   }
   function settingValue(item) {
     var text = item.configured === false ? 'N/A' : displayText(item);
@@ -267,7 +300,7 @@
     return '<section class="view"><section class="panel"><div class="panel__head"><div><h2>Cài đặt bộ điều khiển</h2>' +
       '<p>Chỉ xem · ' + total + ' thông số trong mẫu dữ liệu v' + esc(vm.contractVersion) + ' · `--` = chưa có dữ liệu PLC · không ghi tham số</p></div></div>' +
       '<label class="local-filter"><span>Tìm thông số</span><input type="search" data-filter-input="settings" placeholder="Tên nhóm hoặc thông số" autocomplete="off"></label><nav class="settings-index" aria-label="Nhóm cài đặt">' + vm.settings.map(function (group, index) {
-        return '<a href="#' + settingsGroupId(index) + '" data-scroll="' + settingsGroupId(index) + '">' + esc(group.name.replace('CÀI ĐẶT - ', '')) + ' <small>' + group.count + '</small></a>';
+        return '<a href="#' + settingsGroupId(index) + '" data-scroll="' + settingsGroupId(index) + '">' + designIcon(['gear','temperature','temperature','wind','clock','gear'][index]) + '<span>' + esc(group.name.replace('CÀI ĐẶT - ', '')) + ' <small>' + group.count + ' thông số</small></span></a>';
     }).join('') + '</nav></section><div data-filter-list="settings">' + vm.settings.map(settingsGroup).join('') + '</div><p class="filter-empty" data-filter-empty="settings" hidden>Không tìm thấy nhóm cài đặt phù hợp.</p>' + footer() + '</section>';
   }
   function footer() { return '<footer class="footer"><span>Giám sát chỉ xem · Bản minh họa ' + esc(vm.fixtureVersion) + ' · Mẫu dữ liệu v' + esc(vm.contractVersion) + '</span><span>Sinh lúc ' + new Date(vm.generatedAt).toLocaleString('vi-VN') + '</span></footer>'; }
@@ -292,6 +325,8 @@
     vm = viewModel;
     chartWidth = Math.max(720, container.clientWidth - 40);
     state = normalizeState(state);
+    container.classList.add('vent-reference');
+    container.setAttribute('data-vent-state', state);
     if (stateParams && stateParams.barnId) vm.__selectedBarnId = stateParams.barnId;
     if (!vm.__selectedBarnId) vm.__selectedBarnId = (vm.barns[0] || {}).id;
     var views = {default: overview, vent_detail: detail, vent_history: history, vent_alarms: alarms, vent_settings: settings};

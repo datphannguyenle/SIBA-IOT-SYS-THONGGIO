@@ -12,6 +12,7 @@ mới (tương đương hard refresh); viewport 390px chạy bên trong iframe t
 headless không thể thu nhỏ cửa sổ top-level xuống 390px một cách đáng tin cậy.
 """
 import base64
+import argparse
 import json
 import pathlib
 import sys
@@ -27,6 +28,7 @@ DASHBOARD_ID = "b9ff4d70-b26a-11f1-83ad-9912edc644d2"
 WIDGET_TYPE_ID = "b9fa9280-b26a-11f1-83ad-9912edc644d2"
 STATES = ("default", "vent_detail", "vent_history", "vent_alarms", "vent_settings")
 VIEWPORTS = (("1920x1080", 1920, 1080), ("1366x768", 1366, 768), ("820x1180", 820, 1180))
+EVIDENCE_PREFIX = 'vent008'
 
 
 STATE_CHECK = r"""
@@ -105,7 +107,7 @@ return info;
 def go_state(browser, state):
     if browser.run("var active=document.querySelector('.vent-demo-root .state-tabs a.active'); return active && active.getAttribute('data-nav')") == state:
         return
-    browser.run("document.querySelector('.vent-demo-root .state-tabs a[data-nav=\"%s\"]').click()" % state)
+    browser.run("document.querySelector('.vent-demo-root a[data-nav=\"%s\"]').click()" % state)
     browser.wait_for("var active=document.querySelector('.vent-demo-root .state-tabs a.active'); return active && active.getAttribute('data-nav') === '%s'" % state,
                      timeout=60)
     time.sleep(1)
@@ -169,7 +171,7 @@ def check_all_states(browser, label, temporary_dir, shoot, expected_width=None):
               var start=getComputedStyle(el).transform;
               setTimeout(function(){cb(start!==getComputedStyle(el).transform);},220);
             """, "args": []})
-        filename = "vent008-%s-%s.png" % (label, state.replace("_", "-"))
+        filename = "%s-%s-%s.png" % (EVIDENCE_PREFIX, label, state.replace("_", "-"))
         target = pathlib.Path(temporary_dir) / filename
         shoot(target)
         evidence = EVIDENCE_DIR / filename
@@ -228,6 +230,10 @@ def run_mobile(server, temporary_dir):
 
 
 def main():
+    global EVIDENCE_PREFIX
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--evidence-prefix', choices=('vent008', 'vent009'), default='vent008')
+    EVIDENCE_PREFIX = parser.parse_args().evidence_prefix
     stamp = time.strftime("%Y%m%dT%H%M%S%z")
     EVIDENCE_DIR.mkdir(parents=True, exist_ok=True)
     results = {"at": stamp, "dashboardId": DASHBOARD_ID, "widgetTypeId": WIDGET_TYPE_ID, "states": list(STATES),
@@ -238,7 +244,7 @@ def main():
         results["viewports"]["390x844"] = run_mobile(server, temporary_dir)
     results["ok"] = all(not check["problems"] for viewport in results["viewports"].values()
                         for check in viewport["states"].values()) and all(not viewport["barnNavigation"]["problems"] for viewport in results["viewports"].values())
-    report = EVIDENCE_DIR / ("vent008_ui_verification_%s.json" % stamp)
+    report = EVIDENCE_DIR / ("%s_ui_verification_%s.json" % (EVIDENCE_PREFIX, stamp))
     write_json(report, results)
     print(json.dumps({label: {state: check["problems"] for state, check in viewport["states"].items()}
                       for label, viewport in results["viewports"].items()}, ensure_ascii=False, indent=2))

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SIBA · Duyệt giao diện thông gió</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <style>
+    body { margin: 0; background: #001722; font: 14px Arial, sans-serif; }
+    #app { min-height: 100vh; padding: 12px 24px; }
+    @media (max-width: 700px) { #app { padding: 8px; } }
+  </style>
+</head>
+<body>
+  <!-- Canvas local để so ảnh, không thay đổi vỏ quản trị ThingsBoard. -->
+  <main id="app" aria-live="polite"><p class="loading">Đang nạp bản xem trước…</p></main>
+  <script>if (!location.hash) location.hash = 'vent_detail';</script>
+  <script src="../widgets/ventilation-contract-v03.js"></script>
+  <script src="../widgets/ventilation-adapter.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

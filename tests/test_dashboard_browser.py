@@ -195,6 +195,7 @@ class DashboardBrowserTest(unittest.TestCase):
 
     def test_detail_state(self):
         self.open_state("vent_detail")
+        self.browser.run("document.querySelector('.equipment-disclosure').open = true")
         info = self.browser.run("""
           var app = document.getElementById('app');
           function row(label) { var r = [...app.querySelectorAll('.summary-row')].filter(x => x.querySelector('span').innerText.indexOf(label) === 0)[0]; return r && r.querySelector('b').innerText; }
@@ -284,7 +285,8 @@ class DashboardBrowserTest(unittest.TestCase):
             filter: app.querySelectorAll('[data-filter-input=settings]').length,
             note: app.innerText.indexOf('9 slot = năng lực cấu hình tối đa') >= 0,
             hashUnchanged: location.hash === hashBefore, text: app.innerText};""")
-        self.assertEqual(info["tabs"], ["Tổng quan", "Giám sát", "Lịch sử", "Cảnh báo", "Cài đặt"])
+        self.assertEqual(info["tabs"], ["Giám sát", "Lịch sử", "Cảnh báo", "Cài đặt"])
+        self.assertEqual(self.browser.run("return document.querySelector('.back-link').getAttribute('data-nav')"), 'default')
         self.assertEqual(len(info["groups"]), 6)
         self.assertEqual((info["cells"], info["unique"]), (224, 224))
         self.assertEqual(info["values"], ["--"])

@@ -152,7 +152,7 @@ class WidgetRuntimeHarnessTest(unittest.TestCase):
             self.assertEqual(info["active"], state)
             self.assertEqual(info["shell"], 0)
             self.assertEqual(info["globals"], "undefinedundefined")
-            self.assertEqual(info["bg"], "rgb(21, 39, 55)")
+            self.assertEqual(info["bg"], "rgba(0, 0, 0, 0)")
             self.assertIn("Arial", info["font"])
 
     def test_navigation_preserves_selected_barn_in_state_controller_params(self):
@@ -222,7 +222,7 @@ class WidgetRuntimeHarnessTest(unittest.TestCase):
         self.assertEqual(info["stage"], ["4"])
         self.assertTrue(info["noRatio"])
         self.assertEqual(info["tabBorder"], "rgba(0, 0, 0, 0)")
-        self.assertEqual(info["activeBorder"], "rgb(0, 212, 224)")
+        self.assertEqual(info["activeBorder"], "rgb(0, 236, 246)")
         self.assertEqual(info["linkBorder"], "0px")
         self.assertEqual(info["h2Spacing"], "normal")
         self.assertEqual(info["scrolls"], "auto")
@@ -246,11 +246,11 @@ class WidgetRuntimeHarnessTest(unittest.TestCase):
             hostile = self.computed_typography()
             self.assertEqual(hostile, clean, state)
             expected.update({k: v for k, v in clean.items() if v})
-        self.assertEqual(expected["h2"][:2], ["700", "normal"])
+        self.assertEqual(expected["h2"][:2], ["700", "26.25px"])
         self.assertEqual(expected["h3"][0], "700")
         self.assertEqual(expected["strong"][0], "700")
         self.assertEqual(expected["kpi"][0], "600")          # class của bản đã duyệt vẫn thắng reset
-        self.assertEqual(expected["td"][2:], ["Arial", "14px"])
+        self.assertEqual(expected["td"][2:], ["Arial", "12px"])
         self.assertEqual(expected["th"][3], "12px")
 
     def test_header_reserves_space_for_dashboard_toolbar_fab(self):
