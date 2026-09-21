@@ -57,6 +57,9 @@ var info = {
   innerHeight: window.innerHeight,
   pageOverflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
   widgetOverflowX: root.scrollWidth - root.clientWidth,
+  widgetClientHeight: root.clientHeight,
+  widgetScrollHeight: root.scrollHeight,
+  widgetOverflowY: getComputedStyle(root).overflowY,
   controls: root.querySelectorAll('button,select,textarea,form').length,
   rawStates: [...root.querySelectorAll('[data-raw-state]')].map(function (el) {
     return {raw: el.getAttribute('data-raw-state'), text: el.textContent.trim(), cls: el.getAttribute('class') || ''};
@@ -105,10 +108,11 @@ return info;
 
 
 def go_state(browser, state):
-    if browser.run("var active=document.querySelector('.vent-demo-root .state-tabs a.active'); return active && active.getAttribute('data-nav')") == state:
+    current = browser.run("var root=document.querySelector('.vent-demo-root'),active=root&&root.querySelector('.state-tabs a.active');return root&&root.getAttribute('data-vent-state')||(active&&active.getAttribute('data-nav'))")
+    if current == state:
         return
     browser.run("document.querySelector('.vent-demo-root a[data-nav=\"%s\"]').click()" % state)
-    browser.wait_for("var active=document.querySelector('.vent-demo-root .state-tabs a.active'); return active && active.getAttribute('data-nav') === '%s'" % state,
+    browser.wait_for("var root=document.querySelector('.vent-demo-root'),active=root&&root.querySelector('.state-tabs a.active');return root&&root.getAttribute('data-vent-state')==='%s'&&(active?active.getAttribute('data-nav')==='%s':%s)" % (state,state,'true' if state == 'default' else 'false'),
                      timeout=60)
     time.sleep(1)
 
@@ -117,7 +121,9 @@ def validate(state, info, expected_width=None):
     problems = []
     if info.get("missing"):
         return ["widget root missing"]
-    if info["active"] != state:
+    if state == 'default' and info["active"] is not None:
+        problems.append("overview must not show house menu")
+    if state != 'default' and info["active"] != state:
         problems.append("active tab")
     if info["badge"] != "DEMO DATA":
         problems.append("demo badge")
@@ -125,10 +131,15 @@ def validate(state, info, expected_width=None):
         problems.append("innerWidth %s != %s" % (info["innerWidth"], expected_width))
     if info["pageOverflowX"] > 0 or info["widgetOverflowX"] > 0:
         problems.append("horizontal overflow")
+    if expected_width is not None and expected_width > 1100:
+        if info["widgetScrollHeight"] > info["widgetClientHeight"] + 1 or info["widgetOverflowY"] != "hidden":
+            problems.append("desktop root vertical scroll")
     if not info["reducedMotionRule"]:
         problems.append("reduced-motion fan safety rule")
     if state == "default" and info.get("illustration") != {"loaded": True, "width": 1536, "height": 1024, "embedded": True}:
         problems.append("original embedded illustration")
+    if state == "default" and info.get("active") is not None:
+        problems.append("overview house menu visible")
     if state == "vent_detail" and info["runningAnimation"] != "vent-fan-spin":
         problems.append("current online running fan animation")
     if state == "vent_detail" and not any(item["raw"] == "RUNNING" and item["text"] == "Đang chạy"

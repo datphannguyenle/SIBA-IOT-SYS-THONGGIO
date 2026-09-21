@@ -5,6 +5,14 @@ Status: done — phạm vi giao diện DEMO đã duyệt và triển khai, khôn
 20live state/viewport+4BarnnavigationPASS. Xem vent009_execution_report.md.
 Các ghi nhận checkpoint bên dưới giữ làm lịch sử. Không tự cấp gate PLC/implementation-ready.
 
+## Correction active — 21/09/2026
+
+User phản hồi dashboard desktop còn cuộn toàn trang và menu nhà xuất hiện ở Tổng quan.
+Đo live trước sửa: root client1016; default scroll1074, history1710, settings1592;
+detail/alarms1016. Yêu cầu: desktop root không cuộn; history/settings cuộn nội bộ;
+overview không có `.state-tabs`, menu chỉ có ở state nhà.
+Nguồn/tests sửa local,72/72PASS; chờ deploy+live verification rồi mới done lại.
+
 ## Objective / approval
 
 Ngày 21/09/2026, người dùng duyệt 5 ảnh tham chiếu và yêu cầu triển khai từng bước.

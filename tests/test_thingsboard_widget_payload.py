@@ -143,29 +143,47 @@ class WidgetRuntimeHarnessTest(unittest.TestCase):
             info = self.browser.run("""
               var root = document.querySelector('.vent-demo-root');
               return {badge: root.querySelector('.demo-badge').innerText,
-                      active: root.querySelector('.state-tabs a.active').getAttribute('data-nav'),
+                      active: root.querySelector('.state-tabs a.active') && root.querySelector('.state-tabs a.active').getAttribute('data-nav'),
                       shell: document.querySelectorAll('.tb-preview-sidebar,.tb-topbar,.tb-preview-shell').length,
                       globals: typeof window.VentilationAdapter + typeof window.VentilationDashboard,
                       bg: getComputedStyle(root.querySelector('.vent-header')).backgroundColor,
                       font: getComputedStyle(root).fontFamily};""")
             self.assertEqual(info["badge"], "DEMO DATA", state)
-            self.assertEqual(info["active"], state)
+            self.assertEqual(info["active"], None if state == 'default' else state)
             self.assertEqual(info["shell"], 0)
             self.assertEqual(info["globals"], "undefinedundefined")
             self.assertEqual(info["bg"], "rgba(0, 0, 0, 0)")
             self.assertIn("Arial", info["font"])
 
+    def test_desktop_states_fit_root_and_overview_has_no_house_menu(self):
+        for state in vent_demo_common.STATES:
+            self.mount(state, 1920, 1016)
+            info = self.browser.run("""
+              var root=document.querySelector('.vent-demo-root');
+              return {client:root.clientHeight,scroll:root.scrollHeight,overflow:getComputedStyle(root).overflowY,
+                menu:root.querySelectorAll('.state-tabs').length,
+                internal:[...root.querySelectorAll('.table-wrap,.settings-list')].filter(function(e){return e.scrollHeight>e.clientHeight+1}).length};
+            """)
+            self.assertLessEqual(info['scroll'], info['client'] + 1, state)
+            self.assertEqual(info['overflow'], 'hidden', state)
+            self.assertEqual(info['menu'], 0 if state == 'default' else 1, state)
+            if state in ('vent_history','vent_settings'):
+                self.assertGreater(info['internal'], 0, state)
+
     def test_navigation_preserves_selected_barn_in_state_controller_params(self):
         self.mount("default")
         ids = self.browser.run("return [...document.querySelectorAll('.barn-card')].map(function (card) { return card.getAttribute('data-barn-id'); })")
         self.assertGreaterEqual(len(ids), 2)
+        self.assertEqual(self.browser.run("return document.querySelectorAll('.state-tabs').length"), 0)
+        self.browser.run("document.querySelectorAll('.barn-card')[1].click();")
+        overview_opened = self.browser.run("return window.__opened")
+        self.mount("vent_detail", state_params={"barnId": ids[1]})
         self.browser.run("document.querySelector('.state-tabs a[data-nav=\"vent_history\"]').click();"
-                         "document.querySelectorAll('.barn-card')[1].click();"
-                         "document.querySelector('.state-tabs a[data-nav=\"default\"]').click();")
+                         "document.querySelector('.back-link').click();")
         opened = self.browser.run("return window.__opened")
         # Same-state selection changes preserve context; only an unchanged tab is a no-op.
-        self.assertEqual(opened, [["vent_history", {"barnId": ids[0]}, False],
-                                  ["vent_detail", {"barnId": ids[1]}, False],
+        self.assertEqual(overview_opened, [["vent_detail", {"barnId": ids[1]}, False]])
+        self.assertEqual(opened, [["vent_history", {"barnId": ids[1]}, False],
                                   ["default", {"barnId": ids[1]}, False]])
         self.assertEqual(self.browser.run("return location.hash"), "")
 
@@ -225,7 +243,7 @@ class WidgetRuntimeHarnessTest(unittest.TestCase):
         self.assertEqual(info["activeBorder"], "rgb(0, 236, 246)")
         self.assertEqual(info["linkBorder"], "0px")
         self.assertEqual(info["h2Spacing"], "normal")
-        self.assertEqual(info["scrolls"], "auto")
+        self.assertFalse(info["scrolls"])
 
     def computed_typography(self):
         return self.browser.run("""

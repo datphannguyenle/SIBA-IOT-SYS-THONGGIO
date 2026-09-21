@@ -28,7 +28,10 @@ def main():
                     browser.resize(width, height)
                     browser.resize(width, height + height - browser.run('return innerHeight'))
                     browser.open(url)
-                browser.wait_for("return !!document.querySelector('.state-tabs a.active[href=\"#%s\"]')" % state)
+                if state == 'default':
+                    browser.wait_for("return !!document.querySelector('.overview-header') && !document.querySelector('.state-tabs')")
+                else:
+                    browser.wait_for("return !!document.querySelector('.state-tabs a.active[href=\"#%s\"]')" % state)
                 if state == 'default':
                     browser.wait_for("var i=document.querySelector('.barn-illustration img');return i&&i.complete&&i.naturalWidth>0")
                 result = browser.run("""return {

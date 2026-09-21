@@ -30,10 +30,9 @@
   }
   function header(state) {
     if (state !== 'default') return '<header class="vent-header"><div class="vent-header__top"><a class="back-link" href="#default" data-nav="default">← Quay lại tổng quan</a><strong class="vent-header__title"><span>SIBA</span> · Thông gió</strong><span class="vent-header__scope">' + esc(vm.scope.farm) + ' · ' + esc(vm.scope.area) + (state === 'vent_alarms' ? ' · Toàn trại' : ' · ' + esc((selectedBarn() || {}).label || '')) + '</span><b class="demo-badge">' + esc(vm.badgeLabel) + '</b></div><nav class="state-tabs" aria-label="Trạng thái dashboard">' + STATES.slice(1).map(function (item, index) { return '<a href="#' + item + '" data-nav="' + item + '"' + (item === state ? ' class="active" aria-current="page"' : '') + '>' + designIcon(['home','clock','alert','gear'][index]) + labels[item] + '</a>'; }).join('') + '</nav></header>';
-    return '<header class="vent-header"><div class="vent-header__top"><strong class="vent-header__title">SIBA · Thông gió</strong>' +
+    return '<header class="vent-header overview-header"><div class="vent-header__top"><strong class="vent-header__title">SIBA · Thông gió</strong>' +
       '<span class="vent-header__scope">' + esc(vm.scope.farm) + ' · ' + esc(vm.scope.area) + '</span>' +
-      '<b class="demo-badge">' + esc(vm.badgeLabel) + '</b></div><nav class="state-tabs" aria-label="Trạng thái dashboard">' +
-      STATES.map(function (item) { return '<a href="#' + item + '" data-nav="' + item + '"' + (item === state ? ' class="active" aria-current="page"' : '') + '>' + labels[item] + '</a>'; }).join("") + '</nav></header>';
+      '<b class="demo-badge">' + esc(vm.badgeLabel) + '</b></div></header>';
   }
   function kpi(label, key, icon) {
     var item = metric(key);

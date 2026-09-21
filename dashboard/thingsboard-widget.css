@@ -12,3 +12,9 @@
    nút edit nổi cũng đè badge, đã thử qua query ?hideToolbar=true). */
 .vent-demo-root .vent-header__top{padding-right:64px}
 @media(max-width:700px){.vent-demo-root{padding:8px}}
+/* VENT-009 fit: desktop dùng đúng một canvas; dữ liệu dài cuộn trong panel. */
+@media(min-width:1101px){
+  .vent-demo-root.vent-reference{overflow-y:hidden}
+  .vent-demo-root.vent-reference>.view{height:calc(100% - 126px);min-height:0;overflow:hidden}
+  .vent-demo-root.vent-reference[data-vent-state="default"]>.view{height:calc(100% - 58px)}
+}

@@ -37,7 +37,10 @@ class DashboardBrowserTest(unittest.TestCase):
         self.browser.open(self.url + "#" + state)
         # Same-URL navigation does not reset a model intentionally modified by a test.
         self.browser._session("POST", "/refresh", {})
-        self.browser.wait_for("return !!document.querySelector('.state-tabs a.active[href=\"#%s\"]')" % state)
+        if state == 'default':
+            self.browser.wait_for("return !!document.querySelector('.overview-header') && !document.querySelector('.state-tabs')")
+        else:
+            self.browser.wait_for("return !!document.querySelector('.state-tabs a.active[href=\"#%s\"]')" % state)
 
     def vm(self, variant=None):
         if isinstance(variant, str):
@@ -308,7 +311,10 @@ class DashboardBrowserTest(unittest.TestCase):
             self.browser.wait_for("return !!document.querySelector('.vent-header') && window.innerWidth === 390")
             for state in ("default", "vent_detail", "vent_history", "vent_alarms", "vent_settings"):
                 self.browser.run("location.hash = arguments[0]", state)
-                self.browser.wait_for("return !!document.querySelector('.state-tabs a.active[href=\"#%s\"]')" % state)
+                if state == 'default':
+                    self.browser.wait_for("return !!document.querySelector('.overview-header') && !document.querySelector('.state-tabs')")
+                else:
+                    self.browser.wait_for("return !!document.querySelector('.state-tabs a.active[href=\"#%s\"]')" % state)
                 overflow = self.browser.run("return document.documentElement.scrollWidth - document.documentElement.clientWidth")
                 self.assertLessEqual(overflow, 0, state)
         finally:
