@@ -4,8 +4,8 @@
 > thay toàn bộ màu/style module thông gió. Quy định panel phẳng/màu cũ dưới đây
 > là lịch sử đối với màn đang chuyển đổi, không chặn thiết kế mới.
 > Xem [checkpoint VENT-009](reference_redesign_checkpoint.md). Ngữ nghĩa và an toàn
-> vẫn áp dụng; bản live VENT-008 chưa đổi. Bước2 đã đồng bộ cả5màn local;
-> màn Giám sát user chấp nhận, bốn màn mới chờ review.
+> vẫn áp dụng. Người dùng đã duyệt cả5màn và cho deploy ngày21/09/2026;
+> bản live hiện là widget4/dashboard2, xem report triển khaiVENT-009.
 
 Ngày 20/09/2026. Chuẩn tham chiếu từ dashboard thông gió demo, kế thừa `.stitch/DESIGN.md`;
 không phải thiết kế lại nền tảng và không phải phê duyệt dữ liệu/điều khiển production.

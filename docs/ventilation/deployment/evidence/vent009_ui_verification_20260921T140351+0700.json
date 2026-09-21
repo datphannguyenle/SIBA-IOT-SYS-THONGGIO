@@ -1,0 +1,1752 @@
+{
+  "at": "20260921T140351+0700",
+  "dashboardId": "b9ff4d70-b26a-11f1-83ad-9912edc644d2",
+  "widgetTypeId": "b9fa9280-b26a-11f1-83ad-9912edc644d2",
+  "states": [
+    "default",
+    "vent_detail",
+    "vent_history",
+    "vent_alarms",
+    "vent_settings"
+  ],
+  "method": "new Firefox session per viewport; UI login only; mobile inside 390x844 iframe",
+  "viewports": {
+    "1920x1080": {
+      "innerWidth": 1920,
+      "states": {
+        "default": {
+          "problems": [],
+          "observed": {
+            "active": "default",
+            "badge": "DEMO DATA",
+            "innerWidth": 1920,
+            "innerHeight": 1080,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "controls": 6,
+            "rawStates": [
+              {
+                "raw": "ONLINE",
+                "text": "Trực tuyến",
+                "cls": "status-ONLINE"
+              },
+              {
+                "raw": "CURRENT",
+                "text": "Dữ liệu: Hiện tại",
+                "cls": "quality-CURRENT"
+              },
+              {
+                "raw": "MAJOR",
+                "text": "Cảnh báo: Nghiêm trọng",
+                "cls": "status-MAJOR"
+              },
+              {
+                "raw": "ONLINE",
+                "text": "Trực tuyến",
+                "cls": "status-ONLINE"
+              },
+              {
+                "raw": "STALE",
+                "text": "Dữ liệu: Dữ liệu cũ",
+                "cls": "quality-STALE"
+              },
+              {
+                "raw": "WARNING",
+                "text": "Cảnh báo: Cần chú ý",
+                "cls": "status-WARNING"
+              },
+              {
+                "raw": "OFFLINE",
+                "text": "Ngoại tuyến",
+                "cls": "status-OFFLINE"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Dữ liệu: Chưa rõ",
+                "cls": "quality-UNKNOWN"
+              },
+              {
+                "raw": "MAJOR",
+                "text": "Cảnh báo: Nghiêm trọng",
+                "cls": "status-MAJOR"
+              },
+              {
+                "raw": "ONLINE",
+                "text": "Trực tuyến",
+                "cls": "status-ONLINE"
+              },
+              {
+                "raw": "CURRENT",
+                "text": "Dữ liệu: Hiện tại",
+                "cls": "quality-CURRENT"
+              },
+              {
+                "raw": "NONE",
+                "text": "Cảnh báo: Không có",
+                "cls": "status-NONE"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Chưa rõ",
+                "cls": "status-UNKNOWN"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Dữ liệu: Chưa rõ",
+                "cls": "quality-UNKNOWN"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Cảnh báo: Chưa rõ",
+                "cls": "status-UNKNOWN"
+              },
+              {
+                "raw": "ONLINE",
+                "text": "Trực tuyến",
+                "cls": "status-ONLINE"
+              },
+              {
+                "raw": "CURRENT",
+                "text": "Dữ liệu: Hiện tại",
+                "cls": "quality-CURRENT"
+              },
+              {
+                "raw": "NONE",
+                "text": "Cảnh báo: Không có",
+                "cls": "status-NONE"
+              }
+            ],
+            "reducedMotionRule": true,
+            "runningAnimation": null,
+            "illustration": {
+              "loaded": true,
+              "width": 1536,
+              "height": 1024,
+              "embedded": true
+            },
+            "barns": [
+              {
+                "id": "barn-nd2-1",
+                "label": "ND2-1 PILOT · DEMO"
+              },
+              {
+                "id": "barn-nd2-2",
+                "label": "ND2-2 DEMO"
+              },
+              {
+                "id": "barn-nd2-3",
+                "label": "ND2-3 DEMO"
+              },
+              {
+                "id": "barn-nd2-4",
+                "label": "ND2-4 DEMO"
+              },
+              {
+                "id": "demo-05",
+                "label": "DEMO-05 SYNTHETIC"
+              },
+              {
+                "id": "demo-06",
+                "label": "DEMO-06 SYNTHETIC"
+              }
+            ],
+            "filterInputs": 1
+          },
+          "screenshot": "vent009-1920x1080-default.png"
+        },
+        "vent_detail": {
+          "problems": [],
+          "observed": {
+            "active": "vent_detail",
+            "badge": "DEMO DATA",
+            "innerWidth": 1920,
+            "innerHeight": 1080,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "controls": 0,
+            "rawStates": [
+              {
+                "raw": "ACTIVE",
+                "text": "Lỗi thiết bị tổngĐang bật",
+                "cls": "system-flag flag-ACTIVE"
+              },
+              {
+                "raw": "NORMAL",
+                "text": "Thermostat nhiệt độ caoBình thường",
+                "cls": "system-flag flag-NORMAL"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Quạt 01Đang chạy",
+                "cls": "fan RUNNING quality-CURRENT connectivity-ONLINE"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "svg-sub state-RUNNING"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Quạt 02Đang chạy",
+                "cls": "fan RUNNING quality-CURRENT connectivity-ONLINE"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "svg-sub state-RUNNING"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Quạt 03Đang chạy",
+                "cls": "fan RUNNING quality-CURRENT connectivity-ONLINE"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "svg-sub state-RUNNING"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Quạt 04Đã dừng",
+                "cls": "fan STOPPED quality-CURRENT connectivity-ONLINE"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Đã dừng",
+                "cls": "svg-sub state-STOPPED"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Quạt 05Chưa rõ",
+                "cls": "fan UNKNOWN quality-UNKNOWN connectivity-ONLINE"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Chưa rõ",
+                "cls": "svg-sub state-UNKNOWN"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Quạt 06Đã dừng",
+                "cls": "fan STOPPED quality-CURRENT connectivity-ONLINE"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Đã dừng",
+                "cls": "svg-sub state-STOPPED"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "status-RUNNING"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "status-RUNNING"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "status-RUNNING"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Đã dừng",
+                "cls": "status-STOPPED"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Chưa rõ",
+                "cls": "status-UNKNOWN"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Đã dừng",
+                "cls": "status-STOPPED"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "status-RUNNING"
+              },
+              {
+                "raw": "NOT_CONFIGURED",
+                "text": "Chưa cấu hình",
+                "cls": "status-NOT_CONFIGURED"
+              }
+            ],
+            "reducedMotionRule": true,
+            "runningAnimation": "vent-fan-spin",
+            "selectedContext": null,
+            "detailLayouts": 1,
+            "fanActuallyMoves": true
+          },
+          "screenshot": "vent009-1920x1080-vent-detail.png"
+        },
+        "vent_history": {
+          "problems": [],
+          "observed": {
+            "active": "vent_history",
+            "badge": "DEMO DATA",
+            "innerWidth": 1920,
+            "innerHeight": 1080,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "controls": 0,
+            "rawStates": [],
+            "reducedMotionRule": true,
+            "runningAnimation": null,
+            "history": {
+              "insideMoves": 2,
+              "outsideMoves": 1,
+              "perceivedMoves": 1,
+              "humidityMoves": 1,
+              "leftAxes": 4,
+              "rightAxes": 4,
+              "samples": [
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "02:30:00 17/9/2026 · Nhiệt độ trong nhà: 26.4 °C · Nhiệt độ ngoài trời: 27.3 °C · Nhiệt độ cảm nhận: 27.1 °C · Độ ẩm: 78 %RH",
+                  "title": "02:30:00 17/9/2026 · Nhiệt độ trong nhà: 26.4 °C · Nhiệt độ ngoài trời: 27.3 °C · Nhiệt độ cảm nhận: 27.1 °C · Độ ẩm: 78 %RH",
+                  "points": 4
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "03:30:00 17/9/2026 · Nhiệt độ trong nhà: 26.7 °C · Nhiệt độ ngoài trời: 27.9 °C · Nhiệt độ cảm nhận: 27.5 °C · Độ ẩm: 77 %RH",
+                  "title": "03:30:00 17/9/2026 · Nhiệt độ trong nhà: 26.7 °C · Nhiệt độ ngoài trời: 27.9 °C · Nhiệt độ cảm nhận: 27.5 °C · Độ ẩm: 77 %RH",
+                  "points": 4
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "04:30:00 17/9/2026 · Nhiệt độ trong nhà: 27 °C · Nhiệt độ ngoài trời: 28.6 °C · Nhiệt độ cảm nhận: 28 °C · Độ ẩm: 76 %RH",
+                  "title": "04:30:00 17/9/2026 · Nhiệt độ trong nhà: 27 °C · Nhiệt độ ngoài trời: 28.6 °C · Nhiệt độ cảm nhận: 28 °C · Độ ẩm: 76 %RH",
+                  "points": 4
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "05:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.2 °C · Nhiệt độ ngoài trời: 29.3 °C · Nhiệt độ cảm nhận: 28.3 °C · Độ ẩm: 75 %RH",
+                  "title": "05:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.2 °C · Nhiệt độ ngoài trời: 29.3 °C · Nhiệt độ cảm nhận: 28.3 °C · Độ ẩm: 75 %RH",
+                  "points": 4
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "06:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.5 °C · Nhiệt độ ngoài trời: 30.1 °C · Nhiệt độ cảm nhận: 28.7 °C · Độ ẩm: 75 %RH",
+                  "title": "06:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.5 °C · Nhiệt độ ngoài trời: 30.1 °C · Nhiệt độ cảm nhận: 28.7 °C · Độ ẩm: 75 %RH",
+                  "points": 4
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "07:30:00 17/9/2026 · Nhiệt độ ngoài trời: 30.7 °C · Nhiệt độ cảm nhận: 28.9 °C · Độ ẩm: 74 %RH",
+                  "title": "07:30:00 17/9/2026 · Nhiệt độ ngoài trời: 30.7 °C · Nhiệt độ cảm nhận: 28.9 °C · Độ ẩm: 74 %RH",
+                  "points": 3
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "08:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.8 °C · Nhiệt độ ngoài trời: 31.2 °C · Nhiệt độ cảm nhận: 29.1 °C · Độ ẩm: 74 %RH",
+                  "title": "08:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.8 °C · Nhiệt độ ngoài trời: 31.2 °C · Nhiệt độ cảm nhận: 29.1 °C · Độ ẩm: 74 %RH",
+                  "points": 4
+                }
+              ]
+            }
+          },
+          "screenshot": "vent009-1920x1080-vent-history.png"
+        },
+        "vent_alarms": {
+          "problems": [],
+          "observed": {
+            "active": "vent_alarms",
+            "badge": "DEMO DATA",
+            "innerWidth": 1920,
+            "innerHeight": 1080,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "controls": 0,
+            "rawStates": [
+              {
+                "raw": "MAJOR",
+                "text": "Nghiêm trọng",
+                "cls": "pill status-MAJOR"
+              },
+              {
+                "raw": "ACTIVE",
+                "text": "Đang bật",
+                "cls": ""
+              },
+              {
+                "raw": "WARNING",
+                "text": "Cần chú ý",
+                "cls": "pill status-WARNING"
+              },
+              {
+                "raw": "ACTIVE",
+                "text": "Đang bật",
+                "cls": ""
+              },
+              {
+                "raw": "MAJOR",
+                "text": "Nghiêm trọng",
+                "cls": "pill status-MAJOR"
+              },
+              {
+                "raw": "ACTIVE",
+                "text": "Đang bật",
+                "cls": ""
+              }
+            ],
+            "reducedMotionRule": true,
+            "runningAnimation": null,
+            "filterInputs": 1,
+            "alarmRows": 3
+          },
+          "screenshot": "vent009-1920x1080-vent-alarms.png"
+        },
+        "vent_settings": {
+          "problems": [],
+          "observed": {
+            "active": "vent_settings",
+            "badge": "DEMO DATA",
+            "innerWidth": 1920,
+            "innerHeight": 1080,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "controls": 0,
+            "rawStates": [],
+            "reducedMotionRule": true,
+            "runningAnimation": null,
+            "filterInputs": 1,
+            "settings": {
+              "cells": 224,
+              "unique": 224,
+              "nonFilterInputs": 0
+            }
+          },
+          "screenshot": "vent009-1920x1080-vent-settings.png"
+        }
+      },
+      "barnNavigation": {
+        "selected": {
+          "id": "barn-nd2-2",
+          "label": "ND2-2"
+        },
+        "context": {
+          "label": "ND2-2",
+          "text": "NHÀ ĐƯỢC CHỌN · DEMO\n\nND2-2\n\nNhà này mới có thông tin tóm tắt minh họa. Chưa có dữ liệu chi tiết để hiển thị.\n\nTrực tuyến\nĐộ tươi dữ liệu\nDữ liệu cũ\nChế độ\nAUTO\nCấp hiển thị\n3\nCảnh báo\nCần chú ý\nNhà này mới có thông tin tóm tắt minh họa. Chưa có dữ liệu chi tiết để hiển thị chi tiết giám sát.\nXem nhà mẫu ND2-1 →\nQuay lại toàn trại",
+          "detail": 0
+        },
+        "sampleRecovery": "Giám sát nhà ND2-1",
+        "problems": []
+      }
+    },
+    "1366x768": {
+      "innerWidth": 1366,
+      "states": {
+        "default": {
+          "problems": [],
+          "observed": {
+            "active": "default",
+            "badge": "DEMO DATA",
+            "innerWidth": 1366,
+            "innerHeight": 768,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "controls": 6,
+            "rawStates": [
+              {
+                "raw": "ONLINE",
+                "text": "Trực tuyến",
+                "cls": "status-ONLINE"
+              },
+              {
+                "raw": "CURRENT",
+                "text": "Dữ liệu: Hiện tại",
+                "cls": "quality-CURRENT"
+              },
+              {
+                "raw": "MAJOR",
+                "text": "Cảnh báo: Nghiêm trọng",
+                "cls": "status-MAJOR"
+              },
+              {
+                "raw": "ONLINE",
+                "text": "Trực tuyến",
+                "cls": "status-ONLINE"
+              },
+              {
+                "raw": "STALE",
+                "text": "Dữ liệu: Dữ liệu cũ",
+                "cls": "quality-STALE"
+              },
+              {
+                "raw": "WARNING",
+                "text": "Cảnh báo: Cần chú ý",
+                "cls": "status-WARNING"
+              },
+              {
+                "raw": "OFFLINE",
+                "text": "Ngoại tuyến",
+                "cls": "status-OFFLINE"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Dữ liệu: Chưa rõ",
+                "cls": "quality-UNKNOWN"
+              },
+              {
+                "raw": "MAJOR",
+                "text": "Cảnh báo: Nghiêm trọng",
+                "cls": "status-MAJOR"
+              },
+              {
+                "raw": "ONLINE",
+                "text": "Trực tuyến",
+                "cls": "status-ONLINE"
+              },
+              {
+                "raw": "CURRENT",
+                "text": "Dữ liệu: Hiện tại",
+                "cls": "quality-CURRENT"
+              },
+              {
+                "raw": "NONE",
+                "text": "Cảnh báo: Không có",
+                "cls": "status-NONE"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Chưa rõ",
+                "cls": "status-UNKNOWN"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Dữ liệu: Chưa rõ",
+                "cls": "quality-UNKNOWN"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Cảnh báo: Chưa rõ",
+                "cls": "status-UNKNOWN"
+              },
+              {
+                "raw": "ONLINE",
+                "text": "Trực tuyến",
+                "cls": "status-ONLINE"
+              },
+              {
+                "raw": "CURRENT",
+                "text": "Dữ liệu: Hiện tại",
+                "cls": "quality-CURRENT"
+              },
+              {
+                "raw": "NONE",
+                "text": "Cảnh báo: Không có",
+                "cls": "status-NONE"
+              }
+            ],
+            "reducedMotionRule": true,
+            "runningAnimation": null,
+            "illustration": {
+              "loaded": true,
+              "width": 1536,
+              "height": 1024,
+              "embedded": true
+            },
+            "barns": [
+              {
+                "id": "barn-nd2-1",
+                "label": "ND2-1 PILOT · DEMO"
+              },
+              {
+                "id": "barn-nd2-2",
+                "label": "ND2-2 DEMO"
+              },
+              {
+                "id": "barn-nd2-3",
+                "label": "ND2-3 DEMO"
+              },
+              {
+                "id": "barn-nd2-4",
+                "label": "ND2-4 DEMO"
+              },
+              {
+                "id": "demo-05",
+                "label": "DEMO-05 SYNTHETIC"
+              },
+              {
+                "id": "demo-06",
+                "label": "DEMO-06 SYNTHETIC"
+              }
+            ],
+            "filterInputs": 1
+          },
+          "screenshot": "vent009-1366x768-default.png"
+        },
+        "vent_detail": {
+          "problems": [],
+          "observed": {
+            "active": "vent_detail",
+            "badge": "DEMO DATA",
+            "innerWidth": 1366,
+            "innerHeight": 768,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "controls": 0,
+            "rawStates": [
+              {
+                "raw": "ACTIVE",
+                "text": "Lỗi thiết bị tổngĐang bật",
+                "cls": "system-flag flag-ACTIVE"
+              },
+              {
+                "raw": "NORMAL",
+                "text": "Thermostat nhiệt độ caoBình thường",
+                "cls": "system-flag flag-NORMAL"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Quạt 01Đang chạy",
+                "cls": "fan RUNNING quality-CURRENT connectivity-ONLINE"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "svg-sub state-RUNNING"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Quạt 02Đang chạy",
+                "cls": "fan RUNNING quality-CURRENT connectivity-ONLINE"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "svg-sub state-RUNNING"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Quạt 03Đang chạy",
+                "cls": "fan RUNNING quality-CURRENT connectivity-ONLINE"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "svg-sub state-RUNNING"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Quạt 04Đã dừng",
+                "cls": "fan STOPPED quality-CURRENT connectivity-ONLINE"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Đã dừng",
+                "cls": "svg-sub state-STOPPED"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Quạt 05Chưa rõ",
+                "cls": "fan UNKNOWN quality-UNKNOWN connectivity-ONLINE"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Chưa rõ",
+                "cls": "svg-sub state-UNKNOWN"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Quạt 06Đã dừng",
+                "cls": "fan STOPPED quality-CURRENT connectivity-ONLINE"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Đã dừng",
+                "cls": "svg-sub state-STOPPED"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "status-RUNNING"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "status-RUNNING"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "status-RUNNING"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Đã dừng",
+                "cls": "status-STOPPED"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Chưa rõ",
+                "cls": "status-UNKNOWN"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Đã dừng",
+                "cls": "status-STOPPED"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "status-RUNNING"
+              },
+              {
+                "raw": "NOT_CONFIGURED",
+                "text": "Chưa cấu hình",
+                "cls": "status-NOT_CONFIGURED"
+              }
+            ],
+            "reducedMotionRule": true,
+            "runningAnimation": "vent-fan-spin",
+            "selectedContext": null,
+            "detailLayouts": 1,
+            "fanActuallyMoves": true
+          },
+          "screenshot": "vent009-1366x768-vent-detail.png"
+        },
+        "vent_history": {
+          "problems": [],
+          "observed": {
+            "active": "vent_history",
+            "badge": "DEMO DATA",
+            "innerWidth": 1366,
+            "innerHeight": 768,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "controls": 0,
+            "rawStates": [],
+            "reducedMotionRule": true,
+            "runningAnimation": null,
+            "history": {
+              "insideMoves": 2,
+              "outsideMoves": 1,
+              "perceivedMoves": 1,
+              "humidityMoves": 1,
+              "leftAxes": 4,
+              "rightAxes": 4,
+              "samples": [
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "02:30:00 17/9/2026 · Nhiệt độ trong nhà: 26.4 °C · Nhiệt độ ngoài trời: 27.3 °C · Nhiệt độ cảm nhận: 27.1 °C · Độ ẩm: 78 %RH",
+                  "title": "02:30:00 17/9/2026 · Nhiệt độ trong nhà: 26.4 °C · Nhiệt độ ngoài trời: 27.3 °C · Nhiệt độ cảm nhận: 27.1 °C · Độ ẩm: 78 %RH",
+                  "points": 4
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "03:30:00 17/9/2026 · Nhiệt độ trong nhà: 26.7 °C · Nhiệt độ ngoài trời: 27.9 °C · Nhiệt độ cảm nhận: 27.5 °C · Độ ẩm: 77 %RH",
+                  "title": "03:30:00 17/9/2026 · Nhiệt độ trong nhà: 26.7 °C · Nhiệt độ ngoài trời: 27.9 °C · Nhiệt độ cảm nhận: 27.5 °C · Độ ẩm: 77 %RH",
+                  "points": 4
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "04:30:00 17/9/2026 · Nhiệt độ trong nhà: 27 °C · Nhiệt độ ngoài trời: 28.6 °C · Nhiệt độ cảm nhận: 28 °C · Độ ẩm: 76 %RH",
+                  "title": "04:30:00 17/9/2026 · Nhiệt độ trong nhà: 27 °C · Nhiệt độ ngoài trời: 28.6 °C · Nhiệt độ cảm nhận: 28 °C · Độ ẩm: 76 %RH",
+                  "points": 4
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "05:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.2 °C · Nhiệt độ ngoài trời: 29.3 °C · Nhiệt độ cảm nhận: 28.3 °C · Độ ẩm: 75 %RH",
+                  "title": "05:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.2 °C · Nhiệt độ ngoài trời: 29.3 °C · Nhiệt độ cảm nhận: 28.3 °C · Độ ẩm: 75 %RH",
+                  "points": 4
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "06:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.5 °C · Nhiệt độ ngoài trời: 30.1 °C · Nhiệt độ cảm nhận: 28.7 °C · Độ ẩm: 75 %RH",
+                  "title": "06:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.5 °C · Nhiệt độ ngoài trời: 30.1 °C · Nhiệt độ cảm nhận: 28.7 °C · Độ ẩm: 75 %RH",
+                  "points": 4
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "07:30:00 17/9/2026 · Nhiệt độ ngoài trời: 30.7 °C · Nhiệt độ cảm nhận: 28.9 °C · Độ ẩm: 74 %RH",
+                  "title": "07:30:00 17/9/2026 · Nhiệt độ ngoài trời: 30.7 °C · Nhiệt độ cảm nhận: 28.9 °C · Độ ẩm: 74 %RH",
+                  "points": 3
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "08:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.8 °C · Nhiệt độ ngoài trời: 31.2 °C · Nhiệt độ cảm nhận: 29.1 °C · Độ ẩm: 74 %RH",
+                  "title": "08:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.8 °C · Nhiệt độ ngoài trời: 31.2 °C · Nhiệt độ cảm nhận: 29.1 °C · Độ ẩm: 74 %RH",
+                  "points": 4
+                }
+              ]
+            }
+          },
+          "screenshot": "vent009-1366x768-vent-history.png"
+        },
+        "vent_alarms": {
+          "problems": [],
+          "observed": {
+            "active": "vent_alarms",
+            "badge": "DEMO DATA",
+            "innerWidth": 1366,
+            "innerHeight": 768,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "controls": 0,
+            "rawStates": [
+              {
+                "raw": "MAJOR",
+                "text": "Nghiêm trọng",
+                "cls": "pill status-MAJOR"
+              },
+              {
+                "raw": "ACTIVE",
+                "text": "Đang bật",
+                "cls": ""
+              },
+              {
+                "raw": "WARNING",
+                "text": "Cần chú ý",
+                "cls": "pill status-WARNING"
+              },
+              {
+                "raw": "ACTIVE",
+                "text": "Đang bật",
+                "cls": ""
+              },
+              {
+                "raw": "MAJOR",
+                "text": "Nghiêm trọng",
+                "cls": "pill status-MAJOR"
+              },
+              {
+                "raw": "ACTIVE",
+                "text": "Đang bật",
+                "cls": ""
+              }
+            ],
+            "reducedMotionRule": true,
+            "runningAnimation": null,
+            "filterInputs": 1,
+            "alarmRows": 3
+          },
+          "screenshot": "vent009-1366x768-vent-alarms.png"
+        },
+        "vent_settings": {
+          "problems": [],
+          "observed": {
+            "active": "vent_settings",
+            "badge": "DEMO DATA",
+            "innerWidth": 1366,
+            "innerHeight": 768,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "controls": 0,
+            "rawStates": [],
+            "reducedMotionRule": true,
+            "runningAnimation": null,
+            "filterInputs": 1,
+            "settings": {
+              "cells": 224,
+              "unique": 224,
+              "nonFilterInputs": 0
+            }
+          },
+          "screenshot": "vent009-1366x768-vent-settings.png"
+        }
+      },
+      "barnNavigation": {
+        "selected": {
+          "id": "barn-nd2-2",
+          "label": "ND2-2"
+        },
+        "context": {
+          "label": "ND2-2",
+          "text": "NHÀ ĐƯỢC CHỌN · DEMO\n\nND2-2\n\nNhà này mới có thông tin tóm tắt minh họa. Chưa có dữ liệu chi tiết để hiển thị.\n\nTrực tuyến\nĐộ tươi dữ liệu\nDữ liệu cũ\nChế độ\nAUTO\nCấp hiển thị\n3\nCảnh báo\nCần chú ý\nNhà này mới có thông tin tóm tắt minh họa. Chưa có dữ liệu chi tiết để hiển thị chi tiết giám sát.\nXem nhà mẫu ND2-1 →\nQuay lại toàn trại",
+          "detail": 0
+        },
+        "sampleRecovery": "Giám sát nhà ND2-1",
+        "problems": []
+      }
+    },
+    "820x1180": {
+      "innerWidth": 820,
+      "states": {
+        "default": {
+          "problems": [],
+          "observed": {
+            "active": "default",
+            "badge": "DEMO DATA",
+            "innerWidth": 820,
+            "innerHeight": 1180,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "controls": 6,
+            "rawStates": [
+              {
+                "raw": "ONLINE",
+                "text": "Trực tuyến",
+                "cls": "status-ONLINE"
+              },
+              {
+                "raw": "CURRENT",
+                "text": "Dữ liệu: Hiện tại",
+                "cls": "quality-CURRENT"
+              },
+              {
+                "raw": "MAJOR",
+                "text": "Cảnh báo: Nghiêm trọng",
+                "cls": "status-MAJOR"
+              },
+              {
+                "raw": "ONLINE",
+                "text": "Trực tuyến",
+                "cls": "status-ONLINE"
+              },
+              {
+                "raw": "STALE",
+                "text": "Dữ liệu: Dữ liệu cũ",
+                "cls": "quality-STALE"
+              },
+              {
+                "raw": "WARNING",
+                "text": "Cảnh báo: Cần chú ý",
+                "cls": "status-WARNING"
+              },
+              {
+                "raw": "OFFLINE",
+                "text": "Ngoại tuyến",
+                "cls": "status-OFFLINE"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Dữ liệu: Chưa rõ",
+                "cls": "quality-UNKNOWN"
+              },
+              {
+                "raw": "MAJOR",
+                "text": "Cảnh báo: Nghiêm trọng",
+                "cls": "status-MAJOR"
+              },
+              {
+                "raw": "ONLINE",
+                "text": "Trực tuyến",
+                "cls": "status-ONLINE"
+              },
+              {
+                "raw": "CURRENT",
+                "text": "Dữ liệu: Hiện tại",
+                "cls": "quality-CURRENT"
+              },
+              {
+                "raw": "NONE",
+                "text": "Cảnh báo: Không có",
+                "cls": "status-NONE"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Chưa rõ",
+                "cls": "status-UNKNOWN"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Dữ liệu: Chưa rõ",
+                "cls": "quality-UNKNOWN"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Cảnh báo: Chưa rõ",
+                "cls": "status-UNKNOWN"
+              },
+              {
+                "raw": "ONLINE",
+                "text": "Trực tuyến",
+                "cls": "status-ONLINE"
+              },
+              {
+                "raw": "CURRENT",
+                "text": "Dữ liệu: Hiện tại",
+                "cls": "quality-CURRENT"
+              },
+              {
+                "raw": "NONE",
+                "text": "Cảnh báo: Không có",
+                "cls": "status-NONE"
+              }
+            ],
+            "reducedMotionRule": true,
+            "runningAnimation": null,
+            "illustration": {
+              "loaded": true,
+              "width": 1536,
+              "height": 1024,
+              "embedded": true
+            },
+            "barns": [
+              {
+                "id": "barn-nd2-1",
+                "label": "ND2-1 PILOT · DEMO"
+              },
+              {
+                "id": "barn-nd2-2",
+                "label": "ND2-2 DEMO"
+              },
+              {
+                "id": "barn-nd2-3",
+                "label": "ND2-3 DEMO"
+              },
+              {
+                "id": "barn-nd2-4",
+                "label": "ND2-4 DEMO"
+              },
+              {
+                "id": "demo-05",
+                "label": "DEMO-05 SYNTHETIC"
+              },
+              {
+                "id": "demo-06",
+                "label": "DEMO-06 SYNTHETIC"
+              }
+            ],
+            "filterInputs": 1
+          },
+          "screenshot": "vent009-820x1180-default.png"
+        },
+        "vent_detail": {
+          "problems": [],
+          "observed": {
+            "active": "vent_detail",
+            "badge": "DEMO DATA",
+            "innerWidth": 820,
+            "innerHeight": 1180,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "controls": 0,
+            "rawStates": [
+              {
+                "raw": "ACTIVE",
+                "text": "Lỗi thiết bị tổngĐang bật",
+                "cls": "system-flag flag-ACTIVE"
+              },
+              {
+                "raw": "NORMAL",
+                "text": "Thermostat nhiệt độ caoBình thường",
+                "cls": "system-flag flag-NORMAL"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Quạt 01Đang chạy",
+                "cls": "fan RUNNING quality-CURRENT connectivity-ONLINE"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "svg-sub state-RUNNING"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Quạt 02Đang chạy",
+                "cls": "fan RUNNING quality-CURRENT connectivity-ONLINE"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "svg-sub state-RUNNING"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Quạt 03Đang chạy",
+                "cls": "fan RUNNING quality-CURRENT connectivity-ONLINE"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "svg-sub state-RUNNING"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Quạt 04Đã dừng",
+                "cls": "fan STOPPED quality-CURRENT connectivity-ONLINE"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Đã dừng",
+                "cls": "svg-sub state-STOPPED"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Quạt 05Chưa rõ",
+                "cls": "fan UNKNOWN quality-UNKNOWN connectivity-ONLINE"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Chưa rõ",
+                "cls": "svg-sub state-UNKNOWN"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Quạt 06Đã dừng",
+                "cls": "fan STOPPED quality-CURRENT connectivity-ONLINE"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Đã dừng",
+                "cls": "svg-sub state-STOPPED"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "status-RUNNING"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "status-RUNNING"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "status-RUNNING"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Đã dừng",
+                "cls": "status-STOPPED"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Chưa rõ",
+                "cls": "status-UNKNOWN"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Đã dừng",
+                "cls": "status-STOPPED"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "status-RUNNING"
+              },
+              {
+                "raw": "NOT_CONFIGURED",
+                "text": "Chưa cấu hình",
+                "cls": "status-NOT_CONFIGURED"
+              }
+            ],
+            "reducedMotionRule": true,
+            "runningAnimation": "vent-fan-spin",
+            "selectedContext": null,
+            "detailLayouts": 1,
+            "fanActuallyMoves": true
+          },
+          "screenshot": "vent009-820x1180-vent-detail.png"
+        },
+        "vent_history": {
+          "problems": [],
+          "observed": {
+            "active": "vent_history",
+            "badge": "DEMO DATA",
+            "innerWidth": 820,
+            "innerHeight": 1180,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "controls": 0,
+            "rawStates": [],
+            "reducedMotionRule": true,
+            "runningAnimation": null,
+            "history": {
+              "insideMoves": 2,
+              "outsideMoves": 1,
+              "perceivedMoves": 1,
+              "humidityMoves": 1,
+              "leftAxes": 4,
+              "rightAxes": 4,
+              "samples": [
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "02:30:00 17/9/2026 · Nhiệt độ trong nhà: 26.4 °C · Nhiệt độ ngoài trời: 27.3 °C · Nhiệt độ cảm nhận: 27.1 °C · Độ ẩm: 78 %RH",
+                  "title": "02:30:00 17/9/2026 · Nhiệt độ trong nhà: 26.4 °C · Nhiệt độ ngoài trời: 27.3 °C · Nhiệt độ cảm nhận: 27.1 °C · Độ ẩm: 78 %RH",
+                  "points": 4
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "03:30:00 17/9/2026 · Nhiệt độ trong nhà: 26.7 °C · Nhiệt độ ngoài trời: 27.9 °C · Nhiệt độ cảm nhận: 27.5 °C · Độ ẩm: 77 %RH",
+                  "title": "03:30:00 17/9/2026 · Nhiệt độ trong nhà: 26.7 °C · Nhiệt độ ngoài trời: 27.9 °C · Nhiệt độ cảm nhận: 27.5 °C · Độ ẩm: 77 %RH",
+                  "points": 4
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "04:30:00 17/9/2026 · Nhiệt độ trong nhà: 27 °C · Nhiệt độ ngoài trời: 28.6 °C · Nhiệt độ cảm nhận: 28 °C · Độ ẩm: 76 %RH",
+                  "title": "04:30:00 17/9/2026 · Nhiệt độ trong nhà: 27 °C · Nhiệt độ ngoài trời: 28.6 °C · Nhiệt độ cảm nhận: 28 °C · Độ ẩm: 76 %RH",
+                  "points": 4
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "05:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.2 °C · Nhiệt độ ngoài trời: 29.3 °C · Nhiệt độ cảm nhận: 28.3 °C · Độ ẩm: 75 %RH",
+                  "title": "05:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.2 °C · Nhiệt độ ngoài trời: 29.3 °C · Nhiệt độ cảm nhận: 28.3 °C · Độ ẩm: 75 %RH",
+                  "points": 4
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "06:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.5 °C · Nhiệt độ ngoài trời: 30.1 °C · Nhiệt độ cảm nhận: 28.7 °C · Độ ẩm: 75 %RH",
+                  "title": "06:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.5 °C · Nhiệt độ ngoài trời: 30.1 °C · Nhiệt độ cảm nhận: 28.7 °C · Độ ẩm: 75 %RH",
+                  "points": 4
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "07:30:00 17/9/2026 · Nhiệt độ ngoài trời: 30.7 °C · Nhiệt độ cảm nhận: 28.9 °C · Độ ẩm: 74 %RH",
+                  "title": "07:30:00 17/9/2026 · Nhiệt độ ngoài trời: 30.7 °C · Nhiệt độ cảm nhận: 28.9 °C · Độ ẩm: 74 %RH",
+                  "points": 3
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "08:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.8 °C · Nhiệt độ ngoài trời: 31.2 °C · Nhiệt độ cảm nhận: 29.1 °C · Độ ẩm: 74 %RH",
+                  "title": "08:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.8 °C · Nhiệt độ ngoài trời: 31.2 °C · Nhiệt độ cảm nhận: 29.1 °C · Độ ẩm: 74 %RH",
+                  "points": 4
+                }
+              ]
+            }
+          },
+          "screenshot": "vent009-820x1180-vent-history.png"
+        },
+        "vent_alarms": {
+          "problems": [],
+          "observed": {
+            "active": "vent_alarms",
+            "badge": "DEMO DATA",
+            "innerWidth": 820,
+            "innerHeight": 1180,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "controls": 0,
+            "rawStates": [
+              {
+                "raw": "MAJOR",
+                "text": "Nghiêm trọng",
+                "cls": "pill status-MAJOR"
+              },
+              {
+                "raw": "ACTIVE",
+                "text": "Đang bật",
+                "cls": ""
+              },
+              {
+                "raw": "WARNING",
+                "text": "Cần chú ý",
+                "cls": "pill status-WARNING"
+              },
+              {
+                "raw": "ACTIVE",
+                "text": "Đang bật",
+                "cls": ""
+              },
+              {
+                "raw": "MAJOR",
+                "text": "Nghiêm trọng",
+                "cls": "pill status-MAJOR"
+              },
+              {
+                "raw": "ACTIVE",
+                "text": "Đang bật",
+                "cls": ""
+              }
+            ],
+            "reducedMotionRule": true,
+            "runningAnimation": null,
+            "filterInputs": 1,
+            "alarmRows": 3
+          },
+          "screenshot": "vent009-820x1180-vent-alarms.png"
+        },
+        "vent_settings": {
+          "problems": [],
+          "observed": {
+            "active": "vent_settings",
+            "badge": "DEMO DATA",
+            "innerWidth": 820,
+            "innerHeight": 1180,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "controls": 0,
+            "rawStates": [],
+            "reducedMotionRule": true,
+            "runningAnimation": null,
+            "filterInputs": 1,
+            "settings": {
+              "cells": 224,
+              "unique": 224,
+              "nonFilterInputs": 0
+            }
+          },
+          "screenshot": "vent009-820x1180-vent-settings.png"
+        }
+      },
+      "barnNavigation": {
+        "selected": {
+          "id": "barn-nd2-2",
+          "label": "ND2-2"
+        },
+        "context": {
+          "label": "ND2-2",
+          "text": "NHÀ ĐƯỢC CHỌN · DEMO\n\nND2-2\n\nNhà này mới có thông tin tóm tắt minh họa. Chưa có dữ liệu chi tiết để hiển thị.\n\nTrực tuyến\nĐộ tươi dữ liệu\nDữ liệu cũ\nChế độ\nAUTO\nCấp hiển thị\n3\nCảnh báo\nCần chú ý\nNhà này mới có thông tin tóm tắt minh họa. Chưa có dữ liệu chi tiết để hiển thị chi tiết giám sát.\nXem nhà mẫu ND2-1 →\nQuay lại toàn trại",
+          "detail": 0
+        },
+        "sampleRecovery": "Giám sát nhà ND2-1",
+        "problems": []
+      }
+    },
+    "390x844": {
+      "innerWidth": 390,
+      "states": {
+        "default": {
+          "problems": [],
+          "observed": {
+            "active": "default",
+            "badge": "DEMO DATA",
+            "innerWidth": 390,
+            "innerHeight": 844,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "controls": 6,
+            "rawStates": [
+              {
+                "raw": "ONLINE",
+                "text": "Trực tuyến",
+                "cls": "status-ONLINE"
+              },
+              {
+                "raw": "CURRENT",
+                "text": "Dữ liệu: Hiện tại",
+                "cls": "quality-CURRENT"
+              },
+              {
+                "raw": "MAJOR",
+                "text": "Cảnh báo: Nghiêm trọng",
+                "cls": "status-MAJOR"
+              },
+              {
+                "raw": "ONLINE",
+                "text": "Trực tuyến",
+                "cls": "status-ONLINE"
+              },
+              {
+                "raw": "STALE",
+                "text": "Dữ liệu: Dữ liệu cũ",
+                "cls": "quality-STALE"
+              },
+              {
+                "raw": "WARNING",
+                "text": "Cảnh báo: Cần chú ý",
+                "cls": "status-WARNING"
+              },
+              {
+                "raw": "OFFLINE",
+                "text": "Ngoại tuyến",
+                "cls": "status-OFFLINE"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Dữ liệu: Chưa rõ",
+                "cls": "quality-UNKNOWN"
+              },
+              {
+                "raw": "MAJOR",
+                "text": "Cảnh báo: Nghiêm trọng",
+                "cls": "status-MAJOR"
+              },
+              {
+                "raw": "ONLINE",
+                "text": "Trực tuyến",
+                "cls": "status-ONLINE"
+              },
+              {
+                "raw": "CURRENT",
+                "text": "Dữ liệu: Hiện tại",
+                "cls": "quality-CURRENT"
+              },
+              {
+                "raw": "NONE",
+                "text": "Cảnh báo: Không có",
+                "cls": "status-NONE"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Chưa rõ",
+                "cls": "status-UNKNOWN"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Dữ liệu: Chưa rõ",
+                "cls": "quality-UNKNOWN"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Cảnh báo: Chưa rõ",
+                "cls": "status-UNKNOWN"
+              },
+              {
+                "raw": "ONLINE",
+                "text": "Trực tuyến",
+                "cls": "status-ONLINE"
+              },
+              {
+                "raw": "CURRENT",
+                "text": "Dữ liệu: Hiện tại",
+                "cls": "quality-CURRENT"
+              },
+              {
+                "raw": "NONE",
+                "text": "Cảnh báo: Không có",
+                "cls": "status-NONE"
+              }
+            ],
+            "reducedMotionRule": true,
+            "runningAnimation": null,
+            "illustration": {
+              "loaded": true,
+              "width": 1536,
+              "height": 1024,
+              "embedded": true
+            },
+            "barns": [
+              {
+                "id": "barn-nd2-1",
+                "label": "ND2-1 PILOT · DEMO"
+              },
+              {
+                "id": "barn-nd2-2",
+                "label": "ND2-2 DEMO"
+              },
+              {
+                "id": "barn-nd2-3",
+                "label": "ND2-3 DEMO"
+              },
+              {
+                "id": "barn-nd2-4",
+                "label": "ND2-4 DEMO"
+              },
+              {
+                "id": "demo-05",
+                "label": "DEMO-05 SYNTHETIC"
+              },
+              {
+                "id": "demo-06",
+                "label": "DEMO-06 SYNTHETIC"
+              }
+            ],
+            "filterInputs": 1
+          },
+          "screenshot": "vent009-390-default.png"
+        },
+        "vent_detail": {
+          "problems": [],
+          "observed": {
+            "active": "vent_detail",
+            "badge": "DEMO DATA",
+            "innerWidth": 390,
+            "innerHeight": 844,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "controls": 0,
+            "rawStates": [
+              {
+                "raw": "ACTIVE",
+                "text": "Lỗi thiết bị tổngĐang bật",
+                "cls": "system-flag flag-ACTIVE"
+              },
+              {
+                "raw": "NORMAL",
+                "text": "Thermostat nhiệt độ caoBình thường",
+                "cls": "system-flag flag-NORMAL"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Quạt 01Đang chạy",
+                "cls": "fan RUNNING quality-CURRENT connectivity-ONLINE"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "svg-sub state-RUNNING"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Quạt 02Đang chạy",
+                "cls": "fan RUNNING quality-CURRENT connectivity-ONLINE"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "svg-sub state-RUNNING"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Quạt 03Đang chạy",
+                "cls": "fan RUNNING quality-CURRENT connectivity-ONLINE"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "svg-sub state-RUNNING"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Quạt 04Đã dừng",
+                "cls": "fan STOPPED quality-CURRENT connectivity-ONLINE"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Đã dừng",
+                "cls": "svg-sub state-STOPPED"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Quạt 05Chưa rõ",
+                "cls": "fan UNKNOWN quality-UNKNOWN connectivity-ONLINE"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Chưa rõ",
+                "cls": "svg-sub state-UNKNOWN"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Quạt 06Đã dừng",
+                "cls": "fan STOPPED quality-CURRENT connectivity-ONLINE"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Đã dừng",
+                "cls": "svg-sub state-STOPPED"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "status-RUNNING"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "status-RUNNING"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "status-RUNNING"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Đã dừng",
+                "cls": "status-STOPPED"
+              },
+              {
+                "raw": "UNKNOWN",
+                "text": "Chưa rõ",
+                "cls": "status-UNKNOWN"
+              },
+              {
+                "raw": "STOPPED",
+                "text": "Đã dừng",
+                "cls": "status-STOPPED"
+              },
+              {
+                "raw": "RUNNING",
+                "text": "Đang chạy",
+                "cls": "status-RUNNING"
+              },
+              {
+                "raw": "NOT_CONFIGURED",
+                "text": "Chưa cấu hình",
+                "cls": "status-NOT_CONFIGURED"
+              }
+            ],
+            "reducedMotionRule": true,
+            "runningAnimation": "vent-fan-spin",
+            "selectedContext": null,
+            "detailLayouts": 1,
+            "fanActuallyMoves": true
+          },
+          "screenshot": "vent009-390-vent-detail.png"
+        },
+        "vent_history": {
+          "problems": [],
+          "observed": {
+            "active": "vent_history",
+            "badge": "DEMO DATA",
+            "innerWidth": 390,
+            "innerHeight": 844,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "controls": 0,
+            "rawStates": [],
+            "reducedMotionRule": true,
+            "runningAnimation": null,
+            "history": {
+              "insideMoves": 2,
+              "outsideMoves": 1,
+              "perceivedMoves": 1,
+              "humidityMoves": 1,
+              "leftAxes": 4,
+              "rightAxes": 4,
+              "samples": [
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "02:30:00 17/9/2026 · Nhiệt độ trong nhà: 26.4 °C · Nhiệt độ ngoài trời: 27.3 °C · Nhiệt độ cảm nhận: 27.1 °C · Độ ẩm: 78 %RH",
+                  "title": "02:30:00 17/9/2026 · Nhiệt độ trong nhà: 26.4 °C · Nhiệt độ ngoài trời: 27.3 °C · Nhiệt độ cảm nhận: 27.1 °C · Độ ẩm: 78 %RH",
+                  "points": 4
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "03:30:00 17/9/2026 · Nhiệt độ trong nhà: 26.7 °C · Nhiệt độ ngoài trời: 27.9 °C · Nhiệt độ cảm nhận: 27.5 °C · Độ ẩm: 77 %RH",
+                  "title": "03:30:00 17/9/2026 · Nhiệt độ trong nhà: 26.7 °C · Nhiệt độ ngoài trời: 27.9 °C · Nhiệt độ cảm nhận: 27.5 °C · Độ ẩm: 77 %RH",
+                  "points": 4
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "04:30:00 17/9/2026 · Nhiệt độ trong nhà: 27 °C · Nhiệt độ ngoài trời: 28.6 °C · Nhiệt độ cảm nhận: 28 °C · Độ ẩm: 76 %RH",
+                  "title": "04:30:00 17/9/2026 · Nhiệt độ trong nhà: 27 °C · Nhiệt độ ngoài trời: 28.6 °C · Nhiệt độ cảm nhận: 28 °C · Độ ẩm: 76 %RH",
+                  "points": 4
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "05:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.2 °C · Nhiệt độ ngoài trời: 29.3 °C · Nhiệt độ cảm nhận: 28.3 °C · Độ ẩm: 75 %RH",
+                  "title": "05:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.2 °C · Nhiệt độ ngoài trời: 29.3 °C · Nhiệt độ cảm nhận: 28.3 °C · Độ ẩm: 75 %RH",
+                  "points": 4
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "06:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.5 °C · Nhiệt độ ngoài trời: 30.1 °C · Nhiệt độ cảm nhận: 28.7 °C · Độ ẩm: 75 %RH",
+                  "title": "06:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.5 °C · Nhiệt độ ngoài trời: 30.1 °C · Nhiệt độ cảm nhận: 28.7 °C · Độ ẩm: 75 %RH",
+                  "points": 4
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "07:30:00 17/9/2026 · Nhiệt độ ngoài trời: 30.7 °C · Nhiệt độ cảm nhận: 28.9 °C · Độ ẩm: 74 %RH",
+                  "title": "07:30:00 17/9/2026 · Nhiệt độ ngoài trời: 30.7 °C · Nhiệt độ cảm nhận: 28.9 °C · Độ ẩm: 74 %RH",
+                  "points": 3
+                },
+                {
+                  "tabindex": "0",
+                  "role": "img",
+                  "label": "08:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.8 °C · Nhiệt độ ngoài trời: 31.2 °C · Nhiệt độ cảm nhận: 29.1 °C · Độ ẩm: 74 %RH",
+                  "title": "08:30:00 17/9/2026 · Nhiệt độ trong nhà: 27.8 °C · Nhiệt độ ngoài trời: 31.2 °C · Nhiệt độ cảm nhận: 29.1 °C · Độ ẩm: 74 %RH",
+                  "points": 4
+                }
+              ]
+            }
+          },
+          "screenshot": "vent009-390-vent-history.png"
+        },
+        "vent_alarms": {
+          "problems": [],
+          "observed": {
+            "active": "vent_alarms",
+            "badge": "DEMO DATA",
+            "innerWidth": 390,
+            "innerHeight": 844,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "controls": 0,
+            "rawStates": [
+              {
+                "raw": "MAJOR",
+                "text": "Nghiêm trọng",
+                "cls": "pill status-MAJOR"
+              },
+              {
+                "raw": "ACTIVE",
+                "text": "Đang bật",
+                "cls": ""
+              },
+              {
+                "raw": "WARNING",
+                "text": "Cần chú ý",
+                "cls": "pill status-WARNING"
+              },
+              {
+                "raw": "ACTIVE",
+                "text": "Đang bật",
+                "cls": ""
+              },
+              {
+                "raw": "MAJOR",
+                "text": "Nghiêm trọng",
+                "cls": "pill status-MAJOR"
+              },
+              {
+                "raw": "ACTIVE",
+                "text": "Đang bật",
+                "cls": ""
+              }
+            ],
+            "reducedMotionRule": true,
+            "runningAnimation": null,
+            "filterInputs": 1,
+            "alarmRows": 3
+          },
+          "screenshot": "vent009-390-vent-alarms.png"
+        },
+        "vent_settings": {
+          "problems": [],
+          "observed": {
+            "active": "vent_settings",
+            "badge": "DEMO DATA",
+            "innerWidth": 390,
+            "innerHeight": 844,
+            "pageOverflowX": 0,
+            "widgetOverflowX": 0,
+            "controls": 0,
+            "rawStates": [],
+            "reducedMotionRule": true,
+            "runningAnimation": null,
+            "filterInputs": 1,
+            "settings": {
+              "cells": 224,
+              "unique": 224,
+              "nonFilterInputs": 0
+            }
+          },
+          "screenshot": "vent009-390-vent-settings.png"
+        }
+      },
+      "barnNavigation": {
+        "selected": {
+          "id": "barn-nd2-2",
+          "label": "ND2-2"
+        },
+        "context": {
+          "label": "ND2-2",
+          "text": "NHÀ ĐƯỢC CHỌN · DEMO\n\nND2-2\n\nNhà này mới có thông tin tóm tắt minh họa. Chưa có dữ liệu chi tiết để hiển thị.\n\nTrực tuyến\nĐộ tươi dữ liệu\nDữ liệu cũ\nChế độ\nAUTO\nCấp hiển thị\n3\nCảnh báo\nCần chú ý\nNhà này mới có thông tin tóm tắt minh họa. Chưa có dữ liệu chi tiết để hiển thị chi tiết giám sát.\nXem nhà mẫu ND2-1 →\nQuay lại toàn trại",
+          "detail": 0
+        },
+        "sampleRecovery": "Giám sát nhà ND2-1",
+        "problems": []
+      }
+    }
+  },
+  "ok": true
+}

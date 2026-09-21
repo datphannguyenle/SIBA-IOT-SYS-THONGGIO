@@ -1,5 +1,9 @@
 # VENT-009 — checkpoint màn Giám sát
 
+> **Đã hoàn tất triển khai demo:** người dùng duyệt5màn và xác nhận deploy.
+> Xem `../deployment/vent009_execution_report.md`: widget4/dashboard2,20livechecksPASS.
+> Nội dung “chưa deploy/chờ review” bên dưới là nhật ký lịch sử, không còn trạng thái hiện hành.
+
 > **Checkpoint hiện hành: bước 2 — cả năm màn local.** Người dùng đã chấp nhận màn
 > Giám sát và yêu cầu triển khai tiếp. Các ghi nhận bước1 bên dưới là lịch sử.
 

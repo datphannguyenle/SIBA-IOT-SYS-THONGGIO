@@ -1,5 +1,10 @@
 # VENT-009 — Thiết kế lại theo ảnh đã duyệt
 
+Status: done — phạm vi giao diện DEMO đã duyệt và triển khai, không phải production.
+21/09/2026: widget4/dashboard2, nguồn087411e,APIregressionPASS,
+20live state/viewport+4BarnnavigationPASS. Xem vent009_execution_report.md.
+Các ghi nhận checkpoint bên dưới giữ làm lịch sử. Không tự cấp gate PLC/implementation-ready.
+
 ## Objective / approval
 
 Ngày 21/09/2026, người dùng duyệt 5 ảnh tham chiếu và yêu cầu triển khai từng bước.

@@ -1,5 +1,11 @@
 # VENT-009 — checkpoint bước 2
 
+> **Cập nhật hiện hành: đã deploy demo và verify live 21/09/2026.** User duyệt cả5màn
+> và xác nhận deploy. Widget4/dashboard2(NO-OP),commitnguồn087411e.
+> 20state/viewport+4navigationPASS; report `docs/ventilation/deployment/vent009_execution_report.md`.
+> Những ghi nhận “chưa deploy/chờ review” bên dưới là lịch sử bước2, đã thay thế.
+> Không chạy lại execute run-id vent009. Không push/merge. Nguồn PLC vẫn chưa xác minh.
+
 ## STATUS
 Người dùng đã chấp nhận hình thức màn Giám sát (“Tôi thấy đẹp”) và yêu cầu tiếp tục.
 Cả 5 màn đã đồng bộ style local; chờ review bốn màn mới, không self-approve.
