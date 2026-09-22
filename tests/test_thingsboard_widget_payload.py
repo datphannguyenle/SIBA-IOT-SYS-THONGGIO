@@ -178,8 +178,9 @@ class WidgetRuntimeHarnessTest(unittest.TestCase):
               var host=document.getElementById('tb-widget');
               document.body.style.paddingTop='114px';
               host.style.height='900px';
-              window.__widgetSelf.onResize();
+              document.body.dispatchEvent(new MouseEvent('click', {bubbles:true}));
             """)
+            self.browser.wait_for("return document.querySelector('.vent-demo-root').getBoundingClientRect().bottom <= window.innerHeight + 1")
             info = self.browser.run("""
               var root=document.querySelector('.vent-demo-root'), rr=root.getBoundingClientRect();
               function rect(selector){var e=root.querySelector(selector),r=e&&e.getBoundingClientRect();return r&&{top:r.top,bottom:r.bottom};}
