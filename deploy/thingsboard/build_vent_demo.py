@@ -87,12 +87,13 @@ def build_controller():
         "  self._ventRedraw = viewState === 'vent_history' ? draw : null;\n"
         "  self._ventResizeObserver = typeof ResizeObserver === 'function' ? new ResizeObserver(fitViewport) : null;\n"
         "  if (self._ventResizeObserver) self._ventResizeObserver.observe(ctx.$container[0]);\n"
-        "  self._ventViewportEvent = function () { requestAnimationFrame(function () { requestAnimationFrame(fitViewport); }); clearTimeout(self._ventFitTimer); self._ventFitTimer = setTimeout(fitViewport, 250); };\n"
+        "  self._ventViewportEvent = function () { requestAnimationFrame(function () { requestAnimationFrame(fitViewport); }); clearTimeout(self._ventFitTimer); self._ventFitTimer = setTimeout(fitViewport, 900); };\n"
         "  window.addEventListener('click', self._ventViewportEvent, true);\n"
+        "  window.addEventListener('transitionend', self._ventViewportEvent, true);\n"
         "  if (window.visualViewport) window.visualViewport.addEventListener('resize', self._ventViewportEvent);\n"
         "};\n"
         "self.onResize = function () { if (self._ventFitViewport) self._ventFitViewport(); if (self._ventRedraw) self._ventRedraw(); };\n"
-        "self.onDestroy = function () { clearTimeout(self._ventFitTimer); if (self._ventResizeObserver) self._ventResizeObserver.disconnect(); if (self._ventViewportEvent) { window.removeEventListener('click', self._ventViewportEvent, true); if (window.visualViewport) window.visualViewport.removeEventListener('resize', self._ventViewportEvent); } self._ventFitTimer = null; self._ventResizeObserver = null; self._ventViewportEvent = null; self._ventFitViewport = null; self._ventRedraw = null; };\n"
+        "self.onDestroy = function () { clearTimeout(self._ventFitTimer); if (self._ventResizeObserver) self._ventResizeObserver.disconnect(); if (self._ventViewportEvent) { window.removeEventListener('click', self._ventViewportEvent, true); window.removeEventListener('transitionend', self._ventViewportEvent, true); if (window.visualViewport) window.visualViewport.removeEventListener('resize', self._ventViewportEvent); } self._ventFitTimer = null; self._ventResizeObserver = null; self._ventViewportEvent = null; self._ventFitViewport = null; self._ventRedraw = null; };\n"
     )
 
 
