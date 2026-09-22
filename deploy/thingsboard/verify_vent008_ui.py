@@ -261,7 +261,7 @@ def run_mobile(server, temporary_dir):
 def main():
     global EVIDENCE_PREFIX
     parser = argparse.ArgumentParser()
-    parser.add_argument('--evidence-prefix', choices=('vent008', 'vent009', 'vent009fit', 'vent009height', 'vent009height2'), default='vent008')
+    parser.add_argument('--evidence-prefix', choices=('vent008', 'vent009', 'vent009fit', 'vent009height', 'vent009height2', 'vent009height3'), default='vent008')
     EVIDENCE_PREFIX = parser.parse_args().evidence_prefix
     stamp = time.strftime("%Y%m%dT%H%M%S%z")
     EVIDENCE_DIR.mkdir(parents=True, exist_ok=True)

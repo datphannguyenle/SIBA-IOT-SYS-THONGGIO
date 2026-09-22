@@ -1,0 +1,35 @@
+{
+  "task": "VENT-009-height-correction-3",
+  "repository_commit": "470937233853beaded391fcb8ad6845efb3477c5",
+  "started_at": "2026-09-22T09:52:00+07:00",
+  "authorization": "Continue viewport correction using new toolbar-change evidence",
+  "mutations": [
+    {
+      "kind": "widget",
+      "method": "POST",
+      "path": "/api/widgetType",
+      "id": "b9fa9280-b26a-11f1-83ad-9912edc644d2",
+      "status": "verified",
+      "at": "2026-09-22T09:52:00+07:00",
+      "http_status": 200
+    }
+  ],
+  "dashboard_action": "NO-OP; preserve live version 3 exactly",
+  "finished_at": "2026-09-22T09:52:00+07:00",
+  "results": {
+    "widget": {
+      "verified": true,
+      "version": 8
+    },
+    "dashboard": {
+      "preserved": true,
+      "version": 3
+    }
+  },
+  "guard_mutations": [
+    {
+      "method": "POST",
+      "path": "/api/widgetType"
+    }
+  ]
+}
