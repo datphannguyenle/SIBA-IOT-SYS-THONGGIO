@@ -27,7 +27,8 @@ from verify_vent_demo_ui import ELEMENT_KEY, find, login, open_dashboard  # noqa
 DASHBOARD_ID = "b9ff4d70-b26a-11f1-83ad-9912edc644d2"
 WIDGET_TYPE_ID = "b9fa9280-b26a-11f1-83ad-9912edc644d2"
 STATES = ("default", "vent_detail", "vent_history", "vent_alarms", "vent_settings")
-VIEWPORTS = (("1920x1080", 1920, 1080), ("1366x768", 1366, 768), ("820x1180", 820, 1180))
+VIEWPORTS = (("1920x1080", 1920, 1080), ("1536x734", 1536, 734),
+             ("1366x768", 1366, 768), ("820x1180", 820, 1180))
 EVIDENCE_PREFIX = 'vent008'
 
 
@@ -60,6 +61,12 @@ var info = {
   widgetClientHeight: root.clientHeight,
   widgetScrollHeight: root.scrollHeight,
   widgetOverflowY: getComputedStyle(root).overflowY,
+  compactHeight: root.classList.contains('vent-compact-height'),
+  rootRect: (function () { var r=root.getBoundingClientRect(); return {top:r.top,bottom:r.bottom,height:r.height}; }()),
+  footerRect: (function () { var e=root.querySelector('.footer'),r=e&&e.getBoundingClientRect(); return r&&{top:r.top,bottom:r.bottom}; }()),
+  criticalRects: [...root.querySelectorAll('.operation-grid,.controller-panel,.supplemental-panel')].map(function (e) {
+    var r=e.getBoundingClientRect(); return {selector:e.className,top:r.top,bottom:r.bottom};
+  }),
   controls: root.querySelectorAll('button,select,textarea,form').length,
   rawStates: [...root.querySelectorAll('[data-raw-state]')].map(function (el) {
     return {raw: el.getAttribute('data-raw-state'), text: el.textContent.trim(), cls: el.getAttribute('class') || ''};
@@ -134,6 +141,14 @@ def validate(state, info, expected_width=None):
     if expected_width is not None and expected_width > 1100:
         if info["widgetScrollHeight"] > info["widgetClientHeight"] + 1 or info["widgetOverflowY"] != "hidden":
             problems.append("desktop root vertical scroll")
+        root_rect, footer = info["rootRect"], info["footerRect"]
+        if root_rect["bottom"] > info["innerHeight"] + 1:
+            problems.append("widget extends below viewport")
+        if not footer or footer["top"] < root_rect["top"] - 1 or footer["bottom"] > root_rect["bottom"] + 1:
+            problems.append("footer clipped")
+        if state == "vent_detail" and any(rect["top"] < root_rect["top"] - 1 or rect["bottom"] > root_rect["bottom"] + 1
+                                           for rect in info["criticalRects"]):
+            problems.append("detail content clipped")
     if not info["reducedMotionRule"]:
         problems.append("reduced-motion fan safety rule")
     if state == "default" and info.get("illustration") != {"loaded": True, "width": 1536, "height": 1024, "embedded": True}:
@@ -219,6 +234,9 @@ def run_desktop(label, width, height, temporary_dir):
         browser.resize(width, height + height - browser.run("return window.innerHeight"))
         login(browser)
         open_dashboard(browser, DASHBOARD_ID)
+        if width > 1100:
+            browser.run("var b=[...document.querySelectorAll('button')].find(function(x){return (x.innerText||'').trim()==='more_horiz'}); if(b)b.click();")
+            time.sleep(1)
         result = check_all_states(browser, label, temporary_dir, browser.screenshot_full, expected_width=width)
         result["barnNavigation"] = verify_barn_navigation(browser)
         return result
@@ -243,7 +261,7 @@ def run_mobile(server, temporary_dir):
 def main():
     global EVIDENCE_PREFIX
     parser = argparse.ArgumentParser()
-    parser.add_argument('--evidence-prefix', choices=('vent008', 'vent009', 'vent009fit'), default='vent008')
+    parser.add_argument('--evidence-prefix', choices=('vent008', 'vent009', 'vent009fit', 'vent009height'), default='vent008')
     EVIDENCE_PREFIX = parser.parse_args().evidence_prefix
     stamp = time.strftime("%Y%m%dT%H%M%S%z")
     EVIDENCE_DIR.mkdir(parents=True, exist_ok=True)

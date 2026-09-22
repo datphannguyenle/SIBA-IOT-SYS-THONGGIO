@@ -114,6 +114,7 @@ var self = {ctx: {$container: [host], settings: {viewState: state},
                     getStateParams: function () { return stateParams; }}}};
 new Function('self', payload.descriptor.controllerScript)(self);
 self.onInit();
+window.__widgetSelf = self;
 return true;
 """ % NAMESPACE
 
@@ -169,6 +170,28 @@ class WidgetRuntimeHarnessTest(unittest.TestCase):
             self.assertEqual(info['menu'], 0 if state == 'default' else 1, state)
             if state in ('vent_history','vent_settings'):
                 self.assertGreater(info['internal'], 0, state)
+
+    def test_short_desktop_uses_compact_layout_without_clipping_key_content(self):
+        self.mount("vent_detail", 1536, 734)
+        self.browser.run("""
+          var host=document.getElementById('tb-widget');
+          document.body.style.paddingTop='114px';
+          host.style.height='900px';
+          window.__widgetSelf.onResize();
+        """)
+        info = self.browser.run("""
+          var root=document.querySelector('.vent-demo-root'), rr=root.getBoundingClientRect();
+          function rect(selector){var r=root.querySelector(selector).getBoundingClientRect();return {top:r.top,bottom:r.bottom};}
+          return {compact:root.classList.contains('vent-compact-height'),client:root.clientHeight,scroll:root.scrollHeight,
+            viewport:window.innerHeight,rootTop:rr.top,rootBottom:rr.bottom,footer:rect('.footer'),
+            operation:rect('.operation-grid'),controller:rect('.controller-panel'),supplemental:rect('.supplemental-panel')};
+        """)
+        self.assertTrue(info['compact'])
+        self.assertLessEqual(info['rootBottom'], info['viewport'] + 1)
+        self.assertLessEqual(info['scroll'], info['client'] + 1)
+        for key in ('footer', 'operation', 'controller', 'supplemental'):
+            self.assertGreaterEqual(info[key]['top'], info['rootTop'] - 1, key)
+            self.assertLessEqual(info[key]['bottom'], info['rootBottom'] + 1, key)
 
     def test_navigation_preserves_selected_barn_in_state_controller_params(self):
         self.mount("default")

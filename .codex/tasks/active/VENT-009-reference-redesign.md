@@ -1,9 +1,10 @@
 # VENT-009 — Thiết kế lại theo ảnh đã duyệt
 
-Status: done — phạm vi giao diện DEMO đã duyệt, triển khai và sửa fit desktop;
-không phải production. 21/09/2026: widget5/dashboard2, nguồn3ff7d57,
-API regression PASS, 20/20 live state/viewport PASS; desktop 1920/1366 không cuộn
-root, Tổng quan không có menu nhà. Xem vent009_fit_correction_report.md.
+Status: correction active — phản hồi 22/09/2026 cho thấy ở browser zoom khoảng125%
+và toolbar ThingsBoard mở, root không cuộn nhưng nội dung detail bị clip. Đây là lỗ
+hổng tiêu chí verify trước: chỉ đo root scroll, chưa đo footer/critical panels visible.
+Đã tái hiện ở CSS viewport1536×734, available620px; đang sửa compact-height và verify
+đúng toolbar-open trước khi cập nhật widget demo. Không phải production.
 Các ghi nhận checkpoint bên dưới giữ làm lịch sử. Không tự cấp gate PLC/implementation-ready.
 
 ## Correction hoàn tất — 21/09/2026
