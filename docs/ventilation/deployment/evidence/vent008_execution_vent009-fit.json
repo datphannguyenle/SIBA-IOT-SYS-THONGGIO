@@ -1,0 +1,34 @@
+{
+  "task": "VENT-008",
+  "repository_commit": "3ff7d57eb872e26cdf29c8b227ef4ec6bf0e2022",
+  "started_at": "2026-09-21T14:23:30+07:00",
+  "authorization": "User authorization to finish current checkpoint; isolated demo only",
+  "mutations": [
+    {
+      "kind": "widget",
+      "method": "POST",
+      "path": "/api/widgetType",
+      "id": "b9fa9280-b26a-11f1-83ad-9912edc644d2",
+      "status": "verified",
+      "at": "2026-09-21T14:23:30+07:00",
+      "http_status": 200
+    }
+  ],
+  "written_fingerprints": {
+    "widget": "f6e0e0682be50ffaf2f54558d6fe20a19efde3f9652908705b5efdfa5e0df008"
+  },
+  "results": {
+    "widget": {
+      "verified": true,
+      "version": 5
+    },
+    "dashboard": "NO-OP; already equivalent"
+  },
+  "finished_at": "2026-09-21T14:23:30+07:00",
+  "guard_mutations": [
+    {
+      "method": "POST",
+      "path": "/api/widgetType"
+    }
+  ]
+}

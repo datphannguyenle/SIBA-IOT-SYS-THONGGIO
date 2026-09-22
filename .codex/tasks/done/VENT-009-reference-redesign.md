@@ -1,17 +1,20 @@
 # VENT-009 — Thiết kế lại theo ảnh đã duyệt
 
-Status: done — phạm vi giao diện DEMO đã duyệt và triển khai, không phải production.
-21/09/2026: widget4/dashboard2, nguồn087411e,APIregressionPASS,
-20live state/viewport+4BarnnavigationPASS. Xem vent009_execution_report.md.
+Status: done — phạm vi giao diện DEMO đã duyệt, triển khai và sửa fit desktop;
+không phải production. 21/09/2026: widget5/dashboard2, nguồn3ff7d57,
+API regression PASS, 20/20 live state/viewport PASS; desktop 1920/1366 không cuộn
+root, Tổng quan không có menu nhà. Xem vent009_fit_correction_report.md.
 Các ghi nhận checkpoint bên dưới giữ làm lịch sử. Không tự cấp gate PLC/implementation-ready.
 
-## Correction active — 21/09/2026
+## Correction hoàn tất — 21/09/2026
 
 User phản hồi dashboard desktop còn cuộn toàn trang và menu nhà xuất hiện ở Tổng quan.
 Đo live trước sửa: root client1016; default scroll1074, history1710, settings1592;
 detail/alarms1016. Yêu cầu: desktop root không cuộn; history/settings cuộn nội bộ;
 overview không có `.state-tabs`, menu chỉ có ở state nhà.
-Nguồn/tests sửa local,72/72PASS; chờ deploy+live verification rồi mới done lại.
+Nguồn/tests sửa local,72/72PASS. Đã deploy widget4→5; dashboard2 NO-OP.
+Live Firefox phiên mới:20/20 state/viewport PASS; desktop root client=scroll,
+overflow hidden ở cả5state; overview active tab=null. Tablet/mobile giữ cuộn tự nhiên.
 
 ## Objective / approval
 

@@ -1,6 +1,14 @@
-# VENT-009 — checkpoint bước 2
+# VENT-009 — hoàn tất demo và sửa fit desktop
 
-> **Cập nhật hiện hành: đã deploy demo và verify live 21/09/2026.** User duyệt cả5màn
+> **Cập nhật hiện hành 21/09/2026:** phản hồi cuối đã xử lý và triển khai.
+> Widget5/dashboard2(NO-OP), commit nguồn `3ff7d57`. Tổng quan không còn menu nhà;
+> menu chỉ có trong4state nhà. Ở desktop1920/1366, cả5state vừa khung widget,
+> không cuộn root; history/settings dùng vùng cuộn nội bộ. 72/72 local PASS và
+> 20/20 live state/viewport PASS. Xem
+> `docs/ventilation/deployment/vent009_fit_correction_report.md`.
+> Tablet/mobile giữ cuộn dọc tự nhiên. Không push/merge; không tác động PLC.
+
+> **Mốc trước (đã thay thế): đã deploy demo và verify live 21/09/2026.** User duyệt cả5màn
 > và xác nhận deploy. Widget4/dashboard2(NO-OP),commitnguồn087411e.
 > 20state/viewport+4navigationPASS; report `docs/ventilation/deployment/vent009_execution_report.md`.
 > Những ghi nhận “chưa deploy/chờ review” bên dưới là lịch sử bước2, đã thay thế.
