@@ -1,6 +1,13 @@
 # VENT-009 — hoàn tất demo và sửa fit desktop
 
-> **Cập nhật hiện hành 21/09/2026:** phản hồi cuối đã xử lý và triển khai.
+> **Cập nhật hiện hành 22/09/2026:** đã sửa trường hợp browser zoom khoảng125% và
+> toolbar ThingsBoard mở như ảnh người dùng. Widget10; dashboard live3 được giữ nguyên
+> tuyệt đối vì preflight phát hiện version ngoài dự kiến. 73/73 local PASS;25/25 live
+> state/viewport PASS, gồm1536×734 CSS với toolbar mở. Verify đo root, footer và panel
+> detail thật sự nằm trong viewport. Ảnh `vent009height5-1536x734-vent-detail.png`.
+> Không push/merge, không tác động PLC.
+
+> **Mốc 21/09/2026 (đã thay thế bởi sửa 22/09):** phản hồi cuối đã xử lý và triển khai.
 > Widget5/dashboard2(NO-OP), commit nguồn `3ff7d57`. Tổng quan không còn menu nhà;
 > menu chỉ có trong4state nhà. Ở desktop1920/1366, cả5state vừa khung widget,
 > không cuộn root; history/settings dùng vùng cuộn nội bộ. 72/72 local PASS và

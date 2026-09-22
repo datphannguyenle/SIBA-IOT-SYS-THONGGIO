@@ -47,3 +47,27 @@ Cài đặt ở 1920×1080; không thấy phần nội dung bị cắt khỏi kh
 Không sửa PLC, Gateway, thiết bị, telemetry, attribute, RPC, alarm, dashboard khác,
 bundle chung hay hệ khác. Đây vẫn là dashboard demo read-only dùng fixture; kết quả
 không xác nhận mapping dữ liệu vật lý hoặc production readiness. Không push/merge.
+
+## Sửa bổ sung theo viewport thực — 22/09/2026
+
+Ảnh người dùng cho thấy Edge/browser zoom khoảng125% và thanh công cụ dashboard mở;
+viewport CSS tương đương1536×734, phần widget chỉ còn620px chiều cao. Bản trước đã
+ẩn overflow root nhưng chưa kiểm footer/panel cuối có nằm trong vùng nhìn thấy nên
+detail bị clip. Tiêu chí cũ được đánh dấu chưa đủ.
+
+Bản sửa cuối thêm chế độ `vent-compact-height`, giới hạn widget theo phần viewport
+thực còn lại và refit sau animation đóng/mở toolbar. Header, KPI, sơ đồ, bảng thông số,
+bộ điều khiển và dữ liệu bổ sung được nén có chủ đích; không ẩn dữ liệu semantic.
+Trang cảnh báo có layout compact riêng; history/settings vẫn cuộn nội bộ.
+
+- Local:73/73 tests PASS, gồm mô phỏng1536×734 + offset toolbar114px cho cả5state.
+- Live widget: version5→10 qua các vòng sửa có backup/journal riêng; vòng cuối version10.
+- Preflight phát hiện dashboard đã ở version3 thay vì version2. Không ghi đè: mọi vòng
+  chỉ POST đúng widget demo và xác minh dashboard version3 giữ nguyên fingerprint.
+- Live cuối:25/25 state/viewport PASS tại1920×1080,1536×734,1366×768,820×1180,
+  390×844. Ba desktop mở toolbar; root, footer và critical detail panels đều visible.
+- Bằng chứng cuối: `evidence/vent009_height5_*`,
+  `evidence/vent009height5_ui_verification_20260922T100046+0700.json` và ảnh
+  `evidence/vent009height5-*.png`.
+
+Không có mutation dashboard, PLC, Gateway, telemetry, RPC, alarm hoặc hệ khác.

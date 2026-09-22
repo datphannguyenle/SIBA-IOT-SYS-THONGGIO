@@ -1,10 +1,11 @@
 # VENT-009 — Thiết kế lại theo ảnh đã duyệt
 
-Status: correction active — phản hồi 22/09/2026 cho thấy ở browser zoom khoảng125%
-và toolbar ThingsBoard mở, root không cuộn nhưng nội dung detail bị clip. Đây là lỗ
-hổng tiêu chí verify trước: chỉ đo root scroll, chưa đo footer/critical panels visible.
-Đã tái hiện ở CSS viewport1536×734, available620px; đang sửa compact-height và verify
-đúng toolbar-open trước khi cập nhật widget demo. Không phải production.
+Status: done — correction 22/09/2026 đã hoàn tất trên widget10/dashboard3.
+Đã tái hiện browser zoom khoảng125% + toolbar mở tại CSS viewport1536×734,
+available620px. Bản compact-height giữ footer và các panel chính trong viewport;
+25/25 live state/viewport PASS với toolbar mở. Tiêu chí verify nay đo visibility thật,
+không chỉ root scroll. Dashboard live3 ngoài dự kiến được bảo toàn nguyên trạng;
+chỉ widget demo được cập nhật. Không phải production.
 Các ghi nhận checkpoint bên dưới giữ làm lịch sử. Không tự cấp gate PLC/implementation-ready.
 
 ## Correction hoàn tất — 21/09/2026
