@@ -70,7 +70,7 @@ def build_controller():
         "  function fitViewport() {\n"
         "    container.style.height = '100%';\n"
         "    if (window.innerWidth <= 1100) { container.classList.remove('vent-compact-height'); return; }\n"
-        "    var viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;\n"
+        "    var viewportHeight = window.visualViewport ? Math.min(window.innerHeight, window.visualViewport.height) : window.innerHeight;\n"
         "    var top = Math.max(0, container.getBoundingClientRect().top);\n"
         "    var available = Math.max(420, Math.floor(viewportHeight - top));\n"
         "    var parentHeight = container.parentElement ? container.parentElement.clientHeight : available;\n"
