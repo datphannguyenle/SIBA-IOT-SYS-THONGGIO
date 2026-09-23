@@ -115,6 +115,29 @@ class LiveDashboardPayloadTest(unittest.TestCase):
         alarms = self.widgets["alarms"]["config"]
         self.assertEqual(alarms["alarmSource"]["entityAliasId"], live.ALIAS_SELECTED)
 
+    def test_alarm_source_declares_the_platform_alarm_fields(self):
+        """alarmSource.dataKeys rỗng thì subscription vẫn báo đã nạp nhưng không trả alarm nào."""
+        keys = self.widgets["alarms"]["config"]["alarmSource"]["dataKeys"]
+        self.assertEqual([key["name"] for key in keys], list(live.ALARM_FIELDS))
+        self.assertTrue(all(key["type"] == "alarm" for key in keys))
+
+    def test_alarm_fields_are_not_telemetry_and_stay_out_of_the_key_map(self):
+        settings = self.widgets["alarms"]["config"]["settings"]
+        for field in live.ALARM_FIELDS:
+            self.assertNotIn(field, settings["keyMap"])
+
+    def test_alarm_filter_accepts_every_status_and_ignores_propagated(self):
+        config = self.widgets["alarms"]["config"]["alarmFilterConfig"]
+        self.assertEqual(config["statusList"], [])
+        self.assertEqual(config["severityList"], [])
+        self.assertIs(config["searchPropagatedAlarms"], False)
+
+    def test_only_the_alarm_widget_turns_on_diagnostics(self):
+        for component, widget in self.widgets.items():
+            expected = widget["type"] == "alarm"
+            self.assertEqual(widget["config"]["settings"].get("diagnostics", False), expected,
+                             component)
+
     def test_controller_online_is_read_from_the_platform_attribute(self):
         for component in live.DETAIL_COMPONENTS + ("overview",):
             config = self.widgets[component]["config"]

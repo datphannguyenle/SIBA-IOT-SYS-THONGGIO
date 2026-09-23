@@ -2027,7 +2027,43 @@
             "type": "entity",
             "name": "Nhà gió",
             "entityAliasId": "a1b2c3d0-0002-4000-8000-00000000ve02",
-            "dataKeys": []
+            "dataKeys": [
+              {
+                "name": "createdTime",
+                "label": "createdTime",
+                "type": "alarm",
+                "color": "#00d4e0",
+                "settings": {}
+              },
+              {
+                "name": "originator",
+                "label": "originator",
+                "type": "alarm",
+                "color": "#00d4e0",
+                "settings": {}
+              },
+              {
+                "name": "type",
+                "label": "type",
+                "type": "alarm",
+                "color": "#00d4e0",
+                "settings": {}
+              },
+              {
+                "name": "severity",
+                "label": "severity",
+                "type": "alarm",
+                "color": "#00d4e0",
+                "settings": {}
+              },
+              {
+                "name": "status",
+                "label": "status",
+                "type": "alarm",
+                "color": "#00d4e0",
+                "settings": {}
+              }
+            ]
           },
           "settings": {
             "component": "alarms",
@@ -2036,9 +2072,18 @@
             "demoUseSubscription": false,
             "keyMap": {},
             "freshnessMs": {},
-            "alarmScope": "Thiết bị mô phỏng SIM-VentController (VENT-011), chưa xác minh trên PLC thật"
+            "alarmScope": "Thiết bị mô phỏng SIM-VentController (VENT-011), chưa xác minh trên PLC thật",
+            "diagnostics": true
           },
-          "mobileHeight": 650
+          "mobileHeight": 650,
+          "alarmFilterConfig": {
+            "statusList": [],
+            "severityList": [],
+            "typeList": null,
+            "searchPropagatedAlarms": false,
+            "assigneeId": null
+          },
+          "pageSize": 100
         }
       },
       "26fc72f9-5fff-58dc-87fb-6aafd8b61f86": {

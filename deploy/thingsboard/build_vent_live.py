@@ -20,6 +20,10 @@ SIM_DASHBOARD_TITLE = 'DB-30-VEN-DETAIL-V1-SIM'
 ALIAS_LIST = 'a1b2c3d0-0001-4000-8000-00000000ve01'   # nhiều nhà, cho màn Tổng quan
 ALIAS_SELECTED = 'a1b2c3d0-0002-4000-8000-00000000ve02'  # nhà đang xem, cho widget chi tiết
 
+# Widget kiểu alarm của TB lấy cột từ alarmSource.dataKeys; để rỗng thì subscription có tồn tại
+# nhưng không trả về alarm nào. Đây đúng là 5 trường mặc định của TB (getDefaultAlarmDataKeys).
+ALARM_FIELDS = ('createdTime', 'originator', 'type', 'severity', 'status')
+
 # controllerOnline không phải khóa PLC: nó là attribute `active` do nền tảng tự quản.
 ONLINE_ATTRIBUTE = 'active'
 OVERVIEW_KEYS = ('fanStage', 'operatingMode', 'controllerOnline',
@@ -104,9 +108,20 @@ def dashboard():
             'freshnessMs': freshness_for(component),
             'alarmScope': 'Thiết bị mô phỏng %s (VENT-011), chưa xác minh trên PLC thật' % sim.SIM_PROFILE,
         })
+        # Bật chẩn đoán cho đúng widget cảnh báo: subscription báo "đã nạp" mà bảng trống, cần
+        # biết hình dạng thật thay vì đoán. Chỉ ghi hình dạng, không ghi giá trị.
         if widget['type'] == 'alarm':
-            widget['config']['alarmSource'] = {'type': 'entity', 'name': 'Nhà gió',
-                                               'entityAliasId': ALIAS_SELECTED, 'dataKeys': []}
+            widget['config']['settings']['diagnostics'] = True
+        if widget['type'] == 'alarm':
+            widget['config']['alarmSource'] = {
+                'type': 'entity', 'name': 'Nhà gió', 'entityAliasId': ALIAS_SELECTED,
+                'dataKeys': [data_key(field, 'alarm') for field in ALARM_FIELDS]}
+            # statusList rỗng = mọi trạng thái; giao diện tự phân ACTIVE và RECOVERED.
+            # Thiết bị mô phỏng chưa có quan hệ nên không tìm alarm lan truyền.
+            widget['config']['alarmFilterConfig'] = {
+                'statusList': [], 'severityList': [], 'typeList': None,
+                'searchPropagatedAlarms': False, 'assigneeId': None}
+            widget['config']['pageSize'] = 100
     return dash
 
 
@@ -126,7 +141,13 @@ def validate(dash):
         assert sources is not None and all(source is not None for source in sources), component
         for source in sources:
             assert source['entityAliasId'] in cfg['entityAliases'], component
+        if widget['type'] == 'alarm':
+            assert [key['name'] for key in config['alarmSource']['dataKeys']] == list(ALARM_FIELDS)
+            assert all(key['type'] == 'alarm' for key in config['alarmSource']['dataKeys'])
+            assert config['alarmFilterConfig']['statusList'] == []
+            assert config['alarmFilterConfig']['searchPropagatedAlarms'] is False
         # Mọi khóa đã khai phải có keyMap và ngưỡng tươi, nếu không widget hiện UNKNOWN.
+        # Trường alarm là trường của nền tảng, không phải khóa telemetry nên không vào keyMap.
         declared = {key['name'] for source in config['datasources'] for key in source['dataKeys']}
         mapped = set(config['settings']['keyMap'].values())
         assert declared <= mapped | {ONLINE_ATTRIBUTE}, component

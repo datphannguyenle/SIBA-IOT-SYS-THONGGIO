@@ -1,0 +1,41 @@
+{
+  "task": "VENT-011b",
+  "at": "2026-09-23T14:07:15+07:00",
+  "devices": {
+    "SIM-VEN-BOUNDARY": [
+      {
+        "type": "Nhiệt độ cảm nhận cao",
+        "severity": "MINOR",
+        "status": "ACTIVE_UNACK"
+      }
+    ],
+    "SIM-VEN-FAULT": [
+      {
+        "type": "Nhiệt độ cảm nhận cao",
+        "severity": "MINOR",
+        "status": "ACTIVE_UNACK"
+      },
+      {
+        "type": "Lỗi thiết bị thông gió",
+        "severity": "CRITICAL",
+        "status": "ACTIVE_UNACK"
+      },
+      {
+        "type": "Nhiệt độ trong chuồng cao",
+        "severity": "MAJOR",
+        "status": "ACTIVE_UNACK"
+      },
+      {
+        "type": "Nhiệt độ cao (thermostat ngoài)",
+        "severity": "MAJOR",
+        "status": "ACTIVE_UNACK"
+      }
+    ],
+    "SIM-VEN-MANUAL": [],
+    "SIM-VEN-NORMAL": [],
+    "SIM-VEN-OFFLINE": [],
+    "SIM-VEN-STALE": [],
+    "SIM-VEN-UNKNOWN": []
+  },
+  "total": 5
+}

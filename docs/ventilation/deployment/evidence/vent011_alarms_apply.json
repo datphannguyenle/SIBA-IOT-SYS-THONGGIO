@@ -1,0 +1,45 @@
+{
+  "task": "VENT-011b",
+  "at": "2026-09-23T14:06:45+07:00",
+  "profile_id": "61fc5bf0-b719-11f1-a719-7da6129c6745",
+  "profile_version": 2,
+  "severity_note": "Mức độ là ĐỀ XUẤT của dự án, contract v0.3 không quy định. Cần NCC/khách xác nhận trước khi áp cho thiết bị thật.",
+  "stored": [
+    {
+      "alarmType": "Lỗi thiết bị thông gió",
+      "severity": "CRITICAL",
+      "propagate": false
+    },
+    {
+      "alarmType": "Nhiệt độ cao (thermostat ngoài)",
+      "severity": "MAJOR",
+      "propagate": false
+    },
+    {
+      "alarmType": "Nhiệt độ trong chuồng cao",
+      "severity": "MAJOR",
+      "propagate": false
+    },
+    {
+      "alarmType": "Nhiệt độ trong chuồng thấp",
+      "severity": "MINOR",
+      "propagate": false
+    },
+    {
+      "alarmType": "Nhiệt độ cảm nhận cao",
+      "severity": "MINOR",
+      "propagate": false
+    },
+    {
+      "alarmType": "Nhiệt độ cảm nhận thấp",
+      "severity": "MINOR",
+      "propagate": false
+    }
+  ],
+  "mutations": [
+    {
+      "method": "POST",
+      "path": "/api/deviceProfile"
+    }
+  ]
+}

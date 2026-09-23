@@ -72,6 +72,22 @@ self.onInit = function () {
       ctx.stateController[change](next, merged, false);
     }, params);
     node.scrollTop = scroll;
+    // Chẩn đoán bật bằng tay (settings.diagnostics = true): chỉ ghi HÌNH DẠNG của subscription,
+    // không ghi giá trị, không gọi mạng. Dùng khi một widget "đã nạp" mà vẫn trống.
+    if (settings.diagnostics === true) {
+      var probe = {component: settings.component || null, mapping: (vm.mapping || {}).status || null,
+        scope: (vm.mapping || {}).scope || null, rows: (ctx.data || []).length,
+        latestRows: (ctx.latestData || []).length,
+        datasources: (ctx.datasources || []).length,
+        alarmsStatus: (vm.alarmsSource || {}).status || null, alarms: (vm.alarms || []).length};
+      var sub = ctx.defaultSubscription;
+      probe.subscriptionKeys = sub ? Object.keys(sub).filter(function (key) {
+        return key.toLowerCase().indexOf('alarm') >= 0; }) : null;
+      var block = sub && sub.alarms;
+      probe.alarmBlock = block ? Object.keys(block) : null;
+      probe.alarmDataCount = block && Array.isArray(block.data) ? block.data.length : null;
+      node.setAttribute('data-vent-diagnostic', JSON.stringify(probe));
+    }
     if (ctx.detectChanges) ctx.detectChanges();
   };
   self._ventDraw();

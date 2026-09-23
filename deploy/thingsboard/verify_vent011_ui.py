@@ -50,7 +50,10 @@ def platform_state(manifest):
         attributes = tb.get_ok("/api/plugins/telemetry/DEVICE/%s/values/attributes/SERVER_SCOPE"
                                % info["id"])
         active = {item["key"]: item["value"] for item in attributes}.get("active")
-        state[info["scenario"]] = {"age": age, "active": active}
+        alarms = tb.get_ok("/api/alarm/DEVICE/%s?pageSize=100&page=0&searchStatus=ACTIVE"
+                           % info["id"])
+        state[info["scenario"]] = {"age": age, "active": active,
+                                   "activeAlarms": sorted(a["type"] for a in alarms["data"])}
     return state
 
 
@@ -138,6 +141,8 @@ def read_state(browser):
       });
       var body = document.querySelectorAll('.vent-modular-root table tbody tr');
       out.rows = body.length;
+      out.tableText = '';
+      body.forEach(function (tr) { out.tableText += ' ' + tr.textContent; });
       if (body.length) {
         out.firstRow = [].map.call(body[0].querySelectorAll('td'), function (td) {
           return td.textContent.trim();
@@ -148,6 +153,8 @@ def read_state(browser):
         if (el.tagName === 'INPUT' && el.getAttribute('type') === 'search') return;
         out.writable += 1;
       });
+      var probe = document.querySelector('.vent-modular-root[data-vent-diagnostic]');
+      out.diagnostic = probe ? probe.getAttribute('data-vent-diagnostic') : null;
       document.querySelectorAll('.vent-modular-root [data-setting-key]').forEach(function (el) {
         var text = el.textContent.trim();
         if (text === '--' || text === '') out.settingsMissing += 1; else out.settingsFilled += 1;
@@ -288,7 +295,9 @@ def main():
                                  "firstRow": info["firstRow"], "notices": info["notices"],
                                  "writable": info["writable"],
                                  "settingsFilled": info["settingsFilled"],
-                                 "settingsMissing": info["settingsMissing"]}
+                                 "settingsMissing": info["settingsMissing"],
+                                 "tableText": info["tableText"],
+                                 "diagnostic": info.get("diagnostic")}
                 if info["writable"]:
                     report["problems"].append(
                         "%s có %d điều khiển ghi được, màn này phải chỉ xem"
@@ -317,8 +326,27 @@ def main():
                     "màn Cài đặt chỉ đọc được %d giá trị (thiếu %d), đã ghi 224 khóa"
                     % (settings_state["settingsFilled"], settings_state["settingsMissing"]))
 
-            # Chưa có alarm rule thì bảng rỗng là ĐÚNG; điều sai là bịa ra dòng cảnh báo.
-            report["alarm_rows"] = states["vent_alarms"]["rows"]
+            # Bảng Cảnh báo phải khớp alarm ĐANG HOẠT ĐỘNG của đúng nhà đã chọn. Chưa có rule
+            # thì bảng rỗng là đúng; điều sai là bịa ra dòng, hoặc hiện alarm của nhà khác.
+            alarm_state = states["vent_alarms"]
+            expected = platform.get("FAULT", {}).get("activeAlarms") or []
+            report["alarm_rows"] = alarm_state["rows"]
+            report["alarm_expected"] = expected
+            if alarm_state["rows"] < len(expected):
+                report["problems"].append(
+                    "màn Cảnh báo có %d dòng nhưng nhà FAULT đang có %d alarm: %s"
+                    % (alarm_state["rows"], len(expected), expected))
+            for alarm_type in expected:
+                if alarm_type not in alarm_state.get("tableText", ""):
+                    report["problems"].append("màn Cảnh báo thiếu alarm %r" % alarm_type)
+            # Không được hiện alarm của nhà khác: BOUNDARY có alarm riêng, FAULT không có nó
+            # thì bảng cũng không được có.
+            foreign = [a for a in (platform.get("BOUNDARY", {}).get("activeAlarms") or [])
+                       if a not in expected]
+            for alarm_type in foreign:
+                if alarm_type in alarm_state.get("tableText", ""):
+                    report["problems"].append(
+                        "màn Cảnh báo hiện alarm %r của nhà khác" % alarm_type)
 
             go_tab(browser, "vent_detail")
             back_to_overview(browser)
@@ -343,6 +371,12 @@ def main():
             print("               ghi chú:", info["notices"][:2])
     print("tuổi telemetry (phút):", report.get("data_age_minutes"))
     print("active theo nền tảng:", {k: v["active"] for k, v in platform.items()})
+    print("alarm đang hoạt động:", {k: v["activeAlarms"] for k, v in platform.items() if v["activeAlarms"]})
+    print("bảng Cảnh báo:", report.get("alarm_rows"), "dòng · mong đợi",
+          len(report.get("alarm_expected") or []))
+    probe = ((report.get("states") or {}).get("vent_alarms") or {}).get("diagnostic")
+    if probe:
+        print("chẩn đoán widget cảnh báo:", probe)
     for note in report.get("notes") or []:
         print("ghi chú:", note)
     if report["problems"]:
