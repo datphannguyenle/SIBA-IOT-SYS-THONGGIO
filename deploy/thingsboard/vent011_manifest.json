@@ -1,0 +1,81 @@
+{
+  "task": "VENT-011",
+  "profile": {
+    "name": "SIM-VentController",
+    "id": "61fc5bf0-b719-11f1-a719-7da6129c6745",
+    "created_by_us": true
+  },
+  "devices": {
+    "SIM-VEN-NORMAL": {
+      "id": "6211dfc0-b719-11f1-a719-7da6129c6745",
+      "scenario": "NORMAL",
+      "created_by_us": true
+    },
+    "SIM-VEN-BOUNDARY": {
+      "id": "62164c90-b719-11f1-a719-7da6129c6745",
+      "scenario": "BOUNDARY",
+      "created_by_us": true
+    },
+    "SIM-VEN-MANUAL": {
+      "id": "62186f70-b719-11f1-a719-7da6129c6745",
+      "scenario": "MANUAL",
+      "created_by_us": true
+    },
+    "SIM-VEN-FAULT": {
+      "id": "621a4430-b719-11f1-a719-7da6129c6745",
+      "scenario": "FAULT",
+      "created_by_us": true
+    },
+    "SIM-VEN-STALE": {
+      "id": "621cb530-b719-11f1-a719-7da6129c6745",
+      "scenario": "STALE",
+      "created_by_us": true
+    },
+    "SIM-VEN-UNKNOWN": {
+      "id": "621ed810-b719-11f1-a719-7da6129c6745",
+      "scenario": "UNKNOWN",
+      "created_by_us": true
+    },
+    "SIM-VEN-OFFLINE": {
+      "id": "6220d3e0-b719-11f1-a719-7da6129c6745",
+      "scenario": "OFFLINE",
+      "created_by_us": true
+    }
+  },
+  "dashboard": null,
+  "mutations": [
+    {
+      "method": "POST",
+      "path": "/api/deviceProfile"
+    },
+    {
+      "method": "POST",
+      "path": "/api/device"
+    },
+    {
+      "method": "POST",
+      "path": "/api/device"
+    },
+    {
+      "method": "POST",
+      "path": "/api/device"
+    },
+    {
+      "method": "POST",
+      "path": "/api/device"
+    },
+    {
+      "method": "POST",
+      "path": "/api/device"
+    },
+    {
+      "method": "POST",
+      "path": "/api/device"
+    },
+    {
+      "method": "POST",
+      "path": "/api/device"
+    }
+  ],
+  "provisioned_at": "2026-09-23T13:38:27+07:00"
+}

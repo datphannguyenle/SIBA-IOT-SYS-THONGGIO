@@ -1,0 +1,110 @@
+{
+  "task": "VENT-011",
+  "at": "2026-09-23T13:40:05+07:00",
+  "devices": {
+    "SIM-VEN-BOUNDARY": {
+      "scenario": "BOUNDARY",
+      "telemetry_keys": 265,
+      "active": true,
+      "sample": {
+        "fanStage": "0",
+        "indoorTemperatureAvg": "35.0",
+        "operatingMode": "1",
+        "equipmentFaultActive": "0"
+      }
+    },
+    "SIM-VEN-FAULT": {
+      "scenario": "FAULT",
+      "telemetry_keys": 265,
+      "active": true,
+      "sample": {
+        "fanStage": "9",
+        "indoorTemperatureAvg": "32.0",
+        "operatingMode": "1",
+        "equipmentFaultActive": "1"
+      }
+    },
+    "SIM-VEN-MANUAL": {
+      "scenario": "MANUAL",
+      "telemetry_keys": 265,
+      "active": true,
+      "sample": {
+        "fanStage": "3",
+        "indoorTemperatureAvg": "27.4",
+        "operatingMode": "0",
+        "equipmentFaultActive": "0"
+      }
+    },
+    "SIM-VEN-NORMAL": {
+      "scenario": "NORMAL",
+      "telemetry_keys": 265,
+      "active": true,
+      "sample": {
+        "fanStage": "3",
+        "indoorTemperatureAvg": "27.4",
+        "operatingMode": "1",
+        "equipmentFaultActive": "0"
+      }
+    },
+    "SIM-VEN-OFFLINE": {
+      "scenario": "OFFLINE",
+      "telemetry_keys": 0,
+      "active": false,
+      "sample": {}
+    },
+    "SIM-VEN-STALE": {
+      "scenario": "STALE",
+      "telemetry_keys": 265,
+      "active": true,
+      "sample": {
+        "fanStage": "3",
+        "indoorTemperatureAvg": "27.4",
+        "operatingMode": "1",
+        "equipmentFaultActive": "0"
+      }
+    },
+    "SIM-VEN-UNKNOWN": {
+      "scenario": "UNKNOWN",
+      "telemetry_keys": 3,
+      "active": true,
+      "sample": {
+        "indoorTemperatureAvg": "27.4"
+      }
+    }
+  },
+  "protected": {
+    "dashboards": {
+      "bb585f20-a835-11f1-9683-f9c2621c1a59": {
+        "title": "SIBA · Khử mùi",
+        "version": 27,
+        "sha16": "99c899a8188f05b4"
+      },
+      "916ba6a0-acb7-11f1-9683-f9c2621c1a59": {
+        "title": "SIBA · Khử mùi · SIMULATION",
+        "version": 9,
+        "sha16": "faccbe9141863dd0"
+      },
+      "a66660b0-9a04-11f1-a0fc-e93bd628a87f": {
+        "title": "MUGE · Tổng quan trại",
+        "version": 107,
+        "sha16": "ed99833e5fa97194"
+      }
+    },
+    "devices": 8193,
+    "profiles": [
+      "Deodorizer",
+      "DosingStation",
+      "Feeder",
+      "Gateway",
+      "PROF-Teltonika-TRB140",
+      "SI Soil Moisture Sensor",
+      "SIM-Deodorizer",
+      "SIM-DosingStation",
+      "SIM-VentController",
+      "Silo",
+      "default",
+      "thermostat"
+    ]
+  },
+  "protected_bundle_expected": "siba_custom_ui"
+}

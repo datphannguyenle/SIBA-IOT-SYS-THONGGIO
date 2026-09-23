@@ -61,6 +61,12 @@ self.onInit = function () {
     __vent.VentilationModular.render(node, vm, settings.component || 'kpis', function (next, values) {
       if (!ctx.stateController) return;
       var merged = Object.assign({}, params, values); delete merged.state;
+      // Alias stateEntity của TB đọc params.entityId dạng {entityType, id}; chỉ truyền id chuỗi
+      // là widget chi tiết không bind được thiết bị nào.
+      if (values && values.barnId && values.barnEntityType) {
+        merged.entityId = {entityType: values.barnEntityType, id: values.barnId};
+        if (values.barnLabel) { merged.entityName = values.barnLabel; merged.entityLabel = values.barnLabel; }
+      }
       var change = next === 'default' || params.state === 'default' ? 'openState' : 'updateState';
       if (typeof ctx.stateController[change] !== 'function') change = 'openState';
       ctx.stateController[change](next, merged, false);

@@ -107,12 +107,18 @@
       var group = index[id];
       if (!group) {
         group = index[id] = {id: id, label: ds.entityLabel || ds.entityName || (ds.entity && ds.entity.name) || id,
-          name: ds.entityName || null, rows: []};
+          name: ds.entityName || null, entityType: entityTypeOf(ds), rows: []};
         groups.push(group);
       }
       group.rows.push(row);
     });
     return groups;
+  }
+  // Alias stateEntity của TB cần cả loại entity, không chỉ id; thiếu loại là không bind được.
+  function entityTypeOf(ds) {
+    var id = ds && ds.entityId;
+    if (id && typeof id === "object" && id.entityType) return id.entityType;
+    return ds.entityType || (ds.entity && ds.entity.id && ds.entity.id.entityType) || null;
   }
   function decodeCode(table, raw) {
     if (typeof raw !== "number" || !isFinite(raw) || Math.floor(raw) !== raw) return "UNKNOWN";
@@ -132,26 +138,30 @@
     return entityGroups(ctx).map(function (group) {
       var samples = {};
       addRows(samples, group.rows);
-      var values = {}, qualities = [];
+      var values = {}, numbers = {}, qualities = [];
       wanted.forEach(function (semantic) {
         var actual = keyMap[semantic];
         var item = typeof actual === "string" && actual ? samples[actual] : null;
         values[semantic] = item ? item.rawValue : null;
+        // TB có thể giao telemetry số dưới dạng chuỗi; mã enum/cờ phải giải trên số đã chuẩn hóa,
+        // nếu không mọi nhà đều ra UNKNOWN. controllerOnline vẫn dùng giá trị thô vì nó là boolean.
+        numbers[semantic] = item ? item.value : null;
         if (typeof actual === "string" && actual) qualities.push(qualityFor(item, freshness[semantic], now));
       });
       var online = platformValue("controllerOnline", values.controllerOnline);
       var alarmStates = [];
       [["equipmentFaultActive", "MAJOR"], ["externalHighTemperatureAlarm", "WARNING"]].forEach(function (pair) {
         if (typeof keyMap[pair[0]] !== "string" || !keyMap[pair[0]]) return;
-        var state = values[pair[0]] === null ? "UNKNOWN" : decodeCode(c.flagDisplayCodes, values[pair[0]]);
+        var state = numbers[pair[0]] === null ? "UNKNOWN" : decodeCode(c.flagDisplayCodes, numbers[pair[0]]);
         alarmStates.push(state === "ACTIVE" ? "ACTIVE_" + pair[1] : state);
       });
-      var stage = values.fanStage;
-      return {id: group.id, label: group.label, identity: "LIVE_ENTITY", synthetic: false,
+      var stage = numbers.fanStage;
+      return {id: group.id, label: group.label, entityType: group.entityType,
+        identity: "LIVE_ENTITY", synthetic: false,
         connectivity: online === true ? "ONLINE" : (online === false ? "OFFLINE" : "UNKNOWN"),
         freshness: qualities.indexOf("STALE") >= 0 ? "STALE" :
           (qualities.length && qualities.indexOf("UNKNOWN") < 0 ? "CURRENT" : "UNKNOWN"),
-        mode: values.operatingMode === null ? "UNKNOWN" : decodeCode(c.enums.operatingMode, values.operatingMode),
+        mode: numbers.operatingMode === null ? "UNKNOWN" : decodeCode(c.enums.operatingMode, numbers.operatingMode),
         stage: typeof stage === "number" && isFinite(stage) && Math.floor(stage) === stage ? stage : null,
         alarm: barnAlarmState(alarmStates)};
     });
@@ -248,8 +258,9 @@
     var configured = settings.context && typeof settings.context === "object" ? settings.context : {};
     var params = ctx && ctx.stateController && ctx.stateController.getStateParams ? ctx.stateController.getStateParams() || {} : {};
     var selectedId = params.selectedBarnId || params.selectedBarn || params.selectedControllerId || params.selectedController ||
-      configured.barnId || configured.controllerId || null;
-    var selectedName = params.selectedBarnName || params.selectedControllerName || configured.barnLabel || configured.controllerName || null;
+      params.barnId || configured.barnId || configured.controllerId || null;
+    var selectedName = params.selectedBarnName || params.selectedControllerName || params.barnLabel ||
+      configured.barnLabel || configured.controllerName || null;
     return {farm: configured.farm || null, area: configured.area || null, selectedBarn: selectedName,
       selectedBarnId: selectedId, selectedControllerId: configured.controllerId || params.selectedControllerId || null,
       status: (configured.farm || configured.area || selectedId || selectedName) ? "CONFIGURED" : "UNKNOWN"};

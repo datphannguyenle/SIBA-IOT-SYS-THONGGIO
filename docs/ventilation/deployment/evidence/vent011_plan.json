@@ -1,0 +1,59 @@
+{
+  "task": "VENT-011",
+  "checked_at": "2026-09-23T13:38:19+07:00",
+  "tb_url": "http://100.86.144.207:8080",
+  "profile": {
+    "name": "SIM-VentController",
+    "exists": false
+  },
+  "devices_to_create": [
+    "SIM-VEN-NORMAL",
+    "SIM-VEN-BOUNDARY",
+    "SIM-VEN-MANUAL",
+    "SIM-VEN-FAULT",
+    "SIM-VEN-STALE",
+    "SIM-VEN-UNKNOWN",
+    "SIM-VEN-OFFLINE"
+  ],
+  "devices_existing": [],
+  "dashboard": {
+    "title": "DB-30-VEN-DETAIL-V1-SIM",
+    "exists": false
+  },
+  "demo_dashboard_untouched": true,
+  "monitoring_keys": 41,
+  "setting_keys": 224,
+  "protected": {
+    "dashboards": {
+      "bb585f20-a835-11f1-9683-f9c2621c1a59": {
+        "title": "SIBA · Khử mùi",
+        "version": 27,
+        "sha16": "99c899a8188f05b4"
+      },
+      "916ba6a0-acb7-11f1-9683-f9c2621c1a59": {
+        "title": "SIBA · Khử mùi · SIMULATION",
+        "version": 9,
+        "sha16": "faccbe9141863dd0"
+      },
+      "a66660b0-9a04-11f1-a0fc-e93bd628a87f": {
+        "title": "MUGE · Tổng quan trại",
+        "version": 107,
+        "sha16": "ed99833e5fa97194"
+      }
+    },
+    "devices": 8186,
+    "profiles": [
+      "Deodorizer",
+      "DosingStation",
+      "Feeder",
+      "Gateway",
+      "PROF-Teltonika-TRB140",
+      "SI Soil Moisture Sensor",
+      "SIM-Deodorizer",
+      "SIM-DosingStation",
+      "Silo",
+      "default",
+      "thermostat"
+    ]
+  }
+}

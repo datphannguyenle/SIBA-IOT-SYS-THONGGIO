@@ -169,6 +169,62 @@ class Vent010SourceTest(unittest.TestCase):
         self.assertTrue(all(b["identity"] == "LIVE_ENTITY" and b["synthetic"] is False for b in vm["barns"]))
         self.assertEqual(vm["mapping"]["scope"], "MULTI_ENTITY_LIST")
 
+    def test_overview_decodes_telemetry_delivered_as_strings(self):
+        """ThingsBoard có thể giao số dưới dạng chuỗi; thẻ nhà vẫn phải giải mã đúng."""
+        def rows(entity, label, stage, mode, online, fault):
+            ds = {"entityId": {"entityType": "DEVICE", "id": entity}, "entityName": entity, "entityLabel": label}
+            data = [("vent_stage", stage), ("vent_mode", mode), ("vent_online", online), ("vent_fault", fault)]
+            return [{"datasource": ds, "dataKey": {"name": key}, "data": [[1_700_000_000_000, value]]}
+                    for key, value in data]
+        vm = self.run_source({"data": rows("dev-1", "ND4-1", "3", "1", "true", "0")
+                                      + rows("dev-2", "ND4-2", "9", "0", "false", "1")},
+                             self.OVERVIEW_SETTINGS)
+        barns = {b["label"]: b for b in vm["barns"]}
+        self.assertEqual((barns["ND4-1"]["stage"], barns["ND4-1"]["mode"],
+                          barns["ND4-1"]["connectivity"], barns["ND4-1"]["alarm"]),
+                         (3, "AUTO", "ONLINE", "NONE"))
+        self.assertEqual((barns["ND4-2"]["stage"], barns["ND4-2"]["mode"],
+                          barns["ND4-2"]["connectivity"], barns["ND4-2"]["alarm"]),
+                         (9, "MANUAL", "OFFLINE", "MAJOR"))
+
+    def test_overview_rejects_non_numeric_stage_instead_of_guessing(self):
+        ctx = {"data": [{"datasource": {"entityId": {"entityType": "DEVICE", "id": "dev-1"}, "entityName": "ND4-3"},
+                         "dataKey": {"name": "vent_stage"}, "data": [[1_700_000_000_000, "cap 3"]]},
+                        {"datasource": {"entityId": {"entityType": "DEVICE", "id": "dev-1"}, "entityName": "ND4-3"},
+                         "dataKey": {"name": "vent_mode"}, "data": [[1_700_000_000_000, "2.5"]]}]}
+        vm = self.run_source(ctx, self.OVERVIEW_SETTINGS)
+        barn = vm["barns"][0]
+        self.assertIsNone(barn["stage"])
+        self.assertEqual(barn["mode"], "UNKNOWN")
+
+    def test_overview_carries_entity_type_for_state_alias_binding(self):
+        """Alias stateEntity của TB cần {entityType, id}; thiếu entityType là không bind được nhà."""
+        vm = self.run_source(self.overview_ctx(), self.OVERVIEW_SETTINGS)
+        for barn in vm["barns"]:
+            self.assertEqual(barn["entityType"], "DEVICE", barn["label"])
+
+    def test_overview_entity_type_absent_when_datasource_has_none(self):
+        ctx = {"data": [{"datasource": {"entityName": "ND9-9"}, "dataKey": {"name": "vent_stage"},
+                         "data": [[1_700_000_000_000, 3]]}]}
+        vm = self.run_source(ctx, self.OVERVIEW_SETTINGS)
+        self.assertEqual(len(vm["barns"]), 1)
+        self.assertIsNone(vm["barns"][0]["entityType"])
+
+    def test_live_header_uses_the_barn_selected_from_the_overview(self):
+        ctx = {"data": [{"datasource": {"entityId": {"entityType": "DEVICE", "id": "dev-7"}, "entityName": "ND3-1"},
+                         "dataKey": {"name": "vent_stage"}, "data": [[1_700_000_000_000, 5]]}],
+               "stateController": {}}
+        vm = self.browser.run("""
+          window.VentilationContract = undefined; window.VentilationAdapter = undefined; window.VentilationSource = undefined;
+          arguments[0].forEach(function (source) { new Function('window', source)(window); });
+          var ctx = arguments[1];
+          ctx.stateController = {getStateParams: function () { return {barnId: 'dev-7', barnLabel: 'ND3-1'}; }};
+          return window.VentilationSource.createViewModel(ctx, arguments[2], undefined);
+        """, self.scripts, ctx, {"keyMap": {"fanStage": "vent_stage"}})
+        self.assertEqual(vm["scope"]["selectedBarn"], "ND3-1")
+        self.assertEqual(vm["scope"]["selectedBarnId"], "dev-7")
+        self.assertEqual(vm["scope"]["status"], "CONFIGURED")
+
     def test_overview_entity_without_telemetry_stays_unknown(self):
         vm = self.run_source(self.overview_ctx(), self.OVERVIEW_SETTINGS)
         empty = [b for b in vm["barns"] if b["label"] == "ND2-3"][0]

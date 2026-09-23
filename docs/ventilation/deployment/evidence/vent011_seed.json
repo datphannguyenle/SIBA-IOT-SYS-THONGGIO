@@ -1,0 +1,15 @@
+{
+  "task": "VENT-011",
+  "at": "2026-09-23T13:38:34+07:00",
+  "history_points": 180,
+  "messages_per_device": {
+    "SIM-VEN-BOUNDARY": 181,
+    "SIM-VEN-FAULT": 181,
+    "SIM-VEN-MANUAL": 181,
+    "SIM-VEN-NORMAL": 181,
+    "SIM-VEN-OFFLINE": 0,
+    "SIM-VEN-STALE": 181,
+    "SIM-VEN-UNKNOWN": 180
+  },
+  "note": "Telemetry đi qua access token thiết bị nên chạy qua rule engine."
+}
