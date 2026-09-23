@@ -86,6 +86,16 @@ self.onInit = function () {
       var block = sub && sub.alarms;
       probe.alarmBlock = block ? Object.keys(block) : null;
       probe.alarmDataCount = block && Array.isArray(block.data) ? block.data.length : null;
+      probe.alarmTotal = block ? block.totalElements : null;
+      // Alias stateEntity chỉ resolve khi state param mang entityId; đây là chỗ hay mất nhất.
+      var source = sub && sub.alarmSource;
+      probe.alarmSourceEntity = source ? {type: source.type || null,
+        alias: source.entityAliasId || null,
+        entityId: source.entityId ? (source.entityId.id || String(source.entityId)) : null,
+        entityName: source.entityName || null,
+        keys: (source.dataKeys || []).map(function (key) { return key.name; })} : null;
+      probe.stateParams = Object.keys(params || {});
+      probe.hasEntityIdParam = !!(params && params.entityId && params.entityId.id);
       node.setAttribute('data-vent-diagnostic', JSON.stringify(probe));
     }
     if (ctx.detectChanges) ctx.detectChanges();

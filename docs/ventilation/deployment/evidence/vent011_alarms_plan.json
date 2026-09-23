@@ -1,9 +1,16 @@
 {
   "task": "VENT-011b",
-  "at": "2026-09-23T13:59:15+07:00",
+  "at": "2026-09-23T14:19:34+07:00",
   "profile": "SIM-VentController",
   "severity_note": "Mức độ là ĐỀ XUẤT của dự án, contract v0.3 không quy định. Cần NCC/khách xác nhận trước khi áp cho thiết bị thật.",
-  "current_alarm_types": [],
+  "current_alarm_types": [
+    "Lỗi thiết bị thông gió",
+    "Nhiệt độ cao (thermostat ngoài)",
+    "Nhiệt độ trong chuồng cao",
+    "Nhiệt độ trong chuồng thấp",
+    "Nhiệt độ cảm nhận cao",
+    "Nhiệt độ cảm nhận thấp"
+  ],
   "wanted": [
     {
       "alarmType": "Lỗi thiết bị thông gió",
