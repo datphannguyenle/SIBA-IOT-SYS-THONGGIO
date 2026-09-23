@@ -1,11 +1,11 @@
 {
   "task": "VENT-010",
-  "captured_at": "2026-09-23T10:25:20+07:00",
+  "captured_at": "2026-09-23T13:18:27+07:00",
   "tenant_id": "0abe2520-9528-11f1-af48-7566a705eb32",
   "dashboard": {
     "id": "b9ff4d70-b26a-11f1-83ad-9912edc644d2",
     "title": "DB-30-VEN-DETAIL-V1-DEMO",
-    "version": 4,
+    "version": 6,
     "current_states": [
       "default",
       "vent_detail",
@@ -15,11 +15,26 @@
     ]
   },
   "existing_modular_widgets": {
-    "static": null,
-    "latest": null,
-    "timeseries": null,
-    "alarm": null,
-    "overview": null
+    "static": {
+      "id": "93516710-b6fe-11f1-a719-7da6129c6745",
+      "version": 2
+    },
+    "latest": {
+      "id": "93544d40-b6fe-11f1-a719-7da6129c6745",
+      "version": 2
+    },
+    "timeseries": {
+      "id": "93569730-b6fe-11f1-a719-7da6129c6745",
+      "version": 2
+    },
+    "alarm": {
+      "id": "9358ba10-b6fe-11f1-a719-7da6129c6745",
+      "version": 2
+    },
+    "overview": {
+      "id": "935adcf0-b6fe-11f1-a719-7da6129c6745",
+      "version": 2
+    }
   },
   "protected": {
     "dashboards": {
@@ -54,7 +69,7 @@
       "assets": 8412,
       "devices": 8186,
       "dashboards": 10,
-      "tenant_widget_types": 20
+      "tenant_widget_types": 25
     },
     "tenant_bundle_count": 1
   }

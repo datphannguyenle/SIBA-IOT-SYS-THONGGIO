@@ -34,6 +34,22 @@ class ModularBuildStaticTest(unittest.TestCase):
                      for kind in ('static', 'latest', 'timeseries', 'alarm', 'overview')}
         cls.dashboard = json.loads((BUILD / 'dashboard.json').read_text())
 
+    def test_dashboard_survives_thingsboard_alias_validation(self):
+        """Lặp lại đúng vòng quét alias của TB: widget alarm đọc [config.alarmSource],
+        các widget khác đọc config.datasources. Thiếu alarmSource là vỡ cả dashboard."""
+        for wid, widget in self.dashboard['configuration']['widgets'].items():
+            config = widget['config']
+            sources = [config.get('alarmSource')] if widget['type'] == 'alarm' else config.get('datasources')
+            self.assertIsNotNone(sources, wid)
+            for source in sources:
+                self.assertIsNotNone(source, '%s: TB sẽ đọc entityAliasId của undefined' % wid)
+                self.assertFalse(source.get('entityAliasId'), wid)
+
+    def test_alarm_widget_type_default_config_carries_alarm_source(self):
+        for kind, widget in self.types.items():
+            default = json.loads(widget['descriptor']['defaultConfig'])
+            self.assertEqual('alarmSource' in default, widget['descriptor']['type'] == 'alarm', kind)
+
     def test_overview_widget_is_the_only_multi_entity_type(self):
         for kind, widget in self.types.items():
             multi = kind == 'overview'

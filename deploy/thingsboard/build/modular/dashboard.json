@@ -333,6 +333,11 @@
           "enableDataExport": false,
           "actions": {},
           "datasources": [],
+          "alarmSource": {
+            "type": "entity",
+            "name": "alarms",
+            "dataKeys": []
+          },
           "settings": {
             "component": "alarms",
             "viewState": "vent_alarms",

@@ -114,9 +114,19 @@ def widget_types():
                                  'templateHtml': '<div class="vent-modular-root"></div>', 'templateCss': css,
                                  'controllerScript': controller(kind in MULTI_ENTITY_KINDS),
                                  'settingsSchema': '', 'dataKeySettingsSchema': '',
-                                 'defaultConfig': json.dumps({'showTitle': False, 'datasources': [],
-                                     'settings': {'component': 'kpis', 'sourceMode': 'live', 'keyMap': {}, 'freshnessMs': {}}})}}
+                                 'defaultConfig': json.dumps(dict(alarm_source(TB_TYPE.get(kind, kind)),
+                                     showTitle=False, datasources=[],
+                                     settings={'component': 'kpis', 'sourceMode': 'live', 'keyMap': {}, 'freshnessMs': {}}))}}
             for kind in KINDS}
+
+
+
+# TB duyệt widget kiểu alarm bằng [config.alarmSource] thay cho datasources; thiếu khóa này
+# thì toàn bộ dashboard vỡ ngay khi mở (đọc entityAliasId của undefined).
+def alarm_source(tb_type):
+    if tb_type != 'alarm':
+        return {}
+    return {'alarmSource': {'type': 'entity', 'name': 'alarms', 'dataKeys': []}}
 
 
 def dashboard():
@@ -129,6 +139,7 @@ def dashboard():
             config = {'title': component, 'showTitle': False, 'showTitleIcon': False, 'padding': '0px',
                       'backgroundColor': '#001827', 'color': '#f0f5ff', 'dropShadow': False,
                       'enableFullscreen': False, 'enableDataExport': False, 'actions': {}, 'datasources': [],
+                      **alarm_source(TB_TYPE.get(kind_for(component), kind_for(component))),
                       'settings': {'component': component, 'viewState': state, 'sourceMode': 'demo',
                                    'demoUseSubscription': False, 'keyMap': {}, 'freshnessMs': {}},
                       'mobileHeight': {'header': 110, 'overview': 660, 'kpis': 220,
@@ -167,6 +178,14 @@ def validate(types, dash):
             assert forbidden not in descriptor['controllerScript'], forbidden
     assert all(w['config']['settings']['sourceMode'] == 'demo' and not w['config']['datasources']
                for w in dash['configuration']['widgets'].values())
+    for widget in dash['configuration']['widgets'].values():
+        has_source = 'alarmSource' in widget['config']
+        assert has_source == (widget['type'] == 'alarm'), widget['typeFullFqn']
+        if has_source:
+            assert not widget['config']['alarmSource'].get('entityAliasId')
+    for kind, widget in types.items():
+        default = json.loads(widget['descriptor']['defaultConfig'])
+        assert ('alarmSource' in default) == (TB_TYPE.get(kind, kind) == 'alarm'), kind
 
 
 def build(check=False):
