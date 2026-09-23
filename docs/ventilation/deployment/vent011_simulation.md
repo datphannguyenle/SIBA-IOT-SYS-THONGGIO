@@ -122,7 +122,7 @@ Bằng chứng: `evidence/vent011_ui_verify.json`, `vent011-live-overview-1600.p
 |---|---|---|
 | Giám sát | KPI và sơ đồ đúng số của nhà đã chọn | 0 |
 | Lịch sử | **380 dòng** từ 3 giờ dữ liệu thật, có mốc thời gian và giá trị | 0 |
-| Cảnh báo | 0 dòng — **đúng**, vì chưa có alarm rule; không bịa dòng nào | 0 |
+| Cảnh báo | **4 dòng**, đúng 4 alarm của nhà đang xem, không lẫn nhà khác | 0 |
 | Cài đặt | đọc được **224/224** khóa, 37 dòng bảng | 0 |
 
 Không màn nào có ô nhập hay điều khiển ghi: đúng yêu cầu chỉ xem.
@@ -183,6 +183,19 @@ Cách chẩn đoán đã dùng: vá `WebSocket.prototype.send` trong trang để
 listener đọc phản hồi. Không thấy `cmdId` của mình trong phản hồi nghĩa là máy chủ đã bỏ lệnh,
 tức sai định dạng chứ không phải sai bộ lọc. Chi tiết trong bẫy #34.
 
-## 13. Việc còn treo
+## 13. Kết quả cuối (23/09/2026)
 
-- Chưa xác minh alarm nổi lên màn Cảnh báo sau bản sửa cuối.
+`verify_vent011_ui.py` báo **ĐẠT** toàn bộ. Bảng Cảnh báo hiện đủ 4 alarm của nhà FAULT; chẩn
+đoán xác nhận `alarmDataCount = 4`, `alarmTotal = 4`, `canSubscribe = true` — tức là chính lời
+gọi `subscribeForAlarms` của dự án này là đường đang dùng, nên lỗi `sortOrder.key` đúng là của ta.
+
+Chẩn đoán vẫn để bật trên widget cảnh báo. Nó chỉ ghi hình dạng, không ghi giá trị, và là công cụ
+sẽ cần lại khi đấu PLC thật.
+
+## 14. Việc còn treo
+
+- "Cảnh báo đang mở" ở màn Tổng quan vẫn để `--`. Đây là **chủ ý**: con số đó thuộc phạm vi alarm
+  của nền tảng, không suy được từ danh sách nhà. Muốn hiện số thật thì phải cho widget Tổng quan
+  một alarm subscription riêng — việc của đợt sau.
+- Mức độ nghiêm trọng của 6 alarm rule vẫn là **đề xuất**, chưa được NCC/khách xác nhận.
+- Thiết bị mô phỏng chưa có quan hệ nhà/khu/trại nên alarm không lan truyền lên cấp trên.
