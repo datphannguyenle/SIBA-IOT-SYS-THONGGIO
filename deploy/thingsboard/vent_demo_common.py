@@ -27,6 +27,8 @@ PASSWORD_FILE = pathlib.Path(os.path.expanduser(os.environ.get("TB_PASSWORD_FILE
 
 WIDGET_FQN = "siba_vent_demo.vent_demo_view"          # fqn lưu trong TB (không tiền tố)
 WIDGET_FULL_FQN = "tenant." + WIDGET_FQN              # typeFullFqn / tra cứu theo fqn
+MODULAR_FQNS = {"siba_vent_demo.modular_" + k for k in ("static", "latest", "timeseries", "alarm", "overview")}
+ALLOWED_WIDGET_FQNS = {WIDGET_FQN} | MODULAR_FQNS
 WIDGET_NAMESPACE_PREFIX = "tenant.siba_vent_demo."
 DASHBOARD_TITLE = "DB-30-VEN-DETAIL-V1-DEMO"
 STATES = ["default", "vent_detail", "vent_history", "vent_alarms", "vent_settings"]
@@ -86,8 +88,8 @@ class GuardedTB:
                     raise Blocked("update not enabled for id %s: POST %s" % (target, path))
             elif not self.allow_create:
                 raise Blocked("create not enabled: POST %s" % path)
-            if path == "/api/widgetType" and body.get("fqn") != WIDGET_FQN:
-                raise Blocked("unexpected widget fqn")
+            if path == "/api/widgetType" and body.get("fqn") not in ALLOWED_WIDGET_FQNS:
+                raise Blocked("unexpected widget fqn: %s" % body.get("fqn"))
             if path == "/api/dashboard" and (body.get("title") != DASHBOARD_TITLE or body.get("assignedCustomers")):
                 raise Blocked("unexpected dashboard payload")
             return

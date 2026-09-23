@@ -58,5 +58,12 @@ khi đó sẽ phải sửa script, không phải cấu hình.
 màn Giám sát có 6 widget, trong khi `LAYOUTS` khai 5. Đã lấy `LAYOUTS` làm chuẩn và đổi test sang
 kiểm đúng tập thành phần. Nếu chủ ý ban đầu là 6 widget thì cần bổ sung vào `LAYOUTS`.
 
-**Chưa làm:** deploy bản modular lên live (cần task duyệt riêng); chưa có dữ liệu PLC thật nên
-chưa kiểm được đường live end-to-end.
+**Triển khai live ThingsBoard (23/09/2026):**
+- Người dùng duyệt deploy VENT-010 lên ThingsBoard live.
+- 5 modular widget types (`tenant.siba_vent_demo.modular_*`) đã triển khai và cập nhật lên Version 2.
+- Dashboard `DB-30-VEN-DETAIL-V1-DEMO` (`b9ff4d70-b26a-11f1-83ad-9912edc644d2`) nâng cấp lên Version 6 gồm 13 widget instances trên 5 states chuẩn.
+- Bằng chứng triển khai & verification: `docs/ventilation/deployment/vent010_execution_report.md` và `deploy/thingsboard/vent010_manifest.json`.
+- Backup cấu hình trước deploy: `docs/ventilation/deployment/evidence/vent010_pre_deploy_dashboard_backup.json`.
+- Zero mutation tới các dashboard bảo vệ và bundle chung `siba_custom_ui`.
+
+**Chưa làm:** Chưa có dữ liệu PLC thật nên chưa kiểm được đường live end-to-end (thuộc phạm vi tích hợp vật lý).
