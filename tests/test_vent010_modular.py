@@ -135,6 +135,23 @@ class ModularRuntimeTest(unittest.TestCase):
             self.mount(kind, component, state)
             self.assertEqual(self.browser.run("return document.querySelectorAll('.vent-modular-root').length"), 1, kind)
 
+    def test_detail_header_names_the_barn_chosen_from_the_overview(self):
+        """Ở chế độ live, widget chi tiết không có danh sách nhà; tên nhà phải lấy từ state param,
+        nếu không màn Giám sát luôn hiện "Nhà chưa chọn" dù đã chọn nhà."""
+        self.mount('static', 'header', 'vent_detail',
+                   settings={'keyMap': {'fanStage': 'vent_stage'}},
+                   ctx={'data': [{'datasource': {'entityId': {'entityType': 'DEVICE', 'id': 'dev-7'},
+                                                 'entityName': 'ND6-1'},
+                                  'dataKey': {'name': 'vent_stage'}, 'data': [[1, 3]]}]},
+                   params={'barnId': 'dev-7', 'barnLabel': 'Nhà mô phỏng · chạy tự động'})
+        heading = self.browser.run("return document.querySelector('.vent-modular-root h1').innerText")
+        self.assertEqual(heading, 'Nhà mô phỏng · chạy tự động')
+
+    def test_detail_header_admits_when_no_barn_was_chosen(self):
+        self.mount('static', 'header', 'vent_detail')
+        heading = self.browser.run("return document.querySelector('.vent-modular-root h1').innerText")
+        self.assertEqual(heading, 'Nhà chưa chọn')
+
     def test_live_empty_default_never_uses_demo_fixture_or_fake_barn(self):
         self.mount('latest', 'kpis', settings={'context': {'farm': 'Trại test'}})
         text = self.browser.run("return document.querySelector('.vent-modular-root').innerText")

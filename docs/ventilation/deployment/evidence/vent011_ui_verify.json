@@ -1,0 +1,117 @@
+{
+  "task": "VENT-011",
+  "dashboard": "32b1ecb0-b71a-11f1-a719-7da6129c6745",
+  "problems": [
+    "màn chi tiết không nhắc tên nhà đã chọn"
+  ],
+  "overview": {
+    "kpis": {
+      "Số nhà": "7",
+      "Trực tuyến": "6",
+      "Cần chú ý": "7",
+      "Cảnh báo đang mở": "--"
+    },
+    "barns": [
+      {
+        "label": "Nhà mô phỏng · mất kết nối",
+        "entityId": "6220d3e0-b719-11f1-a719-7da6129c6745",
+        "entityType": "DEVICE",
+        "lines": [
+          "Ngoại tuyến",
+          "Dữ liệu: Dữ liệu cũ",
+          "Chế độ: Chưa rõ · Cấp: --"
+        ]
+      },
+      {
+        "label": "Nhà mô phỏng · thiếu mapping",
+        "entityId": "621ed810-b719-11f1-a719-7da6129c6745",
+        "entityType": "DEVICE",
+        "lines": [
+          "Trực tuyến",
+          "Dữ liệu: Dữ liệu cũ",
+          "Chế độ: Chưa rõ · Cấp: --"
+        ]
+      },
+      {
+        "label": "Nhà mô phỏng · dữ liệu cũ",
+        "entityId": "621cb530-b719-11f1-a719-7da6129c6745",
+        "entityType": "DEVICE",
+        "lines": [
+          "Trực tuyến",
+          "Dữ liệu: Dữ liệu cũ",
+          "Chế độ: Tự động · Cấp: 3"
+        ]
+      },
+      {
+        "label": "Nhà mô phỏng · lỗi thiết bị",
+        "entityId": "621a4430-b719-11f1-a719-7da6129c6745",
+        "entityType": "DEVICE",
+        "lines": [
+          "Trực tuyến",
+          "Dữ liệu: Dữ liệu cũ",
+          "Chế độ: Tự động · Cấp: 9"
+        ]
+      },
+      {
+        "label": "Nhà mô phỏng · chế độ tay VFD",
+        "entityId": "62186f70-b719-11f1-a719-7da6129c6745",
+        "entityType": "DEVICE",
+        "lines": [
+          "Trực tuyến",
+          "Dữ liệu: Dữ liệu cũ",
+          "Chế độ: Thủ công · Cấp: 3"
+        ]
+      },
+      {
+        "label": "Nhà mô phỏng · cấp 0 và số 0 thật",
+        "entityId": "62164c90-b719-11f1-a719-7da6129c6745",
+        "entityType": "DEVICE",
+        "lines": [
+          "Trực tuyến",
+          "Dữ liệu: Dữ liệu cũ",
+          "Chế độ: Tự động · Cấp: 0"
+        ]
+      },
+      {
+        "label": "Nhà mô phỏng · chạy tự động",
+        "entityId": "6211dfc0-b719-11f1-a719-7da6129c6745",
+        "entityType": "DEVICE",
+        "lines": [
+          "Trực tuyến",
+          "Dữ liệu: Dữ liệu cũ",
+          "Chế độ: Tự động · Cấp: 3"
+        ]
+      }
+    ],
+    "notice": null
+  },
+  "rows": {
+    "BOUNDARY": "Trực tuyến Dữ liệu: Dữ liệu cũ Chế độ: Tự động · Cấp: 0",
+    "STALE": "Trực tuyến Dữ liệu: Dữ liệu cũ Chế độ: Tự động · Cấp: 3",
+    "OFFLINE": "Ngoại tuyến Dữ liệu: Dữ liệu cũ Chế độ: Chưa rõ · Cấp: --",
+    "UNKNOWN": "Trực tuyến Dữ liệu: Dữ liệu cũ Chế độ: Chưa rõ · Cấp: --"
+  },
+  "detail": {
+    "clicked": "Nhà mô phỏng · chạy tự động",
+    "entityId": "6211dfc0-b719-11f1-a719-7da6129c6745",
+    "heading": "Sơ đồ thông gió",
+    "cards": [
+      [
+        "Nhiệt độ trong nhà",
+        "27.4 °C"
+      ],
+      [
+        "Nhiệt độ ngoài trời",
+        "29 °C"
+      ],
+      [
+        "Độ ẩm trong nhà",
+        "62 %RH"
+      ],
+      [
+        "Nhiệt độ cảm nhận",
+        "26.6 °C"
+      ]
+    ]
+  }
+}

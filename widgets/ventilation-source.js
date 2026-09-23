@@ -146,7 +146,11 @@
         // TB có thể giao telemetry số dưới dạng chuỗi; mã enum/cờ phải giải trên số đã chuẩn hóa,
         // nếu không mọi nhà đều ra UNKNOWN. controllerOnline vẫn dùng giá trị thô vì nó là boolean.
         numbers[semantic] = item ? item.value : null;
-        if (typeof actual === "string" && actual) qualities.push(qualityFor(item, freshness[semantic], now));
+        // Độ tươi chỉ xét khóa ĐO ĐƯỢC. controllerOnline lấy từ attribute `active`, mà TB chỉ
+        // cập nhật mốc thời gian của nó khi trạng thái ĐỔI — tính vào đây thì mọi nhà đều "cũ".
+        if (typeof actual === "string" && actual && PLATFORM.indexOf(semantic) < 0) {
+          qualities.push(qualityFor(item, freshness[semantic], now));
+        }
       });
       var online = platformValue("controllerOnline", values.controllerOnline);
       var alarmStates = [];

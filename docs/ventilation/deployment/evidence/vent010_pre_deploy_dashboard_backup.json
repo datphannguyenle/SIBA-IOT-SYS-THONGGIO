@@ -1,6 +1,6 @@
 {
   "task": "VENT-010",
-  "saved_at": "2026-09-23T13:25:19+07:00",
+  "saved_at": "2026-09-23T13:44:16+07:00",
   "dashboard": {
     "id": {
       "entityType": "DASHBOARD",
@@ -349,6 +349,11 @@
             "enableDataExport": false,
             "actions": {},
             "datasources": [],
+            "alarmSource": {
+              "type": "entity",
+              "name": "alarms",
+              "dataKeys": []
+            },
             "settings": {
               "component": "alarms",
               "viewState": "vent_alarms",
@@ -635,7 +640,7 @@
       }
     },
     "resources": null,
-    "version": 6,
+    "version": 7,
     "externalId": null
   }
 }

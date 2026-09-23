@@ -197,6 +197,38 @@ class Vent010SourceTest(unittest.TestCase):
         self.assertIsNone(barn["stage"])
         self.assertEqual(barn["mode"], "UNKNOWN")
 
+    def test_barn_freshness_ignores_the_platform_online_attribute(self):
+        """TB chỉ đổi mốc thời gian của attribute `active` khi trạng thái ĐỔI; tính nó vào độ tươi
+        thì mọi nhà đều bị báo dữ liệu cũ dù telemetry vừa về."""
+        now = self.browser.run("return Date.now()")
+        ds = {"entityId": {"entityType": "DEVICE", "id": "dev-1"}, "entityName": "ND5-1"}
+        ctx = {"data": [
+            {"datasource": ds, "dataKey": {"name": "vent_stage"}, "data": [[now - 1000, 3]]},
+            {"datasource": ds, "dataKey": {"name": "vent_mode"}, "data": [[now - 1000, 1]]},
+            {"datasource": ds, "dataKey": {"name": "vent_fault"}, "data": [[now - 1000, 0]]},
+            # active đổi từ lâu, nhưng telemetry thì vừa về.
+            {"datasource": ds, "dataKey": {"name": "vent_online"}, "data": [[now - 7_200_000, True]]},
+        ]}
+        settings = dict(self.OVERVIEW_SETTINGS,
+                        freshnessMs={"fanStage": 300000, "operatingMode": 300000,
+                                     "equipmentFaultActive": 300000, "controllerOnline": 300000})
+        barn = self.run_source(ctx, settings)["barns"][0]
+        self.assertEqual(barn["freshness"], "CURRENT")
+        self.assertEqual(barn["connectivity"], "ONLINE")
+
+    def test_barn_freshness_still_reports_stale_measurements(self):
+        now = self.browser.run("return Date.now()")
+        ds = {"entityId": {"entityType": "DEVICE", "id": "dev-2"}, "entityName": "ND5-2"}
+        ctx = {"data": [
+            {"datasource": ds, "dataKey": {"name": "vent_stage"}, "data": [[now - 7_200_000, 3]]},
+            {"datasource": ds, "dataKey": {"name": "vent_online"}, "data": [[now - 1000, True]]},
+        ]}
+        settings = dict(self.OVERVIEW_SETTINGS,
+                        freshnessMs={"fanStage": 300000, "controllerOnline": 300000})
+        barn = self.run_source(ctx, settings)["barns"][0]
+        self.assertEqual(barn["freshness"], "STALE")
+        self.assertEqual(barn["connectivity"], "ONLINE")
+
     def test_overview_carries_entity_type_for_state_alias_binding(self):
         """Alias stateEntity của TB cần {entityType, id}; thiếu entityType là không bind được nhà."""
         vm = self.run_source(self.overview_ctx(), self.OVERVIEW_SETTINGS)

@@ -42,7 +42,12 @@
       "created_by_us": true
     }
   },
-  "dashboard": null,
+  "dashboard": {
+    "id": "32b1ecb0-b71a-11f1-a719-7da6129c6745",
+    "title": "DB-30-VEN-DETAIL-V1-SIM",
+    "version": 1,
+    "created_by_us": true
+  },
   "mutations": [
     {
       "method": "POST",
@@ -75,7 +80,12 @@
     {
       "method": "POST",
       "path": "/api/device"
+    },
+    {
+      "method": "POST",
+      "path": "/api/dashboard"
     }
   ],
-  "provisioned_at": "2026-09-23T13:38:27+07:00"
+  "provisioned_at": "2026-09-23T13:38:27+07:00",
+  "bound_at": "2026-09-23T13:44:17+07:00"
 }

@@ -1,6 +1,6 @@
 {
   "task": "VENT-011",
-  "at": "2026-09-23T13:40:05+07:00",
+  "at": "2026-09-23T13:44:17+07:00",
   "devices": {
     "SIM-VEN-BOUNDARY": {
       "scenario": "BOUNDARY",
@@ -71,6 +71,16 @@
         "indoorTemperatureAvg": "27.4"
       }
     }
+  },
+  "dashboard": {
+    "id": "32b1ecb0-b71a-11f1-a719-7da6129c6745",
+    "version": 1,
+    "widgets": 13,
+    "aliases": 2,
+    "source_modes": [
+      "live"
+    ],
+    "widgets_that_would_crash": []
   },
   "protected": {
     "dashboards": {
