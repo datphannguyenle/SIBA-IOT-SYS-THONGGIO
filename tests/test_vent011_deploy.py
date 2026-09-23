@@ -6,6 +6,7 @@ import unittest
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "deploy/thingsboard"))
 import build_vent_live as live  # noqa: E402
+import vent011_alarms as alarms  # noqa: E402
 import vent011_deploy as deploy  # noqa: E402
 import vent011_sim as sim  # noqa: E402
 from vent_demo_common import Blocked  # noqa: E402
@@ -53,6 +54,18 @@ class GuardTest(unittest.TestCase):
         writer._check("POST", "/api/deviceProfile", {"name": sim.SIM_PROFILE})
         for name in ("default", "Feeder", "Deodorizer", "SIM-Deodorizer"):
             self.blocked(writer, "POST", "/api/deviceProfile", {"name": name})
+
+    def test_profile_update_needs_its_own_permission(self):
+        """Alarm rule tác động mọi thiết bị thuộc profile, nên sửa profile phải mở riêng."""
+        creator = deploy.SimTB(allow_create=True)
+        self.blocked(creator, "POST", "/api/deviceProfile",
+                     {"name": sim.SIM_PROFILE, "id": {"id": "p-1"}})
+        editor = deploy.SimTB(allow_profile_update_ids={"p-1"})
+        editor._check("POST", "/api/deviceProfile", {"name": sim.SIM_PROFILE, "id": {"id": "p-1"}})
+        self.blocked(editor, "POST", "/api/deviceProfile",
+                     {"name": sim.SIM_PROFILE, "id": {"id": "p-2"}})
+        # Quyền sửa profile KHÔNG kéo theo quyền tạo profile mới.
+        self.blocked(editor, "POST", "/api/deviceProfile", {"name": sim.SIM_PROFILE})
 
     def test_protected_dashboards_cannot_be_written(self):
         writer = deploy.SimTB(allow_create=True, allow_update_ids={"anything"})
@@ -142,3 +155,70 @@ class LiveDashboardPayloadTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class AlarmRuleTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.rules = alarms.alarm_rules()
+
+    def test_every_rule_watches_a_contract_flag_key(self):
+        monitoring = set(sim.variables("monitoring"))
+        for (key, name, severity, _detail), rule in zip(alarms.RULES, self.rules):
+            self.assertIn(key, monitoring, key)
+            watched = rule["createRules"][severity]["condition"]["condition"][0]["key"]["key"]
+            self.assertEqual(watched, key)
+            self.assertEqual(rule["alarmType"], name)
+
+    def test_flags_are_compared_as_numbers_not_booleans(self):
+        """Cờ trong contract là uint16 0/1; so sánh BOOLEAN sẽ không bao giờ khớp."""
+        for rule in self.rules:
+            severity = list(rule["createRules"])[0]
+            for block in (rule["createRules"][severity]["condition"], rule["clearRule"]["condition"]):
+                item = block["condition"][0]
+                self.assertEqual(item["valueType"], "NUMERIC")
+                self.assertEqual(item["predicate"]["type"], "NUMERIC")
+
+    def test_create_on_one_and_clear_on_zero(self):
+        for rule in self.rules:
+            severity = list(rule["createRules"])[0]
+            create = rule["createRules"][severity]["condition"]["condition"][0]
+            clear = rule["clearRule"]["condition"]["condition"][0]
+            self.assertEqual(create["predicate"]["value"]["defaultValue"], 1)
+            self.assertEqual(clear["predicate"]["value"]["defaultValue"], 0)
+            self.assertEqual(create["key"]["key"], clear["key"]["key"])
+
+    def test_severities_are_valid_and_one_per_rule(self):
+        for rule in self.rules:
+            self.assertEqual(len(rule["createRules"]), 1, rule["alarmType"])
+            self.assertIn(list(rule["createRules"])[0],
+                          ("CRITICAL", "MAJOR", "MINOR", "WARNING", "INDETERMINATE"))
+
+    def test_equipment_fault_is_the_only_critical(self):
+        critical = [rule["alarmType"] for rule in self.rules if "CRITICAL" in rule["createRules"]]
+        self.assertEqual(critical, ["Lỗi thiết bị thông gió"])
+
+    def test_alarm_types_are_unique(self):
+        types = [rule["alarmType"] for rule in self.rules]
+        self.assertEqual(len(types), len(set(types)))
+
+    def test_simulated_devices_have_no_relations_so_nothing_propagates(self):
+        for rule in self.rules:
+            self.assertFalse(rule["propagate"], rule["alarmType"])
+            self.assertIsNone(rule["propagateRelationTypes"], rule["alarmType"])
+
+    def test_details_carry_the_unverified_severity_warning(self):
+        """Mức độ là đề xuất của dự án, không phải của contract — phải nói rõ trong alarm."""
+        for rule in self.rules:
+            severity = list(rule["createRules"])[0]
+            self.assertIn("ĐỀ XUẤT", rule["createRules"][severity]["alarmDetails"])
+
+    def test_fault_scenario_raises_and_normal_stays_clear(self):
+        """Dữ liệu mô phỏng phải thực sự kích được rule, nếu không việc kiểm là vô nghĩa."""
+        fault = sim.monitoring_payload("FAULT", 0)
+        normal = sim.monitoring_payload("NORMAL", 0)
+        raised = [key for key, _n, _s, _d in alarms.RULES if fault.get(key) == 1]
+        self.assertIn("equipmentFaultActive", raised)
+        self.assertIn("temperatureHighAlarmActive", raised)
+        for key, _n, _s, _d in alarms.RULES:
+            self.assertEqual(normal.get(key), 0, key)

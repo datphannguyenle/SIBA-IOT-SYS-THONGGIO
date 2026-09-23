@@ -45,10 +45,12 @@ def now_iso():
 class SimTB:
     """Client chỉ cho phép đúng các lệnh của VENT-011."""
 
-    def __init__(self, allow_create=False, allow_delete_ids=(), allow_update_ids=()):
+    def __init__(self, allow_create=False, allow_delete_ids=(), allow_update_ids=(),
+                 allow_profile_update_ids=()):
         self.allow_create = allow_create
         self.allow_delete_ids = set(allow_delete_ids)
         self.allow_update_ids = set(allow_update_ids)
+        self.allow_profile_update_ids = set(allow_profile_update_ids)
         self.mutations = []
         self._token = None
 
@@ -58,8 +60,15 @@ class SimTB:
         if method == 'POST' and path == '/api/auth/login':
             return
         if method == 'POST' and path == '/api/deviceProfile':
-            if not self.allow_create or body.get('name') != sim.SIM_PROFILE:
+            if body.get('name') != sim.SIM_PROFILE:
                 raise Blocked('deviceProfile không được phép: %s' % body.get('name'))
+            # Sửa profile phải mở riêng, không đi kèm quyền tạo: alarm rule ảnh hưởng mọi
+            # thiết bị thuộc profile nên không để lọt vào cùng một lượt cho phép.
+            if 'id' in body:
+                if (body['id'] or {}).get('id') not in self.allow_profile_update_ids:
+                    raise Blocked('chưa mở cập nhật cho profile này')
+            elif not self.allow_create:
+                raise Blocked('chưa mở quyền tạo profile')
             return
         if method == 'POST' and path == '/api/device':
             name = body.get('name') or ''

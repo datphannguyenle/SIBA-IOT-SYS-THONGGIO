@@ -5,8 +5,8 @@
   "overview": {
     "kpis": {
       "Số nhà": "7",
-      "Trực tuyến": "6",
-      "Cần chú ý": "4",
+      "Trực tuyến": "0",
+      "Cần chú ý": "7",
       "Cảnh báo đang mở": "--"
     },
     "barns": [
@@ -25,7 +25,7 @@
         "entityId": "621ed810-b719-11f1-a719-7da6129c6745",
         "entityType": "DEVICE",
         "lines": [
-          "Trực tuyến",
+          "Ngoại tuyến",
           "Dữ liệu: Chưa rõ",
           "Chế độ: Chưa rõ · Cấp: --"
         ]
@@ -35,7 +35,7 @@
         "entityId": "621cb530-b719-11f1-a719-7da6129c6745",
         "entityType": "DEVICE",
         "lines": [
-          "Trực tuyến",
+          "Ngoại tuyến",
           "Dữ liệu: Dữ liệu cũ",
           "Chế độ: Tự động · Cấp: 3"
         ]
@@ -45,8 +45,8 @@
         "entityId": "621a4430-b719-11f1-a719-7da6129c6745",
         "entityType": "DEVICE",
         "lines": [
-          "Trực tuyến",
-          "Dữ liệu: Hiện tại",
+          "Ngoại tuyến",
+          "Dữ liệu: Dữ liệu cũ",
           "Chế độ: Tự động · Cấp: 9"
         ]
       },
@@ -55,8 +55,8 @@
         "entityId": "62186f70-b719-11f1-a719-7da6129c6745",
         "entityType": "DEVICE",
         "lines": [
-          "Trực tuyến",
-          "Dữ liệu: Hiện tại",
+          "Ngoại tuyến",
+          "Dữ liệu: Dữ liệu cũ",
           "Chế độ: Thủ công · Cấp: 3"
         ]
       },
@@ -65,8 +65,8 @@
         "entityId": "62164c90-b719-11f1-a719-7da6129c6745",
         "entityType": "DEVICE",
         "lines": [
-          "Trực tuyến",
-          "Dữ liệu: Hiện tại",
+          "Ngoại tuyến",
+          "Dữ liệu: Dữ liệu cũ",
           "Chế độ: Tự động · Cấp: 0"
         ]
       },
@@ -75,8 +75,8 @@
         "entityId": "6211dfc0-b719-11f1-a719-7da6129c6745",
         "entityType": "DEVICE",
         "lines": [
-          "Trực tuyến",
-          "Dữ liệu: Hiện tại",
+          "Ngoại tuyến",
+          "Dữ liệu: Dữ liệu cũ",
           "Chế độ: Tự động · Cấp: 3"
         ]
       }
@@ -84,12 +84,55 @@
     "notice": null
   },
   "rows": {
-    "NORMAL": "Trực tuyến Dữ liệu: Hiện tại Chế độ: Tự động · Cấp: 3",
-    "BOUNDARY": "Trực tuyến Dữ liệu: Hiện tại Chế độ: Tự động · Cấp: 0",
-    "STALE": "Trực tuyến Dữ liệu: Dữ liệu cũ Chế độ: Tự động · Cấp: 3",
+    "NORMAL": "Ngoại tuyến Dữ liệu: Dữ liệu cũ Chế độ: Tự động · Cấp: 3",
+    "BOUNDARY": "Ngoại tuyến Dữ liệu: Dữ liệu cũ Chế độ: Tự động · Cấp: 0",
+    "STALE": "Ngoại tuyến Dữ liệu: Dữ liệu cũ Chế độ: Tự động · Cấp: 3",
     "OFFLINE": "Ngoại tuyến Dữ liệu: Chưa rõ Chế độ: Chưa rõ · Cấp: --",
-    "UNKNOWN": "Trực tuyến Dữ liệu: Chưa rõ Chế độ: Chưa rõ · Cấp: --"
+    "UNKNOWN": "Ngoại tuyến Dữ liệu: Chưa rõ Chế độ: Chưa rõ · Cấp: --"
   },
+  "platform": {
+    "NORMAL": {
+      "age": 668725,
+      "active": false
+    },
+    "BOUNDARY": {
+      "age": 668725,
+      "active": false
+    },
+    "MANUAL": {
+      "age": 668725,
+      "active": false
+    },
+    "FAULT": {
+      "age": 668725,
+      "active": false
+    },
+    "STALE": {
+      "age": 11468725,
+      "active": false
+    },
+    "UNKNOWN": {
+      "age": null,
+      "active": false
+    },
+    "OFFLINE": {
+      "age": null,
+      "active": false
+    }
+  },
+  "data_age_minutes": {
+    "NORMAL": 11.1,
+    "BOUNDARY": 11.1,
+    "MANUAL": 11.1,
+    "FAULT": 11.1,
+    "STALE": 191.1,
+    "UNKNOWN": null,
+    "OFFLINE": null
+  },
+  "notes": [
+    "NORMAL cũ 11.1 phút: `feed` không còn chạy, nên nhãn dữ liệu cũ là đúng",
+    "BOUNDARY cũ 11.1 phút: `feed` không còn chạy, nên nhãn dữ liệu cũ là đúng"
+  ],
   "detail": {
     "clicked": "Nhà mô phỏng · lỗi thiết bị",
     "entityId": "621a4430-b719-11f1-a719-7da6129c6745",
@@ -112,5 +155,68 @@
         "29.5 °C"
       ]
     ]
-  }
+  },
+  "states": {
+    "vent_history": {
+      "headings": [
+        "Nhà mô phỏng · lỗi thiết bị",
+        "Lịch sử môi trường",
+        "Bảng môi trường",
+        "Gió & nước"
+      ],
+      "rows": 380,
+      "firstRow": [
+        "13:53:22 23/9/2026",
+        "32 °C",
+        "29 °C",
+        "29.5 °C",
+        "62 %RH",
+        "Dữ liệu cũ"
+      ],
+      "notices": [],
+      "writable": 0,
+      "settingsFilled": 0,
+      "settingsMissing": 0
+    },
+    "vent_alarms": {
+      "headings": [
+        "Nhà mô phỏng · lỗi thiết bị",
+        "Cảnh báo",
+        "Tóm tắt"
+      ],
+      "rows": 0,
+      "firstRow": [],
+      "notices": [],
+      "writable": 0,
+      "settingsFilled": 0,
+      "settingsMissing": 0
+    },
+    "vent_settings": {
+      "headings": [
+        "Nhà mô phỏng · lỗi thiết bị",
+        "Cài đặt bộ điều khiển",
+        "CÀI ĐẶT - HỆ THỐNG",
+        "CÀI ĐẶT - NHIỆT ĐỘ",
+        "CÀI ĐẶT - NHIỆT ĐỘ CẢM NHẬN",
+        "CÀI ĐẶT - CẤP THÔNG GIÓ",
+        "CÀI ĐẶT - THỜI GIAN",
+        "CÀI ĐẶT - HIỆU CHỈNH"
+      ],
+      "rows": 37,
+      "firstRow": [
+        "Slot 01",
+        "0 day",
+        "32 °C",
+        "29 °C",
+        "35 °C"
+      ],
+      "notices": [
+        "9 slot là sức chứa cấu hình, không phải số cấp đang vận hành."
+      ],
+      "writable": 0,
+      "settingsFilled": 224,
+      "settingsMissing": 0
+    }
+  },
+  "alarm_rows": 0
 }

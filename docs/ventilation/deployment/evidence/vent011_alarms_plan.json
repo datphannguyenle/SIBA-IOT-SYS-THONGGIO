@@ -1,0 +1,82 @@
+{
+  "task": "VENT-011b",
+  "at": "2026-09-23T13:59:15+07:00",
+  "profile": "SIM-VentController",
+  "severity_note": "Mức độ là ĐỀ XUẤT của dự án, contract v0.3 không quy định. Cần NCC/khách xác nhận trước khi áp cho thiết bị thật.",
+  "current_alarm_types": [],
+  "wanted": [
+    {
+      "alarmType": "Lỗi thiết bị thông gió",
+      "severity": "CRITICAL",
+      "key": "equipmentFaultActive"
+    },
+    {
+      "alarmType": "Nhiệt độ cao (thermostat ngoài)",
+      "severity": "MAJOR",
+      "key": "externalHighTemperatureAlarm"
+    },
+    {
+      "alarmType": "Nhiệt độ trong chuồng cao",
+      "severity": "MAJOR",
+      "key": "temperatureHighAlarmActive"
+    },
+    {
+      "alarmType": "Nhiệt độ trong chuồng thấp",
+      "severity": "MINOR",
+      "key": "temperatureLowAlarmActive"
+    },
+    {
+      "alarmType": "Nhiệt độ cảm nhận cao",
+      "severity": "MINOR",
+      "key": "perceivedTemperatureHighAlarmActive"
+    },
+    {
+      "alarmType": "Nhiệt độ cảm nhận thấp",
+      "severity": "MINOR",
+      "key": "perceivedTemperatureLowAlarmActive"
+    }
+  ],
+  "devices_affected": [
+    "SIM-VEN-BOUNDARY",
+    "SIM-VEN-FAULT",
+    "SIM-VEN-MANUAL",
+    "SIM-VEN-NORMAL",
+    "SIM-VEN-OFFLINE",
+    "SIM-VEN-STALE",
+    "SIM-VEN-UNKNOWN"
+  ],
+  "protected": {
+    "dashboards": {
+      "bb585f20-a835-11f1-9683-f9c2621c1a59": {
+        "title": "SIBA · Khử mùi",
+        "version": 27,
+        "sha16": "99c899a8188f05b4"
+      },
+      "916ba6a0-acb7-11f1-9683-f9c2621c1a59": {
+        "title": "SIBA · Khử mùi · SIMULATION",
+        "version": 9,
+        "sha16": "faccbe9141863dd0"
+      },
+      "a66660b0-9a04-11f1-a0fc-e93bd628a87f": {
+        "title": "MUGE · Tổng quan trại",
+        "version": 107,
+        "sha16": "ed99833e5fa97194"
+      }
+    },
+    "devices": 8193,
+    "profiles": [
+      "Deodorizer",
+      "DosingStation",
+      "Feeder",
+      "Gateway",
+      "PROF-Teltonika-TRB140",
+      "SI Soil Moisture Sensor",
+      "SIM-Deodorizer",
+      "SIM-DosingStation",
+      "SIM-VentController",
+      "Silo",
+      "default",
+      "thermostat"
+    ]
+  }
+}

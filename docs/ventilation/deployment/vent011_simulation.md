@@ -116,8 +116,51 @@ KPI: 7 nhà · 6 trực tuyến · 4 cần chú ý · cảnh báo đang mở `--
 Bằng chứng: `evidence/vent011_ui_verify.json`, `vent011-live-overview-1600.png`,
 `vent011-live-detail-1600.png`.
 
-## 9. Việc còn treo
+## 9. Bốn màn chi tiết (23/09/2026)
 
-- Màn Lịch sử, Cảnh báo, Cài đặt chưa soát bằng mắt (bộ kiểm hiện chỉ đi Tổng quan → Giám sát).
-- Chưa có alarm rule nào trên profile `SIM-VentController`, nên "Cảnh báo đang mở" còn `--`
-  và màn Cảnh báo còn rỗng dù nhà FAULT đang bật cờ lỗi.
+| Màn | Kết quả | Ô ghi được |
+|---|---|---|
+| Giám sát | KPI và sơ đồ đúng số của nhà đã chọn | 0 |
+| Lịch sử | **380 dòng** từ 3 giờ dữ liệu thật, có mốc thời gian và giá trị | 0 |
+| Cảnh báo | 0 dòng — **đúng**, vì chưa có alarm rule; không bịa dòng nào | 0 |
+| Cài đặt | đọc được **224/224** khóa, 37 dòng bảng | 0 |
+
+Không màn nào có ô nhập hay điều khiển ghi: đúng yêu cầu chỉ xem.
+
+## 10. Ngưỡng không hoạt động của TB
+
+TB tự đặt `active = false` sau ngưỡng không hoạt động (mặc định 600 giây). Nên khi `feed` dừng,
+sau khoảng 10 phút **mọi nhà** chuyển sang `Ngoại tuyến` và dữ liệu thành `Dữ liệu cũ`. Đó là
+hành vi đúng, không phải lỗi. Muốn xem trạng thái trực tuyến thì phải giữ `feed` chạy.
+
+`verify_vent011_ui.py` vì thế **không giả định** `feed` đang chạy: nó đọc tuổi telemetry và cờ
+`active` thật từ nền tảng rồi đối chiếu hai chiều với nhãn trên giao diện.
+
+## 11. Alarm rule
+
+`vent011_alarms.py` gắn 6 alarm rule vào **device profile** `SIM-VentController`, không sửa Root
+Rule Chain (chain đó xử lý message của MỌI thiết bị trong tenant).
+
+| Cờ trong contract | Tên alarm | Mức độ (ĐỀ XUẤT) |
+|---|---|---|
+| `equipmentFaultActive` | Lỗi thiết bị thông gió | CRITICAL |
+| `externalHighTemperatureAlarm` | Nhiệt độ cao (thermostat ngoài) | MAJOR |
+| `temperatureHighAlarmActive` | Nhiệt độ trong chuồng cao | MAJOR |
+| `temperatureLowAlarmActive` | Nhiệt độ trong chuồng thấp | MINOR |
+| `perceivedTemperatureHighAlarmActive` | Nhiệt độ cảm nhận cao | MINOR |
+| `perceivedTemperatureLowAlarmActive` | Nhiệt độ cảm nhận thấp | MINOR |
+
+> **Mức độ là đề xuất của dự án.** Contract v0.3 không quy định mức nào cho cờ nào. Phải được
+> NCC/khách xác nhận trước khi áp cho thiết bị thật. Ghi chú này được nhúng vào `alarmDetails`
+> của từng rule để người xem alarm trên TB cũng thấy.
+
+Cờ trong contract là `uint16` 0/1, nên điều kiện so sánh **NUMERIC** (`= 1` tạo, `= 0` xoá).
+So sánh BOOLEAN sẽ không bao giờ khớp. Thiết bị mô phỏng chưa có quan hệ nhà/khu/trại nên
+`propagate = false`.
+
+Alarm chỉ sinh khi có **bản tin mới** đi qua rule engine sau khi ghi rule — phải giữ `feed` chạy.
+
+## 12. Việc còn treo
+
+- Alarm rule đã dựng và có test, **chưa ghi lên TB** (lệnh bị classifier chặn).
+- Chưa xác minh alarm thật sự nổi lên màn Cảnh báo.

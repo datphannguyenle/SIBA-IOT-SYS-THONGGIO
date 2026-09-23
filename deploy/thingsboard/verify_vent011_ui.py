@@ -22,9 +22,36 @@ from webdriver_support import Browser  # noqa: E402
 from vent_demo_common import EVIDENCE_DIR, TB_URL, write_json  # noqa: E402
 from verify_vent_demo_ui import login  # noqa: E402
 import vent011_sim as sim  # noqa: E402
+from build_vent_live import FRESHNESS_MONITORING_MS  # noqa: E402
+from vent011_deploy import SimTB  # noqa: E402
 
 ROOT_SELECTOR = ".vent-modular-root"
 EXPECTED_BARNS = 7
+
+
+def platform_state(manifest):
+    """Sự thật từ nền tảng: tuổi telemetry và cờ active của từng thiết bị.
+
+    Bộ kiểm đối chiếu giao diện với số liệu này, chứ KHÔNG giả định `feed` còn đang chạy.
+    TB tự đặt active = false sau ngưỡng không hoạt động, nên cả tuổi dữ liệu lẫn kết nối đều
+    thay đổi theo thời gian thực.
+    """
+    tb = SimTB()
+    now = int(time.time() * 1000)
+    state = {}
+    for name, info in manifest["devices"].items():
+        body = tb.get_ok("/api/plugins/telemetry/DEVICE/%s/values/timeseries?keys=fanStage"
+                         % info["id"])
+        series = body.get("fanStage") or []
+        # TB trả {"value": ""} với ts HIỆN TẠI cho khóa chưa từng ghi; coi đó là chưa có dữ liệu,
+        # không phải dữ liệu mới 0 phút tuổi.
+        point = series[0] if series else None
+        age = None if point is None or point.get("value") in (None, "") else now - point["ts"]
+        attributes = tb.get_ok("/api/plugins/telemetry/DEVICE/%s/values/attributes/SERVER_SCOPE"
+                               % info["id"])
+        active = {item["key"]: item["value"] for item in attributes}.get("active")
+        state[info["scenario"]] = {"age": age, "active": active}
+    return state
 
 
 def open_dashboard(browser, dash_id):
@@ -84,6 +111,51 @@ def read_detail(browser):
     """)
 
 
+def go_tab(browser, state):
+    """ Đi sang state khác bằng chính nav của widget header, không dùng URL. """
+    moved = browser.run("""
+      var tab = document.querySelector('.vent-modular-root .vm-tabs [data-nav="' + arguments[0] + '"]');
+      if (!tab) return false;
+      tab.click(); return true;
+    """, state)
+    if not moved:
+        raise RuntimeError("Không thấy tab %s" % state)
+    time.sleep(3.0)
+
+
+def read_state(browser):
+    return browser.run("""
+      var out = {text: '', headings: [], rows: 0, firstRow: [], notices: [],
+                 writable: 0, settingsFilled: 0, settingsMissing: 0};
+      document.querySelectorAll('.vent-modular-root').forEach(function (node) {
+        out.text += ' ' + node.innerText;
+      });
+      document.querySelectorAll('.vent-modular-root h1, .vent-modular-root h2').forEach(function (h) {
+        out.headings.push(h.textContent.trim());
+      });
+      document.querySelectorAll('.vent-modular-root .vm-notice').forEach(function (n) {
+        out.notices.push(n.textContent.trim());
+      });
+      var body = document.querySelectorAll('.vent-modular-root table tbody tr');
+      out.rows = body.length;
+      if (body.length) {
+        out.firstRow = [].map.call(body[0].querySelectorAll('td'), function (td) {
+          return td.textContent.trim();
+        });
+      }
+      // Chỉ xem: ngoài hộp tìm kiếm thì không được có ô nhập hay điều khiển ghi nào.
+      document.querySelectorAll('.vent-modular-root input, .vent-modular-root select, .vent-modular-root textarea').forEach(function (el) {
+        if (el.tagName === 'INPUT' && el.getAttribute('type') === 'search') return;
+        out.writable += 1;
+      });
+      document.querySelectorAll('.vent-modular-root [data-setting-key]').forEach(function (el) {
+        var text = el.textContent.trim();
+        if (text === '--' || text === '') out.settingsMissing += 1; else out.settingsFilled += 1;
+      });
+      return out;
+    """)
+
+
 def back_to_overview(browser):
     browser.run("""
       var tab = document.querySelector('.vent-modular-root [data-nav="default"]');
@@ -98,6 +170,8 @@ def main():
                            / "deploy/thingsboard/vent011_manifest.json").read_text(encoding="utf-8"))
     dash_id = manifest["dashboard"]["id"]
     report = {"task": "VENT-011", "dashboard": dash_id, "problems": []}
+    platform = platform_state(manifest)
+    ages = {scenario: info["age"] for scenario, info in platform.items()}
 
     with tempfile.TemporaryDirectory(dir=pathlib.Path.home()) as tmp:
         browser = Browser()
@@ -140,18 +214,45 @@ def main():
             normal = " ".join(barn_of("NORMAL")["lines"])
             report["rows"] = {"NORMAL": normal, "BOUNDARY": boundary, "STALE": stale,
                               "OFFLINE": offline, "UNKNOWN": unknown}
+            report["platform"] = platform
             if stale == offline:
                 report["problems"].append("STALE và OFFLINE hiện giống nhau")
-            if "Ngoại tuyến" in stale:
-                report["problems"].append("STALE bị báo là mất kết nối")
-            if "Ngoại tuyến" not in offline:
-                report["problems"].append("OFFLINE không báo mất kết nối")
-            # Dữ liệu vừa bơm phải là hiện hành; attribute `active` cũ không được làm cả nhà thành cũ.
-            for name, row in (("NORMAL", normal), ("BOUNDARY", boundary)):
-                if "Dữ liệu cũ" in row:
-                    report["problems"].append("%s bị báo dữ liệu cũ dù telemetry vừa về: %s" % (name, row))
-            if "Dữ liệu cũ" not in stale:
-                report["problems"].append("STALE không báo dữ liệu cũ: %s" % stale)
+            # Kết nối phải khớp cờ active của nền tảng, không phải khớp điều ta mong đợi.
+            for scenario, row in (("NORMAL", normal), ("BOUNDARY", boundary), ("STALE", stale),
+                                  ("OFFLINE", offline), ("UNKNOWN", unknown)):
+                active = platform.get(scenario, {}).get("active")
+                offline_label = "Ngoại tuyến" in row
+                if active is True and offline_label:
+                    report["problems"].append("%s: active=true mà giao diện báo mất kết nối" % scenario)
+                if active is False and not offline_label:
+                    report["problems"].append("%s: active=false mà giao diện không báo mất kết nối"
+                                              % scenario)
+            # OFFLINE chưa bao giờ gửi gì, nên dù feed có chạy hay không nó vẫn phải là ngoại tuyến.
+            if platform.get("OFFLINE", {}).get("active") is not False:
+                report["problems"].append("SIM-VEN-OFFLINE lẽ ra không bao giờ active")
+            # Đối chiếu nhãn độ tươi với TUỔI THẬT của telemetry, cả hai chiều. Không giả định
+            # rằng `feed` còn đang chạy; attribute `active` cũ không được làm cả nhà thành cũ.
+            report["data_age_minutes"] = {k: (None if v is None else round(v / 60000.0, 1))
+                                          for k, v in ages.items()}
+            for scenario, row in (("NORMAL", normal), ("BOUNDARY", boundary), ("STALE", stale)):
+                age = ages.get(scenario)
+                if age is None:
+                    report["problems"].append("%s không có telemetry nào" % scenario)
+                    continue
+                fresh_expected = age <= FRESHNESS_MONITORING_MS
+                shows_stale = "Dữ liệu cũ" in row
+                if fresh_expected and shows_stale:
+                    report["problems"].append(
+                        "%s: telemetry %0.1f phút tuổi (trong ngưỡng %d phút) mà bị báo dữ liệu cũ"
+                        % (scenario, age / 60000.0, FRESHNESS_MONITORING_MS // 60000))
+                if not fresh_expected and not shows_stale:
+                    report["problems"].append(
+                        "%s: telemetry %0.1f phút tuổi (quá ngưỡng) mà vẫn báo hiện hành"
+                        % (scenario, age / 60000.0))
+                if not fresh_expected and scenario in ("NORMAL", "BOUNDARY"):
+                    report.setdefault("notes", []).append(
+                        "%s cũ %0.1f phút: `feed` không còn chạy, nên nhãn dữ liệu cũ là đúng"
+                        % (scenario, age / 60000.0))
 
             # 3. Click một nhà thì widget chi tiết bám đúng thiết bị đó.
             # Chọn FAULT vì số liệu của nó khác hẳn các nhà còn lại (cấp 9, 32.0 °C) nên nếu
@@ -178,6 +279,48 @@ def main():
             browser.screenshot_full(shot)
             (EVIDENCE_DIR / "vent011-live-detail-1600.png").write_bytes(shot.read_bytes())
 
+            # --- Ba màn còn lại, vẫn trong ngữ cảnh nhà FAULT đã chọn ---
+            states = {}
+            for state in ("vent_history", "vent_alarms", "vent_settings"):
+                go_tab(browser, state)
+                info = read_state(browser)
+                states[state] = {"headings": info["headings"], "rows": info["rows"],
+                                 "firstRow": info["firstRow"], "notices": info["notices"],
+                                 "writable": info["writable"],
+                                 "settingsFilled": info["settingsFilled"],
+                                 "settingsMissing": info["settingsMissing"]}
+                if info["writable"]:
+                    report["problems"].append(
+                        "%s có %d điều khiển ghi được, màn này phải chỉ xem"
+                        % (state, info["writable"]))
+                if target["label"] not in info["text"]:
+                    report["problems"].append("%s mất tên nhà đã chọn" % state)
+                shot = pathlib.Path(tmp) / (state + ".png")
+                browser.screenshot_full(shot)
+                (EVIDENCE_DIR / ("vent011-live-%s-1600.png" % state.replace("_", "-"))
+                 ).write_bytes(shot.read_bytes())
+            report["states"] = states
+
+            history = states["vent_history"]
+            if history["rows"] < 10:
+                report["problems"].append("màn Lịch sử chỉ có %d dòng, đã nạp 3 giờ dữ liệu"
+                                          % history["rows"])
+            elif history["firstRow"][0] == "--":
+                report["problems"].append("màn Lịch sử thiếu mốc thời gian")
+            elif not any(cell not in ("--", "") for cell in history["firstRow"][1:]):
+                report["problems"].append("màn Lịch sử không có giá trị nào: %s"
+                                          % history["firstRow"])
+
+            settings_state = states["vent_settings"]
+            if settings_state["settingsFilled"] < 100:
+                report["problems"].append(
+                    "màn Cài đặt chỉ đọc được %d giá trị (thiếu %d), đã ghi 224 khóa"
+                    % (settings_state["settingsFilled"], settings_state["settingsMissing"]))
+
+            # Chưa có alarm rule thì bảng rỗng là ĐÚNG; điều sai là bịa ra dòng cảnh báo.
+            report["alarm_rows"] = states["vent_alarms"]["rows"]
+
+            go_tab(browser, "vent_detail")
             back_to_overview(browser)
             shot = pathlib.Path(tmp) / "vent011-overview.png"
             browser.screenshot_full(shot)
@@ -191,6 +334,17 @@ def main():
     print("KPI:", report["overview"]["kpis"])
     print("chi tiết:", report.get("detail", {}).get("heading"),
           "| clicked", report.get("detail", {}).get("clicked"))
+    for state, info in (report.get("states") or {}).items():
+        extra = ("cài đặt đọc được %d/%d" % (info["settingsFilled"],
+                                             info["settingsFilled"] + info["settingsMissing"])
+                 if info["settingsFilled"] or info["settingsMissing"] else "")
+        print("%-14s dòng=%-4d ô ghi được=%d %s" % (state, info["rows"], info["writable"], extra))
+        if info["notices"]:
+            print("               ghi chú:", info["notices"][:2])
+    print("tuổi telemetry (phút):", report.get("data_age_minutes"))
+    print("active theo nền tảng:", {k: v["active"] for k, v in platform.items()})
+    for note in report.get("notes") or []:
+        print("ghi chú:", note)
     if report["problems"]:
         print("VẤN ĐỀ:")
         for problem in report["problems"]:
