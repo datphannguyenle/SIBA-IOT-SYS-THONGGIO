@@ -3,7 +3,7 @@
   // VENT-007: raw fixture/ThingsBoard dùng key của Data Contract v0.3 và mã hóa PLC (uint16/float32).
   // Adapter chuyển mã sang view model chuẩn; danh sách key/nhóm/enum đến từ VentilationContract (sinh tự động).
   var QUALITY = ["CURRENT", "STALE", "OFFLINE", "UNKNOWN"];
-  var BARN_IDENTITY = ["PILOT", "LIVE_BARN_SIMULATED_STATE", "SYNTHETIC"];
+  var BARN_IDENTITY = ["PILOT", "LIVE_BARN_SIMULATED_STATE", "LIVE_ENTITY", "SYNTHETIC"];
   var UNKNOWN = "UNKNOWN", NOT_CONFIGURED = "NOT_CONFIGURED";
   var RUN_KEYS = ["fan01Run", "fan02Run", "fan03Run", "fan04Run", "fan05Run", "fan06Run", "coolingPump01Run", "coolingPump02Run"];
   var FLAG_KEYS = ["equipmentFaultActive", "externalHighTemperatureAlarm", "temperatureLowAlarmActive",
