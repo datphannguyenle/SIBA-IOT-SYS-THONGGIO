@@ -1,14 +1,12 @@
 {
   "task": "VENT-011",
   "dashboard": "32b1ecb0-b71a-11f1-a719-7da6129c6745",
-  "problems": [
-    "màn chi tiết không nhắc tên nhà đã chọn"
-  ],
+  "problems": [],
   "overview": {
     "kpis": {
       "Số nhà": "7",
       "Trực tuyến": "6",
-      "Cần chú ý": "7",
+      "Cần chú ý": "4",
       "Cảnh báo đang mở": "--"
     },
     "barns": [
@@ -18,7 +16,7 @@
         "entityType": "DEVICE",
         "lines": [
           "Ngoại tuyến",
-          "Dữ liệu: Dữ liệu cũ",
+          "Dữ liệu: Chưa rõ",
           "Chế độ: Chưa rõ · Cấp: --"
         ]
       },
@@ -28,7 +26,7 @@
         "entityType": "DEVICE",
         "lines": [
           "Trực tuyến",
-          "Dữ liệu: Dữ liệu cũ",
+          "Dữ liệu: Chưa rõ",
           "Chế độ: Chưa rõ · Cấp: --"
         ]
       },
@@ -48,7 +46,7 @@
         "entityType": "DEVICE",
         "lines": [
           "Trực tuyến",
-          "Dữ liệu: Dữ liệu cũ",
+          "Dữ liệu: Hiện tại",
           "Chế độ: Tự động · Cấp: 9"
         ]
       },
@@ -58,7 +56,7 @@
         "entityType": "DEVICE",
         "lines": [
           "Trực tuyến",
-          "Dữ liệu: Dữ liệu cũ",
+          "Dữ liệu: Hiện tại",
           "Chế độ: Thủ công · Cấp: 3"
         ]
       },
@@ -68,7 +66,7 @@
         "entityType": "DEVICE",
         "lines": [
           "Trực tuyến",
-          "Dữ liệu: Dữ liệu cũ",
+          "Dữ liệu: Hiện tại",
           "Chế độ: Tự động · Cấp: 0"
         ]
       },
@@ -78,7 +76,7 @@
         "entityType": "DEVICE",
         "lines": [
           "Trực tuyến",
-          "Dữ liệu: Dữ liệu cũ",
+          "Dữ liệu: Hiện tại",
           "Chế độ: Tự động · Cấp: 3"
         ]
       }
@@ -86,19 +84,20 @@
     "notice": null
   },
   "rows": {
-    "BOUNDARY": "Trực tuyến Dữ liệu: Dữ liệu cũ Chế độ: Tự động · Cấp: 0",
+    "NORMAL": "Trực tuyến Dữ liệu: Hiện tại Chế độ: Tự động · Cấp: 3",
+    "BOUNDARY": "Trực tuyến Dữ liệu: Hiện tại Chế độ: Tự động · Cấp: 0",
     "STALE": "Trực tuyến Dữ liệu: Dữ liệu cũ Chế độ: Tự động · Cấp: 3",
-    "OFFLINE": "Ngoại tuyến Dữ liệu: Dữ liệu cũ Chế độ: Chưa rõ · Cấp: --",
-    "UNKNOWN": "Trực tuyến Dữ liệu: Dữ liệu cũ Chế độ: Chưa rõ · Cấp: --"
+    "OFFLINE": "Ngoại tuyến Dữ liệu: Chưa rõ Chế độ: Chưa rõ · Cấp: --",
+    "UNKNOWN": "Trực tuyến Dữ liệu: Chưa rõ Chế độ: Chưa rõ · Cấp: --"
   },
   "detail": {
-    "clicked": "Nhà mô phỏng · chạy tự động",
-    "entityId": "6211dfc0-b719-11f1-a719-7da6129c6745",
+    "clicked": "Nhà mô phỏng · lỗi thiết bị",
+    "entityId": "621a4430-b719-11f1-a719-7da6129c6745",
     "heading": "Sơ đồ thông gió",
     "cards": [
       [
         "Nhiệt độ trong nhà",
-        "27.4 °C"
+        "32 °C"
       ],
       [
         "Nhiệt độ ngoài trời",
@@ -110,7 +109,7 @@
       ],
       [
         "Nhiệt độ cảm nhận",
-        "26.6 °C"
+        "29.5 °C"
       ]
     ]
   }

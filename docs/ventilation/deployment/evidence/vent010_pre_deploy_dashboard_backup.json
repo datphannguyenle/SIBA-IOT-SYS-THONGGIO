@@ -1,6 +1,6 @@
 {
   "task": "VENT-010",
-  "saved_at": "2026-09-23T13:44:16+07:00",
+  "saved_at": "2026-09-23T13:54:22+07:00",
   "dashboard": {
     "id": {
       "entityType": "DASHBOARD",
@@ -640,7 +640,7 @@
       }
     },
     "resources": null,
-    "version": 7,
+    "version": 8,
     "externalId": null
   }
 }

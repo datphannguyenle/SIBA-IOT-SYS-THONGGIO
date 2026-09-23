@@ -95,10 +95,29 @@ theo loại thiết bị nên nhà mới **tự xuất hiện** ở màn Tổng 
 enum và cờ chỉ nhận số nguyên, nên mọi nhà sẽ ra `UNKNOWN`. Giờ giải mã trên giá trị đã chuẩn
 hóa; giá trị không phải số (`"cap 3"`, `"2.5"`) vẫn ra `UNKNOWN` chứ không đoán.
 
-## 8. Còn phải xác minh trên trình duyệt
+## 8. Đã xác minh trên trình duyệt thật (23/09/2026)
 
-Ba điều dưới đây **chưa** kiểm được bằng test cục bộ, phải mở dashboard SIM và soát mắt:
+`verify_vent011_ui.py` chạy trên Firefox thật, chỉ đọc. Kết quả thẻ nhà ở màn Tổng quan:
 
-1. `SIM-VEN-BOUNDARY` hiện `0` ở cấp/lưu lượng, **không** hiện `--`.
-2. `SIM-VEN-STALE` hiện `STALE` và vẫn `ONLINE`; `SIM-VEN-OFFLINE` hiện `OFFLINE`.
-3. Click từng nhà ở Tổng quan → widget chi tiết đổi đúng thiết bị đó.
+| Nhà | Kết nối | Dữ liệu | Chế độ | Cấp |
+|---|---|---|---|---|
+| NORMAL | Trực tuyến | Hiện tại | Tự động | 3 |
+| BOUNDARY | Trực tuyến | Hiện tại | Tự động | **0** |
+| STALE | Trực tuyến | **Dữ liệu cũ** | Tự động | 3 |
+| OFFLINE | **Ngoại tuyến** | Chưa rõ | Chưa rõ | -- |
+| UNKNOWN | Trực tuyến | Chưa rõ | Chưa rõ | -- |
+
+Ba cặp dễ lẫn đều phân định đúng: `0` thật hiện là `0`; `STALE` vẫn `Trực tuyến` còn `OFFLINE`
+là `Ngoại tuyến`; thiếu mapping ra `--` chứ không ra `0`. Click nhà FAULT → widget chi tiết hiện
+`32 °C` (số riêng của nhà đó), tức là bám đúng thiết bị.
+
+KPI: 7 nhà · 6 trực tuyến · 4 cần chú ý · cảnh báo đang mở `--` (thuộc alarm nền tảng).
+
+Bằng chứng: `evidence/vent011_ui_verify.json`, `vent011-live-overview-1600.png`,
+`vent011-live-detail-1600.png`.
+
+## 9. Việc còn treo
+
+- Màn Lịch sử, Cảnh báo, Cài đặt chưa soát bằng mắt (bộ kiểm hiện chỉ đi Tổng quan → Giám sát).
+- Chưa có alarm rule nào trên profile `SIM-VentController`, nên "Cảnh báo đang mở" còn `--`
+  và màn Cảnh báo còn rỗng dù nhà FAULT đang bật cờ lỗi.
