@@ -94,6 +94,7 @@ self.onInit = function () {
         entityId: source.entityId ? (source.entityId.id || String(source.entityId)) : null,
         entityName: source.entityName || null,
         keys: (source.dataKeys || []).map(function (key) { return key.name; })} : null;
+      probe.canSubscribe = !!(sub && typeof sub.subscribeForAlarms === 'function');
       probe.stateParams = Object.keys(params || {});
       probe.hasEntityIdParam = !!(params && params.entityId && params.entityId.id);
       node.setAttribute('data-vent-diagnostic', JSON.stringify(probe));
@@ -110,8 +111,11 @@ self.onInit = function () {
   if ((ctx.settings || {}).sourceMode === 'live' && (ctx.settings || {}).component === 'alarms') {
     var subscription = ctx.defaultSubscription;
     if (subscription && subscription.subscribeForAlarms) {
-      subscription.subscribeForAlarms({pageSize: 100, page: 0, sortOrder: {key: 'createdTime', direction: 'DESC'},
-        statusList: [], severityList: [], typeList: []}, null);
+      // sortOrder.key PHẢI là EntityKey {type, key}. Truyền chuỗi thì máy chủ không dựng được
+      // đối tượng và BỎ QUA lệnh trong im lặng: không dữ liệu, không lỗi, bảng trống mãi mãi.
+      subscription.subscribeForAlarms({pageSize: 100, page: 0,
+        sortOrder: {key: {type: 'ALARM_FIELD', key: 'createdTime'}, direction: 'DESC'},
+        statusList: [], severityList: [], typeList: [], searchPropagatedAlarms: false}, null);
     }
   }
 };

@@ -160,7 +160,29 @@ So sánh BOOLEAN sẽ không bao giờ khớp. Thiết bị mô phỏng chưa c�
 
 Alarm chỉ sinh khi có **bản tin mới** đi qua rule engine sau khi ghi rule — phải giữ `feed` chạy.
 
-## 12. Việc còn treo
+## 12. Bốn thứ widget kiểu alarm bắt buộc phải có
 
-- Alarm rule đã dựng và có test, **chưa ghi lên TB** (lệnh bị classifier chặn).
-- Chưa xác minh alarm thật sự nổi lên màn Cảnh báo.
+Mất nhiều vòng mới ra, vì thiếu thứ nào cũng **không sinh lỗi**. Ghi lại thành bẫy #34 trong kit.
+
+| Thứ | Thiếu thì sao |
+|---|---|
+| `config.alarmSource` | **Vỡ cả dashboard** khi mở (bẫy #33) |
+| `alarmSource.dataKeys` kiểu `alarm` | Bảng trống, không báo lỗi |
+| `useDashboardTimewindow` + `timewindow` riêng | Bảng trống, không báo lỗi |
+| `sortOrder.key` là EntityKey chứ không phải chuỗi | Bảng trống, không báo lỗi |
+
+Cái cuối là lỗi của chính dự án này, trong `subscribeForAlarms` của controller. Đo trực tiếp
+trên websocket TB 4.3.1.2, cùng socket, cùng thiết bị, hai lệnh chỉ khác chỗ đó:
+
+| `sortOrder.key` | Máy chủ trả lời |
+|---|---|
+| `"createdTime"` | **không trả lời gì**, không báo lỗi |
+| `{type: "ALARM_FIELD", key: "createdTime"}` | `totalElements = 4` |
+
+Cách chẩn đoán đã dùng: vá `WebSocket.prototype.send` trong trang để bắt lệnh gửi đi và gắn
+listener đọc phản hồi. Không thấy `cmdId` của mình trong phản hồi nghĩa là máy chủ đã bỏ lệnh,
+tức sai định dạng chứ không phải sai bộ lọc. Chi tiết trong bẫy #34.
+
+## 13. Việc còn treo
+
+- Chưa xác minh alarm nổi lên màn Cảnh báo sau bản sửa cuối.

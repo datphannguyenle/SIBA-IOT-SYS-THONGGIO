@@ -135,6 +135,13 @@ class ModularRuntimeTest(unittest.TestCase):
             self.mount(kind, component, state)
             self.assertEqual(self.browser.run("return document.querySelectorAll('.vent-modular-root').length"), 1, kind)
 
+    def test_alarm_subscription_sorts_by_an_entity_key_not_a_plain_string(self):
+        """sortOrder.key dạng chuỗi làm máy chủ bỏ qua lệnh trong im lặng: bảng cảnh báo trống
+        vĩnh viễn mà không có lỗi nào. Đã đo trực tiếp trên websocket của TB 4.3.1.2."""
+        script = self.payloads['alarm']['descriptor']['controllerScript']
+        self.assertIn("sortOrder: {key: {type: 'ALARM_FIELD', key: 'createdTime'}", script)
+        self.assertNotIn("sortOrder: {key: 'createdTime'", script)
+
     def test_detail_header_names_the_barn_chosen_from_the_overview(self):
         """Ở chế độ live, widget chi tiết không có danh sách nhà; tên nhà phải lấy từ state param,
         nếu không màn Giám sát luôn hiện "Nhà chưa chọn" dù đã chọn nhà."""

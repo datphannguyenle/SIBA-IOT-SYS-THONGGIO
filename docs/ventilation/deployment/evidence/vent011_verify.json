@@ -1,6 +1,6 @@
 {
   "task": "VENT-011",
-  "at": "2026-09-23T14:19:34+07:00",
+  "at": "2026-09-23T14:28:54+07:00",
   "devices": {
     "SIM-VEN-BOUNDARY": {
       "scenario": "BOUNDARY",
@@ -74,7 +74,7 @@
   },
   "dashboard": {
     "id": "32b1ecb0-b71a-11f1-a719-7da6129c6745",
-    "version": 2,
+    "version": 3,
     "widgets": 13,
     "aliases": 2,
     "source_modes": [
