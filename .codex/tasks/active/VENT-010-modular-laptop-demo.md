@@ -67,3 +67,20 @@ kiểm đúng tập thành phần. Nếu chủ ý ban đầu là 6 widget thì c
 - Zero mutation tới các dashboard bảo vệ và bundle chung `siba_custom_ui`.
 
 **Chưa làm:** Chưa có dữ liệu PLC thật nên chưa kiểm được đường live end-to-end (thuộc phạm vi tích hợp vật lý).
+
+## Sự cố 23/09/2026 — dashboard live trắng trang sau khi deploy
+
+Bản deploy 11:16 (dashboard version 6) làm dashboard không mở được. Console:
+`TypeError: Cannot read properties of undefined (reading 'entityAliasId')` trong
+`validateAndUpdateDashboard`.
+
+Nguyên nhân: TB duyệt widget kiểu `alarm` bằng `[config.alarmSource]` chứ không phải
+`config.datasources`. Widget `modular_alarm` không có `alarmSource` nên mảng là `[undefined]`.
+Lỗi nằm ở bước validate trước khi vẽ, nên một widget hỏng làm chết cả dashboard, mọi state.
+
+Đã sửa trong repo (`build_vent_modular.py` sinh `alarmSource` cho instance và `defaultConfig`),
+thêm `validate()` và 2 test lặp lại đúng vòng quét alias của TB. Ghi bẫy #33 vào kit.
+
+**Chưa đẩy lên live**: lệnh `deploy_vent_modular.py execute` bị chặn bởi bộ phân loại an toàn;
+cần người dùng tự chạy. Bản sao dashboard version 5 giữ ở
+`docs/ventilation/deployment/evidence/vent010_pre_deploy_dashboard_backup_v5.json`.
