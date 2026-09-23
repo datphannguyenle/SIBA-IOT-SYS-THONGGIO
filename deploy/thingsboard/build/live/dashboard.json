@@ -2079,11 +2079,18 @@
           "alarmFilterConfig": {
             "statusList": [],
             "severityList": [],
-            "typeList": null,
+            "typeList": [],
             "searchPropagatedAlarms": false,
             "assigneeId": null
           },
-          "pageSize": 100
+          "pageSize": 100,
+          "useDashboardTimewindow": false,
+          "displayTimewindow": false,
+          "timewindow": {
+            "realtime": {
+              "timewindowMs": 604800000
+            }
+          }
         }
       },
       "26fc72f9-5fff-58dc-87fb-6aafd8b61f86": {

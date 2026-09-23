@@ -126,6 +126,23 @@ class LiveDashboardPayloadTest(unittest.TestCase):
         for field in live.ALARM_FIELDS:
             self.assertNotIn(field, settings["keyMap"])
 
+    def test_alarm_widget_carries_its_own_time_window(self):
+        """Widget kiểu alarm CÓ cửa sổ thời gian; thiếu nó thì truy vấn trả 0 alarm dù alias đã
+        resolve đúng thiết bị và đã khai đủ cột. Đối chiếu widget alarm đang chạy thật trên
+        dashboard Khử mùi của cùng instance."""
+        config = self.widgets["alarms"]["config"]
+        self.assertIs(config["useDashboardTimewindow"], False)
+        self.assertIs(config["displayTimewindow"], False)
+        self.assertEqual(config["timewindow"]["realtime"]["timewindowMs"], live.ALARM_WINDOW_MS)
+        self.assertGreater(live.ALARM_WINDOW_MS, 24 * 60 * 60 * 1000)
+
+    def test_only_the_alarm_widget_overrides_the_dashboard_time_window(self):
+        for component, widget in self.widgets.items():
+            if widget["type"] == "alarm":
+                continue
+            self.assertNotIn("useDashboardTimewindow", widget["config"], component)
+            self.assertNotIn("timewindow", widget["config"], component)
+
     def test_alarm_filter_accepts_every_status_and_ignores_propagated(self):
         config = self.widgets["alarms"]["config"]["alarmFilterConfig"]
         self.assertEqual(config["statusList"], [])

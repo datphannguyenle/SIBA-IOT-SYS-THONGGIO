@@ -34,6 +34,9 @@ DETAIL_COMPONENTS = ('kpis', 'synoptic', 'controller', 'metrics')
 # Chu kỳ bơm 60s; 5 phút là STALE. Cài đặt ghi thưa nên nới ngưỡng, không để mặc định UNKNOWN.
 FRESHNESS_MONITORING_MS = 300000
 FRESHNESS_SETTING_MS = 7 * 24 * 60 * 60 * 1000
+# Widget kiểu alarm CÓ cửa sổ thời gian riêng; thiếu nó thì truy vấn alarm trả về 0 dù alias đã
+# resolve đúng thiết bị. Đối chiếu với widget alarm đang chạy thật trên dashboard Khử mùi.
+ALARM_WINDOW_MS = 7 * 24 * 60 * 60 * 1000
 
 
 def alias_definitions():
@@ -116,12 +119,17 @@ def dashboard():
             widget['config']['alarmSource'] = {
                 'type': 'entity', 'name': 'Nhà gió', 'entityAliasId': ALIAS_SELECTED,
                 'dataKeys': [data_key(field, 'alarm') for field in ALARM_FIELDS]}
-            # statusList rỗng = mọi trạng thái; giao diện tự phân ACTIVE và RECOVERED.
-            # Thiết bị mô phỏng chưa có quan hệ nên không tìm alarm lan truyền.
+            # statusList rỗng = mọi trạng thái (TB bỏ tham số khỏi truy vấn); giao diện tự phân
+            # ACTIVE và RECOVERED. Thiết bị mô phỏng chưa có quan hệ nên không tìm alarm lan truyền.
             widget['config']['alarmFilterConfig'] = {
-                'statusList': [], 'severityList': [], 'typeList': None,
+                'statusList': [], 'severityList': [], 'typeList': [],
                 'searchPropagatedAlarms': False, 'assigneeId': None}
             widget['config']['pageSize'] = 100
+            # Cửa sổ riêng 7 ngày, không dùng cửa sổ của dashboard (dashboard chỉ 6 giờ và
+            # không có thanh công cụ để người xem đổi).
+            widget['config']['useDashboardTimewindow'] = False
+            widget['config']['displayTimewindow'] = False
+            widget['config']['timewindow'] = {'realtime': {'timewindowMs': ALARM_WINDOW_MS}}
     return dash
 
 
@@ -146,6 +154,8 @@ def validate(dash):
             assert all(key['type'] == 'alarm' for key in config['alarmSource']['dataKeys'])
             assert config['alarmFilterConfig']['statusList'] == []
             assert config['alarmFilterConfig']['searchPropagatedAlarms'] is False
+            assert config['useDashboardTimewindow'] is False
+            assert config['timewindow']['realtime']['timewindowMs'] == ALARM_WINDOW_MS
         # Mọi khóa đã khai phải có keyMap và ngưỡng tươi, nếu không widget hiện UNKNOWN.
         # Trường alarm là trường của nền tảng, không phải khóa telemetry nên không vào keyMap.
         declared = {key['name'] for source in config['datasources'] for key in source['dataKeys']}

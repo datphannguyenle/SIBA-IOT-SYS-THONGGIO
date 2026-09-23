@@ -1,35 +1,35 @@
 {
   "task": "VENT-010",
-  "started_at": "2026-09-23T14:19:33+07:00",
+  "started_at": "2026-09-23T14:23:25+07:00",
   "created_widgets": {},
   "updated_widgets": {
     "static": {
       "id": "93516710-b6fe-11f1-a719-7da6129c6745",
-      "version": 6
+      "version": 7
     },
     "latest": {
       "id": "93544d40-b6fe-11f1-a719-7da6129c6745",
-      "version": 6
+      "version": 7
     },
     "timeseries": {
       "id": "93569730-b6fe-11f1-a719-7da6129c6745",
-      "version": 6
+      "version": 7
     },
     "alarm": {
       "id": "9358ba10-b6fe-11f1-a719-7da6129c6745",
-      "version": 6
+      "version": 7
     },
     "overview": {
       "id": "935adcf0-b6fe-11f1-a719-7da6129c6745",
-      "version": 6
+      "version": 7
     }
   },
   "mutations": [],
   "dashboard_updated": {
     "id": "b9ff4d70-b26a-11f1-83ad-9912edc644d2",
-    "version": 10
+    "version": 11
   },
-  "finished_at": "2026-09-23T14:19:33+07:00",
+  "finished_at": "2026-09-23T14:23:26+07:00",
   "guard_mutations": [
     {
       "method": "POST",
