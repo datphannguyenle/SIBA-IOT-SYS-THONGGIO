@@ -1,6 +1,6 @@
 {
   "task": "VENT-012",
-  "at": "2026-09-24T09:18:09+07:00",
+  "at": "2026-09-24T09:22:13+07:00",
   "barns": {
     "ND2-1": "e8a84a30-9c3c-11f1-a0fc-e93bd628a87f",
     "ND2-2": "efa5b020-9c3c-11f1-a0fc-e93bd628a87f",
@@ -20,7 +20,7 @@
     "SIM-VEN-SYS-ND2-4": false
   },
   "profiles": {
-    "SIM-VEN-GatewayController-V012": false,
+    "SIM-VEN-GatewayController-V012": true,
     "SIM-AP-VEN-SYSTEM-V012": false
   },
   "dashboard": false,
@@ -52,6 +52,7 @@
       "SI Soil Moisture Sensor",
       "SIM-Deodorizer",
       "SIM-DosingStation",
+      "SIM-VEN-GatewayController-V012",
       "SIM-VentController",
       "Silo",
       "default",

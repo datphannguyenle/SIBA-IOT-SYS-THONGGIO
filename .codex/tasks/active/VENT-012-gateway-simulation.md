@@ -3,6 +3,10 @@
 ## Status
 active
 
+Checkpoint 24/09/2026: runtime, alarm cycle, edge cases, Gateway reconnect, browser và 181
+tests đã đạt. Soak 24 giờ đang chạy từ 09:45:32 UTC+7; không chuyển review trước khi có đủ
+1440 mẫu sạch và export evidence.
+
 ## Objective
 PLC giả lập Modbus → Gateway riêng → ThingsBoard → dashboard, ND2-1..4.
 
@@ -35,6 +39,13 @@ Runtime Barn ownership, Gateway schema/RPC guard, audit notification; credential
 
 ## Required evidence
 API/Modbus/subscription/browser đối chiếu; tests; screenshot; UTC timestamps; không secrets.
+
+## Runtime evidence
+- `docs/ventilation/deployment/evidence/vent012_alarm_cycle.json`
+- `docs/ventilation/deployment/evidence/vent012_edge_cases_active.json`
+- `docs/ventilation/deployment/evidence/vent012_gateway_reconnect.json`
+- `docs/ventilation/deployment/evidence/vent012_ui_verify.json`
+- external soak state: `~/.config/siba-vent012-soak.json`
 
 ## Gate
 Đạt mô phỏng end-to-end qua Gateway; không cấp quyền commissioning production.

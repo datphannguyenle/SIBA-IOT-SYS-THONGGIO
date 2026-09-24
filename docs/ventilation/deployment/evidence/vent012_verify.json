@@ -1,0 +1,199 @@
+{
+  "task": "VENT-012",
+  "at": "2026-09-24T09:40:28+07:00",
+  "manifest": {
+    "task": "VENT-012",
+    "created": {
+      "b365f9b0-b7be-11f1-a719-7da6129c6745": true,
+      "c1abd850-b7be-11f1-a719-7da6129c6745": true,
+      "c1bd6480-b7be-11f1-a719-7da6129c6745": true,
+      "c1cfb400-b7be-11f1-a719-7da6129c6745": true,
+      "c1f627c0-b7be-11f1-a719-7da6129c6745": true,
+      "c2237950-b7be-11f1-a719-7da6129c6745": true,
+      "c2372860-b7be-11f1-a719-7da6129c6745": true,
+      "c259cb90-b7be-11f1-a719-7da6129c6745": true,
+      "c2712420-b7be-11f1-a719-7da6129c6745": true,
+      "c284ac20-b7be-11f1-a719-7da6129c6745": true,
+      "c2ab46f0-b7be-11f1-a719-7da6129c6745": true,
+      "0e30c5f0-b7bf-11f1-a719-7da6129c6745": false
+    },
+    "profiles": {
+      "device": "b365f9b0-b7be-11f1-a719-7da6129c6745",
+      "asset": "c1abd850-b7be-11f1-a719-7da6129c6745"
+    },
+    "systems": {
+      "ND2-1": "c1cfb400-b7be-11f1-a719-7da6129c6745",
+      "ND2-2": "c2237950-b7be-11f1-a719-7da6129c6745",
+      "ND2-3": "c259cb90-b7be-11f1-a719-7da6129c6745",
+      "ND2-4": "c284ac20-b7be-11f1-a719-7da6129c6745"
+    },
+    "controllers": {
+      "ND2-1": "c1f627c0-b7be-11f1-a719-7da6129c6745",
+      "ND2-2": "c2372860-b7be-11f1-a719-7da6129c6745",
+      "ND2-3": "c2712420-b7be-11f1-a719-7da6129c6745",
+      "ND2-4": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+    },
+    "gateway": "c1bd6480-b7be-11f1-a719-7da6129c6745",
+    "dashboard": "0e30c5f0-b7bf-11f1-a719-7da6129c6745",
+    "mutations": [
+      {
+        "method": "POST",
+        "path": "/api/assetProfile"
+      },
+      {
+        "method": "POST",
+        "path": "/api/device"
+      },
+      {
+        "method": "POST",
+        "path": "/api/customer/4199dcf0-a2bc-11f1-812e-f9c2621c1a59/device/c1bd6480-b7be-11f1-a719-7da6129c6745"
+      },
+      {
+        "method": "POST",
+        "path": "/api/asset"
+      },
+      {
+        "method": "POST",
+        "path": "/api/customer/4199dcf0-a2bc-11f1-812e-f9c2621c1a59/asset/c1cfb400-b7be-11f1-a719-7da6129c6745"
+      },
+      {
+        "method": "POST",
+        "path": "/api/device"
+      },
+      {
+        "method": "POST",
+        "path": "/api/customer/4199dcf0-a2bc-11f1-812e-f9c2621c1a59/device/c1f627c0-b7be-11f1-a719-7da6129c6745"
+      },
+      {
+        "method": "POST",
+        "path": "/api/relation"
+      },
+      {
+        "method": "POST",
+        "path": "/api/relation"
+      },
+      {
+        "method": "POST",
+        "path": "/api/asset"
+      },
+      {
+        "method": "POST",
+        "path": "/api/customer/4199dcf0-a2bc-11f1-812e-f9c2621c1a59/asset/c2237950-b7be-11f1-a719-7da6129c6745"
+      },
+      {
+        "method": "POST",
+        "path": "/api/device"
+      },
+      {
+        "method": "POST",
+        "path": "/api/customer/4199dcf0-a2bc-11f1-812e-f9c2621c1a59/device/c2372860-b7be-11f1-a719-7da6129c6745"
+      },
+      {
+        "method": "POST",
+        "path": "/api/relation"
+      },
+      {
+        "method": "POST",
+        "path": "/api/relation"
+      },
+      {
+        "method": "POST",
+        "path": "/api/asset"
+      },
+      {
+        "method": "POST",
+        "path": "/api/customer/4199dcf0-a2bc-11f1-812e-f9c2621c1a59/asset/c259cb90-b7be-11f1-a719-7da6129c6745"
+      },
+      {
+        "method": "POST",
+        "path": "/api/device"
+      },
+      {
+        "method": "POST",
+        "path": "/api/customer/4199dcf0-a2bc-11f1-812e-f9c2621c1a59/device/c2712420-b7be-11f1-a719-7da6129c6745"
+      },
+      {
+        "method": "POST",
+        "path": "/api/relation"
+      },
+      {
+        "method": "POST",
+        "path": "/api/relation"
+      },
+      {
+        "method": "POST",
+        "path": "/api/asset"
+      },
+      {
+        "method": "POST",
+        "path": "/api/customer/4199dcf0-a2bc-11f1-812e-f9c2621c1a59/asset/c284ac20-b7be-11f1-a719-7da6129c6745"
+      },
+      {
+        "method": "POST",
+        "path": "/api/device"
+      },
+      {
+        "method": "POST",
+        "path": "/api/customer/4199dcf0-a2bc-11f1-812e-f9c2621c1a59/device/c2ab46f0-b7be-11f1-a719-7da6129c6745"
+      },
+      {
+        "method": "POST",
+        "path": "/api/relation"
+      },
+      {
+        "method": "POST",
+        "path": "/api/relation"
+      },
+      {
+        "method": "POST",
+        "path": "/api/dashboard"
+      },
+      {
+        "method": "POST",
+        "path": "/api/dashboard"
+      },
+      {
+        "method": "POST",
+        "path": "/api/dashboard"
+      }
+    ]
+  },
+  "issues": [],
+  "tokenFileMode600": true,
+  "protected": {
+    "dashboards": {
+      "bb585f20-a835-11f1-9683-f9c2621c1a59": {
+        "title": "SIBA · Khử mùi",
+        "version": 27,
+        "sha16": "99c899a8188f05b4"
+      },
+      "916ba6a0-acb7-11f1-9683-f9c2621c1a59": {
+        "title": "SIBA · Khử mùi · SIMULATION",
+        "version": 9,
+        "sha16": "faccbe9141863dd0"
+      },
+      "a66660b0-9a04-11f1-a0fc-e93bd628a87f": {
+        "title": "MUGE · Tổng quan trại",
+        "version": 107,
+        "sha16": "ed99833e5fa97194"
+      }
+    },
+    "devices": 8198,
+    "profiles": [
+      "Deodorizer",
+      "DosingStation",
+      "Feeder",
+      "Gateway",
+      "PROF-Teltonika-TRB140",
+      "SI Soil Moisture Sensor",
+      "SIM-Deodorizer",
+      "SIM-DosingStation",
+      "SIM-VEN-GatewayController-V012",
+      "SIM-VentController",
+      "Silo",
+      "default",
+      "thermostat"
+    ]
+  },
+  "mutationsSent": []
+}

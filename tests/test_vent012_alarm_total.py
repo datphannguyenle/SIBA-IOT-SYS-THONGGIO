@@ -31,7 +31,7 @@ class AlarmTotalTest(unittest.TestCase):
           sub.alarms={data:[],totalElements:0};opt.callbacks.onDataUpdated(sub); var zero=state.total;
           h.destroy();return {initial:initial,total:total,failed:failed,zero:zero,
             destroyed:destroyed,cancelled:cancelled,status:link.statusList,
-            noWindow:opt.timeWindowConfig===null,propagate:link.searchPropagatedAlarms};
+            longWindow:opt.timeWindowConfig.realtime.timewindowMs===315360000000,propagate:link.searchPropagatedAlarms};
         ''')
         self.assertIsNone(result['initial'])
         self.assertEqual(result['total'], 287)
@@ -39,6 +39,6 @@ class AlarmTotalTest(unittest.TestCase):
         self.assertEqual(result['zero'], 0)
         self.assertEqual(result['destroyed'], 1)
         self.assertEqual(result['cancelled'], 1)
-        self.assertEqual(result['status'], ['ACTIVE_ACK', 'ACTIVE_UNACK'])
-        self.assertTrue(result['noWindow'])
+        self.assertEqual(result['status'], ['ACTIVE'])
+        self.assertTrue(result['longWindow'])
         self.assertFalse(result['propagate'])

@@ -1,0 +1,64 @@
+{
+  "startedAt": "2026-09-24T09:41:27+07:00",
+  "before": {
+    "tb-gateway": {
+      "id": "32cd96b1c6338a9c3c13bf1fe481dd599f013e58aca5f2002462086567a2eaec",
+      "image": "sha256:466ab91471be8fbb9b620f98edec00e68ae59f5887fdad38817822e2a1a611cd",
+      "startedAt": "2026-09-21T01:19:34.822438058Z",
+      "restartCount": 0,
+      "status": "running",
+      "health": null
+    },
+    "tb-gateway-ventilation": {
+      "id": "a6ed4ca7a8254f6bfd672295b788aa64a9bcc3f90b18fbbbfbba7a86195628b7",
+      "image": "sha256:f48601a80aa839049d0b7426bfb8f08a15d06e538948b76080f230ddaf631d75",
+      "startedAt": "2026-09-24T02:23:11.83763462Z",
+      "restartCount": 0,
+      "status": "running",
+      "health": "healthy"
+    }
+  },
+  "completedAt": "2026-09-24T09:42:35+07:00",
+  "after": {
+    "tb-gateway": {
+      "id": "32cd96b1c6338a9c3c13bf1fe481dd599f013e58aca5f2002462086567a2eaec",
+      "image": "sha256:466ab91471be8fbb9b620f98edec00e68ae59f5887fdad38817822e2a1a611cd",
+      "startedAt": "2026-09-21T01:19:34.822438058Z",
+      "restartCount": 0,
+      "status": "running",
+      "health": null
+    },
+    "tb-gateway-ventilation": {
+      "id": "a6ed4ca7a8254f6bfd672295b788aa64a9bcc3f90b18fbbbfbba7a86195628b7",
+      "image": "sha256:f48601a80aa839049d0b7426bfb8f08a15d06e538948b76080f230ddaf631d75",
+      "startedAt": "2026-09-24T02:42:12.98528971Z",
+      "restartCount": 0,
+      "status": "running",
+      "health": "healthy"
+    }
+  },
+  "telemetryAfterReconnect": {
+    "ND2-1": {
+      "sourceAgeSec": 0.7,
+      "sequence": 377
+    },
+    "ND2-2": {
+      "sourceAgeSec": 0.7,
+      "sequence": 377
+    },
+    "ND2-3": {
+      "sourceAgeSec": 0.7,
+      "sequence": 377
+    },
+    "ND2-4": {
+      "sourceAgeSec": 0.7,
+      "sequence": 377
+    }
+  },
+  "protectedGatewayUnchanged": {
+    "id": true,
+    "image": true,
+    "startedAt": true,
+    "restartCount": true
+  }
+}

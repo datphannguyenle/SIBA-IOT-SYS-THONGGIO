@@ -142,14 +142,7 @@
             "alarmTotalSource": {
               "type": "entity",
               "name": "Bộ điều khiển thông gió SIM",
-              "entityFilter": {
-                "type": "deviceType",
-                "deviceTypes": [
-                  "SIM-VEN-GatewayController-V012"
-                ],
-                "deviceNameFilter": "SIM-VEN-ND2-",
-                "resolveMultiple": true
-              },
+              "entityAliasId": "a1b2c3d0-0001-4000-8000-00000000ve01",
               "dataKeys": [
                 {
                   "name": "createdTime",

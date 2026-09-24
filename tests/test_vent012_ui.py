@@ -88,6 +88,20 @@ class Vent012UiTest(unittest.TestCase):
         self.assertEqual(vm["history"][-1]["indoorTemperatureAvg"], 29)
         self.assertEqual(vm["mapping"]["invalidKeys"], ["indoorTemperatureAvg"])
 
+    def test_overview_masks_retained_values_per_simulated_entity(self):
+        datasource = {"entityId": {"entityType": "DEVICE", "id": "sim-1"},
+                      "entityName": "ND2-1"}
+        vm = self.source({"data": [
+            {"datasource": datasource, "dataKey": {"name": "stage"}, "data": [[2, 5]]},
+            {"datasource": datasource, "dataKey": {"name": "mode"}, "data": [[2, 1]]},
+            {"datasource": datasource, "dataKey": {"name": "simInvalidKeys"},
+             "data": [[2, '["fanStage","operatingMode"]']]},
+        ]}, {"component": "overview", "simulation": True,
+             "keyMap": {"fanStage": "stage", "operatingMode": "mode"}})
+        self.assertEqual(len(vm["barns"]), 1)
+        self.assertIsNone(vm["barns"][0]["stage"])
+        self.assertEqual(vm["barns"][0]["mode"], "UNKNOWN")
+
     def test_provenance_default_and_sim_are_visible_in_header_and_cards(self):
         live = self.source({}, {})
         demo = self.source({}, {"sourceMode": "demo"})

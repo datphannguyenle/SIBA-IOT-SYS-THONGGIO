@@ -1,6 +1,6 @@
 {
   "task": "VENT-012",
-  "checkedAt": "2026-09-24T09:15:44+07:00",
+  "checkedAt": "2026-09-24T09:33:20+07:00",
   "tbUrl": "http://100.86.144.207:8080",
   "readOnly": {
     "api": "GET plus auth login only",
@@ -379,6 +379,19 @@
               "id": "4cb1df80-a833-11f1-9683-f9c2621c1a59",
               "name": "abc-dong-anh/ND2-1/DEO"
             }
+          },
+          {
+            "type": "BarnToVentilationSystem",
+            "from": {
+              "entityType": "ASSET",
+              "id": "e8a84a30-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "c1cfb400-b7be-11f1-a719-7da6129c6745",
+              "name": "SIM-VEN-SYS-ND2-1"
+            }
           }
         ]
       },
@@ -509,6 +522,19 @@
               "entityType": "DEVICE",
               "id": "4cc20c20-a833-11f1-9683-f9c2621c1a59",
               "name": "abc-dong-anh/ND2-2/DEO"
+            }
+          },
+          {
+            "type": "BarnToVentilationSystem",
+            "from": {
+              "entityType": "ASSET",
+              "id": "efa5b020-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "c2237950-b7be-11f1-a719-7da6129c6745",
+              "name": "SIM-VEN-SYS-ND2-2"
             }
           }
         ]
@@ -641,6 +667,19 @@
               "id": "4cd03cf0-a833-11f1-9683-f9c2621c1a59",
               "name": "abc-dong-anh/ND2-3/DEO"
             }
+          },
+          {
+            "type": "BarnToVentilationSystem",
+            "from": {
+              "entityType": "ASSET",
+              "id": "f69867b0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "c259cb90-b7be-11f1-a719-7da6129c6745",
+              "name": "SIM-VEN-SYS-ND2-3"
+            }
           }
         ]
       },
@@ -772,6 +811,19 @@
               "id": "4cdf5820-a833-11f1-9683-f9c2621c1a59",
               "name": "abc-dong-anh/ND2-4/DEO"
             }
+          },
+          {
+            "type": "BarnToVentilationSystem",
+            "from": {
+              "entityType": "ASSET",
+              "id": "fdbeb260-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "c284ac20-b7be-11f1-a719-7da6129c6745",
+              "name": "SIM-VEN-SYS-ND2-4"
+            }
           }
         ]
       }
@@ -825,12 +877,42 @@
     }
   },
   "collisions": {
-    "SIM-VEN-ND2-1": [],
-    "SIM-VEN-ND2-2": [],
-    "SIM-VEN-ND2-3": [],
-    "SIM-VEN-ND2-4": [],
+    "SIM-VEN-ND2-1": [
+      {
+        "entityType": "DEVICE",
+        "id": "c1f627c0-b7be-11f1-a719-7da6129c6745",
+        "type": "SIM-VEN-GatewayController-V012"
+      }
+    ],
+    "SIM-VEN-ND2-2": [
+      {
+        "entityType": "DEVICE",
+        "id": "c2372860-b7be-11f1-a719-7da6129c6745",
+        "type": "SIM-VEN-GatewayController-V012"
+      }
+    ],
+    "SIM-VEN-ND2-3": [
+      {
+        "entityType": "DEVICE",
+        "id": "c2712420-b7be-11f1-a719-7da6129c6745",
+        "type": "SIM-VEN-GatewayController-V012"
+      }
+    ],
+    "SIM-VEN-ND2-4": [
+      {
+        "entityType": "DEVICE",
+        "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745",
+        "type": "SIM-VEN-GatewayController-V012"
+      }
+    ],
     "tb-gateway-ventilation": [],
-    "SIM-VEN-GATEWAY-012": []
+    "SIM-VEN-GATEWAY-012": [
+      {
+        "entityType": "DEVICE",
+        "id": "c1bd6480-b7be-11f1-a719-7da6129c6745",
+        "type": "default"
+      }
+    ]
   },
   "protectedFingerprints": {
     "dashboards": [
@@ -857,6 +939,12 @@
         "title": "Software",
         "version": 1,
         "configurationSha256": "f68e6713cf66b6c631f4d921c7dfcb052f629e422b2c5be63f2e054b08f818d3"
+      },
+      {
+        "id": "0e30c5f0-b7bf-11f1-a719-7da6129c6745",
+        "title": "DB-30-VEN-DETAIL-V1-GATEWAY-SIM",
+        "version": 2,
+        "configurationSha256": "eda86403af979726840c65bc8775df0e027d32e09ae5b42138bfc8feb5ecf54f"
       },
       {
         "id": "32b1ecb0-b71a-11f1-a719-7da6129c6745",
@@ -901,7 +989,7 @@
         "configurationSha256": "2d62005e265bb032f89f57523940ffab1b478396911ffa8a0071f2f4cebf5266"
       }
     ],
-    "dashboardListSha256": "c6fd7e404ffdd334559a5b1052e381fd51d1371de7064223296e674560118eb8",
+    "dashboardListSha256": "868425944e76e303d2687a395fbf56a6b34651a0fc7f7903566bac37f00202b9",
     "bundle": {
       "id": "38509b40-99f5-11f1-a0fc-e93bd628a87f",
       "alias": "siba_custom_ui",

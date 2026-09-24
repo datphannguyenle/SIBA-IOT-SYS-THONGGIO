@@ -1,0 +1,303 @@
+{
+  "task": "VENT-012",
+  "mechanism": "Modbus simulator -> read-only Gateway telemetry -> device profile alarm rules; no alarm mutation API",
+  "active": {
+    "checkedAt": "2026-09-24T09:34:42+07:00",
+    "phase": "ACTIVE",
+    "entities": {
+      "controller": {
+        "entityType": "DEVICE",
+        "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745",
+        "http": 200,
+        "totalElements": 4,
+        "alarms": [
+          {
+            "id": "16f5f254-d8bb-4c7e-8f4e-581125147516",
+            "type": "[SIM] Nhiệt độ cảm nhận cao",
+            "severity": "MINOR",
+            "status": "ACTIVE_UNACK",
+            "originator": {
+              "entityType": "DEVICE",
+              "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+            }
+          },
+          {
+            "id": "b916b5f7-1092-43b2-90d0-fd9d3f71f699",
+            "type": "[SIM] Nhiệt độ cao (thermostat ngoài)",
+            "severity": "MAJOR",
+            "status": "ACTIVE_UNACK",
+            "originator": {
+              "entityType": "DEVICE",
+              "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+            }
+          },
+          {
+            "id": "e33cc8bd-823c-49be-9df2-b54a6022f609",
+            "type": "[SIM] Nhiệt độ trong chuồng cao",
+            "severity": "MAJOR",
+            "status": "ACTIVE_UNACK",
+            "originator": {
+              "entityType": "DEVICE",
+              "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+            }
+          },
+          {
+            "id": "f9a9d647-c9f8-4766-bd4e-554246b88f69",
+            "type": "[SIM] Lỗi thiết bị thông gió",
+            "severity": "CRITICAL",
+            "status": "ACTIVE_UNACK",
+            "originator": {
+              "entityType": "DEVICE",
+              "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+            }
+          }
+        ],
+        "allActiveTotal": 4,
+        "simActiveTotal": 4
+      },
+      "system": {
+        "entityType": "ASSET",
+        "id": "c284ac20-b7be-11f1-a719-7da6129c6745",
+        "http": 200,
+        "totalElements": 4,
+        "alarms": [
+          {
+            "id": "16f5f254-d8bb-4c7e-8f4e-581125147516",
+            "type": "[SIM] Nhiệt độ cảm nhận cao",
+            "severity": "MINOR",
+            "status": "ACTIVE_UNACK",
+            "originator": {
+              "entityType": "DEVICE",
+              "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+            }
+          },
+          {
+            "id": "b916b5f7-1092-43b2-90d0-fd9d3f71f699",
+            "type": "[SIM] Nhiệt độ cao (thermostat ngoài)",
+            "severity": "MAJOR",
+            "status": "ACTIVE_UNACK",
+            "originator": {
+              "entityType": "DEVICE",
+              "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+            }
+          },
+          {
+            "id": "e33cc8bd-823c-49be-9df2-b54a6022f609",
+            "type": "[SIM] Nhiệt độ trong chuồng cao",
+            "severity": "MAJOR",
+            "status": "ACTIVE_UNACK",
+            "originator": {
+              "entityType": "DEVICE",
+              "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+            }
+          },
+          {
+            "id": "f9a9d647-c9f8-4766-bd4e-554246b88f69",
+            "type": "[SIM] Lỗi thiết bị thông gió",
+            "severity": "CRITICAL",
+            "status": "ACTIVE_UNACK",
+            "originator": {
+              "entityType": "DEVICE",
+              "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+            }
+          }
+        ],
+        "allActiveTotal": 4,
+        "simActiveTotal": 4
+      },
+      "barn": {
+        "entityType": "ASSET",
+        "id": "fdbeb260-9c3c-11f1-a0fc-e93bd628a87f",
+        "http": 200,
+        "totalElements": 21,
+        "alarms": [
+          {
+            "id": "16f5f254-d8bb-4c7e-8f4e-581125147516",
+            "type": "[SIM] Nhiệt độ cảm nhận cao",
+            "severity": "MINOR",
+            "status": "ACTIVE_UNACK",
+            "originator": {
+              "entityType": "DEVICE",
+              "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+            }
+          },
+          {
+            "id": "b916b5f7-1092-43b2-90d0-fd9d3f71f699",
+            "type": "[SIM] Nhiệt độ cao (thermostat ngoài)",
+            "severity": "MAJOR",
+            "status": "ACTIVE_UNACK",
+            "originator": {
+              "entityType": "DEVICE",
+              "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+            }
+          },
+          {
+            "id": "e33cc8bd-823c-49be-9df2-b54a6022f609",
+            "type": "[SIM] Nhiệt độ trong chuồng cao",
+            "severity": "MAJOR",
+            "status": "ACTIVE_UNACK",
+            "originator": {
+              "entityType": "DEVICE",
+              "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+            }
+          },
+          {
+            "id": "f9a9d647-c9f8-4766-bd4e-554246b88f69",
+            "type": "[SIM] Lỗi thiết bị thông gió",
+            "severity": "CRITICAL",
+            "status": "ACTIVE_UNACK",
+            "originator": {
+              "entityType": "DEVICE",
+              "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+            }
+          }
+        ],
+        "allActiveTotal": 21,
+        "simActiveTotal": 4
+      },
+      "area": {
+        "entityType": "ASSET",
+        "id": "78276fd0-9c3b-11f1-a0fc-e93bd628a87f",
+        "http": 200,
+        "totalElements": 364,
+        "alarms": [
+          {
+            "id": "16f5f254-d8bb-4c7e-8f4e-581125147516",
+            "type": "[SIM] Nhiệt độ cảm nhận cao",
+            "severity": "MINOR",
+            "status": "ACTIVE_UNACK",
+            "originator": {
+              "entityType": "DEVICE",
+              "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+            }
+          },
+          {
+            "id": "b916b5f7-1092-43b2-90d0-fd9d3f71f699",
+            "type": "[SIM] Nhiệt độ cao (thermostat ngoài)",
+            "severity": "MAJOR",
+            "status": "ACTIVE_UNACK",
+            "originator": {
+              "entityType": "DEVICE",
+              "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+            }
+          },
+          {
+            "id": "e33cc8bd-823c-49be-9df2-b54a6022f609",
+            "type": "[SIM] Nhiệt độ trong chuồng cao",
+            "severity": "MAJOR",
+            "status": "ACTIVE_UNACK",
+            "originator": {
+              "entityType": "DEVICE",
+              "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+            }
+          },
+          {
+            "id": "f9a9d647-c9f8-4766-bd4e-554246b88f69",
+            "type": "[SIM] Lỗi thiết bị thông gió",
+            "severity": "CRITICAL",
+            "status": "ACTIVE_UNACK",
+            "originator": {
+              "entityType": "DEVICE",
+              "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+            }
+          }
+        ],
+        "allActiveTotal": 364,
+        "simActiveTotal": 4
+      },
+      "farm": {
+        "entityType": "ASSET",
+        "id": "7821a370-9c3b-11f1-a0fc-e93bd628a87f",
+        "http": 200,
+        "totalElements": 1112,
+        "alarms": [
+          {
+            "id": "16f5f254-d8bb-4c7e-8f4e-581125147516",
+            "type": "[SIM] Nhiệt độ cảm nhận cao",
+            "severity": "MINOR",
+            "status": "ACTIVE_UNACK",
+            "originator": {
+              "entityType": "DEVICE",
+              "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+            }
+          },
+          {
+            "id": "b916b5f7-1092-43b2-90d0-fd9d3f71f699",
+            "type": "[SIM] Nhiệt độ cao (thermostat ngoài)",
+            "severity": "MAJOR",
+            "status": "ACTIVE_UNACK",
+            "originator": {
+              "entityType": "DEVICE",
+              "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+            }
+          },
+          {
+            "id": "e33cc8bd-823c-49be-9df2-b54a6022f609",
+            "type": "[SIM] Nhiệt độ trong chuồng cao",
+            "severity": "MAJOR",
+            "status": "ACTIVE_UNACK",
+            "originator": {
+              "entityType": "DEVICE",
+              "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+            }
+          },
+          {
+            "id": "f9a9d647-c9f8-4766-bd4e-554246b88f69",
+            "type": "[SIM] Lỗi thiết bị thông gió",
+            "severity": "CRITICAL",
+            "status": "ACTIVE_UNACK",
+            "originator": {
+              "entityType": "DEVICE",
+              "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745"
+            }
+          }
+        ],
+        "allActiveTotal": 1112,
+        "simActiveTotal": 4
+      }
+    }
+  },
+  "recovered": {
+    "checkedAt": "2026-09-24T09:36:30+07:00",
+    "phase": "RECOVERED",
+    "entities": {
+      "controller": {
+        "entityType": "DEVICE",
+        "id": "c2ab46f0-b7be-11f1-a719-7da6129c6745",
+        "allActiveTotal": 0,
+        "simActiveTotal": 0,
+        "alarms": []
+      },
+      "system": {
+        "entityType": "ASSET",
+        "id": "c284ac20-b7be-11f1-a719-7da6129c6745",
+        "allActiveTotal": 0,
+        "simActiveTotal": 0,
+        "alarms": []
+      },
+      "barn": {
+        "entityType": "ASSET",
+        "id": "fdbeb260-9c3c-11f1-a0fc-e93bd628a87f",
+        "allActiveTotal": 17,
+        "simActiveTotal": 0,
+        "alarms": []
+      },
+      "area": {
+        "entityType": "ASSET",
+        "id": "78276fd0-9c3b-11f1-a0fc-e93bd628a87f",
+        "allActiveTotal": 360,
+        "simActiveTotal": 0,
+        "alarms": []
+      },
+      "farm": {
+        "entityType": "ASSET",
+        "id": "7821a370-9c3b-11f1-a0fc-e93bd628a87f",
+        "allActiveTotal": 1108,
+        "simActiveTotal": 0,
+        "alarms": []
+      }
+    }
+  },
+  "sameAlarmIdsAtAllLevels": true,
+  "controlRestored": true
+}

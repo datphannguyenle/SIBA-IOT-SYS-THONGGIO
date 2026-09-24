@@ -138,10 +138,14 @@
     return entityGroups(ctx).map(function (group) {
       var samples = {};
       addRows(samples, group.rows);
+      var invalidKeys = simulationInvalidKeys(samples, settings);
       var values = {}, numbers = {}, qualities = [];
       wanted.forEach(function (semantic) {
         var actual = keyMap[semantic];
-        var item = typeof actual === "string" && actual ? samples[actual] : null;
+        // Tổng quan nhiều entity cũng phải che giá trị cũ mà snapshot SIM mới
+        // đánh dấu vắng mặt; nếu không card nhà sẽ giữ stage/mode của chu kỳ trước.
+        var item = invalidKeys[semantic] ? null :
+          (typeof actual === "string" && actual ? samples[actual] : null);
         values[semantic] = item ? item.rawValue : null;
         // TB có thể giao telemetry số dưới dạng chuỗi; mã enum/cờ phải giải trên số đã chuẩn hóa,
         // nếu không mọi nhà đều ra UNKNOWN. controllerOnline vẫn dùng giá trị thô vì nó là boolean.

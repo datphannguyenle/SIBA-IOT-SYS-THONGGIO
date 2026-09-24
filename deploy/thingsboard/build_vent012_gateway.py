@@ -19,8 +19,7 @@ FRESHNESS_MS = 30_000
 
 def alarm_source():
     return {'type': 'entity', 'name': 'Bộ điều khiển thông gió SIM',
-            'entityFilter': {'type': 'deviceType', 'deviceTypes': [PROFILE],
-                             'deviceNameFilter': PREFIX, 'resolveMultiple': True},
+            'entityAliasId': ALIAS_LIST,
             'dataKeys': [data_key(field, 'alarm') for field in ALARM_FIELDS]}
 
 
@@ -65,7 +64,7 @@ def validate(dash):
     widgets = dash['configuration']['widgets'].values()
     assert all(w['config']['settings']['simulation'] is True for w in widgets)
     overview = next(w for w in widgets if w['config']['settings']['component'] == 'overview')
-    assert overview['config']['settings']['alarmTotalSource']['entityFilter']['deviceTypes'] == [PROFILE]
+    assert overview['config']['settings']['alarmTotalSource']['entityAliasId'] == ALIAS_LIST
     assert overview['config']['settings']['freshnessMs']['controllerOnline'] == FRESHNESS_MS
     assert all(w['config']['settings']['sourceMode'] == 'live' for w in widgets)
 

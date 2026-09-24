@@ -1,0 +1,181 @@
+{
+  "checkedAt": "2026-09-24T09:39:16+07:00",
+  "phase": "EDGE_CASES",
+  "devices": {
+    "ND2-1": {
+      "http": 200,
+      "sourceTimestamp": {
+        "ts": 1790217555560,
+        "value": 1790217555560
+      },
+      "sourceAgeSec": 1.1,
+      "telemetryEnvelopeAgeSec": 1.1,
+      "simSequence": {
+        "ts": 1790217555560,
+        "value": 322
+      },
+      "invalidKeyCount": 262,
+      "operatingMode": {
+        "ts": 1790217492561,
+        "value": 1.0
+      },
+      "averageIndoorTemperature": {
+        "ts": 1790217556789,
+        "value": null
+      },
+      "serverAttributes": [
+        {
+          "lastUpdateTs": 1790217543579,
+          "key": "lastConnectTime",
+          "value": 1790217543579
+        },
+        {
+          "lastUpdateTs": 1790216592509,
+          "key": "active",
+          "value": true
+        },
+        {
+          "lastUpdateTs": 1790217554997,
+          "key": "lastActivityTime",
+          "value": 1790217552646
+        }
+      ]
+    },
+    "ND2-2": {
+      "http": 200,
+      "sourceTimestamp": {
+        "ts": 1790217555560,
+        "value": 1790217555560
+      },
+      "sourceAgeSec": 1.1,
+      "telemetryEnvelopeAgeSec": 1.1,
+      "simSequence": {
+        "ts": 1790217555560,
+        "value": 322
+      },
+      "invalidKeyCount": 261,
+      "operatingMode": {
+        "ts": 1790217555560,
+        "value": 99.0
+      },
+      "averageIndoorTemperature": {
+        "ts": 1790217556794,
+        "value": null
+      },
+      "serverAttributes": [
+        {
+          "lastUpdateTs": 1790217543585,
+          "key": "lastConnectTime",
+          "value": 1790217543585
+        },
+        {
+          "lastUpdateTs": 1790216592532,
+          "key": "active",
+          "value": true
+        },
+        {
+          "lastUpdateTs": 1790217554997,
+          "key": "lastActivityTime",
+          "value": 1790217552646
+        }
+      ]
+    },
+    "ND2-3": {
+      "http": 200,
+      "sourceTimestamp": {
+        "ts": 1790217492561,
+        "value": 1790217492561
+      },
+      "sourceAgeSec": 64.1,
+      "telemetryEnvelopeAgeSec": 64.1,
+      "simSequence": {
+        "ts": 1790217492561,
+        "value": 301
+      },
+      "invalidKeyCount": 0,
+      "operatingMode": {
+        "ts": 1790217492561,
+        "value": 0.0
+      },
+      "averageIndoorTemperature": {
+        "ts": 1790217556799,
+        "value": null
+      },
+      "serverAttributes": [
+        {
+          "lastUpdateTs": 1790217543593,
+          "key": "lastConnectTime",
+          "value": 1790217543593
+        },
+        {
+          "lastUpdateTs": 1790216592548,
+          "key": "active",
+          "value": true
+        },
+        {
+          "lastUpdateTs": 1790217543593,
+          "key": "lastActivityTime",
+          "value": 1790217543593
+        }
+      ]
+    },
+    "ND2-4": {
+      "http": 200,
+      "sourceTimestamp": {
+        "ts": 1790217492561,
+        "value": 1790217492561
+      },
+      "sourceAgeSec": 64.1,
+      "telemetryEnvelopeAgeSec": 64.1,
+      "simSequence": {
+        "ts": 1790217492561,
+        "value": 301
+      },
+      "invalidKeyCount": 0,
+      "operatingMode": {
+        "ts": 1790217492561,
+        "value": 1.0
+      },
+      "averageIndoorTemperature": {
+        "ts": 1790217556803,
+        "value": null
+      },
+      "serverAttributes": [
+        {
+          "lastUpdateTs": 1790217543600,
+          "key": "lastConnectTime",
+          "value": 1790217543600
+        },
+        {
+          "lastUpdateTs": 1790216592567,
+          "key": "active",
+          "value": true
+        },
+        {
+          "lastUpdateTs": 1790217554997,
+          "key": "lastActivityTime",
+          "value": 1790217552647
+        }
+      ]
+    }
+  },
+  "gatewayContainer": "healthy",
+  "recovered": {
+    "ND2-1": {
+      "sourceAgeSec": 0.5,
+      "invalidKeyCount": 0
+    },
+    "ND2-2": {
+      "sourceAgeSec": 0.5,
+      "invalidKeyCount": 0
+    },
+    "ND2-3": {
+      "sourceAgeSec": 0.5,
+      "invalidKeyCount": 0
+    },
+    "ND2-4": {
+      "sourceAgeSec": 0.5,
+      "invalidKeyCount": 0
+    }
+  }
+}

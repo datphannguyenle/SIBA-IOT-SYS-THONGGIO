@@ -18,14 +18,17 @@
     if (options && options.alarmSource && ctx.subscriptionApi) {
       request = ctx.subscriptionApi.createSubscription({
         type: "alarm", alarmSource: options.alarmSource,
-        useDashboardTimewindow: false, timeWindowConfig: null,
+        // Alarm subscription cần timeWindowConfig hợp lệ khi không dùng timewindow dashboard.
+        // 10 năm chỉ là cửa sổ truy vấn kỹ thuật để không bỏ alarm ACTIVE lâu ngày.
+        useDashboardTimewindow: false,
+        timeWindowConfig: {realtime: {timewindowMs: 315360000000}},
         callbacks: {onDataUpdated: publish, onDataUpdateError: failure}
-      }, false).subscribe({next: function (sub) {
+      }, true).subscribe({next: function (sub) {
         if (dead) { sub.destroy(); return; }
         subscription = sub;
         // Không giới hạn cửa sổ: alarm vẫn ACTIVE từ lâu cũng phải được đếm.
         sub.subscribeForAlarms({page: 0, pageSize: 1,
-          statusList: ["ACTIVE_ACK", "ACTIVE_UNACK"], severityList: [], typeList: [],
+          statusList: ["ACTIVE"], severityList: [], typeList: [],
           searchPropagatedAlarms: false,
           sortOrder: {key: {type: "ALARM_FIELD", key: "createdTime"}, direction: "DESC"}
         }, null);

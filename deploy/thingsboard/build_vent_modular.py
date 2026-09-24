@@ -59,6 +59,7 @@ self.onInit = function () {
     var vm = __vent.VentilationSource.createViewModel(ctx, settings, settings.sourceMode === 'demo' ? fixture : undefined);
     if (self._ventAlarmTotal && vm.summary) {
       vm.summary.activeAlarms = self._ventAlarmTotal.state.loaded ? self._ventAlarmTotal.state.total : null;
+      node.setAttribute('data-alarm-total-state', JSON.stringify(self._ventAlarmTotal.state));
     }
     if (!params.barnId && vm.demo) params.barnId = (vm.barns[0] || {}).id;
     var scroll = node.scrollTop;
@@ -148,7 +149,8 @@ self.typeParameters = function () {
 
 
 def widget_types():
-    css = strip_css_comments(read('dashboard/modular.css')) + '''
+    css = (strip_css_comments(read('dashboard/modular.css')) +
+           strip_css_comments(read('dashboard/modular-accessibility.css'))) + '''
 .vent-modular-root{height:100%;overflow:auto;overscroll-behavior:contain;min-width:0}
 .vent-modular-root h1,.vent-modular-root h2,.vent-modular-root h3{font-weight:700;line-height:1.25}
 .vent-modular-root p{line-height:1.42}

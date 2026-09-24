@@ -1,0 +1,49 @@
+{
+  "task": "VENT-012",
+  "at": "2026-09-24T09:40:27+07:00",
+  "widgets": {
+    "static": {
+      "id": "93516710-b6fe-11f1-a719-7da6129c6745",
+      "version": 14
+    },
+    "latest": {
+      "id": "93544d40-b6fe-11f1-a719-7da6129c6745",
+      "version": 14
+    },
+    "timeseries": {
+      "id": "93569730-b6fe-11f1-a719-7da6129c6745",
+      "version": 14
+    },
+    "alarm": {
+      "id": "9358ba10-b6fe-11f1-a719-7da6129c6745",
+      "version": 14
+    },
+    "overview": {
+      "id": "935adcf0-b6fe-11f1-a719-7da6129c6745",
+      "version": 14
+    }
+  },
+  "mutations": [
+    {
+      "method": "POST",
+      "path": "/api/widgetType"
+    },
+    {
+      "method": "POST",
+      "path": "/api/widgetType"
+    },
+    {
+      "method": "POST",
+      "path": "/api/widgetType"
+    },
+    {
+      "method": "POST",
+      "path": "/api/widgetType"
+    },
+    {
+      "method": "POST",
+      "path": "/api/widgetType"
+    }
+  ],
+  "protectedUnchanged": true
+}
