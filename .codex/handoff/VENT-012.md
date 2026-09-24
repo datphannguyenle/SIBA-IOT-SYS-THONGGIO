@@ -10,8 +10,9 @@
 - Containers: `ventilation-plc-sim`, `tb-gateway-ventilation`; cả hai healthy.
 - Four controllers: `SIM-VEN-ND2-1` .. `SIM-VEN-ND2-4`.
 - Default scenarios restored to NORMAL/BOUNDARY/MANUAL/FAULT; all `allow_alarms=false`.
-- Soak process started 24/09/2026 09:45:32 UTC+7, interval 60 seconds, state outside Git at
-  `~/.config/siba-vent012-soak.json`; planned completion 25/09/2026 09:45:32 UTC+7.
+- Soak user service `siba-vent012-soak` started 24/09/2026 09:48:07 UTC+7, interval 60
+  seconds, state outside Git at `~/.config/siba-vent012-soak.json`; planned completion
+  25/09/2026 09:48:07 UTC+7. Two successive samples were observed before handoff.
 
 ## Verified
 

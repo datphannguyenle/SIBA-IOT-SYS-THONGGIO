@@ -4,7 +4,7 @@
 
 Đã triển khai end-to-end lên runtime ngày 24/09/2026. Simulator và Gateway riêng đều healthy;
 bốn controller ND2-1..4 đang gửi dữ liệu 3 giây/lần. Đây là **SIMULATION**, không xác nhận
-mapping PLC production. Kiểm live và 181 test đã đạt; soak 24 giờ bắt đầu lúc 09:45:32
+mapping PLC production. Kiểm live và 181 test đã đạt; soak 24 giờ bắt đầu lúc 09:48:07
 24/09/2026 (UTC+7) và chưa hoàn tất, vì vậy task vẫn `active`.
 
 ## Đường dữ liệu

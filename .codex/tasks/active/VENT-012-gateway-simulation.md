@@ -4,7 +4,8 @@
 active
 
 Checkpoint 24/09/2026: runtime, alarm cycle, edge cases, Gateway reconnect, browser và 181
-tests đã đạt. Soak 24 giờ đang chạy từ 09:45:32 UTC+7; không chuyển review trước khi có đủ
+tests đã đạt. Soak 24 giờ đang chạy từ 09:48:07 UTC+7 bằng user service
+`siba-vent012-soak`; không chuyển review trước khi có đủ
 1440 mẫu sạch và export evidence.
 
 ## Objective
