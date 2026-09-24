@@ -75,6 +75,10 @@ class Vent012UiTest(unittest.TestCase):
         self.assertIn("Lịch sử", rendered["text"])
         self.assertNotIn("Dữ liệu cũ", rendered["text"])
         self.assertIn("SIM · Dữ liệu mô phỏng", rendered["text"])
+        # Một bảng gộp giữ đủ số liệu, để vùng bảng có thể cuộn nội bộ trên laptop thấp.
+        self.assertIn("vm-history__table", rendered["html"])
+        self.assertIn("Tốc độ gió", rendered["text"])
+        self.assertIn("Nước (tổng)", rendered["text"])
 
     def test_simulation_invalid_keys_mask_retained_latest_value_but_not_history(self):
         vm = self.source({"data": [

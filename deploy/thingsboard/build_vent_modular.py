@@ -15,12 +15,15 @@ MULTI_ENTITY_KINDS = ('overview',)
 TB_TYPE = {'overview': 'latest'}
 FQNS = {kind: 'siba_vent_demo.modular_' + kind for kind in KINDS}
 # Position is native ThingsBoard grid; widget data/settings are independently editable.
-# 24px rows + 8px gaps, bounded scrolling instead of viewport scaling.
+# Desktop uses proportional rows to fill the available dashboard viewport. Mobile keeps
+# fixed rows and natural page scrolling because its content cannot reasonably fit one screen.
 LAYOUTS = {
     'default': [('header', 0, 0, 24, 3), ('overview', 0, 3, 24, 15)],
-    'vent_detail': [('header', 0, 0, 24, 4), ('kpis', 0, 4, 24, 4),
-                    ('synoptic', 0, 8, 16, 14), ('controller', 16, 8, 8, 14),
-                    ('metrics', 0, 22, 24, 7)],
+    # Giám sát có sơ đồ + hai cụm thông tin nên dùng một cuộn trang duy nhất, tránh ép thành
+    # năm thanh cuộn lồng nhau. Tổng 23 hàng, vẫn giảm đáng kể từ 29 hàng trước đây.
+    'vent_detail': [('header', 0, 0, 24, 3), ('kpis', 0, 3, 24, 3),
+                    ('synoptic', 0, 6, 16, 11), ('controller', 16, 6, 8, 11),
+                    ('metrics', 0, 17, 24, 6)],
     'vent_history': [('header', 0, 0, 24, 4), ('history', 0, 4, 24, 22)],
     'vent_alarms': [('header', 0, 0, 24, 4), ('alarms', 0, 4, 24, 18)],
     'vent_settings': [('header', 0, 0, 24, 4), ('settings', 0, 4, 24, 20)],
@@ -203,7 +206,8 @@ def dashboard():
                                    'vent_alarms': 'Cảnh báo', 'vent_settings': 'Cài đặt · chỉ đọc'}[state],
                          'root': state == 'default', 'layouts': {'main': {'widgets': layout, 'gridSettings': {
                              'layoutType': 'default', 'columns': 24, 'margin': 6, 'outerMargin': True,
-                             'autoFillHeight': False, 'mobileAutoFillHeight': False, 'mobileRowHeight': 24,
+                             'autoFillHeight': state != 'vent_detail',
+                             'mobileAutoFillHeight': False, 'mobileRowHeight': 24,
                              'rowHeight': 24, 'backgroundColor': '#001827'}}}}
     return {'title': DASHBOARD_TITLE, 'name': DASHBOARD_TITLE, 'configuration': {
         'widgets': widgets, 'states': states, 'entityAliases': {}, 'filters': {},

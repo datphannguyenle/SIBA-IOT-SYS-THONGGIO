@@ -192,7 +192,7 @@
         "col": 0,
         "row": 0,
         "sizeX": 24,
-        "sizeY": 4,
+        "sizeY": 3,
         "config": {
           "title": "header",
           "showTitle": false,
@@ -229,9 +229,9 @@
         "typeFullFqn": "tenant.siba_vent_demo.modular_latest",
         "type": "latest",
         "col": 0,
-        "row": 4,
+        "row": 3,
         "sizeX": 24,
-        "sizeY": 4,
+        "sizeY": 3,
         "config": {
           "title": "kpis",
           "showTitle": false,
@@ -663,9 +663,9 @@
         "typeFullFqn": "tenant.siba_vent_demo.modular_latest",
         "type": "latest",
         "col": 0,
-        "row": 8,
+        "row": 6,
         "sizeX": 16,
-        "sizeY": 14,
+        "sizeY": 11,
         "config": {
           "title": "synoptic",
           "showTitle": false,
@@ -1097,9 +1097,9 @@
         "typeFullFqn": "tenant.siba_vent_demo.modular_latest",
         "type": "latest",
         "col": 16,
-        "row": 8,
+        "row": 6,
         "sizeX": 8,
-        "sizeY": 14,
+        "sizeY": 11,
         "config": {
           "title": "controller",
           "showTitle": false,
@@ -1531,9 +1531,9 @@
         "typeFullFqn": "tenant.siba_vent_demo.modular_latest",
         "type": "latest",
         "col": 0,
-        "row": 22,
+        "row": 17,
         "sizeX": 24,
-        "sizeY": 7,
+        "sizeY": 6,
         "config": {
           "title": "metrics",
           "showTitle": false,
@@ -4391,7 +4391,7 @@
               "columns": 24,
               "margin": 6,
               "outerMargin": true,
-              "autoFillHeight": false,
+              "autoFillHeight": true,
               "mobileAutoFillHeight": false,
               "mobileRowHeight": 24,
               "rowHeight": 24,
@@ -4410,31 +4410,31 @@
                 "col": 0,
                 "row": 0,
                 "sizeX": 24,
-                "sizeY": 4
+                "sizeY": 3
               },
               "dbbc31e4-bdb0-59c7-a724-6d86460a6aa9": {
                 "col": 0,
-                "row": 4,
+                "row": 3,
                 "sizeX": 24,
-                "sizeY": 4
+                "sizeY": 3
               },
               "5f59f395-5c27-5101-963c-826ffdd45522": {
                 "col": 0,
-                "row": 8,
+                "row": 6,
                 "sizeX": 16,
-                "sizeY": 14
+                "sizeY": 11
               },
               "6e90214b-2e9e-55f8-b503-5f1e5895a986": {
                 "col": 16,
-                "row": 8,
+                "row": 6,
                 "sizeX": 8,
-                "sizeY": 14
+                "sizeY": 11
               },
               "ca243689-0c27-5a13-a056-ed58cf2b94ce": {
                 "col": 0,
-                "row": 22,
+                "row": 17,
                 "sizeX": 24,
-                "sizeY": 7
+                "sizeY": 6
               }
             },
             "gridSettings": {
@@ -4475,7 +4475,7 @@
               "columns": 24,
               "margin": 6,
               "outerMargin": true,
-              "autoFillHeight": false,
+              "autoFillHeight": true,
               "mobileAutoFillHeight": false,
               "mobileRowHeight": 24,
               "rowHeight": 24,
@@ -4508,7 +4508,7 @@
               "columns": 24,
               "margin": 6,
               "outerMargin": true,
-              "autoFillHeight": false,
+              "autoFillHeight": true,
               "mobileAutoFillHeight": false,
               "mobileRowHeight": 24,
               "rowHeight": 24,
@@ -4541,7 +4541,7 @@
               "columns": 24,
               "margin": 6,
               "outerMargin": true,
-              "autoFillHeight": false,
+              "autoFillHeight": true,
               "mobileAutoFillHeight": false,
               "mobileRowHeight": 24,
               "rowHeight": 24,

@@ -152,6 +152,18 @@
     {
       "method": "POST",
       "path": "/api/dashboard"
+    },
+    {
+      "method": "POST",
+      "path": "/api/dashboard"
+    },
+    {
+      "method": "POST",
+      "path": "/api/dashboard"
+    },
+    {
+      "method": "POST",
+      "path": "/api/dashboard"
     }
   ]
 }

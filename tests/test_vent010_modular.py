@@ -71,8 +71,11 @@ class ModularBuildStaticTest(unittest.TestCase):
         self.assertEqual(list(states), ['default', 'vent_detail', 'vent_history', 'vent_alarms', 'vent_settings'])
         widgets = self.dashboard['configuration']['widgets']
         for state, definition in states.items():
-            native = definition['layouts']['main']['widgets']
+            layout = definition['layouts']['main']
+            native = layout['widgets']
             self.assertGreater(len(native), 1, state)
+            self.assertEqual(layout['gridSettings']['autoFillHeight'], state != 'vent_detail', state)
+            self.assertFalse(layout['gridSettings']['mobileAutoFillHeight'], state)
             if state == 'vent_detail':
                 # LAYOUTS là nguồn chuẩn: 5 widget chức năng độc lập cho màn giám sát.
                 self.assertEqual({widgets[wid]['config']['settings']['component'] for wid in native},
