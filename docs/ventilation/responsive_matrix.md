@@ -1,6 +1,7 @@
 # Responsive matrix
 
-All entries are design targets, not runtime verification.
+Baseline `SIBA-OPS-DARK-1.0` has runtime evidence at 1366×768, 1536×734 and 390×844.
+The wider 1920×1080 and tablet 820×1180 entries remain compatibility targets.
 
 | State | 1920×1080 | 1600×960 | 820×1180 | 390×844 |
 |---|---|---|---|---|
@@ -20,6 +21,6 @@ All entries are design targets, not runtime verification.
 
 ## Reference evidence
 
-External Khử mùi runtime passed 1600×960 and 390×844 with no root horizontal overflow and
-local schematic pan. Ventilation at all four targets remains **unverified** until a future
-approved implementation has runtime evidence.
+VENT-012 live verification passed all five dashboard screens at 1366×768 and 1536×734,
+plus overview at 390×844. Evidence: `deployment/evidence/vent012_ui_verify.json`. Detail uses
+one bounded page scroll and no nested widget scroll; other desktop states fill the viewport.

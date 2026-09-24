@@ -4,6 +4,10 @@
 
 `active` — end-to-end runtime đạt; soak 24 giờ chưa đủ thời gian.
 
+UI decision 24/09/2026: current runtime version 8 is frozen as `SIBA-OPS-DARK-1.0`, the
+visual reference for future redesigns of other SIBA systems. This does not authorize changing
+those systems or copying ventilation business/data logic.
+
 ## Runtime
 
 - Dashboard: `DB-30-VEN-DETAIL-V1-GATEWAY-SIM`, ID trong `vent012_manifest.json`, version 8.
