@@ -1,0 +1,51 @@
+name: siba-vent012
+services:
+  ventilation-plc-sim:
+    container_name: ventilation-plc-sim
+    build:
+      context: ../..
+      dockerfile: gateway/ventilation/Dockerfile.simulator
+    restart: unless-stopped
+    command: ["--control-file", "/control/scenarios.json", "--volume-file", "/state/water.json"]
+    volumes:
+      - ./control:/control:ro
+      - simulator-state:/state
+    networks: [modbus]
+    logging: {driver: json-file, options: {max-size: "10m", max-file: "3"}}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket,struct; s=socket.create_connection(('127.0.0.1',1502),2); s.sendall(struct.pack('>HHHBBHH',1,0,6,0,3,0,3)); assert s.recv(64)[7]==3"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+  gateway:
+    container_name: tb-gateway-ventilation
+    build:
+      context: ../..
+      dockerfile: gateway/ventilation/Dockerfile.gateway
+    restart: unless-stopped
+    depends_on:
+      ventilation-plc-sim: {condition: service_healthy}
+    secrets: [gateway_token]
+    volumes:
+      - gateway-config:/thingsboard_gateway/config
+      - gateway-data:/thingsboard_gateway/data
+      - gateway-logs:/thingsboard_gateway/logs
+    networks: [modbus, uplink]
+    logging: {driver: json-file, options: {max-size: "10m", max-file: "3"}}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import os,time; assert time.time()-os.path.getmtime('/thingsboard_gateway/logs/vent012-converter-heartbeat')<90"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 90s
+secrets:
+  gateway_token:
+    file: ${VENT_GATEWAY_TOKEN_FILE:?Set external gateway token file}
+networks:
+  modbus: {internal: true}
+  uplink: {}
+volumes:
+  simulator-state: {}
+  gateway-config: {}
+  gateway-data: {}
+  gateway-logs: {}

@@ -81,6 +81,6 @@ Lỗi nằm ở bước validate trước khi vẽ, nên một widget hỏng là
 Đã sửa trong repo (`build_vent_modular.py` sinh `alarmSource` cho instance và `defaultConfig`),
 thêm `validate()` và 2 test lặp lại đúng vòng quét alias của TB. Ghi bẫy #33 vào kit.
 
-**Chưa đẩy lên live**: lệnh `deploy_vent_modular.py execute` bị chặn bởi bộ phân loại an toàn;
-cần người dùng tự chạy. Bản sao dashboard version 5 giữ ở
+**Đã thay thế trong cùng ngày:** người dùng đã chạy lượt sửa; dashboard live và kết quả cuối
+được ghi tại VENT-011. Đoạn “chưa đẩy” chỉ mô tả checkpoint giữa sự cố. Bản sao dashboard version 5 giữ ở
 `docs/ventilation/deployment/evidence/vent010_pre_deploy_dashboard_backup_v5.json`.

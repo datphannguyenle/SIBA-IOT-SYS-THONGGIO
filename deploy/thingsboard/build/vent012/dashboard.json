@@ -1,0 +1,4609 @@
+{
+  "title": "DB-30-VEN-DETAIL-V1-GATEWAY-SIM",
+  "name": "DB-30-VEN-DETAIL-V1-GATEWAY-SIM",
+  "configuration": {
+    "widgets": {
+      "3e56e206-2dc9-5d36-95a3-eb6d9affc98d": {
+        "id": "3e56e206-2dc9-5d36-95a3-eb6d9affc98d",
+        "typeFullFqn": "tenant.siba_vent_demo.modular_static",
+        "type": "static",
+        "col": 0,
+        "row": 0,
+        "sizeX": 24,
+        "sizeY": 3,
+        "config": {
+          "title": "header",
+          "showTitle": false,
+          "showTitleIcon": false,
+          "padding": "0px",
+          "backgroundColor": "#001827",
+          "color": "#f0f5ff",
+          "dropShadow": false,
+          "enableFullscreen": false,
+          "enableDataExport": false,
+          "actions": {},
+          "datasources": [],
+          "settings": {
+            "component": "header",
+            "viewState": "default",
+            "sourceMode": "live",
+            "demoUseSubscription": false,
+            "keyMap": {},
+            "freshnessMs": {},
+            "alarmScope": "Bộ điều khiển mô phỏng VENT-012; alarm có nhãn [SIM]",
+            "simulation": true,
+            "invalidKeysTelemetryKey": "simInvalidKeys",
+            "provenance": {
+              "kind": "SIM",
+              "label": "MÔ PHỎNG QUA GATEWAY",
+              "note": "Không phải dữ liệu PLC thật"
+            }
+          },
+          "mobileHeight": 110
+        }
+      },
+      "a62667df-dd96-5b8d-b7f6-4cefe97fccd4": {
+        "id": "a62667df-dd96-5b8d-b7f6-4cefe97fccd4",
+        "typeFullFqn": "tenant.siba_vent_demo.modular_overview",
+        "type": "latest",
+        "col": 0,
+        "row": 3,
+        "sizeX": 24,
+        "sizeY": 15,
+        "config": {
+          "title": "overview",
+          "showTitle": false,
+          "showTitleIcon": false,
+          "padding": "0px",
+          "backgroundColor": "#001827",
+          "color": "#f0f5ff",
+          "dropShadow": false,
+          "enableFullscreen": false,
+          "enableDataExport": false,
+          "actions": {},
+          "datasources": [
+            {
+              "type": "entity",
+              "name": "Nhà gió",
+              "entityAliasId": "a1b2c3d0-0001-4000-8000-00000000ve01",
+              "dataKeys": [
+                {
+                  "name": "fanStage",
+                  "label": "fanStage",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "operatingMode",
+                  "label": "operatingMode",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "equipmentFaultActive",
+                  "label": "equipmentFaultActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "externalHighTemperatureAlarm",
+                  "label": "externalHighTemperatureAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "active",
+                  "label": "active",
+                  "type": "attribute",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "simInvalidKeys",
+                  "label": "simInvalidKeys",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                }
+              ]
+            }
+          ],
+          "settings": {
+            "component": "overview",
+            "viewState": "default",
+            "sourceMode": "live",
+            "demoUseSubscription": false,
+            "keyMap": {
+              "fanStage": "fanStage",
+              "operatingMode": "operatingMode",
+              "equipmentFaultActive": "equipmentFaultActive",
+              "externalHighTemperatureAlarm": "externalHighTemperatureAlarm",
+              "controllerOnline": "active"
+            },
+            "freshnessMs": {
+              "fanStage": 30000,
+              "operatingMode": 30000,
+              "equipmentFaultActive": 30000,
+              "externalHighTemperatureAlarm": 30000,
+              "controllerOnline": 30000
+            },
+            "alarmScope": "Bộ điều khiển mô phỏng VENT-012; alarm có nhãn [SIM]",
+            "simulation": true,
+            "invalidKeysTelemetryKey": "simInvalidKeys",
+            "provenance": {
+              "kind": "SIM",
+              "label": "MÔ PHỎNG QUA GATEWAY",
+              "note": "Không phải dữ liệu PLC thật"
+            },
+            "alarmTotalSource": {
+              "type": "entity",
+              "name": "Bộ điều khiển thông gió SIM",
+              "entityFilter": {
+                "type": "deviceType",
+                "deviceTypes": [
+                  "SIM-VEN-GatewayController-V012"
+                ],
+                "deviceNameFilter": "SIM-VEN-ND2-",
+                "resolveMultiple": true
+              },
+              "dataKeys": [
+                {
+                  "name": "createdTime",
+                  "label": "createdTime",
+                  "type": "alarm",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "originator",
+                  "label": "originator",
+                  "type": "alarm",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "type",
+                  "label": "type",
+                  "type": "alarm",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "severity",
+                  "label": "severity",
+                  "type": "alarm",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "status",
+                  "label": "status",
+                  "type": "alarm",
+                  "color": "#00d4e0",
+                  "settings": {}
+                }
+              ]
+            }
+          },
+          "mobileHeight": 660
+        }
+      },
+      "54e65511-ad67-572f-b40f-7b426e01e0bb": {
+        "id": "54e65511-ad67-572f-b40f-7b426e01e0bb",
+        "typeFullFqn": "tenant.siba_vent_demo.modular_static",
+        "type": "static",
+        "col": 0,
+        "row": 0,
+        "sizeX": 24,
+        "sizeY": 4,
+        "config": {
+          "title": "header",
+          "showTitle": false,
+          "showTitleIcon": false,
+          "padding": "0px",
+          "backgroundColor": "#001827",
+          "color": "#f0f5ff",
+          "dropShadow": false,
+          "enableFullscreen": false,
+          "enableDataExport": false,
+          "actions": {},
+          "datasources": [],
+          "settings": {
+            "component": "header",
+            "viewState": "vent_detail",
+            "sourceMode": "live",
+            "demoUseSubscription": false,
+            "keyMap": {},
+            "freshnessMs": {},
+            "alarmScope": "Bộ điều khiển mô phỏng VENT-012; alarm có nhãn [SIM]",
+            "simulation": true,
+            "invalidKeysTelemetryKey": "simInvalidKeys",
+            "provenance": {
+              "kind": "SIM",
+              "label": "MÔ PHỎNG QUA GATEWAY",
+              "note": "Không phải dữ liệu PLC thật"
+            }
+          },
+          "mobileHeight": 110
+        }
+      },
+      "dbbc31e4-bdb0-59c7-a724-6d86460a6aa9": {
+        "id": "dbbc31e4-bdb0-59c7-a724-6d86460a6aa9",
+        "typeFullFqn": "tenant.siba_vent_demo.modular_latest",
+        "type": "latest",
+        "col": 0,
+        "row": 4,
+        "sizeX": 24,
+        "sizeY": 4,
+        "config": {
+          "title": "kpis",
+          "showTitle": false,
+          "showTitleIcon": false,
+          "padding": "0px",
+          "backgroundColor": "#001827",
+          "color": "#f0f5ff",
+          "dropShadow": false,
+          "enableFullscreen": false,
+          "enableDataExport": false,
+          "actions": {},
+          "datasources": [
+            {
+              "type": "entity",
+              "name": "Nhà gió",
+              "entityAliasId": "a1b2c3d0-0002-4000-8000-00000000ve02",
+              "dataKeys": [
+                {
+                  "name": "indoorTemperature01",
+                  "label": "indoorTemperature01",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "indoorTemperature02",
+                  "label": "indoorTemperature02",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "indoorTemperatureAvg",
+                  "label": "indoorTemperatureAvg",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "outdoorTemperature",
+                  "label": "outdoorTemperature",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedTemperature",
+                  "label": "perceivedTemperature",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureSetpointCurrent",
+                  "label": "temperatureSetpointCurrent",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedTemperatureSetpointCurrent",
+                  "label": "perceivedTemperatureSetpointCurrent",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "relativeHumidity",
+                  "label": "relativeHumidity",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "humiditySetpointCurrent",
+                  "label": "humiditySetpointCurrent",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "airSpeed",
+                  "label": "airSpeed",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "airFlow",
+                  "label": "airFlow",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "waterConsumptionTotal",
+                  "label": "waterConsumptionTotal",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "waterFlow",
+                  "label": "waterFlow",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "pigCount",
+                  "label": "pigCount",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "pigDeathCount",
+                  "label": "pigDeathCount",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "pigAgeDay",
+                  "label": "pigAgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "operatingMode",
+                  "label": "operatingMode",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "controlBasis",
+                  "label": "controlBasis",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "dehumidificationEnabled",
+                  "label": "dehumidificationEnabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fanControlMode",
+                  "label": "fanControlMode",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fanStage",
+                  "label": "fanStage",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "roofInletPosition",
+                  "label": "roofInletPosition",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "sideInletPosition",
+                  "label": "sideInletPosition",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "equipmentFaultActive",
+                  "label": "equipmentFaultActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "externalHighTemperatureAlarm",
+                  "label": "externalHighTemperatureAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan01Run",
+                  "label": "fan01Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan02Run",
+                  "label": "fan02Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan03Run",
+                  "label": "fan03Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan04Run",
+                  "label": "fan04Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan05Run",
+                  "label": "fan05Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan06Run",
+                  "label": "fan06Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "coolingPump01Run",
+                  "label": "coolingPump01Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "coolingPump02Run",
+                  "label": "coolingPump02Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan01SpeedSetpoint",
+                  "label": "fan01SpeedSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan02SpeedSetpoint",
+                  "label": "fan02SpeedSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan01SpeedFeedback",
+                  "label": "fan01SpeedFeedback",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan02SpeedFeedback",
+                  "label": "fan02SpeedFeedback",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureLowAlarmActive",
+                  "label": "temperatureLowAlarmActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureHighAlarmActive",
+                  "label": "temperatureHighAlarmActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedTemperatureLowAlarmActive",
+                  "label": "perceivedTemperatureLowAlarmActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedTemperatureHighAlarmActive",
+                  "label": "perceivedTemperatureHighAlarmActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "active",
+                  "label": "active",
+                  "type": "attribute",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "simInvalidKeys",
+                  "label": "simInvalidKeys",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                }
+              ]
+            }
+          ],
+          "settings": {
+            "component": "kpis",
+            "viewState": "vent_detail",
+            "sourceMode": "live",
+            "demoUseSubscription": false,
+            "keyMap": {
+              "indoorTemperature01": "indoorTemperature01",
+              "indoorTemperature02": "indoorTemperature02",
+              "indoorTemperatureAvg": "indoorTemperatureAvg",
+              "outdoorTemperature": "outdoorTemperature",
+              "perceivedTemperature": "perceivedTemperature",
+              "temperatureSetpointCurrent": "temperatureSetpointCurrent",
+              "perceivedTemperatureSetpointCurrent": "perceivedTemperatureSetpointCurrent",
+              "relativeHumidity": "relativeHumidity",
+              "humiditySetpointCurrent": "humiditySetpointCurrent",
+              "airSpeed": "airSpeed",
+              "airFlow": "airFlow",
+              "waterConsumptionTotal": "waterConsumptionTotal",
+              "waterFlow": "waterFlow",
+              "pigCount": "pigCount",
+              "pigDeathCount": "pigDeathCount",
+              "pigAgeDay": "pigAgeDay",
+              "operatingMode": "operatingMode",
+              "controlBasis": "controlBasis",
+              "dehumidificationEnabled": "dehumidificationEnabled",
+              "fanControlMode": "fanControlMode",
+              "fanStage": "fanStage",
+              "roofInletPosition": "roofInletPosition",
+              "sideInletPosition": "sideInletPosition",
+              "equipmentFaultActive": "equipmentFaultActive",
+              "externalHighTemperatureAlarm": "externalHighTemperatureAlarm",
+              "fan01Run": "fan01Run",
+              "fan02Run": "fan02Run",
+              "fan03Run": "fan03Run",
+              "fan04Run": "fan04Run",
+              "fan05Run": "fan05Run",
+              "fan06Run": "fan06Run",
+              "coolingPump01Run": "coolingPump01Run",
+              "coolingPump02Run": "coolingPump02Run",
+              "fan01SpeedSetpoint": "fan01SpeedSetpoint",
+              "fan02SpeedSetpoint": "fan02SpeedSetpoint",
+              "fan01SpeedFeedback": "fan01SpeedFeedback",
+              "fan02SpeedFeedback": "fan02SpeedFeedback",
+              "temperatureLowAlarmActive": "temperatureLowAlarmActive",
+              "temperatureHighAlarmActive": "temperatureHighAlarmActive",
+              "perceivedTemperatureLowAlarmActive": "perceivedTemperatureLowAlarmActive",
+              "perceivedTemperatureHighAlarmActive": "perceivedTemperatureHighAlarmActive",
+              "controllerOnline": "active"
+            },
+            "freshnessMs": {
+              "indoorTemperature01": 30000,
+              "indoorTemperature02": 30000,
+              "indoorTemperatureAvg": 30000,
+              "outdoorTemperature": 30000,
+              "perceivedTemperature": 30000,
+              "temperatureSetpointCurrent": 30000,
+              "perceivedTemperatureSetpointCurrent": 30000,
+              "relativeHumidity": 30000,
+              "humiditySetpointCurrent": 30000,
+              "airSpeed": 30000,
+              "airFlow": 30000,
+              "waterConsumptionTotal": 30000,
+              "waterFlow": 30000,
+              "pigCount": 30000,
+              "pigDeathCount": 30000,
+              "pigAgeDay": 30000,
+              "operatingMode": 30000,
+              "controlBasis": 30000,
+              "dehumidificationEnabled": 30000,
+              "fanControlMode": 30000,
+              "fanStage": 30000,
+              "roofInletPosition": 30000,
+              "sideInletPosition": 30000,
+              "equipmentFaultActive": 30000,
+              "externalHighTemperatureAlarm": 30000,
+              "fan01Run": 30000,
+              "fan02Run": 30000,
+              "fan03Run": 30000,
+              "fan04Run": 30000,
+              "fan05Run": 30000,
+              "fan06Run": 30000,
+              "coolingPump01Run": 30000,
+              "coolingPump02Run": 30000,
+              "fan01SpeedSetpoint": 30000,
+              "fan02SpeedSetpoint": 30000,
+              "fan01SpeedFeedback": 30000,
+              "fan02SpeedFeedback": 30000,
+              "temperatureLowAlarmActive": 30000,
+              "temperatureHighAlarmActive": 30000,
+              "perceivedTemperatureLowAlarmActive": 30000,
+              "perceivedTemperatureHighAlarmActive": 30000,
+              "controllerOnline": 30000
+            },
+            "alarmScope": "Bộ điều khiển mô phỏng VENT-012; alarm có nhãn [SIM]",
+            "simulation": true,
+            "invalidKeysTelemetryKey": "simInvalidKeys",
+            "provenance": {
+              "kind": "SIM",
+              "label": "MÔ PHỎNG QUA GATEWAY",
+              "note": "Không phải dữ liệu PLC thật"
+            }
+          },
+          "mobileHeight": 220
+        }
+      },
+      "5f59f395-5c27-5101-963c-826ffdd45522": {
+        "id": "5f59f395-5c27-5101-963c-826ffdd45522",
+        "typeFullFqn": "tenant.siba_vent_demo.modular_latest",
+        "type": "latest",
+        "col": 0,
+        "row": 8,
+        "sizeX": 16,
+        "sizeY": 14,
+        "config": {
+          "title": "synoptic",
+          "showTitle": false,
+          "showTitleIcon": false,
+          "padding": "0px",
+          "backgroundColor": "#001827",
+          "color": "#f0f5ff",
+          "dropShadow": false,
+          "enableFullscreen": false,
+          "enableDataExport": false,
+          "actions": {},
+          "datasources": [
+            {
+              "type": "entity",
+              "name": "Nhà gió",
+              "entityAliasId": "a1b2c3d0-0002-4000-8000-00000000ve02",
+              "dataKeys": [
+                {
+                  "name": "indoorTemperature01",
+                  "label": "indoorTemperature01",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "indoorTemperature02",
+                  "label": "indoorTemperature02",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "indoorTemperatureAvg",
+                  "label": "indoorTemperatureAvg",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "outdoorTemperature",
+                  "label": "outdoorTemperature",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedTemperature",
+                  "label": "perceivedTemperature",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureSetpointCurrent",
+                  "label": "temperatureSetpointCurrent",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedTemperatureSetpointCurrent",
+                  "label": "perceivedTemperatureSetpointCurrent",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "relativeHumidity",
+                  "label": "relativeHumidity",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "humiditySetpointCurrent",
+                  "label": "humiditySetpointCurrent",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "airSpeed",
+                  "label": "airSpeed",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "airFlow",
+                  "label": "airFlow",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "waterConsumptionTotal",
+                  "label": "waterConsumptionTotal",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "waterFlow",
+                  "label": "waterFlow",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "pigCount",
+                  "label": "pigCount",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "pigDeathCount",
+                  "label": "pigDeathCount",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "pigAgeDay",
+                  "label": "pigAgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "operatingMode",
+                  "label": "operatingMode",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "controlBasis",
+                  "label": "controlBasis",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "dehumidificationEnabled",
+                  "label": "dehumidificationEnabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fanControlMode",
+                  "label": "fanControlMode",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fanStage",
+                  "label": "fanStage",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "roofInletPosition",
+                  "label": "roofInletPosition",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "sideInletPosition",
+                  "label": "sideInletPosition",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "equipmentFaultActive",
+                  "label": "equipmentFaultActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "externalHighTemperatureAlarm",
+                  "label": "externalHighTemperatureAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan01Run",
+                  "label": "fan01Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan02Run",
+                  "label": "fan02Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan03Run",
+                  "label": "fan03Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan04Run",
+                  "label": "fan04Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan05Run",
+                  "label": "fan05Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan06Run",
+                  "label": "fan06Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "coolingPump01Run",
+                  "label": "coolingPump01Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "coolingPump02Run",
+                  "label": "coolingPump02Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan01SpeedSetpoint",
+                  "label": "fan01SpeedSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan02SpeedSetpoint",
+                  "label": "fan02SpeedSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan01SpeedFeedback",
+                  "label": "fan01SpeedFeedback",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan02SpeedFeedback",
+                  "label": "fan02SpeedFeedback",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureLowAlarmActive",
+                  "label": "temperatureLowAlarmActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureHighAlarmActive",
+                  "label": "temperatureHighAlarmActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedTemperatureLowAlarmActive",
+                  "label": "perceivedTemperatureLowAlarmActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedTemperatureHighAlarmActive",
+                  "label": "perceivedTemperatureHighAlarmActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "active",
+                  "label": "active",
+                  "type": "attribute",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "simInvalidKeys",
+                  "label": "simInvalidKeys",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                }
+              ]
+            }
+          ],
+          "settings": {
+            "component": "synoptic",
+            "viewState": "vent_detail",
+            "sourceMode": "live",
+            "demoUseSubscription": false,
+            "keyMap": {
+              "indoorTemperature01": "indoorTemperature01",
+              "indoorTemperature02": "indoorTemperature02",
+              "indoorTemperatureAvg": "indoorTemperatureAvg",
+              "outdoorTemperature": "outdoorTemperature",
+              "perceivedTemperature": "perceivedTemperature",
+              "temperatureSetpointCurrent": "temperatureSetpointCurrent",
+              "perceivedTemperatureSetpointCurrent": "perceivedTemperatureSetpointCurrent",
+              "relativeHumidity": "relativeHumidity",
+              "humiditySetpointCurrent": "humiditySetpointCurrent",
+              "airSpeed": "airSpeed",
+              "airFlow": "airFlow",
+              "waterConsumptionTotal": "waterConsumptionTotal",
+              "waterFlow": "waterFlow",
+              "pigCount": "pigCount",
+              "pigDeathCount": "pigDeathCount",
+              "pigAgeDay": "pigAgeDay",
+              "operatingMode": "operatingMode",
+              "controlBasis": "controlBasis",
+              "dehumidificationEnabled": "dehumidificationEnabled",
+              "fanControlMode": "fanControlMode",
+              "fanStage": "fanStage",
+              "roofInletPosition": "roofInletPosition",
+              "sideInletPosition": "sideInletPosition",
+              "equipmentFaultActive": "equipmentFaultActive",
+              "externalHighTemperatureAlarm": "externalHighTemperatureAlarm",
+              "fan01Run": "fan01Run",
+              "fan02Run": "fan02Run",
+              "fan03Run": "fan03Run",
+              "fan04Run": "fan04Run",
+              "fan05Run": "fan05Run",
+              "fan06Run": "fan06Run",
+              "coolingPump01Run": "coolingPump01Run",
+              "coolingPump02Run": "coolingPump02Run",
+              "fan01SpeedSetpoint": "fan01SpeedSetpoint",
+              "fan02SpeedSetpoint": "fan02SpeedSetpoint",
+              "fan01SpeedFeedback": "fan01SpeedFeedback",
+              "fan02SpeedFeedback": "fan02SpeedFeedback",
+              "temperatureLowAlarmActive": "temperatureLowAlarmActive",
+              "temperatureHighAlarmActive": "temperatureHighAlarmActive",
+              "perceivedTemperatureLowAlarmActive": "perceivedTemperatureLowAlarmActive",
+              "perceivedTemperatureHighAlarmActive": "perceivedTemperatureHighAlarmActive",
+              "controllerOnline": "active"
+            },
+            "freshnessMs": {
+              "indoorTemperature01": 30000,
+              "indoorTemperature02": 30000,
+              "indoorTemperatureAvg": 30000,
+              "outdoorTemperature": 30000,
+              "perceivedTemperature": 30000,
+              "temperatureSetpointCurrent": 30000,
+              "perceivedTemperatureSetpointCurrent": 30000,
+              "relativeHumidity": 30000,
+              "humiditySetpointCurrent": 30000,
+              "airSpeed": 30000,
+              "airFlow": 30000,
+              "waterConsumptionTotal": 30000,
+              "waterFlow": 30000,
+              "pigCount": 30000,
+              "pigDeathCount": 30000,
+              "pigAgeDay": 30000,
+              "operatingMode": 30000,
+              "controlBasis": 30000,
+              "dehumidificationEnabled": 30000,
+              "fanControlMode": 30000,
+              "fanStage": 30000,
+              "roofInletPosition": 30000,
+              "sideInletPosition": 30000,
+              "equipmentFaultActive": 30000,
+              "externalHighTemperatureAlarm": 30000,
+              "fan01Run": 30000,
+              "fan02Run": 30000,
+              "fan03Run": 30000,
+              "fan04Run": 30000,
+              "fan05Run": 30000,
+              "fan06Run": 30000,
+              "coolingPump01Run": 30000,
+              "coolingPump02Run": 30000,
+              "fan01SpeedSetpoint": 30000,
+              "fan02SpeedSetpoint": 30000,
+              "fan01SpeedFeedback": 30000,
+              "fan02SpeedFeedback": 30000,
+              "temperatureLowAlarmActive": 30000,
+              "temperatureHighAlarmActive": 30000,
+              "perceivedTemperatureLowAlarmActive": 30000,
+              "perceivedTemperatureHighAlarmActive": 30000,
+              "controllerOnline": 30000
+            },
+            "alarmScope": "Bộ điều khiển mô phỏng VENT-012; alarm có nhãn [SIM]",
+            "simulation": true,
+            "invalidKeysTelemetryKey": "simInvalidKeys",
+            "provenance": {
+              "kind": "SIM",
+              "label": "MÔ PHỎNG QUA GATEWAY",
+              "note": "Không phải dữ liệu PLC thật"
+            }
+          },
+          "mobileHeight": 540
+        }
+      },
+      "6e90214b-2e9e-55f8-b503-5f1e5895a986": {
+        "id": "6e90214b-2e9e-55f8-b503-5f1e5895a986",
+        "typeFullFqn": "tenant.siba_vent_demo.modular_latest",
+        "type": "latest",
+        "col": 16,
+        "row": 8,
+        "sizeX": 8,
+        "sizeY": 14,
+        "config": {
+          "title": "controller",
+          "showTitle": false,
+          "showTitleIcon": false,
+          "padding": "0px",
+          "backgroundColor": "#001827",
+          "color": "#f0f5ff",
+          "dropShadow": false,
+          "enableFullscreen": false,
+          "enableDataExport": false,
+          "actions": {},
+          "datasources": [
+            {
+              "type": "entity",
+              "name": "Nhà gió",
+              "entityAliasId": "a1b2c3d0-0002-4000-8000-00000000ve02",
+              "dataKeys": [
+                {
+                  "name": "indoorTemperature01",
+                  "label": "indoorTemperature01",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "indoorTemperature02",
+                  "label": "indoorTemperature02",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "indoorTemperatureAvg",
+                  "label": "indoorTemperatureAvg",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "outdoorTemperature",
+                  "label": "outdoorTemperature",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedTemperature",
+                  "label": "perceivedTemperature",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureSetpointCurrent",
+                  "label": "temperatureSetpointCurrent",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedTemperatureSetpointCurrent",
+                  "label": "perceivedTemperatureSetpointCurrent",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "relativeHumidity",
+                  "label": "relativeHumidity",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "humiditySetpointCurrent",
+                  "label": "humiditySetpointCurrent",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "airSpeed",
+                  "label": "airSpeed",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "airFlow",
+                  "label": "airFlow",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "waterConsumptionTotal",
+                  "label": "waterConsumptionTotal",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "waterFlow",
+                  "label": "waterFlow",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "pigCount",
+                  "label": "pigCount",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "pigDeathCount",
+                  "label": "pigDeathCount",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "pigAgeDay",
+                  "label": "pigAgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "operatingMode",
+                  "label": "operatingMode",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "controlBasis",
+                  "label": "controlBasis",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "dehumidificationEnabled",
+                  "label": "dehumidificationEnabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fanControlMode",
+                  "label": "fanControlMode",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fanStage",
+                  "label": "fanStage",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "roofInletPosition",
+                  "label": "roofInletPosition",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "sideInletPosition",
+                  "label": "sideInletPosition",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "equipmentFaultActive",
+                  "label": "equipmentFaultActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "externalHighTemperatureAlarm",
+                  "label": "externalHighTemperatureAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan01Run",
+                  "label": "fan01Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan02Run",
+                  "label": "fan02Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan03Run",
+                  "label": "fan03Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan04Run",
+                  "label": "fan04Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan05Run",
+                  "label": "fan05Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan06Run",
+                  "label": "fan06Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "coolingPump01Run",
+                  "label": "coolingPump01Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "coolingPump02Run",
+                  "label": "coolingPump02Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan01SpeedSetpoint",
+                  "label": "fan01SpeedSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan02SpeedSetpoint",
+                  "label": "fan02SpeedSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan01SpeedFeedback",
+                  "label": "fan01SpeedFeedback",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan02SpeedFeedback",
+                  "label": "fan02SpeedFeedback",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureLowAlarmActive",
+                  "label": "temperatureLowAlarmActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureHighAlarmActive",
+                  "label": "temperatureHighAlarmActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedTemperatureLowAlarmActive",
+                  "label": "perceivedTemperatureLowAlarmActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedTemperatureHighAlarmActive",
+                  "label": "perceivedTemperatureHighAlarmActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "active",
+                  "label": "active",
+                  "type": "attribute",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "simInvalidKeys",
+                  "label": "simInvalidKeys",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                }
+              ]
+            }
+          ],
+          "settings": {
+            "component": "controller",
+            "viewState": "vent_detail",
+            "sourceMode": "live",
+            "demoUseSubscription": false,
+            "keyMap": {
+              "indoorTemperature01": "indoorTemperature01",
+              "indoorTemperature02": "indoorTemperature02",
+              "indoorTemperatureAvg": "indoorTemperatureAvg",
+              "outdoorTemperature": "outdoorTemperature",
+              "perceivedTemperature": "perceivedTemperature",
+              "temperatureSetpointCurrent": "temperatureSetpointCurrent",
+              "perceivedTemperatureSetpointCurrent": "perceivedTemperatureSetpointCurrent",
+              "relativeHumidity": "relativeHumidity",
+              "humiditySetpointCurrent": "humiditySetpointCurrent",
+              "airSpeed": "airSpeed",
+              "airFlow": "airFlow",
+              "waterConsumptionTotal": "waterConsumptionTotal",
+              "waterFlow": "waterFlow",
+              "pigCount": "pigCount",
+              "pigDeathCount": "pigDeathCount",
+              "pigAgeDay": "pigAgeDay",
+              "operatingMode": "operatingMode",
+              "controlBasis": "controlBasis",
+              "dehumidificationEnabled": "dehumidificationEnabled",
+              "fanControlMode": "fanControlMode",
+              "fanStage": "fanStage",
+              "roofInletPosition": "roofInletPosition",
+              "sideInletPosition": "sideInletPosition",
+              "equipmentFaultActive": "equipmentFaultActive",
+              "externalHighTemperatureAlarm": "externalHighTemperatureAlarm",
+              "fan01Run": "fan01Run",
+              "fan02Run": "fan02Run",
+              "fan03Run": "fan03Run",
+              "fan04Run": "fan04Run",
+              "fan05Run": "fan05Run",
+              "fan06Run": "fan06Run",
+              "coolingPump01Run": "coolingPump01Run",
+              "coolingPump02Run": "coolingPump02Run",
+              "fan01SpeedSetpoint": "fan01SpeedSetpoint",
+              "fan02SpeedSetpoint": "fan02SpeedSetpoint",
+              "fan01SpeedFeedback": "fan01SpeedFeedback",
+              "fan02SpeedFeedback": "fan02SpeedFeedback",
+              "temperatureLowAlarmActive": "temperatureLowAlarmActive",
+              "temperatureHighAlarmActive": "temperatureHighAlarmActive",
+              "perceivedTemperatureLowAlarmActive": "perceivedTemperatureLowAlarmActive",
+              "perceivedTemperatureHighAlarmActive": "perceivedTemperatureHighAlarmActive",
+              "controllerOnline": "active"
+            },
+            "freshnessMs": {
+              "indoorTemperature01": 30000,
+              "indoorTemperature02": 30000,
+              "indoorTemperatureAvg": 30000,
+              "outdoorTemperature": 30000,
+              "perceivedTemperature": 30000,
+              "temperatureSetpointCurrent": 30000,
+              "perceivedTemperatureSetpointCurrent": 30000,
+              "relativeHumidity": 30000,
+              "humiditySetpointCurrent": 30000,
+              "airSpeed": 30000,
+              "airFlow": 30000,
+              "waterConsumptionTotal": 30000,
+              "waterFlow": 30000,
+              "pigCount": 30000,
+              "pigDeathCount": 30000,
+              "pigAgeDay": 30000,
+              "operatingMode": 30000,
+              "controlBasis": 30000,
+              "dehumidificationEnabled": 30000,
+              "fanControlMode": 30000,
+              "fanStage": 30000,
+              "roofInletPosition": 30000,
+              "sideInletPosition": 30000,
+              "equipmentFaultActive": 30000,
+              "externalHighTemperatureAlarm": 30000,
+              "fan01Run": 30000,
+              "fan02Run": 30000,
+              "fan03Run": 30000,
+              "fan04Run": 30000,
+              "fan05Run": 30000,
+              "fan06Run": 30000,
+              "coolingPump01Run": 30000,
+              "coolingPump02Run": 30000,
+              "fan01SpeedSetpoint": 30000,
+              "fan02SpeedSetpoint": 30000,
+              "fan01SpeedFeedback": 30000,
+              "fan02SpeedFeedback": 30000,
+              "temperatureLowAlarmActive": 30000,
+              "temperatureHighAlarmActive": 30000,
+              "perceivedTemperatureLowAlarmActive": 30000,
+              "perceivedTemperatureHighAlarmActive": 30000,
+              "controllerOnline": 30000
+            },
+            "alarmScope": "Bộ điều khiển mô phỏng VENT-012; alarm có nhãn [SIM]",
+            "simulation": true,
+            "invalidKeysTelemetryKey": "simInvalidKeys",
+            "provenance": {
+              "kind": "SIM",
+              "label": "MÔ PHỎNG QUA GATEWAY",
+              "note": "Không phải dữ liệu PLC thật"
+            }
+          },
+          "mobileHeight": 550
+        }
+      },
+      "ca243689-0c27-5a13-a056-ed58cf2b94ce": {
+        "id": "ca243689-0c27-5a13-a056-ed58cf2b94ce",
+        "typeFullFqn": "tenant.siba_vent_demo.modular_latest",
+        "type": "latest",
+        "col": 0,
+        "row": 22,
+        "sizeX": 24,
+        "sizeY": 7,
+        "config": {
+          "title": "metrics",
+          "showTitle": false,
+          "showTitleIcon": false,
+          "padding": "0px",
+          "backgroundColor": "#001827",
+          "color": "#f0f5ff",
+          "dropShadow": false,
+          "enableFullscreen": false,
+          "enableDataExport": false,
+          "actions": {},
+          "datasources": [
+            {
+              "type": "entity",
+              "name": "Nhà gió",
+              "entityAliasId": "a1b2c3d0-0002-4000-8000-00000000ve02",
+              "dataKeys": [
+                {
+                  "name": "indoorTemperature01",
+                  "label": "indoorTemperature01",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "indoorTemperature02",
+                  "label": "indoorTemperature02",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "indoorTemperatureAvg",
+                  "label": "indoorTemperatureAvg",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "outdoorTemperature",
+                  "label": "outdoorTemperature",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedTemperature",
+                  "label": "perceivedTemperature",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureSetpointCurrent",
+                  "label": "temperatureSetpointCurrent",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedTemperatureSetpointCurrent",
+                  "label": "perceivedTemperatureSetpointCurrent",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "relativeHumidity",
+                  "label": "relativeHumidity",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "humiditySetpointCurrent",
+                  "label": "humiditySetpointCurrent",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "airSpeed",
+                  "label": "airSpeed",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "airFlow",
+                  "label": "airFlow",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "waterConsumptionTotal",
+                  "label": "waterConsumptionTotal",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "waterFlow",
+                  "label": "waterFlow",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "pigCount",
+                  "label": "pigCount",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "pigDeathCount",
+                  "label": "pigDeathCount",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "pigAgeDay",
+                  "label": "pigAgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "operatingMode",
+                  "label": "operatingMode",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "controlBasis",
+                  "label": "controlBasis",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "dehumidificationEnabled",
+                  "label": "dehumidificationEnabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fanControlMode",
+                  "label": "fanControlMode",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fanStage",
+                  "label": "fanStage",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "roofInletPosition",
+                  "label": "roofInletPosition",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "sideInletPosition",
+                  "label": "sideInletPosition",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "equipmentFaultActive",
+                  "label": "equipmentFaultActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "externalHighTemperatureAlarm",
+                  "label": "externalHighTemperatureAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan01Run",
+                  "label": "fan01Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan02Run",
+                  "label": "fan02Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan03Run",
+                  "label": "fan03Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan04Run",
+                  "label": "fan04Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan05Run",
+                  "label": "fan05Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan06Run",
+                  "label": "fan06Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "coolingPump01Run",
+                  "label": "coolingPump01Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "coolingPump02Run",
+                  "label": "coolingPump02Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan01SpeedSetpoint",
+                  "label": "fan01SpeedSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan02SpeedSetpoint",
+                  "label": "fan02SpeedSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan01SpeedFeedback",
+                  "label": "fan01SpeedFeedback",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan02SpeedFeedback",
+                  "label": "fan02SpeedFeedback",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureLowAlarmActive",
+                  "label": "temperatureLowAlarmActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureHighAlarmActive",
+                  "label": "temperatureHighAlarmActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedTemperatureLowAlarmActive",
+                  "label": "perceivedTemperatureLowAlarmActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedTemperatureHighAlarmActive",
+                  "label": "perceivedTemperatureHighAlarmActive",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "active",
+                  "label": "active",
+                  "type": "attribute",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "simInvalidKeys",
+                  "label": "simInvalidKeys",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                }
+              ]
+            }
+          ],
+          "settings": {
+            "component": "metrics",
+            "viewState": "vent_detail",
+            "sourceMode": "live",
+            "demoUseSubscription": false,
+            "keyMap": {
+              "indoorTemperature01": "indoorTemperature01",
+              "indoorTemperature02": "indoorTemperature02",
+              "indoorTemperatureAvg": "indoorTemperatureAvg",
+              "outdoorTemperature": "outdoorTemperature",
+              "perceivedTemperature": "perceivedTemperature",
+              "temperatureSetpointCurrent": "temperatureSetpointCurrent",
+              "perceivedTemperatureSetpointCurrent": "perceivedTemperatureSetpointCurrent",
+              "relativeHumidity": "relativeHumidity",
+              "humiditySetpointCurrent": "humiditySetpointCurrent",
+              "airSpeed": "airSpeed",
+              "airFlow": "airFlow",
+              "waterConsumptionTotal": "waterConsumptionTotal",
+              "waterFlow": "waterFlow",
+              "pigCount": "pigCount",
+              "pigDeathCount": "pigDeathCount",
+              "pigAgeDay": "pigAgeDay",
+              "operatingMode": "operatingMode",
+              "controlBasis": "controlBasis",
+              "dehumidificationEnabled": "dehumidificationEnabled",
+              "fanControlMode": "fanControlMode",
+              "fanStage": "fanStage",
+              "roofInletPosition": "roofInletPosition",
+              "sideInletPosition": "sideInletPosition",
+              "equipmentFaultActive": "equipmentFaultActive",
+              "externalHighTemperatureAlarm": "externalHighTemperatureAlarm",
+              "fan01Run": "fan01Run",
+              "fan02Run": "fan02Run",
+              "fan03Run": "fan03Run",
+              "fan04Run": "fan04Run",
+              "fan05Run": "fan05Run",
+              "fan06Run": "fan06Run",
+              "coolingPump01Run": "coolingPump01Run",
+              "coolingPump02Run": "coolingPump02Run",
+              "fan01SpeedSetpoint": "fan01SpeedSetpoint",
+              "fan02SpeedSetpoint": "fan02SpeedSetpoint",
+              "fan01SpeedFeedback": "fan01SpeedFeedback",
+              "fan02SpeedFeedback": "fan02SpeedFeedback",
+              "temperatureLowAlarmActive": "temperatureLowAlarmActive",
+              "temperatureHighAlarmActive": "temperatureHighAlarmActive",
+              "perceivedTemperatureLowAlarmActive": "perceivedTemperatureLowAlarmActive",
+              "perceivedTemperatureHighAlarmActive": "perceivedTemperatureHighAlarmActive",
+              "controllerOnline": "active"
+            },
+            "freshnessMs": {
+              "indoorTemperature01": 30000,
+              "indoorTemperature02": 30000,
+              "indoorTemperatureAvg": 30000,
+              "outdoorTemperature": 30000,
+              "perceivedTemperature": 30000,
+              "temperatureSetpointCurrent": 30000,
+              "perceivedTemperatureSetpointCurrent": 30000,
+              "relativeHumidity": 30000,
+              "humiditySetpointCurrent": 30000,
+              "airSpeed": 30000,
+              "airFlow": 30000,
+              "waterConsumptionTotal": 30000,
+              "waterFlow": 30000,
+              "pigCount": 30000,
+              "pigDeathCount": 30000,
+              "pigAgeDay": 30000,
+              "operatingMode": 30000,
+              "controlBasis": 30000,
+              "dehumidificationEnabled": 30000,
+              "fanControlMode": 30000,
+              "fanStage": 30000,
+              "roofInletPosition": 30000,
+              "sideInletPosition": 30000,
+              "equipmentFaultActive": 30000,
+              "externalHighTemperatureAlarm": 30000,
+              "fan01Run": 30000,
+              "fan02Run": 30000,
+              "fan03Run": 30000,
+              "fan04Run": 30000,
+              "fan05Run": 30000,
+              "fan06Run": 30000,
+              "coolingPump01Run": 30000,
+              "coolingPump02Run": 30000,
+              "fan01SpeedSetpoint": 30000,
+              "fan02SpeedSetpoint": 30000,
+              "fan01SpeedFeedback": 30000,
+              "fan02SpeedFeedback": 30000,
+              "temperatureLowAlarmActive": 30000,
+              "temperatureHighAlarmActive": 30000,
+              "perceivedTemperatureLowAlarmActive": 30000,
+              "perceivedTemperatureHighAlarmActive": 30000,
+              "controllerOnline": 30000
+            },
+            "alarmScope": "Bộ điều khiển mô phỏng VENT-012; alarm có nhãn [SIM]",
+            "simulation": true,
+            "invalidKeysTelemetryKey": "simInvalidKeys",
+            "provenance": {
+              "kind": "SIM",
+              "label": "MÔ PHỎNG QUA GATEWAY",
+              "note": "Không phải dữ liệu PLC thật"
+            }
+          },
+          "mobileHeight": 440
+        }
+      },
+      "0e95b8a2-ebc8-5bd3-a86b-68adf93170c5": {
+        "id": "0e95b8a2-ebc8-5bd3-a86b-68adf93170c5",
+        "typeFullFqn": "tenant.siba_vent_demo.modular_static",
+        "type": "static",
+        "col": 0,
+        "row": 0,
+        "sizeX": 24,
+        "sizeY": 4,
+        "config": {
+          "title": "header",
+          "showTitle": false,
+          "showTitleIcon": false,
+          "padding": "0px",
+          "backgroundColor": "#001827",
+          "color": "#f0f5ff",
+          "dropShadow": false,
+          "enableFullscreen": false,
+          "enableDataExport": false,
+          "actions": {},
+          "datasources": [],
+          "settings": {
+            "component": "header",
+            "viewState": "vent_history",
+            "sourceMode": "live",
+            "demoUseSubscription": false,
+            "keyMap": {},
+            "freshnessMs": {},
+            "alarmScope": "Bộ điều khiển mô phỏng VENT-012; alarm có nhãn [SIM]",
+            "simulation": true,
+            "invalidKeysTelemetryKey": "simInvalidKeys",
+            "provenance": {
+              "kind": "SIM",
+              "label": "MÔ PHỎNG QUA GATEWAY",
+              "note": "Không phải dữ liệu PLC thật"
+            }
+          },
+          "mobileHeight": 110
+        }
+      },
+      "6b96c5df-e2be-5f3b-b42d-f29a9c00f41e": {
+        "id": "6b96c5df-e2be-5f3b-b42d-f29a9c00f41e",
+        "typeFullFqn": "tenant.siba_vent_demo.modular_timeseries",
+        "type": "timeseries",
+        "col": 0,
+        "row": 4,
+        "sizeX": 24,
+        "sizeY": 22,
+        "config": {
+          "title": "history",
+          "showTitle": false,
+          "showTitleIcon": false,
+          "padding": "0px",
+          "backgroundColor": "#001827",
+          "color": "#f0f5ff",
+          "dropShadow": false,
+          "enableFullscreen": false,
+          "enableDataExport": false,
+          "actions": {},
+          "datasources": [
+            {
+              "type": "entity",
+              "name": "Nhà gió",
+              "entityAliasId": "a1b2c3d0-0002-4000-8000-00000000ve02",
+              "dataKeys": [
+                {
+                  "name": "indoorTemperatureAvg",
+                  "label": "indoorTemperatureAvg",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "outdoorTemperature",
+                  "label": "outdoorTemperature",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedTemperature",
+                  "label": "perceivedTemperature",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "relativeHumidity",
+                  "label": "relativeHumidity",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "airSpeed",
+                  "label": "airSpeed",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "airFlow",
+                  "label": "airFlow",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "waterConsumptionTotal",
+                  "label": "waterConsumptionTotal",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "simInvalidKeys",
+                  "label": "simInvalidKeys",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                }
+              ]
+            }
+          ],
+          "settings": {
+            "component": "history",
+            "viewState": "vent_history",
+            "sourceMode": "live",
+            "demoUseSubscription": false,
+            "keyMap": {
+              "indoorTemperatureAvg": "indoorTemperatureAvg",
+              "outdoorTemperature": "outdoorTemperature",
+              "perceivedTemperature": "perceivedTemperature",
+              "relativeHumidity": "relativeHumidity",
+              "airSpeed": "airSpeed",
+              "airFlow": "airFlow",
+              "waterConsumptionTotal": "waterConsumptionTotal"
+            },
+            "freshnessMs": {
+              "indoorTemperatureAvg": 30000,
+              "outdoorTemperature": 30000,
+              "perceivedTemperature": 30000,
+              "relativeHumidity": 30000,
+              "airSpeed": 30000,
+              "airFlow": 30000,
+              "waterConsumptionTotal": 30000
+            },
+            "alarmScope": "Bộ điều khiển mô phỏng VENT-012; alarm có nhãn [SIM]",
+            "simulation": true,
+            "invalidKeysTelemetryKey": "simInvalidKeys",
+            "provenance": {
+              "kind": "SIM",
+              "label": "MÔ PHỎNG QUA GATEWAY",
+              "note": "Không phải dữ liệu PLC thật"
+            }
+          },
+          "mobileHeight": 750
+        }
+      },
+      "7de45866-fd6c-5ffb-b958-692b86fc9d47": {
+        "id": "7de45866-fd6c-5ffb-b958-692b86fc9d47",
+        "typeFullFqn": "tenant.siba_vent_demo.modular_static",
+        "type": "static",
+        "col": 0,
+        "row": 0,
+        "sizeX": 24,
+        "sizeY": 4,
+        "config": {
+          "title": "header",
+          "showTitle": false,
+          "showTitleIcon": false,
+          "padding": "0px",
+          "backgroundColor": "#001827",
+          "color": "#f0f5ff",
+          "dropShadow": false,
+          "enableFullscreen": false,
+          "enableDataExport": false,
+          "actions": {},
+          "datasources": [],
+          "settings": {
+            "component": "header",
+            "viewState": "vent_alarms",
+            "sourceMode": "live",
+            "demoUseSubscription": false,
+            "keyMap": {},
+            "freshnessMs": {},
+            "alarmScope": "Bộ điều khiển mô phỏng VENT-012; alarm có nhãn [SIM]",
+            "simulation": true,
+            "invalidKeysTelemetryKey": "simInvalidKeys",
+            "provenance": {
+              "kind": "SIM",
+              "label": "MÔ PHỎNG QUA GATEWAY",
+              "note": "Không phải dữ liệu PLC thật"
+            }
+          },
+          "mobileHeight": 110
+        }
+      },
+      "69d23974-1467-5f0d-bb36-b6c0da92fdae": {
+        "id": "69d23974-1467-5f0d-bb36-b6c0da92fdae",
+        "typeFullFqn": "tenant.siba_vent_demo.modular_alarm",
+        "type": "alarm",
+        "col": 0,
+        "row": 4,
+        "sizeX": 24,
+        "sizeY": 18,
+        "config": {
+          "title": "alarms",
+          "showTitle": false,
+          "showTitleIcon": false,
+          "padding": "0px",
+          "backgroundColor": "#001827",
+          "color": "#f0f5ff",
+          "dropShadow": false,
+          "enableFullscreen": false,
+          "enableDataExport": false,
+          "actions": {},
+          "datasources": [],
+          "alarmSource": {
+            "type": "entity",
+            "name": "Nhà gió",
+            "entityAliasId": "a1b2c3d0-0002-4000-8000-00000000ve02",
+            "dataKeys": [
+              {
+                "name": "createdTime",
+                "label": "createdTime",
+                "type": "alarm",
+                "color": "#00d4e0",
+                "settings": {}
+              },
+              {
+                "name": "originator",
+                "label": "originator",
+                "type": "alarm",
+                "color": "#00d4e0",
+                "settings": {}
+              },
+              {
+                "name": "type",
+                "label": "type",
+                "type": "alarm",
+                "color": "#00d4e0",
+                "settings": {}
+              },
+              {
+                "name": "severity",
+                "label": "severity",
+                "type": "alarm",
+                "color": "#00d4e0",
+                "settings": {}
+              },
+              {
+                "name": "status",
+                "label": "status",
+                "type": "alarm",
+                "color": "#00d4e0",
+                "settings": {}
+              }
+            ]
+          },
+          "settings": {
+            "component": "alarms",
+            "viewState": "vent_alarms",
+            "sourceMode": "live",
+            "demoUseSubscription": false,
+            "keyMap": {},
+            "freshnessMs": {},
+            "alarmScope": "Bộ điều khiển mô phỏng VENT-012; alarm có nhãn [SIM]",
+            "diagnostics": true,
+            "simulation": true,
+            "invalidKeysTelemetryKey": "simInvalidKeys",
+            "provenance": {
+              "kind": "SIM",
+              "label": "MÔ PHỎNG QUA GATEWAY",
+              "note": "Không phải dữ liệu PLC thật"
+            }
+          },
+          "mobileHeight": 650,
+          "alarmFilterConfig": {
+            "statusList": [],
+            "severityList": [],
+            "typeList": [],
+            "searchPropagatedAlarms": false,
+            "assigneeId": null
+          },
+          "pageSize": 100,
+          "useDashboardTimewindow": false,
+          "displayTimewindow": false,
+          "timewindow": {
+            "realtime": {
+              "timewindowMs": 604800000
+            }
+          }
+        }
+      },
+      "26fc72f9-5fff-58dc-87fb-6aafd8b61f86": {
+        "id": "26fc72f9-5fff-58dc-87fb-6aafd8b61f86",
+        "typeFullFqn": "tenant.siba_vent_demo.modular_static",
+        "type": "static",
+        "col": 0,
+        "row": 0,
+        "sizeX": 24,
+        "sizeY": 4,
+        "config": {
+          "title": "header",
+          "showTitle": false,
+          "showTitleIcon": false,
+          "padding": "0px",
+          "backgroundColor": "#001827",
+          "color": "#f0f5ff",
+          "dropShadow": false,
+          "enableFullscreen": false,
+          "enableDataExport": false,
+          "actions": {},
+          "datasources": [],
+          "settings": {
+            "component": "header",
+            "viewState": "vent_settings",
+            "sourceMode": "live",
+            "demoUseSubscription": false,
+            "keyMap": {},
+            "freshnessMs": {},
+            "alarmScope": "Bộ điều khiển mô phỏng VENT-012; alarm có nhãn [SIM]",
+            "simulation": true,
+            "invalidKeysTelemetryKey": "simInvalidKeys",
+            "provenance": {
+              "kind": "SIM",
+              "label": "MÔ PHỎNG QUA GATEWAY",
+              "note": "Không phải dữ liệu PLC thật"
+            }
+          },
+          "mobileHeight": 110
+        }
+      },
+      "e5fa09a8-bc6b-59a8-878a-401bceb12a52": {
+        "id": "e5fa09a8-bc6b-59a8-878a-401bceb12a52",
+        "typeFullFqn": "tenant.siba_vent_demo.modular_latest",
+        "type": "latest",
+        "col": 0,
+        "row": 4,
+        "sizeX": 24,
+        "sizeY": 20,
+        "config": {
+          "title": "settings",
+          "showTitle": false,
+          "showTitleIcon": false,
+          "padding": "0px",
+          "backgroundColor": "#001827",
+          "color": "#f0f5ff",
+          "dropShadow": false,
+          "enableFullscreen": false,
+          "enableDataExport": false,
+          "actions": {},
+          "datasources": [
+            {
+              "type": "entity",
+              "name": "Nhà gió",
+              "entityAliasId": "a1b2c3d0-0002-4000-8000-00000000ve02",
+              "dataKeys": [
+                {
+                  "name": "settingControlBasis",
+                  "label": "settingControlBasis",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "settingDehumidificationEnabled",
+                  "label": "settingDehumidificationEnabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "settingFanControlMode",
+                  "label": "settingFanControlMode",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "barnLength",
+                  "label": "barnLength",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "barnWidth",
+                  "label": "barnWidth",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "barnHeight",
+                  "label": "barnHeight",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fanRatedAirflow",
+                  "label": "fanRatedAirflow",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "settingPigCount",
+                  "label": "settingPigCount",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "settingPigDeathCount",
+                  "label": "settingPigDeathCount",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "settingPigAgeDay",
+                  "label": "settingPigAgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "humiditySetpoint",
+                  "label": "humiditySetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "humidityLowThreshold",
+                  "label": "humidityLowThreshold",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "coolingTemperatureOffset",
+                  "label": "coolingTemperatureOffset",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "heatingTemperatureOffset",
+                  "label": "heatingTemperatureOffset",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile01AgeDay",
+                  "label": "temperatureProfile01AgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile01Setpoint",
+                  "label": "temperatureProfile01Setpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile01LowAlarm",
+                  "label": "temperatureProfile01LowAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile01HighAlarm",
+                  "label": "temperatureProfile01HighAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile02AgeDay",
+                  "label": "temperatureProfile02AgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile02Setpoint",
+                  "label": "temperatureProfile02Setpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile02LowAlarm",
+                  "label": "temperatureProfile02LowAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile02HighAlarm",
+                  "label": "temperatureProfile02HighAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile03AgeDay",
+                  "label": "temperatureProfile03AgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile03Setpoint",
+                  "label": "temperatureProfile03Setpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile03LowAlarm",
+                  "label": "temperatureProfile03LowAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile03HighAlarm",
+                  "label": "temperatureProfile03HighAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile04AgeDay",
+                  "label": "temperatureProfile04AgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile04Setpoint",
+                  "label": "temperatureProfile04Setpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile04LowAlarm",
+                  "label": "temperatureProfile04LowAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile04HighAlarm",
+                  "label": "temperatureProfile04HighAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile05AgeDay",
+                  "label": "temperatureProfile05AgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile05Setpoint",
+                  "label": "temperatureProfile05Setpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile05LowAlarm",
+                  "label": "temperatureProfile05LowAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile05HighAlarm",
+                  "label": "temperatureProfile05HighAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile06AgeDay",
+                  "label": "temperatureProfile06AgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile06Setpoint",
+                  "label": "temperatureProfile06Setpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile06LowAlarm",
+                  "label": "temperatureProfile06LowAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile06HighAlarm",
+                  "label": "temperatureProfile06HighAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile07AgeDay",
+                  "label": "temperatureProfile07AgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile07Setpoint",
+                  "label": "temperatureProfile07Setpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile07LowAlarm",
+                  "label": "temperatureProfile07LowAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile07HighAlarm",
+                  "label": "temperatureProfile07HighAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile08AgeDay",
+                  "label": "temperatureProfile08AgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile08Setpoint",
+                  "label": "temperatureProfile08Setpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile08LowAlarm",
+                  "label": "temperatureProfile08LowAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile08HighAlarm",
+                  "label": "temperatureProfile08HighAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile09AgeDay",
+                  "label": "temperatureProfile09AgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile09Setpoint",
+                  "label": "temperatureProfile09Setpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile09LowAlarm",
+                  "label": "temperatureProfile09LowAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile09HighAlarm",
+                  "label": "temperatureProfile09HighAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile10AgeDay",
+                  "label": "temperatureProfile10AgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile10Setpoint",
+                  "label": "temperatureProfile10Setpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile10LowAlarm",
+                  "label": "temperatureProfile10LowAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "temperatureProfile10HighAlarm",
+                  "label": "temperatureProfile10HighAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile01AgeDay",
+                  "label": "perceivedProfile01AgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile01Setpoint",
+                  "label": "perceivedProfile01Setpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile01LowAlarm",
+                  "label": "perceivedProfile01LowAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile01HighAlarm",
+                  "label": "perceivedProfile01HighAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile02AgeDay",
+                  "label": "perceivedProfile02AgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile02Setpoint",
+                  "label": "perceivedProfile02Setpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile02LowAlarm",
+                  "label": "perceivedProfile02LowAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile02HighAlarm",
+                  "label": "perceivedProfile02HighAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile03AgeDay",
+                  "label": "perceivedProfile03AgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile03Setpoint",
+                  "label": "perceivedProfile03Setpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile03LowAlarm",
+                  "label": "perceivedProfile03LowAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile03HighAlarm",
+                  "label": "perceivedProfile03HighAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile04AgeDay",
+                  "label": "perceivedProfile04AgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile04Setpoint",
+                  "label": "perceivedProfile04Setpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile04LowAlarm",
+                  "label": "perceivedProfile04LowAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile04HighAlarm",
+                  "label": "perceivedProfile04HighAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile05AgeDay",
+                  "label": "perceivedProfile05AgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile05Setpoint",
+                  "label": "perceivedProfile05Setpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile05LowAlarm",
+                  "label": "perceivedProfile05LowAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile05HighAlarm",
+                  "label": "perceivedProfile05HighAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile06AgeDay",
+                  "label": "perceivedProfile06AgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile06Setpoint",
+                  "label": "perceivedProfile06Setpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile06LowAlarm",
+                  "label": "perceivedProfile06LowAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile06HighAlarm",
+                  "label": "perceivedProfile06HighAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile07AgeDay",
+                  "label": "perceivedProfile07AgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile07Setpoint",
+                  "label": "perceivedProfile07Setpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile07LowAlarm",
+                  "label": "perceivedProfile07LowAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile07HighAlarm",
+                  "label": "perceivedProfile07HighAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile08AgeDay",
+                  "label": "perceivedProfile08AgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile08Setpoint",
+                  "label": "perceivedProfile08Setpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile08LowAlarm",
+                  "label": "perceivedProfile08LowAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile08HighAlarm",
+                  "label": "perceivedProfile08HighAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile09AgeDay",
+                  "label": "perceivedProfile09AgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile09Setpoint",
+                  "label": "perceivedProfile09Setpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile09LowAlarm",
+                  "label": "perceivedProfile09LowAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile09HighAlarm",
+                  "label": "perceivedProfile09HighAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile10AgeDay",
+                  "label": "perceivedProfile10AgeDay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile10Setpoint",
+                  "label": "perceivedProfile10Setpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile10LowAlarm",
+                  "label": "perceivedProfile10LowAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "perceivedProfile10HighAlarm",
+                  "label": "perceivedProfile10HighAlarm",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage01TemperatureOffset",
+                  "label": "stage01TemperatureOffset",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage01PerceivedTemperatureOffset",
+                  "label": "stage01PerceivedTemperatureOffset",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage01Fan01Enabled",
+                  "label": "stage01Fan01Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage01Fan02Enabled",
+                  "label": "stage01Fan02Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage01Fan03Enabled",
+                  "label": "stage01Fan03Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage01Fan04Enabled",
+                  "label": "stage01Fan04Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage01Fan05Enabled",
+                  "label": "stage01Fan05Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage01Fan06Enabled",
+                  "label": "stage01Fan06Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage01Fan01Frequency",
+                  "label": "stage01Fan01Frequency",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage01Fan02Frequency",
+                  "label": "stage01Fan02Frequency",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage01RoofInletPositionSetpoint",
+                  "label": "stage01RoofInletPositionSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage01SideInletPositionSetpoint",
+                  "label": "stage01SideInletPositionSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage02TemperatureOffset",
+                  "label": "stage02TemperatureOffset",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage02PerceivedTemperatureOffset",
+                  "label": "stage02PerceivedTemperatureOffset",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage02Fan01Enabled",
+                  "label": "stage02Fan01Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage02Fan02Enabled",
+                  "label": "stage02Fan02Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage02Fan03Enabled",
+                  "label": "stage02Fan03Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage02Fan04Enabled",
+                  "label": "stage02Fan04Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage02Fan05Enabled",
+                  "label": "stage02Fan05Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage02Fan06Enabled",
+                  "label": "stage02Fan06Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage02Fan01Frequency",
+                  "label": "stage02Fan01Frequency",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage02Fan02Frequency",
+                  "label": "stage02Fan02Frequency",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage02RoofInletPositionSetpoint",
+                  "label": "stage02RoofInletPositionSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage02SideInletPositionSetpoint",
+                  "label": "stage02SideInletPositionSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage03TemperatureOffset",
+                  "label": "stage03TemperatureOffset",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage03PerceivedTemperatureOffset",
+                  "label": "stage03PerceivedTemperatureOffset",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage03Fan01Enabled",
+                  "label": "stage03Fan01Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage03Fan02Enabled",
+                  "label": "stage03Fan02Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage03Fan03Enabled",
+                  "label": "stage03Fan03Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage03Fan04Enabled",
+                  "label": "stage03Fan04Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage03Fan05Enabled",
+                  "label": "stage03Fan05Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage03Fan06Enabled",
+                  "label": "stage03Fan06Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage03Fan01Frequency",
+                  "label": "stage03Fan01Frequency",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage03Fan02Frequency",
+                  "label": "stage03Fan02Frequency",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage03RoofInletPositionSetpoint",
+                  "label": "stage03RoofInletPositionSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage03SideInletPositionSetpoint",
+                  "label": "stage03SideInletPositionSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage04TemperatureOffset",
+                  "label": "stage04TemperatureOffset",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage04PerceivedTemperatureOffset",
+                  "label": "stage04PerceivedTemperatureOffset",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage04Fan01Enabled",
+                  "label": "stage04Fan01Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage04Fan02Enabled",
+                  "label": "stage04Fan02Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage04Fan03Enabled",
+                  "label": "stage04Fan03Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage04Fan04Enabled",
+                  "label": "stage04Fan04Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage04Fan05Enabled",
+                  "label": "stage04Fan05Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage04Fan06Enabled",
+                  "label": "stage04Fan06Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage04Fan01Frequency",
+                  "label": "stage04Fan01Frequency",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage04Fan02Frequency",
+                  "label": "stage04Fan02Frequency",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage04RoofInletPositionSetpoint",
+                  "label": "stage04RoofInletPositionSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage04SideInletPositionSetpoint",
+                  "label": "stage04SideInletPositionSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage05TemperatureOffset",
+                  "label": "stage05TemperatureOffset",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage05PerceivedTemperatureOffset",
+                  "label": "stage05PerceivedTemperatureOffset",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage05Fan01Enabled",
+                  "label": "stage05Fan01Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage05Fan02Enabled",
+                  "label": "stage05Fan02Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage05Fan03Enabled",
+                  "label": "stage05Fan03Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage05Fan04Enabled",
+                  "label": "stage05Fan04Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage05Fan05Enabled",
+                  "label": "stage05Fan05Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage05Fan06Enabled",
+                  "label": "stage05Fan06Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage05Fan01Frequency",
+                  "label": "stage05Fan01Frequency",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage05Fan02Frequency",
+                  "label": "stage05Fan02Frequency",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage05RoofInletPositionSetpoint",
+                  "label": "stage05RoofInletPositionSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage05SideInletPositionSetpoint",
+                  "label": "stage05SideInletPositionSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage06TemperatureOffset",
+                  "label": "stage06TemperatureOffset",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage06PerceivedTemperatureOffset",
+                  "label": "stage06PerceivedTemperatureOffset",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage06Fan01Enabled",
+                  "label": "stage06Fan01Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage06Fan02Enabled",
+                  "label": "stage06Fan02Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage06Fan03Enabled",
+                  "label": "stage06Fan03Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage06Fan04Enabled",
+                  "label": "stage06Fan04Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage06Fan05Enabled",
+                  "label": "stage06Fan05Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage06Fan06Enabled",
+                  "label": "stage06Fan06Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage06Fan01Frequency",
+                  "label": "stage06Fan01Frequency",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage06Fan02Frequency",
+                  "label": "stage06Fan02Frequency",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage06RoofInletPositionSetpoint",
+                  "label": "stage06RoofInletPositionSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage06SideInletPositionSetpoint",
+                  "label": "stage06SideInletPositionSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage07TemperatureOffset",
+                  "label": "stage07TemperatureOffset",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage07PerceivedTemperatureOffset",
+                  "label": "stage07PerceivedTemperatureOffset",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage07Fan01Enabled",
+                  "label": "stage07Fan01Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage07Fan02Enabled",
+                  "label": "stage07Fan02Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage07Fan03Enabled",
+                  "label": "stage07Fan03Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage07Fan04Enabled",
+                  "label": "stage07Fan04Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage07Fan05Enabled",
+                  "label": "stage07Fan05Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage07Fan06Enabled",
+                  "label": "stage07Fan06Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage07Fan01Frequency",
+                  "label": "stage07Fan01Frequency",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage07Fan02Frequency",
+                  "label": "stage07Fan02Frequency",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage07RoofInletPositionSetpoint",
+                  "label": "stage07RoofInletPositionSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage07SideInletPositionSetpoint",
+                  "label": "stage07SideInletPositionSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage08TemperatureOffset",
+                  "label": "stage08TemperatureOffset",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage08PerceivedTemperatureOffset",
+                  "label": "stage08PerceivedTemperatureOffset",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage08Fan01Enabled",
+                  "label": "stage08Fan01Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage08Fan02Enabled",
+                  "label": "stage08Fan02Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage08Fan03Enabled",
+                  "label": "stage08Fan03Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage08Fan04Enabled",
+                  "label": "stage08Fan04Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage08Fan05Enabled",
+                  "label": "stage08Fan05Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage08Fan06Enabled",
+                  "label": "stage08Fan06Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage08Fan01Frequency",
+                  "label": "stage08Fan01Frequency",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage08Fan02Frequency",
+                  "label": "stage08Fan02Frequency",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage08RoofInletPositionSetpoint",
+                  "label": "stage08RoofInletPositionSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage08SideInletPositionSetpoint",
+                  "label": "stage08SideInletPositionSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage09TemperatureOffset",
+                  "label": "stage09TemperatureOffset",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage09PerceivedTemperatureOffset",
+                  "label": "stage09PerceivedTemperatureOffset",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage09Fan01Enabled",
+                  "label": "stage09Fan01Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage09Fan02Enabled",
+                  "label": "stage09Fan02Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage09Fan03Enabled",
+                  "label": "stage09Fan03Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage09Fan04Enabled",
+                  "label": "stage09Fan04Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage09Fan05Enabled",
+                  "label": "stage09Fan05Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage09Fan06Enabled",
+                  "label": "stage09Fan06Enabled",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage09Fan01Frequency",
+                  "label": "stage09Fan01Frequency",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage09Fan02Frequency",
+                  "label": "stage09Fan02Frequency",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage09RoofInletPositionSetpoint",
+                  "label": "stage09RoofInletPositionSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stage09SideInletPositionSetpoint",
+                  "label": "stage09SideInletPositionSetpoint",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "stageSampleDelay",
+                  "label": "stageSampleDelay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fanOffDelay",
+                  "label": "fanOffDelay",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan01CycleOnTime",
+                  "label": "fan01CycleOnTime",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan01CycleOffTime",
+                  "label": "fan01CycleOffTime",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan02CycleOnTime",
+                  "label": "fan02CycleOnTime",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan02CycleOffTime",
+                  "label": "fan02CycleOffTime",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan03CycleOnTime",
+                  "label": "fan03CycleOnTime",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan03CycleOffTime",
+                  "label": "fan03CycleOffTime",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan04CycleOnTime",
+                  "label": "fan04CycleOnTime",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan04CycleOffTime",
+                  "label": "fan04CycleOffTime",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan05CycleOnTime",
+                  "label": "fan05CycleOnTime",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan05CycleOffTime",
+                  "label": "fan05CycleOffTime",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan06CycleOnTime",
+                  "label": "fan06CycleOnTime",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "fan06CycleOffTime",
+                  "label": "fan06CycleOffTime",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "coolingPump01CycleOnTime",
+                  "label": "coolingPump01CycleOnTime",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "coolingPump01CycleOffTime",
+                  "label": "coolingPump01CycleOffTime",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "coolingPump02CycleOnTime",
+                  "label": "coolingPump02CycleOnTime",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "coolingPump02CycleOffTime",
+                  "label": "coolingPump02CycleOffTime",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "indoorTemperature01Calibration",
+                  "label": "indoorTemperature01Calibration",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "indoorTemperature02Calibration",
+                  "label": "indoorTemperature02Calibration",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "outdoorTemperatureCalibration",
+                  "label": "outdoorTemperatureCalibration",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "relativeHumidityCalibration",
+                  "label": "relativeHumidityCalibration",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "simInvalidKeys",
+                  "label": "simInvalidKeys",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                }
+              ]
+            }
+          ],
+          "settings": {
+            "component": "settings",
+            "viewState": "vent_settings",
+            "sourceMode": "live",
+            "demoUseSubscription": false,
+            "keyMap": {
+              "settingControlBasis": "settingControlBasis",
+              "settingDehumidificationEnabled": "settingDehumidificationEnabled",
+              "settingFanControlMode": "settingFanControlMode",
+              "barnLength": "barnLength",
+              "barnWidth": "barnWidth",
+              "barnHeight": "barnHeight",
+              "fanRatedAirflow": "fanRatedAirflow",
+              "settingPigCount": "settingPigCount",
+              "settingPigDeathCount": "settingPigDeathCount",
+              "settingPigAgeDay": "settingPigAgeDay",
+              "humiditySetpoint": "humiditySetpoint",
+              "humidityLowThreshold": "humidityLowThreshold",
+              "coolingTemperatureOffset": "coolingTemperatureOffset",
+              "heatingTemperatureOffset": "heatingTemperatureOffset",
+              "temperatureProfile01AgeDay": "temperatureProfile01AgeDay",
+              "temperatureProfile01Setpoint": "temperatureProfile01Setpoint",
+              "temperatureProfile01LowAlarm": "temperatureProfile01LowAlarm",
+              "temperatureProfile01HighAlarm": "temperatureProfile01HighAlarm",
+              "temperatureProfile02AgeDay": "temperatureProfile02AgeDay",
+              "temperatureProfile02Setpoint": "temperatureProfile02Setpoint",
+              "temperatureProfile02LowAlarm": "temperatureProfile02LowAlarm",
+              "temperatureProfile02HighAlarm": "temperatureProfile02HighAlarm",
+              "temperatureProfile03AgeDay": "temperatureProfile03AgeDay",
+              "temperatureProfile03Setpoint": "temperatureProfile03Setpoint",
+              "temperatureProfile03LowAlarm": "temperatureProfile03LowAlarm",
+              "temperatureProfile03HighAlarm": "temperatureProfile03HighAlarm",
+              "temperatureProfile04AgeDay": "temperatureProfile04AgeDay",
+              "temperatureProfile04Setpoint": "temperatureProfile04Setpoint",
+              "temperatureProfile04LowAlarm": "temperatureProfile04LowAlarm",
+              "temperatureProfile04HighAlarm": "temperatureProfile04HighAlarm",
+              "temperatureProfile05AgeDay": "temperatureProfile05AgeDay",
+              "temperatureProfile05Setpoint": "temperatureProfile05Setpoint",
+              "temperatureProfile05LowAlarm": "temperatureProfile05LowAlarm",
+              "temperatureProfile05HighAlarm": "temperatureProfile05HighAlarm",
+              "temperatureProfile06AgeDay": "temperatureProfile06AgeDay",
+              "temperatureProfile06Setpoint": "temperatureProfile06Setpoint",
+              "temperatureProfile06LowAlarm": "temperatureProfile06LowAlarm",
+              "temperatureProfile06HighAlarm": "temperatureProfile06HighAlarm",
+              "temperatureProfile07AgeDay": "temperatureProfile07AgeDay",
+              "temperatureProfile07Setpoint": "temperatureProfile07Setpoint",
+              "temperatureProfile07LowAlarm": "temperatureProfile07LowAlarm",
+              "temperatureProfile07HighAlarm": "temperatureProfile07HighAlarm",
+              "temperatureProfile08AgeDay": "temperatureProfile08AgeDay",
+              "temperatureProfile08Setpoint": "temperatureProfile08Setpoint",
+              "temperatureProfile08LowAlarm": "temperatureProfile08LowAlarm",
+              "temperatureProfile08HighAlarm": "temperatureProfile08HighAlarm",
+              "temperatureProfile09AgeDay": "temperatureProfile09AgeDay",
+              "temperatureProfile09Setpoint": "temperatureProfile09Setpoint",
+              "temperatureProfile09LowAlarm": "temperatureProfile09LowAlarm",
+              "temperatureProfile09HighAlarm": "temperatureProfile09HighAlarm",
+              "temperatureProfile10AgeDay": "temperatureProfile10AgeDay",
+              "temperatureProfile10Setpoint": "temperatureProfile10Setpoint",
+              "temperatureProfile10LowAlarm": "temperatureProfile10LowAlarm",
+              "temperatureProfile10HighAlarm": "temperatureProfile10HighAlarm",
+              "perceivedProfile01AgeDay": "perceivedProfile01AgeDay",
+              "perceivedProfile01Setpoint": "perceivedProfile01Setpoint",
+              "perceivedProfile01LowAlarm": "perceivedProfile01LowAlarm",
+              "perceivedProfile01HighAlarm": "perceivedProfile01HighAlarm",
+              "perceivedProfile02AgeDay": "perceivedProfile02AgeDay",
+              "perceivedProfile02Setpoint": "perceivedProfile02Setpoint",
+              "perceivedProfile02LowAlarm": "perceivedProfile02LowAlarm",
+              "perceivedProfile02HighAlarm": "perceivedProfile02HighAlarm",
+              "perceivedProfile03AgeDay": "perceivedProfile03AgeDay",
+              "perceivedProfile03Setpoint": "perceivedProfile03Setpoint",
+              "perceivedProfile03LowAlarm": "perceivedProfile03LowAlarm",
+              "perceivedProfile03HighAlarm": "perceivedProfile03HighAlarm",
+              "perceivedProfile04AgeDay": "perceivedProfile04AgeDay",
+              "perceivedProfile04Setpoint": "perceivedProfile04Setpoint",
+              "perceivedProfile04LowAlarm": "perceivedProfile04LowAlarm",
+              "perceivedProfile04HighAlarm": "perceivedProfile04HighAlarm",
+              "perceivedProfile05AgeDay": "perceivedProfile05AgeDay",
+              "perceivedProfile05Setpoint": "perceivedProfile05Setpoint",
+              "perceivedProfile05LowAlarm": "perceivedProfile05LowAlarm",
+              "perceivedProfile05HighAlarm": "perceivedProfile05HighAlarm",
+              "perceivedProfile06AgeDay": "perceivedProfile06AgeDay",
+              "perceivedProfile06Setpoint": "perceivedProfile06Setpoint",
+              "perceivedProfile06LowAlarm": "perceivedProfile06LowAlarm",
+              "perceivedProfile06HighAlarm": "perceivedProfile06HighAlarm",
+              "perceivedProfile07AgeDay": "perceivedProfile07AgeDay",
+              "perceivedProfile07Setpoint": "perceivedProfile07Setpoint",
+              "perceivedProfile07LowAlarm": "perceivedProfile07LowAlarm",
+              "perceivedProfile07HighAlarm": "perceivedProfile07HighAlarm",
+              "perceivedProfile08AgeDay": "perceivedProfile08AgeDay",
+              "perceivedProfile08Setpoint": "perceivedProfile08Setpoint",
+              "perceivedProfile08LowAlarm": "perceivedProfile08LowAlarm",
+              "perceivedProfile08HighAlarm": "perceivedProfile08HighAlarm",
+              "perceivedProfile09AgeDay": "perceivedProfile09AgeDay",
+              "perceivedProfile09Setpoint": "perceivedProfile09Setpoint",
+              "perceivedProfile09LowAlarm": "perceivedProfile09LowAlarm",
+              "perceivedProfile09HighAlarm": "perceivedProfile09HighAlarm",
+              "perceivedProfile10AgeDay": "perceivedProfile10AgeDay",
+              "perceivedProfile10Setpoint": "perceivedProfile10Setpoint",
+              "perceivedProfile10LowAlarm": "perceivedProfile10LowAlarm",
+              "perceivedProfile10HighAlarm": "perceivedProfile10HighAlarm",
+              "stage01TemperatureOffset": "stage01TemperatureOffset",
+              "stage01PerceivedTemperatureOffset": "stage01PerceivedTemperatureOffset",
+              "stage01Fan01Enabled": "stage01Fan01Enabled",
+              "stage01Fan02Enabled": "stage01Fan02Enabled",
+              "stage01Fan03Enabled": "stage01Fan03Enabled",
+              "stage01Fan04Enabled": "stage01Fan04Enabled",
+              "stage01Fan05Enabled": "stage01Fan05Enabled",
+              "stage01Fan06Enabled": "stage01Fan06Enabled",
+              "stage01Fan01Frequency": "stage01Fan01Frequency",
+              "stage01Fan02Frequency": "stage01Fan02Frequency",
+              "stage01RoofInletPositionSetpoint": "stage01RoofInletPositionSetpoint",
+              "stage01SideInletPositionSetpoint": "stage01SideInletPositionSetpoint",
+              "stage02TemperatureOffset": "stage02TemperatureOffset",
+              "stage02PerceivedTemperatureOffset": "stage02PerceivedTemperatureOffset",
+              "stage02Fan01Enabled": "stage02Fan01Enabled",
+              "stage02Fan02Enabled": "stage02Fan02Enabled",
+              "stage02Fan03Enabled": "stage02Fan03Enabled",
+              "stage02Fan04Enabled": "stage02Fan04Enabled",
+              "stage02Fan05Enabled": "stage02Fan05Enabled",
+              "stage02Fan06Enabled": "stage02Fan06Enabled",
+              "stage02Fan01Frequency": "stage02Fan01Frequency",
+              "stage02Fan02Frequency": "stage02Fan02Frequency",
+              "stage02RoofInletPositionSetpoint": "stage02RoofInletPositionSetpoint",
+              "stage02SideInletPositionSetpoint": "stage02SideInletPositionSetpoint",
+              "stage03TemperatureOffset": "stage03TemperatureOffset",
+              "stage03PerceivedTemperatureOffset": "stage03PerceivedTemperatureOffset",
+              "stage03Fan01Enabled": "stage03Fan01Enabled",
+              "stage03Fan02Enabled": "stage03Fan02Enabled",
+              "stage03Fan03Enabled": "stage03Fan03Enabled",
+              "stage03Fan04Enabled": "stage03Fan04Enabled",
+              "stage03Fan05Enabled": "stage03Fan05Enabled",
+              "stage03Fan06Enabled": "stage03Fan06Enabled",
+              "stage03Fan01Frequency": "stage03Fan01Frequency",
+              "stage03Fan02Frequency": "stage03Fan02Frequency",
+              "stage03RoofInletPositionSetpoint": "stage03RoofInletPositionSetpoint",
+              "stage03SideInletPositionSetpoint": "stage03SideInletPositionSetpoint",
+              "stage04TemperatureOffset": "stage04TemperatureOffset",
+              "stage04PerceivedTemperatureOffset": "stage04PerceivedTemperatureOffset",
+              "stage04Fan01Enabled": "stage04Fan01Enabled",
+              "stage04Fan02Enabled": "stage04Fan02Enabled",
+              "stage04Fan03Enabled": "stage04Fan03Enabled",
+              "stage04Fan04Enabled": "stage04Fan04Enabled",
+              "stage04Fan05Enabled": "stage04Fan05Enabled",
+              "stage04Fan06Enabled": "stage04Fan06Enabled",
+              "stage04Fan01Frequency": "stage04Fan01Frequency",
+              "stage04Fan02Frequency": "stage04Fan02Frequency",
+              "stage04RoofInletPositionSetpoint": "stage04RoofInletPositionSetpoint",
+              "stage04SideInletPositionSetpoint": "stage04SideInletPositionSetpoint",
+              "stage05TemperatureOffset": "stage05TemperatureOffset",
+              "stage05PerceivedTemperatureOffset": "stage05PerceivedTemperatureOffset",
+              "stage05Fan01Enabled": "stage05Fan01Enabled",
+              "stage05Fan02Enabled": "stage05Fan02Enabled",
+              "stage05Fan03Enabled": "stage05Fan03Enabled",
+              "stage05Fan04Enabled": "stage05Fan04Enabled",
+              "stage05Fan05Enabled": "stage05Fan05Enabled",
+              "stage05Fan06Enabled": "stage05Fan06Enabled",
+              "stage05Fan01Frequency": "stage05Fan01Frequency",
+              "stage05Fan02Frequency": "stage05Fan02Frequency",
+              "stage05RoofInletPositionSetpoint": "stage05RoofInletPositionSetpoint",
+              "stage05SideInletPositionSetpoint": "stage05SideInletPositionSetpoint",
+              "stage06TemperatureOffset": "stage06TemperatureOffset",
+              "stage06PerceivedTemperatureOffset": "stage06PerceivedTemperatureOffset",
+              "stage06Fan01Enabled": "stage06Fan01Enabled",
+              "stage06Fan02Enabled": "stage06Fan02Enabled",
+              "stage06Fan03Enabled": "stage06Fan03Enabled",
+              "stage06Fan04Enabled": "stage06Fan04Enabled",
+              "stage06Fan05Enabled": "stage06Fan05Enabled",
+              "stage06Fan06Enabled": "stage06Fan06Enabled",
+              "stage06Fan01Frequency": "stage06Fan01Frequency",
+              "stage06Fan02Frequency": "stage06Fan02Frequency",
+              "stage06RoofInletPositionSetpoint": "stage06RoofInletPositionSetpoint",
+              "stage06SideInletPositionSetpoint": "stage06SideInletPositionSetpoint",
+              "stage07TemperatureOffset": "stage07TemperatureOffset",
+              "stage07PerceivedTemperatureOffset": "stage07PerceivedTemperatureOffset",
+              "stage07Fan01Enabled": "stage07Fan01Enabled",
+              "stage07Fan02Enabled": "stage07Fan02Enabled",
+              "stage07Fan03Enabled": "stage07Fan03Enabled",
+              "stage07Fan04Enabled": "stage07Fan04Enabled",
+              "stage07Fan05Enabled": "stage07Fan05Enabled",
+              "stage07Fan06Enabled": "stage07Fan06Enabled",
+              "stage07Fan01Frequency": "stage07Fan01Frequency",
+              "stage07Fan02Frequency": "stage07Fan02Frequency",
+              "stage07RoofInletPositionSetpoint": "stage07RoofInletPositionSetpoint",
+              "stage07SideInletPositionSetpoint": "stage07SideInletPositionSetpoint",
+              "stage08TemperatureOffset": "stage08TemperatureOffset",
+              "stage08PerceivedTemperatureOffset": "stage08PerceivedTemperatureOffset",
+              "stage08Fan01Enabled": "stage08Fan01Enabled",
+              "stage08Fan02Enabled": "stage08Fan02Enabled",
+              "stage08Fan03Enabled": "stage08Fan03Enabled",
+              "stage08Fan04Enabled": "stage08Fan04Enabled",
+              "stage08Fan05Enabled": "stage08Fan05Enabled",
+              "stage08Fan06Enabled": "stage08Fan06Enabled",
+              "stage08Fan01Frequency": "stage08Fan01Frequency",
+              "stage08Fan02Frequency": "stage08Fan02Frequency",
+              "stage08RoofInletPositionSetpoint": "stage08RoofInletPositionSetpoint",
+              "stage08SideInletPositionSetpoint": "stage08SideInletPositionSetpoint",
+              "stage09TemperatureOffset": "stage09TemperatureOffset",
+              "stage09PerceivedTemperatureOffset": "stage09PerceivedTemperatureOffset",
+              "stage09Fan01Enabled": "stage09Fan01Enabled",
+              "stage09Fan02Enabled": "stage09Fan02Enabled",
+              "stage09Fan03Enabled": "stage09Fan03Enabled",
+              "stage09Fan04Enabled": "stage09Fan04Enabled",
+              "stage09Fan05Enabled": "stage09Fan05Enabled",
+              "stage09Fan06Enabled": "stage09Fan06Enabled",
+              "stage09Fan01Frequency": "stage09Fan01Frequency",
+              "stage09Fan02Frequency": "stage09Fan02Frequency",
+              "stage09RoofInletPositionSetpoint": "stage09RoofInletPositionSetpoint",
+              "stage09SideInletPositionSetpoint": "stage09SideInletPositionSetpoint",
+              "stageSampleDelay": "stageSampleDelay",
+              "fanOffDelay": "fanOffDelay",
+              "fan01CycleOnTime": "fan01CycleOnTime",
+              "fan01CycleOffTime": "fan01CycleOffTime",
+              "fan02CycleOnTime": "fan02CycleOnTime",
+              "fan02CycleOffTime": "fan02CycleOffTime",
+              "fan03CycleOnTime": "fan03CycleOnTime",
+              "fan03CycleOffTime": "fan03CycleOffTime",
+              "fan04CycleOnTime": "fan04CycleOnTime",
+              "fan04CycleOffTime": "fan04CycleOffTime",
+              "fan05CycleOnTime": "fan05CycleOnTime",
+              "fan05CycleOffTime": "fan05CycleOffTime",
+              "fan06CycleOnTime": "fan06CycleOnTime",
+              "fan06CycleOffTime": "fan06CycleOffTime",
+              "coolingPump01CycleOnTime": "coolingPump01CycleOnTime",
+              "coolingPump01CycleOffTime": "coolingPump01CycleOffTime",
+              "coolingPump02CycleOnTime": "coolingPump02CycleOnTime",
+              "coolingPump02CycleOffTime": "coolingPump02CycleOffTime",
+              "indoorTemperature01Calibration": "indoorTemperature01Calibration",
+              "indoorTemperature02Calibration": "indoorTemperature02Calibration",
+              "outdoorTemperatureCalibration": "outdoorTemperatureCalibration",
+              "relativeHumidityCalibration": "relativeHumidityCalibration"
+            },
+            "freshnessMs": {
+              "settingControlBasis": 604800000,
+              "settingDehumidificationEnabled": 604800000,
+              "settingFanControlMode": 604800000,
+              "barnLength": 604800000,
+              "barnWidth": 604800000,
+              "barnHeight": 604800000,
+              "fanRatedAirflow": 604800000,
+              "settingPigCount": 604800000,
+              "settingPigDeathCount": 604800000,
+              "settingPigAgeDay": 604800000,
+              "humiditySetpoint": 604800000,
+              "humidityLowThreshold": 604800000,
+              "coolingTemperatureOffset": 604800000,
+              "heatingTemperatureOffset": 604800000,
+              "temperatureProfile01AgeDay": 604800000,
+              "temperatureProfile01Setpoint": 604800000,
+              "temperatureProfile01LowAlarm": 604800000,
+              "temperatureProfile01HighAlarm": 604800000,
+              "temperatureProfile02AgeDay": 604800000,
+              "temperatureProfile02Setpoint": 604800000,
+              "temperatureProfile02LowAlarm": 604800000,
+              "temperatureProfile02HighAlarm": 604800000,
+              "temperatureProfile03AgeDay": 604800000,
+              "temperatureProfile03Setpoint": 604800000,
+              "temperatureProfile03LowAlarm": 604800000,
+              "temperatureProfile03HighAlarm": 604800000,
+              "temperatureProfile04AgeDay": 604800000,
+              "temperatureProfile04Setpoint": 604800000,
+              "temperatureProfile04LowAlarm": 604800000,
+              "temperatureProfile04HighAlarm": 604800000,
+              "temperatureProfile05AgeDay": 604800000,
+              "temperatureProfile05Setpoint": 604800000,
+              "temperatureProfile05LowAlarm": 604800000,
+              "temperatureProfile05HighAlarm": 604800000,
+              "temperatureProfile06AgeDay": 604800000,
+              "temperatureProfile06Setpoint": 604800000,
+              "temperatureProfile06LowAlarm": 604800000,
+              "temperatureProfile06HighAlarm": 604800000,
+              "temperatureProfile07AgeDay": 604800000,
+              "temperatureProfile07Setpoint": 604800000,
+              "temperatureProfile07LowAlarm": 604800000,
+              "temperatureProfile07HighAlarm": 604800000,
+              "temperatureProfile08AgeDay": 604800000,
+              "temperatureProfile08Setpoint": 604800000,
+              "temperatureProfile08LowAlarm": 604800000,
+              "temperatureProfile08HighAlarm": 604800000,
+              "temperatureProfile09AgeDay": 604800000,
+              "temperatureProfile09Setpoint": 604800000,
+              "temperatureProfile09LowAlarm": 604800000,
+              "temperatureProfile09HighAlarm": 604800000,
+              "temperatureProfile10AgeDay": 604800000,
+              "temperatureProfile10Setpoint": 604800000,
+              "temperatureProfile10LowAlarm": 604800000,
+              "temperatureProfile10HighAlarm": 604800000,
+              "perceivedProfile01AgeDay": 604800000,
+              "perceivedProfile01Setpoint": 604800000,
+              "perceivedProfile01LowAlarm": 604800000,
+              "perceivedProfile01HighAlarm": 604800000,
+              "perceivedProfile02AgeDay": 604800000,
+              "perceivedProfile02Setpoint": 604800000,
+              "perceivedProfile02LowAlarm": 604800000,
+              "perceivedProfile02HighAlarm": 604800000,
+              "perceivedProfile03AgeDay": 604800000,
+              "perceivedProfile03Setpoint": 604800000,
+              "perceivedProfile03LowAlarm": 604800000,
+              "perceivedProfile03HighAlarm": 604800000,
+              "perceivedProfile04AgeDay": 604800000,
+              "perceivedProfile04Setpoint": 604800000,
+              "perceivedProfile04LowAlarm": 604800000,
+              "perceivedProfile04HighAlarm": 604800000,
+              "perceivedProfile05AgeDay": 604800000,
+              "perceivedProfile05Setpoint": 604800000,
+              "perceivedProfile05LowAlarm": 604800000,
+              "perceivedProfile05HighAlarm": 604800000,
+              "perceivedProfile06AgeDay": 604800000,
+              "perceivedProfile06Setpoint": 604800000,
+              "perceivedProfile06LowAlarm": 604800000,
+              "perceivedProfile06HighAlarm": 604800000,
+              "perceivedProfile07AgeDay": 604800000,
+              "perceivedProfile07Setpoint": 604800000,
+              "perceivedProfile07LowAlarm": 604800000,
+              "perceivedProfile07HighAlarm": 604800000,
+              "perceivedProfile08AgeDay": 604800000,
+              "perceivedProfile08Setpoint": 604800000,
+              "perceivedProfile08LowAlarm": 604800000,
+              "perceivedProfile08HighAlarm": 604800000,
+              "perceivedProfile09AgeDay": 604800000,
+              "perceivedProfile09Setpoint": 604800000,
+              "perceivedProfile09LowAlarm": 604800000,
+              "perceivedProfile09HighAlarm": 604800000,
+              "perceivedProfile10AgeDay": 604800000,
+              "perceivedProfile10Setpoint": 604800000,
+              "perceivedProfile10LowAlarm": 604800000,
+              "perceivedProfile10HighAlarm": 604800000,
+              "stage01TemperatureOffset": 604800000,
+              "stage01PerceivedTemperatureOffset": 604800000,
+              "stage01Fan01Enabled": 604800000,
+              "stage01Fan02Enabled": 604800000,
+              "stage01Fan03Enabled": 604800000,
+              "stage01Fan04Enabled": 604800000,
+              "stage01Fan05Enabled": 604800000,
+              "stage01Fan06Enabled": 604800000,
+              "stage01Fan01Frequency": 604800000,
+              "stage01Fan02Frequency": 604800000,
+              "stage01RoofInletPositionSetpoint": 604800000,
+              "stage01SideInletPositionSetpoint": 604800000,
+              "stage02TemperatureOffset": 604800000,
+              "stage02PerceivedTemperatureOffset": 604800000,
+              "stage02Fan01Enabled": 604800000,
+              "stage02Fan02Enabled": 604800000,
+              "stage02Fan03Enabled": 604800000,
+              "stage02Fan04Enabled": 604800000,
+              "stage02Fan05Enabled": 604800000,
+              "stage02Fan06Enabled": 604800000,
+              "stage02Fan01Frequency": 604800000,
+              "stage02Fan02Frequency": 604800000,
+              "stage02RoofInletPositionSetpoint": 604800000,
+              "stage02SideInletPositionSetpoint": 604800000,
+              "stage03TemperatureOffset": 604800000,
+              "stage03PerceivedTemperatureOffset": 604800000,
+              "stage03Fan01Enabled": 604800000,
+              "stage03Fan02Enabled": 604800000,
+              "stage03Fan03Enabled": 604800000,
+              "stage03Fan04Enabled": 604800000,
+              "stage03Fan05Enabled": 604800000,
+              "stage03Fan06Enabled": 604800000,
+              "stage03Fan01Frequency": 604800000,
+              "stage03Fan02Frequency": 604800000,
+              "stage03RoofInletPositionSetpoint": 604800000,
+              "stage03SideInletPositionSetpoint": 604800000,
+              "stage04TemperatureOffset": 604800000,
+              "stage04PerceivedTemperatureOffset": 604800000,
+              "stage04Fan01Enabled": 604800000,
+              "stage04Fan02Enabled": 604800000,
+              "stage04Fan03Enabled": 604800000,
+              "stage04Fan04Enabled": 604800000,
+              "stage04Fan05Enabled": 604800000,
+              "stage04Fan06Enabled": 604800000,
+              "stage04Fan01Frequency": 604800000,
+              "stage04Fan02Frequency": 604800000,
+              "stage04RoofInletPositionSetpoint": 604800000,
+              "stage04SideInletPositionSetpoint": 604800000,
+              "stage05TemperatureOffset": 604800000,
+              "stage05PerceivedTemperatureOffset": 604800000,
+              "stage05Fan01Enabled": 604800000,
+              "stage05Fan02Enabled": 604800000,
+              "stage05Fan03Enabled": 604800000,
+              "stage05Fan04Enabled": 604800000,
+              "stage05Fan05Enabled": 604800000,
+              "stage05Fan06Enabled": 604800000,
+              "stage05Fan01Frequency": 604800000,
+              "stage05Fan02Frequency": 604800000,
+              "stage05RoofInletPositionSetpoint": 604800000,
+              "stage05SideInletPositionSetpoint": 604800000,
+              "stage06TemperatureOffset": 604800000,
+              "stage06PerceivedTemperatureOffset": 604800000,
+              "stage06Fan01Enabled": 604800000,
+              "stage06Fan02Enabled": 604800000,
+              "stage06Fan03Enabled": 604800000,
+              "stage06Fan04Enabled": 604800000,
+              "stage06Fan05Enabled": 604800000,
+              "stage06Fan06Enabled": 604800000,
+              "stage06Fan01Frequency": 604800000,
+              "stage06Fan02Frequency": 604800000,
+              "stage06RoofInletPositionSetpoint": 604800000,
+              "stage06SideInletPositionSetpoint": 604800000,
+              "stage07TemperatureOffset": 604800000,
+              "stage07PerceivedTemperatureOffset": 604800000,
+              "stage07Fan01Enabled": 604800000,
+              "stage07Fan02Enabled": 604800000,
+              "stage07Fan03Enabled": 604800000,
+              "stage07Fan04Enabled": 604800000,
+              "stage07Fan05Enabled": 604800000,
+              "stage07Fan06Enabled": 604800000,
+              "stage07Fan01Frequency": 604800000,
+              "stage07Fan02Frequency": 604800000,
+              "stage07RoofInletPositionSetpoint": 604800000,
+              "stage07SideInletPositionSetpoint": 604800000,
+              "stage08TemperatureOffset": 604800000,
+              "stage08PerceivedTemperatureOffset": 604800000,
+              "stage08Fan01Enabled": 604800000,
+              "stage08Fan02Enabled": 604800000,
+              "stage08Fan03Enabled": 604800000,
+              "stage08Fan04Enabled": 604800000,
+              "stage08Fan05Enabled": 604800000,
+              "stage08Fan06Enabled": 604800000,
+              "stage08Fan01Frequency": 604800000,
+              "stage08Fan02Frequency": 604800000,
+              "stage08RoofInletPositionSetpoint": 604800000,
+              "stage08SideInletPositionSetpoint": 604800000,
+              "stage09TemperatureOffset": 604800000,
+              "stage09PerceivedTemperatureOffset": 604800000,
+              "stage09Fan01Enabled": 604800000,
+              "stage09Fan02Enabled": 604800000,
+              "stage09Fan03Enabled": 604800000,
+              "stage09Fan04Enabled": 604800000,
+              "stage09Fan05Enabled": 604800000,
+              "stage09Fan06Enabled": 604800000,
+              "stage09Fan01Frequency": 604800000,
+              "stage09Fan02Frequency": 604800000,
+              "stage09RoofInletPositionSetpoint": 604800000,
+              "stage09SideInletPositionSetpoint": 604800000,
+              "stageSampleDelay": 604800000,
+              "fanOffDelay": 604800000,
+              "fan01CycleOnTime": 604800000,
+              "fan01CycleOffTime": 604800000,
+              "fan02CycleOnTime": 604800000,
+              "fan02CycleOffTime": 604800000,
+              "fan03CycleOnTime": 604800000,
+              "fan03CycleOffTime": 604800000,
+              "fan04CycleOnTime": 604800000,
+              "fan04CycleOffTime": 604800000,
+              "fan05CycleOnTime": 604800000,
+              "fan05CycleOffTime": 604800000,
+              "fan06CycleOnTime": 604800000,
+              "fan06CycleOffTime": 604800000,
+              "coolingPump01CycleOnTime": 604800000,
+              "coolingPump01CycleOffTime": 604800000,
+              "coolingPump02CycleOnTime": 604800000,
+              "coolingPump02CycleOffTime": 604800000,
+              "indoorTemperature01Calibration": 604800000,
+              "indoorTemperature02Calibration": 604800000,
+              "outdoorTemperatureCalibration": 604800000,
+              "relativeHumidityCalibration": 604800000
+            },
+            "alarmScope": "Bộ điều khiển mô phỏng VENT-012; alarm có nhãn [SIM]",
+            "simulation": true,
+            "invalidKeysTelemetryKey": "simInvalidKeys",
+            "provenance": {
+              "kind": "SIM",
+              "label": "MÔ PHỎNG QUA GATEWAY",
+              "note": "Không phải dữ liệu PLC thật"
+            }
+          },
+          "mobileHeight": 650
+        }
+      }
+    },
+    "states": {
+      "default": {
+        "name": "Tổng quan",
+        "root": true,
+        "layouts": {
+          "main": {
+            "widgets": {
+              "3e56e206-2dc9-5d36-95a3-eb6d9affc98d": {
+                "col": 0,
+                "row": 0,
+                "sizeX": 24,
+                "sizeY": 3
+              },
+              "a62667df-dd96-5b8d-b7f6-4cefe97fccd4": {
+                "col": 0,
+                "row": 3,
+                "sizeX": 24,
+                "sizeY": 15
+              }
+            },
+            "gridSettings": {
+              "layoutType": "default",
+              "columns": 24,
+              "margin": 6,
+              "outerMargin": true,
+              "autoFillHeight": false,
+              "mobileAutoFillHeight": false,
+              "mobileRowHeight": 24,
+              "rowHeight": 24,
+              "backgroundColor": "#001827"
+            }
+          }
+        }
+      },
+      "vent_detail": {
+        "name": "Giám sát",
+        "root": false,
+        "layouts": {
+          "main": {
+            "widgets": {
+              "54e65511-ad67-572f-b40f-7b426e01e0bb": {
+                "col": 0,
+                "row": 0,
+                "sizeX": 24,
+                "sizeY": 4
+              },
+              "dbbc31e4-bdb0-59c7-a724-6d86460a6aa9": {
+                "col": 0,
+                "row": 4,
+                "sizeX": 24,
+                "sizeY": 4
+              },
+              "5f59f395-5c27-5101-963c-826ffdd45522": {
+                "col": 0,
+                "row": 8,
+                "sizeX": 16,
+                "sizeY": 14
+              },
+              "6e90214b-2e9e-55f8-b503-5f1e5895a986": {
+                "col": 16,
+                "row": 8,
+                "sizeX": 8,
+                "sizeY": 14
+              },
+              "ca243689-0c27-5a13-a056-ed58cf2b94ce": {
+                "col": 0,
+                "row": 22,
+                "sizeX": 24,
+                "sizeY": 7
+              }
+            },
+            "gridSettings": {
+              "layoutType": "default",
+              "columns": 24,
+              "margin": 6,
+              "outerMargin": true,
+              "autoFillHeight": false,
+              "mobileAutoFillHeight": false,
+              "mobileRowHeight": 24,
+              "rowHeight": 24,
+              "backgroundColor": "#001827"
+            }
+          }
+        }
+      },
+      "vent_history": {
+        "name": "Lịch sử",
+        "root": false,
+        "layouts": {
+          "main": {
+            "widgets": {
+              "0e95b8a2-ebc8-5bd3-a86b-68adf93170c5": {
+                "col": 0,
+                "row": 0,
+                "sizeX": 24,
+                "sizeY": 4
+              },
+              "6b96c5df-e2be-5f3b-b42d-f29a9c00f41e": {
+                "col": 0,
+                "row": 4,
+                "sizeX": 24,
+                "sizeY": 22
+              }
+            },
+            "gridSettings": {
+              "layoutType": "default",
+              "columns": 24,
+              "margin": 6,
+              "outerMargin": true,
+              "autoFillHeight": false,
+              "mobileAutoFillHeight": false,
+              "mobileRowHeight": 24,
+              "rowHeight": 24,
+              "backgroundColor": "#001827"
+            }
+          }
+        }
+      },
+      "vent_alarms": {
+        "name": "Cảnh báo",
+        "root": false,
+        "layouts": {
+          "main": {
+            "widgets": {
+              "7de45866-fd6c-5ffb-b958-692b86fc9d47": {
+                "col": 0,
+                "row": 0,
+                "sizeX": 24,
+                "sizeY": 4
+              },
+              "69d23974-1467-5f0d-bb36-b6c0da92fdae": {
+                "col": 0,
+                "row": 4,
+                "sizeX": 24,
+                "sizeY": 18
+              }
+            },
+            "gridSettings": {
+              "layoutType": "default",
+              "columns": 24,
+              "margin": 6,
+              "outerMargin": true,
+              "autoFillHeight": false,
+              "mobileAutoFillHeight": false,
+              "mobileRowHeight": 24,
+              "rowHeight": 24,
+              "backgroundColor": "#001827"
+            }
+          }
+        }
+      },
+      "vent_settings": {
+        "name": "Cài đặt · chỉ đọc",
+        "root": false,
+        "layouts": {
+          "main": {
+            "widgets": {
+              "26fc72f9-5fff-58dc-87fb-6aafd8b61f86": {
+                "col": 0,
+                "row": 0,
+                "sizeX": 24,
+                "sizeY": 4
+              },
+              "e5fa09a8-bc6b-59a8-878a-401bceb12a52": {
+                "col": 0,
+                "row": 4,
+                "sizeX": 24,
+                "sizeY": 20
+              }
+            },
+            "gridSettings": {
+              "layoutType": "default",
+              "columns": 24,
+              "margin": 6,
+              "outerMargin": true,
+              "autoFillHeight": false,
+              "mobileAutoFillHeight": false,
+              "mobileRowHeight": 24,
+              "rowHeight": 24,
+              "backgroundColor": "#001827"
+            }
+          }
+        }
+      }
+    },
+    "entityAliases": {
+      "a1b2c3d0-0001-4000-8000-00000000ve01": {
+        "id": "a1b2c3d0-0001-4000-8000-00000000ve01",
+        "alias": "Bốn nhà thông gió Gateway SIM",
+        "filter": {
+          "type": "deviceType",
+          "deviceTypes": [
+            "SIM-VEN-GatewayController-V012"
+          ],
+          "deviceNameFilter": "SIM-VEN-ND2-",
+          "resolveMultiple": true
+        }
+      },
+      "a1b2c3d0-0002-4000-8000-00000000ve02": {
+        "id": "a1b2c3d0-0002-4000-8000-00000000ve02",
+        "alias": "Bộ điều khiển Gateway SIM đang xem",
+        "filter": {
+          "type": "stateEntity",
+          "stateEntityParamName": null,
+          "resolveMultiple": false
+        }
+      }
+    },
+    "filters": {},
+    "timewindow": {
+      "displayValue": "",
+      "selectedTab": 0,
+      "realtime": {
+        "timewindowMs": 21600000
+      },
+      "aggregation": {
+        "type": "NONE",
+        "limit": 500
+      }
+    },
+    "settings": {
+      "stateControllerId": "default",
+      "showTitle": false,
+      "showDashboardsSelect": false,
+      "showEntitiesSelect": false,
+      "showDashboardTimewindow": false,
+      "showDashboardExport": false,
+      "toolbarAlwaysOpen": false,
+      "hideToolbar": false,
+      "showFilters": false,
+      "dashboardCss": ".tb-widget-container>.tb-widget{border:0!important;box-shadow:none!important;background:#001827!important}"
+    }
+  }
+}

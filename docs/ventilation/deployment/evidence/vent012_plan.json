@@ -1,0 +1,62 @@
+{
+  "task": "VENT-012",
+  "at": "2026-09-24T09:18:09+07:00",
+  "barns": {
+    "ND2-1": "e8a84a30-9c3c-11f1-a0fc-e93bd628a87f",
+    "ND2-2": "efa5b020-9c3c-11f1-a0fc-e93bd628a87f",
+    "ND2-3": "f69867b0-9c3c-11f1-a0fc-e93bd628a87f",
+    "ND2-4": "fdbeb260-9c3c-11f1-a0fc-e93bd628a87f"
+  },
+  "customer": "4199dcf0-a2bc-11f1-812e-f9c2621c1a59",
+  "collisions": {
+    "SIM-VEN-GATEWAY-012": false,
+    "SIM-VEN-ND2-1": false,
+    "SIM-VEN-ND2-2": false,
+    "SIM-VEN-ND2-3": false,
+    "SIM-VEN-ND2-4": false,
+    "SIM-VEN-SYS-ND2-1": false,
+    "SIM-VEN-SYS-ND2-2": false,
+    "SIM-VEN-SYS-ND2-3": false,
+    "SIM-VEN-SYS-ND2-4": false
+  },
+  "profiles": {
+    "SIM-VEN-GatewayController-V012": false,
+    "SIM-AP-VEN-SYSTEM-V012": false
+  },
+  "dashboard": false,
+  "protected": {
+    "dashboards": {
+      "bb585f20-a835-11f1-9683-f9c2621c1a59": {
+        "title": "SIBA · Khử mùi",
+        "version": 27,
+        "sha16": "99c899a8188f05b4"
+      },
+      "916ba6a0-acb7-11f1-9683-f9c2621c1a59": {
+        "title": "SIBA · Khử mùi · SIMULATION",
+        "version": 9,
+        "sha16": "faccbe9141863dd0"
+      },
+      "a66660b0-9a04-11f1-a0fc-e93bd628a87f": {
+        "title": "MUGE · Tổng quan trại",
+        "version": 107,
+        "sha16": "ed99833e5fa97194"
+      }
+    },
+    "devices": 8193,
+    "profiles": [
+      "Deodorizer",
+      "DosingStation",
+      "Feeder",
+      "Gateway",
+      "PROF-Teltonika-TRB140",
+      "SI Soil Moisture Sensor",
+      "SIM-Deodorizer",
+      "SIM-DosingStation",
+      "SIM-VentController",
+      "Silo",
+      "default",
+      "thermostat"
+    ]
+  },
+  "mutationsSent": []
+}

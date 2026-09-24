@@ -1,0 +1,8 @@
+FROM thingsboard/tb-gateway@sha256:466ab91471be8fbb9b620f98edec00e68ae59f5887fdad38817822e2a1a611cd
+RUN pip install --no-cache-dir pymodbus==3.9.2 pyserial==3.5 pyserial-asyncio==0.6
+COPY gateway/ventilation /opt/ventilation
+COPY deploy/thingsboard/vent011_sim.py /app/deploy/thingsboard/vent011_sim.py
+COPY widgets/ventilation-contract-v03.js /app/widgets/ventilation-contract-v03.js
+COPY gateway/ventilation/readonly_connector.py gateway/ventilation/uplink_converter.py /thingsboard_gateway/extensions/vent_modbus/
+ENV PYTHONPATH=/:/opt/ventilation
+ENTRYPOINT ["python", "/opt/ventilation/gateway_entrypoint.py"]

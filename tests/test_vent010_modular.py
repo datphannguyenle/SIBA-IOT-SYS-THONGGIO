@@ -165,6 +165,7 @@ class ModularRuntimeTest(unittest.TestCase):
         self.assertIn('--', text)
         self.assertNotIn('27.8', text)
         self.assertNotIn('ND2-1', text)
+        # Widget KPI không tự dựng header; provenance nằm ở header/overview/history/alarm.
         self.assertEqual(self.browser.run("return document.querySelectorAll('.vm-badge').length"), 0)
 
     def test_live_data_update_keeps_zero_and_turns_null_to_missing(self):

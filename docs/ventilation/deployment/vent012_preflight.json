@@ -1,0 +1,914 @@
+{
+  "task": "VENT-012",
+  "checkedAt": "2026-09-24T09:15:44+07:00",
+  "tbUrl": "http://100.86.144.207:8080",
+  "readOnly": {
+    "api": "GET plus auth login only",
+    "mutationsSent": []
+  },
+  "gateway": {
+    "container": "tb-gateway",
+    "imageReference": "thingsboard/tb-gateway:3.8-stable",
+    "imageId": "sha256:466ab91471be8fbb9b620f98edec00e68ae59f5887fdad38817822e2a1a611cd",
+    "runtimeVersion": "3.8.0",
+    "activeModbusConnectors": [
+      {
+        "attributeUpdateCounts": [
+          0
+        ],
+        "configuration": "modbus-connector-final-v4-int-bool.json",
+        "name": "SIBA Deodorization FINAL v4 INT BOOL",
+        "rpcCounts": [
+          0
+        ],
+        "sha256": "be6001cef1445135a17f6eb4110a85ee955e35e8ae80a4e4885d11f83b359e64",
+        "slaveCount": 1,
+        "topLevelKeys": [
+          "id",
+          "master"
+        ]
+      }
+    ],
+    "sourceCapabilities": {
+      "path": "/thingsboard_gateway/connectors/modbus/modbus_connector.py",
+      "serverSideHandler": true,
+      "reservedPath": true,
+      "connectorPath": true,
+      "writeFunctionCodes": [
+        5,
+        6,
+        15,
+        16
+      ],
+      "attributeUpdateHandler": true
+    },
+    "downlinkVerdict": {
+      "configuredMappingsEmpty": true,
+      "safeAgainstReservedOrConnectorRpc": false,
+      "reason": "Installed handler supports RESERVED and CONNECTOR paths; empty device rpc mappings do not prove downlink is impossible.",
+      "requiredBeforeAlarmEmission": "Deploy and verify a read-only connector subclass that no-ops server_side_rpc_handler and on_attributes_update."
+    }
+  },
+  "profile": {
+    "name": "SIM-VentController",
+    "id": "61fc5bf0-b719-11f1-a719-7da6129c6745",
+    "defaultRuleChainId": null,
+    "alarms": [
+      {
+        "type": "Lỗi thiết bị thông gió",
+        "severity": [
+          "CRITICAL"
+        ],
+        "propagate": false,
+        "propagateToOwner": false,
+        "propagateToTenant": false
+      },
+      {
+        "type": "Nhiệt độ cao (thermostat ngoài)",
+        "severity": [
+          "MAJOR"
+        ],
+        "propagate": false,
+        "propagateToOwner": false,
+        "propagateToTenant": false
+      },
+      {
+        "type": "Nhiệt độ trong chuồng cao",
+        "severity": [
+          "MAJOR"
+        ],
+        "propagate": false,
+        "propagateToOwner": false,
+        "propagateToTenant": false
+      },
+      {
+        "type": "Nhiệt độ trong chuồng thấp",
+        "severity": [
+          "MINOR"
+        ],
+        "propagate": false,
+        "propagateToOwner": false,
+        "propagateToTenant": false
+      },
+      {
+        "type": "Nhiệt độ cảm nhận cao",
+        "severity": [
+          "MINOR"
+        ],
+        "propagate": false,
+        "propagateToOwner": false,
+        "propagateToTenant": false
+      },
+      {
+        "type": "Nhiệt độ cảm nhận thấp",
+        "severity": [
+          "MINOR"
+        ],
+        "propagate": false,
+        "propagateToOwner": false,
+        "propagateToTenant": false
+      }
+    ]
+  },
+  "rootRuleChain": {
+    "id": "0add45e0-9528-11f1-af48-7566a705eb32",
+    "name": "Root Rule Chain",
+    "nodes": [
+      {
+        "index": 0,
+        "name": "Save Timeseries",
+        "type": "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
+      },
+      {
+        "index": 1,
+        "name": "Save Client Attributes",
+        "type": "org.thingsboard.rule.engine.telemetry.TbMsgAttributesNode"
+      },
+      {
+        "index": 2,
+        "name": "Message Type Switch",
+        "type": "org.thingsboard.rule.engine.filter.TbMsgTypeSwitchNode"
+      },
+      {
+        "index": 3,
+        "name": "Log RPC from Device",
+        "type": "org.thingsboard.rule.engine.action.TbLogNode"
+      },
+      {
+        "index": 4,
+        "name": "Log Other",
+        "type": "org.thingsboard.rule.engine.action.TbLogNode"
+      },
+      {
+        "index": 5,
+        "name": "RPC Call Request",
+        "type": "org.thingsboard.rule.engine.rpc.TbSendRPCRequestNode"
+      },
+      {
+        "index": 6,
+        "name": "Device Profile (alarm rules)",
+        "type": "org.thingsboard.rule.engine.profile.TbDeviceProfileNode"
+      }
+    ],
+    "connections": [
+      {
+        "fromIndex": 2,
+        "toIndex": 0,
+        "messageType": "Post telemetry"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 1,
+        "messageType": "Post attributes"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 3,
+        "messageType": "RPC Request from Device"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 4,
+        "messageType": "Other"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 5,
+        "messageType": "RPC Request to Device"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 6,
+        "messageType": "Activity Event"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 6,
+        "messageType": "Attributes Updated"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 6,
+        "messageType": "Connect Event"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 6,
+        "messageType": "Disconnect Event"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 6,
+        "messageType": "Inactivity Event"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 6,
+        "messageType": "Post attributes"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 6,
+        "messageType": "Post telemetry"
+      }
+    ],
+    "metadataSha256": "fdc0d7fc3dd4520c8487f1155e3d8cfc2256b7e6c3658308e97f38a8731779e4"
+  },
+  "notifications": {
+    "alarmRules": [
+      {
+        "id": "0ad556a0-9528-11f1-af48-7566a705eb32",
+        "name": "New alarm",
+        "enabled": true,
+        "targetCount": 0,
+        "trigger": [
+          "CREATED"
+        ],
+        "deliveryMethods": [
+          "WEB"
+        ]
+      },
+      {
+        "id": "0ad5a4c1-9528-11f1-af48-7566a705eb32",
+        "name": "Alarm update",
+        "enabled": true,
+        "targetCount": 0,
+        "trigger": [
+          "SEVERITY_CHANGED",
+          "CLEARED",
+          "ACKNOWLEDGED"
+        ],
+        "deliveryMethods": [
+          "WEB"
+        ]
+      }
+    ],
+    "allTargetKinds": [
+      "PLATFORM_USERS"
+    ],
+    "externalNotificationRisk": false,
+    "verdict": "NO_CONFIGURED_EXTERNAL_PATH"
+  },
+  "barnGraph": {
+    "barns": [
+      {
+        "name": "abc-dong-anh/ND2-1",
+        "id": "e8a84a30-9c3c-11f1-a0fc-e93bd628a87f",
+        "type": "Barn",
+        "tenantId": "0abe2520-9528-11f1-af48-7566a705eb32",
+        "customerId": {
+          "entityType": "CUSTOMER",
+          "id": "4199dcf0-a2bc-11f1-812e-f9c2621c1a59"
+        },
+        "incoming": [
+          {
+            "type": "AreaToBarn",
+            "from": {
+              "entityType": "ASSET",
+              "id": "78276fd0-9c3b-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/Khu B"
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "e8a84a30-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            }
+          }
+        ],
+        "outgoing": [
+          {
+            "type": "BarnToGateway",
+            "from": {
+              "entityType": "ASSET",
+              "id": "e8a84a30-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "DEVICE",
+              "id": "e8b0d5b0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-1/GW-01"
+            }
+          },
+          {
+            "type": "BarnToRoom",
+            "from": {
+              "entityType": "ASSET",
+              "id": "e8a84a30-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "ea084f60-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-1/P02"
+            }
+          },
+          {
+            "type": "BarnToRoom",
+            "from": {
+              "entityType": "ASSET",
+              "id": "e8a84a30-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "e8b801a0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-1/P01"
+            }
+          },
+          {
+            "type": "BarnToRoom",
+            "from": {
+              "entityType": "ASSET",
+              "id": "e8a84a30-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "eb621300-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-1/P03"
+            }
+          },
+          {
+            "type": "BarnToRoom",
+            "from": {
+              "entityType": "ASSET",
+              "id": "e8a84a30-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "ece09cb0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-1/P04"
+            }
+          },
+          {
+            "type": "BarnToRoom",
+            "from": {
+              "entityType": "ASSET",
+              "id": "e8a84a30-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "ee5e3c00-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-1/P05"
+            }
+          },
+          {
+            "type": "BarnToSilo",
+            "from": {
+              "entityType": "ASSET",
+              "id": "e8a84a30-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "DEVICE",
+              "id": "678b2340-a10b-11f1-812e-f9c2621c1a59",
+              "name": "abc-dong-anh/ND2-1/SILO"
+            }
+          },
+          {
+            "type": "BarnToDeodorizer",
+            "from": {
+              "entityType": "ASSET",
+              "id": "e8a84a30-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "DEVICE",
+              "id": "4cb1df80-a833-11f1-9683-f9c2621c1a59",
+              "name": "abc-dong-anh/ND2-1/DEO"
+            }
+          }
+        ]
+      },
+      {
+        "name": "abc-dong-anh/ND2-2",
+        "id": "efa5b020-9c3c-11f1-a0fc-e93bd628a87f",
+        "type": "Barn",
+        "tenantId": "0abe2520-9528-11f1-af48-7566a705eb32",
+        "customerId": {
+          "entityType": "CUSTOMER",
+          "id": "4199dcf0-a2bc-11f1-812e-f9c2621c1a59"
+        },
+        "incoming": [
+          {
+            "type": "AreaToBarn",
+            "from": {
+              "entityType": "ASSET",
+              "id": "782e74b0-9c3b-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/Khu C"
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "efa5b020-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            }
+          }
+        ],
+        "outgoing": [
+          {
+            "type": "BarnToGateway",
+            "from": {
+              "entityType": "ASSET",
+              "id": "efa5b020-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "DEVICE",
+              "id": "efaa1cf0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-2/GW-01"
+            }
+          },
+          {
+            "type": "BarnToRoom",
+            "from": {
+              "entityType": "ASSET",
+              "id": "efa5b020-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "efaed7e0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-2/P01"
+            }
+          },
+          {
+            "type": "BarnToRoom",
+            "from": {
+              "entityType": "ASSET",
+              "id": "efa5b020-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "f11a9ce0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-2/P02"
+            }
+          },
+          {
+            "type": "BarnToRoom",
+            "from": {
+              "entityType": "ASSET",
+              "id": "efa5b020-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "f27a7b00-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-2/P03"
+            }
+          },
+          {
+            "type": "BarnToRoom",
+            "from": {
+              "entityType": "ASSET",
+              "id": "efa5b020-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "f3e68e20-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-2/P04"
+            }
+          },
+          {
+            "type": "BarnToRoom",
+            "from": {
+              "entityType": "ASSET",
+              "id": "efa5b020-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "f5388990-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-2/P05"
+            }
+          },
+          {
+            "type": "BarnToSilo",
+            "from": {
+              "entityType": "ASSET",
+              "id": "efa5b020-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "DEVICE",
+              "id": "67920110-a10b-11f1-812e-f9c2621c1a59",
+              "name": "abc-dong-anh/ND2-2/SILO"
+            }
+          },
+          {
+            "type": "BarnToDeodorizer",
+            "from": {
+              "entityType": "ASSET",
+              "id": "efa5b020-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "DEVICE",
+              "id": "4cc20c20-a833-11f1-9683-f9c2621c1a59",
+              "name": "abc-dong-anh/ND2-2/DEO"
+            }
+          }
+        ]
+      },
+      {
+        "name": "abc-dong-anh/ND2-3",
+        "id": "f69867b0-9c3c-11f1-a0fc-e93bd628a87f",
+        "type": "Barn",
+        "tenantId": "0abe2520-9528-11f1-af48-7566a705eb32",
+        "customerId": {
+          "entityType": "CUSTOMER",
+          "id": "4199dcf0-a2bc-11f1-812e-f9c2621c1a59"
+        },
+        "incoming": [
+          {
+            "type": "AreaToBarn",
+            "from": {
+              "entityType": "ASSET",
+              "id": "78246290-9c3b-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/Khu A"
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "f69867b0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            }
+          }
+        ],
+        "outgoing": [
+          {
+            "type": "BarnToGateway",
+            "from": {
+              "entityType": "ASSET",
+              "id": "f69867b0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "DEVICE",
+              "id": "f69d49b0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-3/GW-01"
+            }
+          },
+          {
+            "type": "BarnToRoom",
+            "from": {
+              "entityType": "ASSET",
+              "id": "f69867b0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "f6a67170-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-3/P01"
+            }
+          },
+          {
+            "type": "BarnToRoom",
+            "from": {
+              "entityType": "ASSET",
+              "id": "f69867b0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "f81dcf30-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-3/P02"
+            }
+          },
+          {
+            "type": "BarnToRoom",
+            "from": {
+              "entityType": "ASSET",
+              "id": "f69867b0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "f983eee0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-3/P03"
+            }
+          },
+          {
+            "type": "BarnToRoom",
+            "from": {
+              "entityType": "ASSET",
+              "id": "f69867b0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "fadaa540-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-3/P04"
+            }
+          },
+          {
+            "type": "BarnToRoom",
+            "from": {
+              "entityType": "ASSET",
+              "id": "f69867b0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "fc49c5a0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-3/P05"
+            }
+          },
+          {
+            "type": "BarnToSilo",
+            "from": {
+              "entityType": "ASSET",
+              "id": "f69867b0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "DEVICE",
+              "id": "67a1df90-a10b-11f1-812e-f9c2621c1a59",
+              "name": "abc-dong-anh/ND2-3/SILO"
+            }
+          },
+          {
+            "type": "BarnToDeodorizer",
+            "from": {
+              "entityType": "ASSET",
+              "id": "f69867b0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "DEVICE",
+              "id": "4cd03cf0-a833-11f1-9683-f9c2621c1a59",
+              "name": "abc-dong-anh/ND2-3/DEO"
+            }
+          }
+        ]
+      },
+      {
+        "name": "abc-dong-anh/ND2-4",
+        "id": "fdbeb260-9c3c-11f1-a0fc-e93bd628a87f",
+        "type": "Barn",
+        "tenantId": "0abe2520-9528-11f1-af48-7566a705eb32",
+        "customerId": {
+          "entityType": "CUSTOMER",
+          "id": "4199dcf0-a2bc-11f1-812e-f9c2621c1a59"
+        },
+        "incoming": [
+          {
+            "type": "AreaToBarn",
+            "from": {
+              "entityType": "ASSET",
+              "id": "78276fd0-9c3b-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/Khu B"
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "fdbeb260-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            }
+          }
+        ],
+        "outgoing": [
+          {
+            "type": "BarnToRoom",
+            "from": {
+              "entityType": "ASSET",
+              "id": "fdbeb260-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "fdceb7f0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-4/P01"
+            }
+          },
+          {
+            "type": "BarnToGateway",
+            "from": {
+              "entityType": "ASSET",
+              "id": "fdbeb260-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "DEVICE",
+              "id": "fdc5b740-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-4/GW-01"
+            }
+          },
+          {
+            "type": "BarnToRoom",
+            "from": {
+              "entityType": "ASSET",
+              "id": "fdbeb260-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "01e41920-9c3d-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-4/P04"
+            }
+          },
+          {
+            "type": "BarnToRoom",
+            "from": {
+              "entityType": "ASSET",
+              "id": "fdbeb260-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "ff3e9ba0-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-4/P02"
+            }
+          },
+          {
+            "type": "BarnToRoom",
+            "from": {
+              "entityType": "ASSET",
+              "id": "fdbeb260-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "00910c40-9c3d-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-4/P03"
+            }
+          },
+          {
+            "type": "BarnToRoom",
+            "from": {
+              "entityType": "ASSET",
+              "id": "fdbeb260-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "ASSET",
+              "id": "034f9000-9c3d-11f1-a0fc-e93bd628a87f",
+              "name": "abc-dong-anh/ND2-4/P05"
+            }
+          },
+          {
+            "type": "BarnToSilo",
+            "from": {
+              "entityType": "ASSET",
+              "id": "fdbeb260-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "DEVICE",
+              "id": "67a86f40-a10b-11f1-812e-f9c2621c1a59",
+              "name": "abc-dong-anh/ND2-4/SILO"
+            }
+          },
+          {
+            "type": "BarnToDeodorizer",
+            "from": {
+              "entityType": "ASSET",
+              "id": "fdbeb260-9c3c-11f1-a0fc-e93bd628a87f",
+              "name": null
+            },
+            "to": {
+              "entityType": "DEVICE",
+              "id": "4cdf5820-a833-11f1-9683-f9c2621c1a59",
+              "name": "abc-dong-anh/ND2-4/DEO"
+            }
+          }
+        ]
+      }
+    ],
+    "areaAncestors": {
+      "abc-dong-anh/Khu B": [
+        {
+          "type": "FarmToArea",
+          "from": {
+            "entityType": "ASSET",
+            "id": "7821a370-9c3b-11f1-a0fc-e93bd628a87f",
+            "name": "Trại ABC · Đông Anh"
+          },
+          "to": {
+            "entityType": "ASSET",
+            "id": "78276fd0-9c3b-11f1-a0fc-e93bd628a87f",
+            "name": null
+          }
+        }
+      ],
+      "abc-dong-anh/Khu C": [
+        {
+          "type": "FarmToArea",
+          "from": {
+            "entityType": "ASSET",
+            "id": "7821a370-9c3b-11f1-a0fc-e93bd628a87f",
+            "name": "Trại ABC · Đông Anh"
+          },
+          "to": {
+            "entityType": "ASSET",
+            "id": "782e74b0-9c3b-11f1-a0fc-e93bd628a87f",
+            "name": null
+          }
+        }
+      ],
+      "abc-dong-anh/Khu A": [
+        {
+          "type": "FarmToArea",
+          "from": {
+            "entityType": "ASSET",
+            "id": "7821a370-9c3b-11f1-a0fc-e93bd628a87f",
+            "name": "Trại ABC · Đông Anh"
+          },
+          "to": {
+            "entityType": "ASSET",
+            "id": "78246290-9c3b-11f1-a0fc-e93bd628a87f",
+            "name": null
+          }
+        }
+      ]
+    }
+  },
+  "collisions": {
+    "SIM-VEN-ND2-1": [],
+    "SIM-VEN-ND2-2": [],
+    "SIM-VEN-ND2-3": [],
+    "SIM-VEN-ND2-4": [],
+    "tb-gateway-ventilation": [],
+    "SIM-VEN-GATEWAY-012": []
+  },
+  "protectedFingerprints": {
+    "dashboards": [
+      {
+        "id": "0b3b6b70-9528-11f1-af48-7566a705eb32",
+        "title": "Rule Engine Statistics",
+        "version": 1,
+        "configurationSha256": "9fcbfe414b69528f22f4c230f3dfa13d91037e511f263d08c6fafb27e71179e5"
+      },
+      {
+        "id": "0b3c7ce0-9528-11f1-af48-7566a705eb32",
+        "title": "Thermostats",
+        "version": 5,
+        "configurationSha256": "82dcb688ee50b531a9d8ff991722361e167039a9223e9ba3aeeab0422aff3e45"
+      },
+      {
+        "id": "0b3db560-9528-11f1-af48-7566a705eb32",
+        "title": "Firmware",
+        "version": 1,
+        "configurationSha256": "ca59873929abf6f67d42566775586c7528bb0c848fc428ad75a5fdc52208dc4d"
+      },
+      {
+        "id": "0b3eede0-9528-11f1-af48-7566a705eb32",
+        "title": "Software",
+        "version": 1,
+        "configurationSha256": "f68e6713cf66b6c631f4d921c7dfcb052f629e422b2c5be63f2e054b08f818d3"
+      },
+      {
+        "id": "32b1ecb0-b71a-11f1-a719-7da6129c6745",
+        "title": "DB-30-VEN-DETAIL-V1-SIM",
+        "version": 3,
+        "configurationSha256": "5d2e8848f21de31499806af5ce2e18abb8a38684f268cb3faab000bd4882ee8a"
+      },
+      {
+        "id": "8078cce0-a034-11f1-812e-f9c2621c1a59",
+        "title": "DB-Template-MayNghien",
+        "version": 4,
+        "configurationSha256": "7d932dfa02145fcb49e16ecb4d7711d49946f902b03966fdd2af81e4aa091f70"
+      },
+      {
+        "id": "916ba6a0-acb7-11f1-9683-f9c2621c1a59",
+        "title": "SIBA · Khử mùi · SIMULATION",
+        "version": 9,
+        "configurationSha256": "77c7228ac2997a185ab8ee569a0a07fecd231f6650857e39d53506c969514a42"
+      },
+      {
+        "id": "a66660b0-9a04-11f1-a0fc-e93bd628a87f",
+        "title": "MUGE · Tổng quan trại",
+        "version": 107,
+        "configurationSha256": "4b9ec5e8e7e0d34a4a02dd9b7130867d663f9f26caa9b22b7ac3d8f549fc9f98"
+      },
+      {
+        "id": "b9ff4d70-b26a-11f1-83ad-9912edc644d2",
+        "title": "DB-30-VEN-DETAIL-V1-DEMO",
+        "version": 12,
+        "configurationSha256": "063a8890fbba8d47be9b340f0810f2b8014a30cb7e740e1078fe63be23258dab"
+      },
+      {
+        "id": "bb585f20-a835-11f1-9683-f9c2621c1a59",
+        "title": "SIBA · Khử mùi",
+        "version": 27,
+        "configurationSha256": "fd01eb1131dc64170e58b45101f8ffd245a38224e2460696941ffe23f97824d0"
+      },
+      {
+        "id": "c718fdf0-9567-11f1-a0fc-e93bd628a87f",
+        "title": "Irrigation Management",
+        "version": 3,
+        "configurationSha256": "2d62005e265bb032f89f57523940ffab1b478396911ffa8a0071f2f4cebf5266"
+      }
+    ],
+    "dashboardListSha256": "c6fd7e404ffdd334559a5b1052e381fd51d1371de7064223296e674560118eb8",
+    "bundle": {
+      "id": "38509b40-99f5-11f1-a0fc-e93bd628a87f",
+      "alias": "siba_custom_ui",
+      "widgetFqnsSha256": "466dc071a938a421144cdb38ffab4ce9365863eec5e339ade51306680effac9f"
+    }
+  },
+  "_uncertain": [
+    "Notification finding is a point-in-time API snapshot; re-run immediately before any alarm emission."
+  ]
+}

@@ -40,6 +40,7 @@ def controller(multi_entity=False):
     modules = '\n'.join((scope_iife(read('widgets/ventilation-contract-v03.js'), 'contract'),
                          scope_iife(adapter, 'pure-adapter'),
                          scope_iife(read('widgets/ventilation-source.js'), 'source'),
+                         scope_iife(read('dashboard/alarm-total-subscription.js'), 'alarm-total'),
                          scope_iife(read('dashboard/modular.js'), 'modular')))
     fixture = json.dumps(json.loads(read('fixtures/ventilation/demo.json')), ensure_ascii=False)
     return '''// GENERATED. Repo source only; no device API or write operations.
@@ -56,6 +57,9 @@ self.onInit = function () {
     params.state = settings.viewState || (ctx.stateController && ctx.stateController.getStateId ? ctx.stateController.getStateId() : 'default');
     if (savedTab) params.settingsGroup = Number(savedTab.getAttribute('data-settings-tab'));
     var vm = __vent.VentilationSource.createViewModel(ctx, settings, settings.sourceMode === 'demo' ? fixture : undefined);
+    if (self._ventAlarmTotal && vm.summary) {
+      vm.summary.activeAlarms = self._ventAlarmTotal.state.loaded ? self._ventAlarmTotal.state.total : null;
+    }
     if (!params.barnId && vm.demo) params.barnId = (vm.barns[0] || {}).id;
     var scroll = node.scrollTop;
     __vent.VentilationModular.render(node, vm, settings.component || 'kpis', function (next, values) {
@@ -102,6 +106,13 @@ self.onInit = function () {
     if (ctx.detectChanges) ctx.detectChanges();
   };
   self._ventDraw();
+  if ((ctx.settings || {}).sourceMode === 'live' && (ctx.settings || {}).component === 'overview' &&
+      (ctx.settings || {}).alarmTotalSource) {
+    self._ventAlarmTotal = __vent.VentilationAlarmTotal.attach(ctx,
+      {alarmSource: ctx.settings.alarmTotalSource}, function () { if (self._ventDraw) self._ventDraw(); });
+  }
+  // Đánh giá freshness cả lúc nguồn ngừng phát, không cần REST poller.
+  self._ventClock = setInterval(function () { if (self._ventDraw) self._ventDraw(); }, 5000);
   self._ventObserver = typeof ResizeObserver === 'function' ? new ResizeObserver(function () {
     var width = Math.round(node.clientWidth);
     if (width !== self._ventWidth) { self._ventWidth = width; self._ventDraw(); }
@@ -123,6 +134,8 @@ self.onDataUpdated = function () { if (self._ventDraw) self._ventDraw(); };
 self.onLatestDataUpdated = self.onDataUpdated;
 self.onResize = function () { if (self._ventDraw) self._ventDraw(); };
 self.onDestroy = function () {
+  if (self._ventClock) clearInterval(self._ventClock);
+  if (self._ventAlarmTotal) self._ventAlarmTotal.destroy();
   if (self._ventObserver) self._ventObserver.disconnect();
   if (self._ventNode) __vent.VentilationModular.destroy(self._ventNode);
   self._ventNode = null; self._ventDraw = null; self._ventObserver = null;

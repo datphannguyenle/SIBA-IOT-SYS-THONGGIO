@@ -218,15 +218,31 @@
       });
     });
     return Object.keys(stamps).map(Number).sort(function (a, b) { return a - b; }).map(function (ts) {
-      var row = {ts: ts}, present = values[ts], hasCurrent = false, hasStale = false;
+      var row = {ts: ts}, present = values[ts], observed = false;
       wanted.forEach(function (semantic) {
         row[semantic] = Object.prototype.hasOwnProperty.call(present, semantic) ? present[semantic] : null;
-        var quality = qualityFor({rawValue: row[semantic], ts: ts}, freshness[semantic], now);
-        hasCurrent = hasCurrent || quality === "CURRENT"; hasStale = hasStale || quality === "STALE";
+        // Mốc thời gian lịch sử vốn ở quá khứ; freshness chỉ dành cho dữ liệu mới nhất.
+        observed = observed || row[semantic] !== null;
       });
-      row.quality = hasStale ? "STALE" : (hasCurrent ? "CURRENT" : "UNKNOWN");
+      row.quality = observed ? "HISTORICAL" : "UNKNOWN";
       return row;
     });
+  }
+  function readableAlarmText(value, seen, depth) {
+    if (missing(value)) return null;
+    if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") return String(value);
+    if (typeof value !== "object") return String(value);
+    seen = seen || []; depth = depth || 0;
+    if (seen.indexOf(value) >= 0) return "[tham chiếu vòng]";
+    if (depth >= 3) return "[…]";
+    seen.push(value);
+    var text = Array.isArray(value) ? value.map(function (item) {
+      return readableAlarmText(item, seen, depth + 1) || "--";
+    }).join(", ") : Object.keys(value).sort().map(function (key) {
+      return key + ": " + (readableAlarmText(value[key], seen, depth + 1) || "--");
+    }).join(" · ");
+    seen.pop();
+    return text || null;
   }
   function normalizeAlarms(alarms) {
     if (!Array.isArray(alarms)) return [];
@@ -238,7 +254,7 @@
       copy.status = copy.active ? "ACTIVE" : (raw.indexOf("CLEARED") === 0 ? "RECOVERED" : raw);
       copy.created = alarm.createdTime !== undefined ? alarm.createdTime : (alarm.created !== undefined ? alarm.created : null);
       copy.originator = alarm.originatorName || alarm.originator || null;
-      copy.message = alarm.message || alarm.details || null;
+      copy.message = readableAlarmText(alarm.message) || readableAlarmText(alarm.details);
       copy.source = alarm.source || "THINGSBOARD";
       return copy;
     });
@@ -269,6 +285,33 @@
       selectedBarnId: selectedId, selectedControllerId: configured.controllerId || params.selectedControllerId || null,
       status: (configured.farm || configured.area || selectedId || selectedName) ? "CONFIGURED" : "UNKNOWN"};
   }
+  // Chỉ là provenance hiển thị; không đổi sourceMode, subscription hay dữ liệu.
+  // settings.provenance: "SIM"/"DEMO"/"LIVE" hoặc {kind, label, note}.
+  function sourceProvenance(settings, demo) {
+    var configured = settings.provenance, value = configured && typeof configured === "object" ? configured : {kind: configured};
+    var kind = typeof value.kind === "string" ? value.kind.toUpperCase() :
+      (settings.simulation === true ? "SIM" : (demo ? "DEMO" : "LIVE"));
+    if (["SIM", "DEMO", "LIVE"].indexOf(kind) < 0) kind = demo ? "DEMO" : "LIVE";
+    var defaults = {SIM: "Dữ liệu mô phỏng", DEMO: "Dữ liệu minh họa", LIVE: "Dữ liệu trực tiếp"};
+    return {kind: kind, label: typeof value.label === "string" && value.label ? value.label : defaults[kind],
+      note: typeof value.note === "string" ? value.note : ""};
+  }
+  // VENT-011 phát simInvalidKeys cùng snapshot để phân biệt "giá trị trước đó còn lưu"
+  // với một giá trị hiện tại. Metadata chỉ có hiệu lực khi instance tự nhận simulation.
+  function simulationInvalidKeys(samples, settings) {
+    if (settings.simulation !== true) return {};
+    var key = typeof settings.invalidKeysTelemetryKey === "string" && settings.invalidKeysTelemetryKey ?
+      settings.invalidKeysTelemetryKey : "simInvalidKeys";
+    var sample = samples[key], raw = sample && sample.rawValue, list = raw;
+    if (typeof raw === "string") {
+      try { list = JSON.parse(raw); } catch (ignore) { return {}; }
+    }
+    if (!Array.isArray(list)) return {};
+    return list.reduce(function (out, semantic) {
+      if (typeof semantic === "string" && semantic) out[semantic] = true;
+      return out;
+    }, {});
+  }
   function rawFromSubscription(ctx, settings, fixture) {
     settings = settings || {};
     var demo = settings.sourceMode === "demo";
@@ -284,6 +327,7 @@
     var samples = scoped.samples;
     var keyMap = settings.keyMap && typeof settings.keyMap === "object" ? settings.keyMap : {};
     var freshness = settings.freshnessMs && typeof settings.freshnessMs === "object" ? settings.freshnessMs : {};
+    var invalidKeys = simulationInvalidKeys(samples, settings);
     var now = Date.now(), latest = {}, platform = {}, settingValues = {}, base = demo ? fixture : {};
     var notConfigured = demo ? (((base.mapping || {}).notConfigured || []).slice()) : [];
     var unresolved = demo ? [] : mappedKeys().filter(function (semantic) {
@@ -291,7 +335,8 @@
     }), observed = {};
     mappedKeys().forEach(function (semantic) {
       var actual = demo ? (useSubscription ? (keyMap[semantic] || semantic) : semantic) : keyMap[semantic];
-      var item = typeof actual === "string" && actual ? samples[actual] : null;
+      // Chỉ che giá trị mới nhất. historyFromRows giữ nguyên các mẫu lịch sử thực tế của nó.
+      var item = invalidKeys[semantic] ? null : (typeof actual === "string" && actual ? samples[actual] : null);
       if (item) observed[semantic] = {actualKey: actual, value: item.rawValue, ts: item.ts};
       var fixtureItem = demo && !useSubscription ? ((PLATFORM.indexOf(semantic) >= 0 ? base.platform : base.latest) || {})[semantic] : null;
       var output = {value: item ? item.value : null, ts: demo && fixtureItem ? fixtureItem.ts : (item ? item.ts : null),
@@ -314,9 +359,9 @@
       barns: multiEntity ? liveBarns : base.barns, history: base.history,
       settings: demo && !useSubscription ? base.settings : settingValues, alarms: alarms,
       _source: {mode: demo ? "demo" : "live", keyMap: keyMap, observed: observed,
-        unresolved: unresolved, sourceIdentity: settings.sourceIdentity || null,
+        unresolved: unresolved, invalidKeys: Object.keys(invalidKeys), sourceIdentity: settings.sourceIdentity || null,
         freshness: freshness, datasources: (ctx && ctx.datasources) || [], scope: scoped.scope,
-        history: history, alarms: demo ? "FIXTURE" : alarmState.status,
+        history: history, alarms: demo ? "FIXTURE" : alarmState.status, provenance: sourceProvenance(settings, demo),
         alarmScope: settings.alarmScope || "Chưa xác minh phạm vi"}};
   }
   function createViewModel(ctx, settings, fixture) {
@@ -336,8 +381,9 @@
     vm.sourceMode = raw._source.mode;
     vm.demo = !live;
     vm.badgeLabel = live ? "" : vm.badgeLabel;
+    vm.provenance = raw._source.provenance;
     vm.mapping = {status: live ? (raw._source.unresolved.length ? "UNRESOLVED" : "MAPPED") : "FIXTURE",
-      unresolved: raw._source.unresolved, keyMap: raw._source.keyMap, sourceIdentity: raw._source.sourceIdentity,
+      unresolved: raw._source.unresolved, invalidKeys: raw._source.invalidKeys, keyMap: raw._source.keyMap, sourceIdentity: raw._source.sourceIdentity,
       scope: raw._source.scope.status, entityIds: raw._source.scope.entityIds,
       observations: raw._source.observed};
     // Keep source provenance outside a metric so observed values cannot be mistaken for verified feedback.

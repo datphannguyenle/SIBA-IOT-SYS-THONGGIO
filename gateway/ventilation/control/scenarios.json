@@ -1,0 +1,8 @@
+{
+  "units": {
+    "1": {"scenario": "NORMAL", "allow_alarms": false},
+    "2": {"scenario": "BOUNDARY", "allow_alarms": false},
+    "3": {"scenario": "MANUAL", "allow_alarms": false},
+    "4": {"scenario": "FAULT", "allow_alarms": false}
+  }
+}
