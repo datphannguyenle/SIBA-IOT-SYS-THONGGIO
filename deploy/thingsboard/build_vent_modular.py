@@ -19,11 +19,11 @@ FQNS = {kind: 'siba_vent_demo.modular_' + kind for kind in KINDS}
 # fixed rows and natural page scrolling because its content cannot reasonably fit one screen.
 LAYOUTS = {
     'default': [('header', 0, 0, 24, 3), ('overview', 0, 3, 24, 15)],
-    # Giám sát có sơ đồ + hai cụm thông tin nên dùng một cuộn trang duy nhất, tránh ép thành
-    # năm thanh cuộn lồng nhau. Tổng 23 hàng, vẫn giảm đáng kể từ 29 hàng trước đây.
-    'vent_detail': [('header', 0, 0, 24, 3), ('kpis', 0, 3, 24, 3),
-                    ('synoptic', 0, 6, 16, 11), ('controller', 16, 6, 8, 11),
-                    ('metrics', 0, 17, 24, 6)],
+    # Giám sát có một cuộn trang duy nhất. Header một hàng và KPI lấp đầy ô giúp loại bỏ
+    # dải trống trên laptop thấp; tổng 21 hàng thay vì 23 nhưng không ép nhỏ sơ đồ thiết bị.
+    'vent_detail': [('header', 0, 0, 24, 2), ('kpis', 0, 2, 24, 2),
+                    ('synoptic', 0, 4, 16, 11), ('controller', 16, 4, 8, 11),
+                    ('metrics', 0, 15, 24, 6)],
     'vent_history': [('header', 0, 0, 24, 4), ('history', 0, 4, 24, 22)],
     'vent_alarms': [('header', 0, 0, 24, 4), ('alarms', 0, 4, 24, 18)],
     'vent_settings': [('header', 0, 0, 24, 4), ('settings', 0, 4, 24, 20)],

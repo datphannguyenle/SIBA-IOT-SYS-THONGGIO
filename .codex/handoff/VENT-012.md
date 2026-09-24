@@ -6,25 +6,26 @@
 
 ## Runtime
 
-- Dashboard: `DB-30-VEN-DETAIL-V1-GATEWAY-SIM`, ID trong `vent012_manifest.json`, version 7.
+- Dashboard: `DB-30-VEN-DETAIL-V1-GATEWAY-SIM`, ID trong `vent012_manifest.json`, version 8.
 - Containers: `ventilation-plc-sim`, `tb-gateway-ventilation`; cả hai healthy.
 - Four controllers: `SIM-VEN-ND2-1` .. `SIM-VEN-ND2-4`.
 - Default scenarios restored to NORMAL/BOUNDARY/MANUAL/FAULT; all `allow_alarms=false`.
-- Soak cũ dừng ở 328 mẫu vì người dùng yêu cầu đổi layout; state được lưu ngoài Git với nhãn
-  `invalidated-ui-change` và không được cộng vào nghiệm thu. Soak user service
-  `siba-vent012-soak` bắt đầu lại 24/09/2026 15:35:00 UTC+7, interval 60 giây, state tại
-  `~/.config/siba-vent012-soak.json`; dự kiến hoàn tất 25/09/2026 15:35:00 UTC+7.
+- Hai lượt soak cũ dừng ở 328 và 18 mẫu vì người dùng tiếp tục yêu cầu đổi layout; state được
+  lưu ngoài Git và không cộng vào nghiệm thu. Soak user service `siba-vent012-soak` bắt đầu lại
+  24/09/2026 16:01:37 UTC+7, interval 60 giây, state tại
+  `~/.config/siba-vent012-soak.json`; dự kiến hoàn tất 25/09/2026 16:01:37 UTC+7.
 
 ## Verified
 
-- 181 local tests PASS; `git diff --check` PASS.
+- 183 local tests PASS; `git diff --check` PASS.
 - Firefox live PASS: 1366×768, 1536×734, 390×844 and all five screens.
 - Alarm: four `[SIM]` alarms created through telemetry/rule engine, propagated with identical
   IDs to system/Barn/Area/Farm, then recovered through telemetry. No alarm mutation API.
 - Edge cases: missing, invalid enum, controller no-response and stale; restored afterward.
 - Gateway stop/restart recovered telemetry; protected deodorization gateway fingerprint unchanged.
 - Layout live: overview/history/alarms/settings full desktop viewport; detail has one bounded
-  page scroll and no nested widget scroll. Browser matrix includes all five screens at 1366×768.
+  page scroll and no nested widget scroll. Header và KPI không còn dải trống lớn; Bộ điều khiển
+  và Dữ liệu bổ sung xếp dọc trong cột phải. Browser matrix gồm đủ năm màn tại 1366×768.
 
 ## Continue
 

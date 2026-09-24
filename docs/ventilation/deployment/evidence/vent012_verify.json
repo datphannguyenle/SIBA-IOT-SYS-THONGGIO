@@ -1,6 +1,6 @@
 {
   "task": "VENT-012",
-  "at": "2026-09-24T15:34:50+07:00",
+  "at": "2026-09-24T15:59:50+07:00",
   "manifest": {
     "task": "VENT-012",
     "created": {
@@ -143,6 +143,10 @@
       {
         "method": "POST",
         "path": "/api/relation"
+      },
+      {
+        "method": "POST",
+        "path": "/api/dashboard"
       },
       {
         "method": "POST",

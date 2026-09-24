@@ -1,26 +1,26 @@
 {
   "task": "VENT-012",
-  "at": "2026-09-24T15:31:30+07:00",
+  "at": "2026-09-24T15:59:49+07:00",
   "widgets": {
     "static": {
       "id": "93516710-b6fe-11f1-a719-7da6129c6745",
-      "version": 16
+      "version": 18
     },
     "latest": {
       "id": "93544d40-b6fe-11f1-a719-7da6129c6745",
-      "version": 16
+      "version": 18
     },
     "timeseries": {
       "id": "93569730-b6fe-11f1-a719-7da6129c6745",
-      "version": 16
+      "version": 18
     },
     "alarm": {
       "id": "9358ba10-b6fe-11f1-a719-7da6129c6745",
-      "version": 16
+      "version": 18
     },
     "overview": {
       "id": "935adcf0-b6fe-11f1-a719-7da6129c6745",
-      "version": 16
+      "version": 18
     }
   },
   "mutations": [

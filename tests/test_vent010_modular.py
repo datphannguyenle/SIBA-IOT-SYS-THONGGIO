@@ -80,6 +80,10 @@ class ModularBuildStaticTest(unittest.TestCase):
                 # LAYOUTS là nguồn chuẩn: 5 widget chức năng độc lập cho màn giám sát.
                 self.assertEqual({widgets[wid]['config']['settings']['component'] for wid in native},
                                  {'header', 'kpis', 'synoptic', 'controller', 'metrics'})
+                positions = {widgets[wid]['config']['settings']['component']: native[wid]
+                             for wid in native}
+                self.assertEqual((positions['header']['row'], positions['header']['sizeY']), (0, 2))
+                self.assertEqual((positions['kpis']['row'], positions['kpis']['sizeY']), (2, 2))
             if state == 'default':
                 self.assertEqual({widgets[wid]['config']['settings']['component'] for wid in native},
                                  {'header', 'overview'})

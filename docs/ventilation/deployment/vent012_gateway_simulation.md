@@ -4,9 +4,10 @@
 
 Đã triển khai end-to-end lên runtime ngày 24/09/2026. Simulator và Gateway riêng đều healthy;
 bốn controller ND2-1..4 đang gửi dữ liệu 3 giây/lần. Đây là **SIMULATION**, không xác nhận
-mapping PLC production. Kiểm live và 181 test đã đạt. Sau yêu cầu chỉnh layout của người dùng,
-soak cũ được dừng đúng quy trình ở 328 mẫu và không dùng làm kết quả. Baseline giao diện mới
-bắt đầu soak lại lúc 15:35:00 24/09/2026 (UTC+7), vì vậy task vẫn `active`.
+mapping PLC production. Kiểm live và 183 test đã đạt. Sau các yêu cầu chỉnh layout của người
+dùng, hai lượt soak cũ được dừng đúng quy trình ở 328 và 18 mẫu, lưu ngoài Git và không dùng
+làm kết quả. Baseline giao diện cuối bắt đầu soak lại lúc 16:01:37 24/09/2026 (UTC+7), vì vậy
+task vẫn `active`.
 
 ## Đường dữ liệu
 
@@ -71,8 +72,10 @@ python3 deploy/thingsboard/vent012_soak.py export
 - Firefox live PASS ở 1366×768, 1536×734 và 390×844; 4 nhà, 5 màn, số alarm active thật,
   không tràn ngang, không control ghi và không còn `[object Object]`.
 - Layout mới: Tổng quan/Lịch sử/Cảnh báo/Cài đặt lấp đầy viewport desktop; màn Giám sát dùng
-  một cuộn trang dọc có giới hạn thay cho nhiều thanh cuộn lồng nhau. Hai bảng lịch sử được
-  gộp thành một bảng có header sticky và cuộn nội bộ; summary alarm được gộp vào panel chính.
+  một cuộn trang dọc có giới hạn thay cho nhiều thanh cuộn lồng nhau. Header Giám sát gộp
+  điều hướng thành một hàng, KPI lấp đầy ô và cột phải xếp Bộ điều khiển trên Dữ liệu bổ sung,
+  loại bỏ các dải trống lớn. Hai bảng lịch sử được gộp thành một bảng có header sticky và cuộn
+  nội bộ; summary alarm được gộp vào panel chính. Dashboard runtime đang ở version 8.
 
 Evidence máy đọc nằm trong `docs/ventilation/deployment/evidence/vent012_*.json`. Chu kỳ soak
 chỉ được đánh đạt khi file `vent012_soak_24h.json` đã được export với `completed=true` và

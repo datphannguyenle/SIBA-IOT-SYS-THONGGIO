@@ -118,6 +118,19 @@ class Vent012UiTest(unittest.TestCase):
                                 "provenance": sim["provenance"], "summary": {}, "barns": []}, "overview", "default")
         self.assertIn("SIM · Mô phỏng thiết bị", overview["text"])
 
+    def test_detail_header_places_navigation_in_the_compact_header_row(self):
+        sim = self.source({}, {"simulation": True})
+        header = self.render(sim, "header")
+        self.assertIn("vm-header--detail", header["html"])
+        self.assertIn('class="vm-header__line"', header["html"])
+        self.assertRegex(header["html"], r'vm-header__line[\s\S]*vm-tabs[\s\S]*</div></header>')
+
+    def test_controller_keeps_control_and_supplemental_data_as_separate_panels(self):
+        rendered = self.render(self.source({}, {"simulation": True}), "controller")
+        self.assertEqual(rendered["html"].count('class="vm-panel"'), 2)
+        self.assertIn("Bộ điều khiển", rendered["text"])
+        self.assertIn("Dữ liệu bổ sung", rendered["text"])
+
 
 if __name__ == "__main__":
     unittest.main()

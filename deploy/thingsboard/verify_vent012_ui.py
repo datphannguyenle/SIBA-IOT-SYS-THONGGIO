@@ -36,12 +36,19 @@ def inspect(browser):
       var grid=document.querySelector('gridster');
       var tiny=[].slice.call(document.querySelectorAll('.vent-modular-root *')).filter(function(x){
         return x.offsetParent && parseFloat(getComputedStyle(x).fontSize)<12;}).length;
+      var fills=roots.map(function(x){
+        var child=x, component=child.getAttribute('data-vent-component');
+        if(!component)return null;
+        var content=child.firstElementChild, outer=child.getBoundingClientRect(), inner=content&&content.getBoundingClientRect();
+        return {component:component,outerHeight:Math.round(outer.height),contentHeight:inner?Math.round(inner.height):0,
+          ratio:inner&&outer.height?Math.round(inner.height/outer.height*100)/100:0};
+      }).filter(Boolean);
       return {barns:document.querySelectorAll('.vm-barn').length,
         overflowX:document.documentElement.scrollWidth-document.documentElement.clientWidth,
         clipped:roots.filter(function(x){return x.scrollWidth>x.clientWidth+2;}).length,
         gridOverflowY:grid ? grid.scrollHeight-grid.clientHeight : null,
         internalScrollY:roots.filter(function(x){return x.scrollHeight>x.clientHeight+2;}).length,
-        tiny:tiny,text:text.slice(0,10000),badge:text.indexOf('MÔ PHỎNG QUA GATEWAY')>=0,
+        tiny:tiny,text:text.slice(0,10000),fills:fills,badge:text.indexOf('MÔ PHỎNG QUA GATEWAY')>=0,
         kpis:[].map.call(document.querySelectorAll('.vm-kpis .vm-card b'),function(x){return x.innerText;}),
         writable:document.querySelectorAll('.vent-modular-root input:not([type=search]),.vent-modular-root textarea,.vent-modular-root select').length};
     """)
@@ -80,6 +87,11 @@ def main():
                 report['problems'].append('detail cuộn quá dài hoặc còn cuộn lồng')
             if 'Cấp hiện tại 0' not in compact:
                 report['problems'].append('ND2-2 không hiện cấp 0')
+            fill = {item['component']: item for item in detail['fills']}
+            for component in ('header', 'kpis'):
+                if component not in fill or fill[component]['ratio'] < .85:
+                    report['problems'].append('%s chưa lấp đều chiều cao ô: %s' %
+                                              (component, fill.get(component)))
             for state in ('vent_history', 'vent_alarms', 'vent_settings'):
                 ok = browser.run("var x=document.querySelector('[data-nav=\"'+arguments[0]+'\"]');if(x){x.click();return true}return false", state)
                 if not ok: report['problems'].append('thiếu tab '+state); continue
@@ -110,6 +122,12 @@ def main():
                 if (data['writable'] or data['overflowX'] > 2 or data['gridOverflowY'] is None or
                         data['gridOverflowY'] > allowed_grid_y or nested_scroll):
                     report['problems'].append(state + ' không vừa laptop 1366x768')
+                if state == 'vent_detail':
+                    fill = {item['component']: item for item in data['fills']}
+                    for component in ('header', 'kpis'):
+                        if component not in fill or fill[component]['ratio'] < .85:
+                            report['problems'].append('%s %s chưa lấp đều: %s' %
+                                                      (state, component, fill.get(component)))
         finally:
             browser.close()
     write_json(EVIDENCE_DIR / 'vent012_ui_verify.json', report)
