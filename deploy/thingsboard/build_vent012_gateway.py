@@ -11,7 +11,7 @@ from build_vent_live import (ALARM_FIELDS, ALARM_WINDOW_MS, ALIAS_LIST, ALIAS_SE
 from vent_demo_common import ROOT, write_json
 
 OUT = ROOT / 'deploy/thingsboard/build/vent012'
-DASHBOARD_TITLE = 'DB-30-VEN-DETAIL-V1-GATEWAY-SIM'
+DASHBOARD_TITLE = 'SIBA · Hệ thống thông gió'
 PROFILE = 'SIM-VEN-GatewayController-V012'
 PREFIX = 'SIM-VEN-ND2-'
 FRESHNESS_MS = 30_000

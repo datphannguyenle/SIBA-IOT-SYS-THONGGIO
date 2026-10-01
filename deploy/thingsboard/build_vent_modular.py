@@ -68,6 +68,7 @@ self.onInit = function () {
     var settings = ctx.settings || {}, savedTab = node.querySelector('[data-settings-tab].is-active');
     var params = Object.assign({}, ctx.stateController && ctx.stateController.getStateParams ? ctx.stateController.getStateParams() : {});
     params.state = settings.viewState || (ctx.stateController && ctx.stateController.getStateId ? ctx.stateController.getStateId() : 'default');
+    if (settings.hubDashboardId) params.hubDashboardId = settings.hubDashboardId;
     if (savedTab) params.settingsGroup = Number(savedTab.getAttribute('data-settings-tab'));
     var vm = __vent.VentilationSource.createViewModel(ctx, settings, settings.sourceMode === 'demo' ? fixture : undefined);
     if (self._ventAlarmTotal && vm.summary) {
@@ -205,6 +206,7 @@ def dashboard():
             config = {'title': component, 'showTitle': False, 'showTitleIcon': False, 'padding': '0px',
                       'backgroundColor': '#001827', 'color': '#f0f5ff', 'dropShadow': False,
                       'enableFullscreen': False, 'enableDataExport': False, 'actions': {}, 'datasources': [],
+                      'noDataDisplayMessage': 'Chưa có bộ điều khiển thông gió nào kết nối. Dữ liệu sẽ hiện khi PLC thông gió thật được thêm.',
                       **alarm_source(TB_TYPE.get(kind_for(component), kind_for(component))),
                       'settings': {'component': component, 'viewState': state, 'sourceMode': 'demo',
                                    'demoUseSubscription': False, 'keyMap': {}, 'freshnessMs': {}},

@@ -23,6 +23,7 @@
           "enableDataExport": false,
           "actions": {},
           "datasources": [],
+          "noDataDisplayMessage": "Chưa có bộ điều khiển thông gió nào kết nối. Dữ liệu sẽ hiện khi PLC thông gió thật được thêm.",
           "settings": {
             "component": "header",
             "viewState": "default",
@@ -97,6 +98,7 @@
               ]
             }
           ],
+          "noDataDisplayMessage": "Chưa có bộ điều khiển thông gió nào kết nối. Dữ liệu sẽ hiện khi PLC thông gió thật được thêm.",
           "settings": {
             "component": "overview",
             "viewState": "default",
@@ -140,6 +142,7 @@
           "enableDataExport": false,
           "actions": {},
           "datasources": [],
+          "noDataDisplayMessage": "Chưa có bộ điều khiển thông gió nào kết nối. Dữ liệu sẽ hiện khi PLC thông gió thật được thêm.",
           "settings": {
             "component": "header",
             "viewState": "vent_detail",
@@ -473,6 +476,7 @@
               ]
             }
           ],
+          "noDataDisplayMessage": "Chưa có bộ điều khiển thông gió nào kết nối. Dữ liệu sẽ hiện khi PLC thông gió thật được thêm.",
           "settings": {
             "component": "kpis",
             "viewState": "vent_detail",
@@ -892,6 +896,7 @@
               ]
             }
           ],
+          "noDataDisplayMessage": "Chưa có bộ điều khiển thông gió nào kết nối. Dữ liệu sẽ hiện khi PLC thông gió thật được thêm.",
           "settings": {
             "component": "synoptic",
             "viewState": "vent_detail",
@@ -1311,6 +1316,7 @@
               ]
             }
           ],
+          "noDataDisplayMessage": "Chưa có bộ điều khiển thông gió nào kết nối. Dữ liệu sẽ hiện khi PLC thông gió thật được thêm.",
           "settings": {
             "component": "metrics",
             "viewState": "vent_detail",
@@ -1730,6 +1736,7 @@
               ]
             }
           ],
+          "noDataDisplayMessage": "Chưa có bộ điều khiển thông gió nào kết nối. Dữ liệu sẽ hiện khi PLC thông gió thật được thêm.",
           "settings": {
             "component": "controller",
             "viewState": "vent_detail",
@@ -1847,6 +1854,7 @@
           "enableDataExport": false,
           "actions": {},
           "datasources": [],
+          "noDataDisplayMessage": "Chưa có bộ điều khiển thông gió nào kết nối. Dữ liệu sẽ hiện khi PLC thông gió thật được thêm.",
           "settings": {
             "component": "header",
             "viewState": "vent_history",
@@ -1935,6 +1943,7 @@
               ]
             }
           ],
+          "noDataDisplayMessage": "Chưa có bộ điều khiển thông gió nào kết nối. Dữ liệu sẽ hiện khi PLC thông gió thật được thêm.",
           "settings": {
             "component": "history",
             "viewState": "vent_history",
@@ -1982,6 +1991,7 @@
           "enableDataExport": false,
           "actions": {},
           "datasources": [],
+          "noDataDisplayMessage": "Chưa có bộ điều khiển thông gió nào kết nối. Dữ liệu sẽ hiện khi PLC thông gió thật được thêm.",
           "settings": {
             "component": "header",
             "viewState": "vent_alarms",
@@ -2013,6 +2023,7 @@
           "enableDataExport": false,
           "actions": {},
           "datasources": [],
+          "noDataDisplayMessage": "Chưa có bộ điều khiển thông gió nào kết nối. Dữ liệu sẽ hiện khi PLC thông gió thật được thêm.",
           "alarmSource": {
             "type": "entity",
             "name": "Nhà gió",
@@ -2102,6 +2113,7 @@
           "enableDataExport": false,
           "actions": {},
           "datasources": [],
+          "noDataDisplayMessage": "Chưa có bộ điều khiển thông gió nào kết nối. Dữ liệu sẽ hiện khi PLC thông gió thật được thêm.",
           "settings": {
             "component": "header",
             "viewState": "vent_settings",
@@ -3709,6 +3721,7 @@
               ]
             }
           ],
+          "noDataDisplayMessage": "Chưa có bộ điều khiển thông gió nào kết nối. Dữ liệu sẽ hiện khi PLC thông gió thật được thêm.",
           "settings": {
             "component": "settings",
             "viewState": "vent_settings",

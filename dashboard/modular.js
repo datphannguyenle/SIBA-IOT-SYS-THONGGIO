@@ -17,7 +17,7 @@
   function header(vm,p){var b=barn(vm,p),st=p.state||"default",scope=[(vm.scope||{}).farm,(vm.scope||{}).area].filter(Boolean).map(esc).join(" · "),source=provenance(vm),
     badge='<span class="vm-shell__badge vm-shell__badge--src" title="'+esc(source.label)+'">'+esc(source.kind)+'</span>',
     tabs='<nav class="vm-tabs vm-shell__switches">'+[["vent_detail","Giám sát"],["vent_history","Lịch sử"],["vent_alarms","Cảnh báo"],["vent_settings","Cài đặt"]].map(function(x){return '<button type="button" '+nav(x[0],b)+' class="vm-shell__switch '+(st===x[0]?"is-active":"")+'">'+x[1]+'</button>';}).join("")+'</nav>',
-    brand=function(sub){return '<div class="vm-shell__brand"><p class="vm-eyebrow">SIBA OPERATIONS</p><h1>SIBA · <span>Hệ thống thông gió</span></h1><p class="vm-shell__sub">'+sub+'</p></div>';},
+    brand=function(sub){return '<div class="vm-shell__brand">'+(p.hubDashboardId?'<a class="siba-home" href="/dashboards/'+encodeURIComponent(p.hubDashboardId)+'">← Tổng quan hệ thống</a>':'<p class="vm-eyebrow">SIBA OPERATIONS</p>')+'<h1>SIBA · <span>Hệ thống thông gió</span></h1><p class="vm-shell__sub">'+sub+'</p></div>';},
     meta=function(extra){return '<div class="vm-shell__meta">'+extra+(scope?'<span class="vm-shell__scope">'+scope+'</span>':"")+badge+'<span class="vm-shell__badge">READ-ONLY</span></div>';};
     if(st==="default")return '<header class="vm-shell"><div class="vm-shell__line">'+brand(esc("Giám sát chỉ xem · "+provenanceText(vm)))+meta("")+'</div></header>';
     return '<header class="vm-shell is-detail"><div class="vm-shell__line"><button type="button" class="vm-back vm-shell__back" '+nav("default",b)+'>← Tổng quan</button>'+brand(esc((b||{}).label||(vm.scope||{}).selectedBarn||"Nhà chưa chọn"))+meta(tabs)+'</div></header>';}

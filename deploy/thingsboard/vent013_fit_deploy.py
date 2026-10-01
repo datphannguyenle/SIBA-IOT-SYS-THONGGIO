@@ -30,7 +30,7 @@ KINDS = ('static', 'latest', 'timeseries', 'alarm', 'overview')
 DASHBOARDS = {
     'GATEWAY': '0e30c5f0-b7bf-11f1-a719-7da6129c6745',
 }
-NAMES = {'GATEWAY': 'DB-30-VEN-DETAIL-V1-GATEWAY-SIM'}
+NAMES = {'GATEWAY': 'SIBA · Hệ thống thông gió'}
 
 
 def target_layout():
