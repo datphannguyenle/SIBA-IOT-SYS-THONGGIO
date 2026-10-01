@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""VENT-013: đưa giao diện thông gió full màn hình lên 3 dashboard đang chạy.
+"""VENT-013: đưa giao diện thông gió full màn hình lên dashboard chuẩn đang chạy.
 
 Chỉ làm hai việc, đều có sao lưu trước và đọc lại sau:
   1. cập nhật descriptor của đúng 5 widget type `siba_vent_demo.modular_*` (CSS/JS vừa khung);
-  2. thay phần BỐ CỤC (vị trí, kích thước, mobileHeight theo hàng, autoFillHeight) của đúng 3 dashboard
-     DEMO / SIM / GATEWAY-SIM. Nguồn dữ liệu, alias, key map, cảnh báo, cài đặt giữ nguyên.
+  2. thay phần BỐ CỤC (vị trí, kích thước, mobileHeight theo hàng, autoFillHeight) của đúng 1 dashboard
+     GATEWAY-SIM. Nguồn dữ liệu, alias, key map, cảnh báo, cài đặt giữ nguyên.
 Không tạo/xóa thực thể, không ghi telemetry/thuộc tính, không RPC. Đọc TB_URL/TB_USER/TB_PASSWORD từ môi trường.
 
   --widgets      cập nhật 5 widget type
-  --dashboards   DEMO,SIM,GATEWAY (mặc định cả ba)
+  --dashboards   GATEWAY
   --dry-run      chỉ so sánh, không ghi
 """
 import argparse
@@ -26,13 +26,11 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 BUILD = ROOT / 'deploy/thingsboard/build/modular'
 BACKUP = pathlib.Path(os.path.expanduser('~/siba-data/vent013-backup'))
 KINDS = ('static', 'latest', 'timeseries', 'alarm', 'overview')
+# Từ 01/10/2026 chỉ còn MỘT dashboard chuẩn; DEMO (VENT-006/008/010) và SIM (VENT-011) đã xóa, bản sao lưu ở ~/siba-data/vent013-backup/.
 DASHBOARDS = {
-    'DEMO': 'b9ff4d70-b26a-11f1-83ad-9912edc644d2',
-    'SIM': '32b1ecb0-b71a-11f1-a719-7da6129c6745',
     'GATEWAY': '0e30c5f0-b7bf-11f1-a719-7da6129c6745',
 }
-NAMES = {'DEMO': 'DB-30-VEN-DETAIL-V1-DEMO', 'SIM': 'DB-30-VEN-DETAIL-V1-SIM',
-         'GATEWAY': 'DB-30-VEN-DETAIL-V1-GATEWAY-SIM'}
+NAMES = {'GATEWAY': 'DB-30-VEN-DETAIL-V1-GATEWAY-SIM'}
 
 
 def target_layout():

@@ -1,7 +1,6 @@
 # VENT-013 · Dashboard thông gió full màn hình (01/10/2026)
 
-Thay baseline v1 ở điểm "trang Giám sát được cuộn dọc ngắn". Áp dụng cho 3 dashboard đang chạy:
-`DB-30-VEN-DETAIL-V1-DEMO` (v17), `…-SIM` (v5), `…-GATEWAY-SIM` (v10).
+Thay baseline v1 ở điểm "trang Giám sát được cuộn dọc ngắn". Áp dụng cho 3 dashboard (DEMO v17, SIM v5, GATEWAY-SIM v10); **cùng ngày DEMO và SIM đã bị xóa theo yêu cầu, chỉ còn `DB-30-VEN-DETAIL-V1-GATEWAY-SIM` làm giao diện chuẩn** (xem `deploy/thingsboard/README.md`).
 
 ## Quy tắc bố cục (nguồn chân lý: `build_vent_modular.LAYOUTS`)
 

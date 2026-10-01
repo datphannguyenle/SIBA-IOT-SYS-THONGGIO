@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """VENT-013: xác minh CHỈ ĐỌC dashboard thông gió vừa khung (full màn hình) trên Firefox thật.
 
-  python3 deploy/thingsboard/verify_vent013_fit.py [DEMO|SIM|GATEWAY ...]
+  python3 deploy/thingsboard/verify_vent013_fit.py [GATEWAY]
 
 Đo những thứ mà bộ kiểm cũ bỏ sót vì chỉ nhìn cuộn BÊN TRONG widget:
   1. Cuộn ở cấp DASHBOARD ThingsBoard (tổ tiên của widget) - "con lăn của dashboard".
@@ -121,7 +121,7 @@ def open_dashboard(b, did, in_frame=False):
     time.sleep(3)
 
 
-BARN = {'DEMO': 'ND2-1'}   # bản DEMO chỉ có nhà mẫu ND2-1 mang dữ liệu chi tiết; các nhà khác chỉ hiện thông báo
+BARN = {}   # mặc định ND2-2; nhà không có dữ liệu chi tiết chỉ hiện thông báo nên phải chọn nhà có dữ liệu
 CURRENT = {'barn': 'ND2-2'}
 
 
