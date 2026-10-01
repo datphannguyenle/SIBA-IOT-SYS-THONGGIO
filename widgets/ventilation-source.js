@@ -259,7 +259,7 @@
       copy.created = alarm.createdTime !== undefined ? alarm.createdTime : (alarm.created !== undefined ? alarm.created : null);
       copy.originator = alarm.originatorName || alarm.originator || null;
       copy.message = readableAlarmText(alarm.message) || readableAlarmText(alarm.details);
-      copy.source = alarm.source || "THINGSBOARD";
+      copy.source = alarm.source || "NỀN TẢNG";
       return copy;
     });
   }

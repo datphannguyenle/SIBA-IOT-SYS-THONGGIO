@@ -164,6 +164,7 @@ self.typeParameters = function () {
 def widget_types():
     css = (strip_css_comments(read('dashboard/modular.css')) +
            strip_css_comments(read('dashboard/modular-accessibility.css')) +
+           strip_css_comments(read('dashboard/modular-ops.css')) +
            strip_css_comments(read('dashboard/modular-fit.css'))) + '''
 .vent-modular-root{height:100%;overflow:auto;overscroll-behavior:contain;min-width:0}
 .vent-modular-root h1,.vent-modular-root h2,.vent-modular-root h3{font-weight:700;line-height:1.25}

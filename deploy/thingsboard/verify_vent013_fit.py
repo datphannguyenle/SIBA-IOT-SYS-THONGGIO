@@ -54,7 +54,7 @@ PROBE = """
    return {comp:comp,top:Math.round(rb.top),bottom:Math.round(rb.bottom),h:Math.round(rb.height),w:Math.round(rb.width),
      rootScroll:r.scrollHeight-r.clientHeight, fillGap:fb?Math.round(rb.bottom-fb.bottom):null,
      scrollers:scrollers.slice(0,4), clipped:clipped.slice(0,4), tiny:tiny, notice:!!r.querySelector('.vm-notice')};});
- var title=document.querySelector('.vent-modular-root .vm-header__title h1'), tb=title?title.getBoundingClientRect():null;
+ var title=document.querySelector('.vent-modular-root .vm-shell__brand h1'), tb=title?title.getBoundingClientRect():null;
  var back=document.querySelector('.vent-modular-root .vm-back'), bb=back?back.getBoundingClientRect():null;
  var lowest=widgets.length?Math.max.apply(null,widgets.map(function(w){return w.bottom;})):0;
  return {dashScroll:dash, pageX:document.documentElement.scrollWidth-document.documentElement.clientWidth,

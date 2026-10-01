@@ -1,0 +1,29 @@
+/* VENT-014: header và thẻ KPI theo kiểu chuẩn chung "SIBA OPERATIONS" (cùng cho ăn và khử mùi). */
+.vm-shell{height:100%;padding:10px 12px}
+.vm-shell__line{display:flex;height:100%;align-items:center;gap:12px;padding-bottom:9px;border-bottom:1px solid var(--vm-line)}
+.vm-shell__back,.vm-shell__switch{padding:7px 10px;border:1px solid var(--vm-cyan)!important;border-radius:4px;background:#003149;color:var(--vm-cyan);cursor:pointer;white-space:nowrap}
+.vm-shell__back:hover,.vm-shell__back:focus-visible,.vm-shell__switch:hover,.vm-shell__switch:focus-visible{outline:2px solid var(--vm-cyan);outline-offset:2px}
+.vm-shell__switch.is-active{background:#00314988;box-shadow:inset 0 -2px var(--vm-cyan)}
+.vm-shell__brand{min-width:0}
+.vm-shell__brand h1{font-size:21px;line-height:1.2;font-weight:700}
+.vm-shell__brand h1 span{color:var(--vm-cyan)}
+.vm-shell__brand p{color:var(--vm-sub);font-size:11px}
+.vm-shell__brand .vm-eyebrow{color:var(--vm-cyan)}
+.vm-shell__meta{margin-left:auto;display:flex;align-items:center;gap:9px;color:var(--vm-sub);white-space:nowrap}
+.vm-shell__switches{display:flex;gap:4px}
+.vm-shell__badge{padding:3px 7px;border:1px solid var(--vm-ok);border-radius:4px;color:var(--vm-ok);font-size:10px;font-weight:700}
+.vm-shell__badge--src{border-color:var(--vm-warn);color:var(--vm-warn)}
+.vm-shell__scope{max-width:260px;overflow:hidden;text-overflow:ellipsis}
+.vm-shell.is-detail .vm-shell__scope{display:none}
+.vm-kpi{display:flex;align-items:center;gap:12px;padding:12px}
+.vm-kpi__icon{display:grid;width:52px;height:52px;flex:none;place-items:center;border:1.5px solid var(--tone,var(--vm-cyan));border-radius:50%;background:radial-gradient(circle at 40% 30%,#005b7266,#002335);color:var(--tone,var(--vm-cyan))}
+.vm-kpi__icon .material-icons{font-size:28px}
+.vm-kpi__body{min-width:0}
+.vm-kpi__body p{color:var(--vm-sub);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vm-kpi__body b{display:block;margin:3px 0 1px;font-size:24px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+.vm-kpi__body>small{display:block;color:var(--vm-sub);font-size:10px}
+.vm-kpi__body b small{display:inline;margin-left:3px;font-size:15px;font-weight:500}
+.vm-card--ok{--tone:var(--vm-ok)}
+.vm-card--warn{--tone:var(--vm-warn)}
+.vm-card--danger{--tone:var(--vm-danger)}
+@media(max-width:720px){.vm-shell__line{flex-wrap:wrap;gap:7px}.vm-shell__meta{width:100%;margin-left:0;overflow:auto}.vm-shell__brand h1{font-size:18px}.vm-shell__scope{display:none}}

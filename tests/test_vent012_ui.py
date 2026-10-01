@@ -121,9 +121,10 @@ class Vent012UiTest(unittest.TestCase):
     def test_detail_header_places_navigation_in_the_compact_header_row(self):
         sim = self.source({}, {"simulation": True})
         header = self.render(sim, "header")
-        self.assertIn("vm-header--detail", header["html"])
-        self.assertIn('class="vm-header__line"', header["html"])
-        self.assertRegex(header["html"], r'vm-header__line[\s\S]*vm-tabs[\s\S]*</div></header>')
+        # Kiểu chuẩn chung (VENT-014): tiêu đề là tên hệ thống, tên nhà ở dòng phụ, điều hướng nằm cùng hàng với tiêu đề.
+        self.assertIn("vm-shell is-detail", header["html"])
+        self.assertIn('class="vm-shell__line"', header["html"])
+        self.assertRegex(header["html"], r'vm-shell__line[\s\S]*vm-tabs[\s\S]*</div></header>')
 
     def test_controller_keeps_control_and_supplemental_data_as_separate_panels(self):
         rendered = self.render(self.source({}, {"simulation": True}), "controller")

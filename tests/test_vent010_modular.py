@@ -167,12 +167,12 @@ class ModularRuntimeTest(unittest.TestCase):
                                                  'entityName': 'ND6-1'},
                                   'dataKey': {'name': 'vent_stage'}, 'data': [[1, 3]]}]},
                    params={'barnId': 'dev-7', 'barnLabel': 'Nhà mô phỏng · chạy tự động'})
-        heading = self.browser.run("return document.querySelector('.vent-modular-root h1').innerText")
+        heading = self.browser.run("return document.querySelector('.vent-modular-root .vm-shell__sub').innerText")
         self.assertEqual(heading, 'Nhà mô phỏng · chạy tự động')
 
     def test_detail_header_admits_when_no_barn_was_chosen(self):
         self.mount('static', 'header', 'vent_detail')
-        heading = self.browser.run("return document.querySelector('.vent-modular-root h1').innerText")
+        heading = self.browser.run("return document.querySelector('.vent-modular-root .vm-shell__sub').innerText")
         self.assertEqual(heading, 'Nhà chưa chọn')
 
     def test_live_empty_default_never_uses_demo_fixture_or_fake_barn(self):
