@@ -1,0 +1,57 @@
+/* VENT-013: widget vừa đúng khung ThingsBoard cấp cho nó (full màn hình, không cuộn cấp dashboard).
+   Quy tắc: widget không bao giờ cao hơn khung; vùng dữ liệu dài tự cuộn BÊN TRONG panel. */
+
+.vent-modular,.vent-modular *{scrollbar-width:thin;scrollbar-color:#075677 transparent}
+.vent-modular ::-webkit-scrollbar{width:8px;height:8px}
+.vent-modular ::-webkit-scrollbar-thumb{background:#075677;border-radius:4px}
+.vent-modular ::-webkit-scrollbar-track{background:transparent}
+
+.vent-modular.vent-modular-root{height:100%;display:flex;flex-direction:column;overflow:hidden;color-scheme:dark}
+.vent-modular.vent-modular-root[data-vent-component="header"]{overflow:auto;justify-content:center}
+.vent-modular.vent-modular-root>section{flex:1 1 0;min-height:0;overflow:auto}
+.vent-modular .vm-header{margin-bottom:0}
+
+.vent-modular[data-vent-component="kpis"]>.vm-kpis{overflow:hidden}
+.vent-modular[data-vent-component="kpis"] .vm-card{min-height:0;padding:8px 12px}
+.vent-modular[data-vent-component="overview"] .vm-kpis .vm-card{min-height:0;padding:10px 12px}
+
+.vent-modular[data-vent-component="overview"]>.vm-overview{overflow:hidden;grid-template-rows:auto minmax(0,1fr)}
+.vent-modular[data-vent-component="overview"] .vm-overview>.vm-panel{display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.vent-modular .vm-overview .vm-barn-grid{flex:1 1 0;min-height:0;overflow:auto;align-content:start;grid-auto-rows:max-content}
+.vent-modular .vm-barn{height:auto}
+.vent-modular .vm-barn>b small{font-size:10px}
+
+.vent-modular[data-vent-component="synoptic"]>.vm-synoptic{display:flex;flex-direction:column;overflow:auto}
+.vent-modular[data-vent-component="synoptic"] .vm-barn-svg{flex:1 1 0;min-height:140px;height:auto;width:100%}
+.vent-modular[data-vent-component="synoptic"] .vm-synoptic>.vm-muted{display:none}
+.vent-modular[data-vent-component="synoptic"] .vm-flags{margin:6px 0 4px}
+.vent-modular[data-vent-component="synoptic"] .vm-barn-svg{margin-top:4px}
+
+.vent-modular[data-vent-component="controller"]>.vm-controller{display:flex;flex-direction:column;gap:12px}
+.vent-modular[data-vent-component="controller"]>.vm-controller>.vm-panel{flex:0 0 auto;overflow:visible}
+.vent-modular[data-vent-component="metrics"]>.vm-panel{overflow:auto}
+.vent-modular[data-vent-component="metrics"] .vm-panel>.vm-muted{display:none}
+.vent-modular[data-vent-component="metrics"] .vm-metrics{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));grid-auto-rows:max-content;gap:6px;margin-top:8px}
+.vent-modular[data-vent-component="metrics"] .vm-metrics>div{min-height:0;padding:5px 8px}
+.vent-modular[data-vent-component="metrics"] .vm-metrics b{margin:1px 0;font-size:15px}
+.vent-modular[data-vent-component="metrics"] .vm-metrics b small{display:inline;margin-left:3px;font-size:12px}
+
+.vent-modular[data-vent-component="history"]>.vm-history{display:grid;grid-template-rows:minmax(0,1.15fr) minmax(0,1fr);gap:12px;overflow:hidden}
+.vent-modular[data-vent-component="history"] .vm-history>.vm-panel{display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.vent-modular[data-vent-component="history"] .vm-chart-wrap{position:relative;flex:1 1 0;min-height:110px;margin-top:6px;overflow:hidden}
+.vent-modular[data-vent-component="history"] .vm-chart{position:absolute;inset:0;width:100%;height:100%;min-width:0;min-height:0}
+.vent-modular[data-vent-component="history"] .vm-history__table .vm-table-wrap{flex:1 1 0;min-height:0}
+
+.vent-modular[data-vent-component="alarms"]>.vm-alarms{overflow:hidden}
+.vent-modular[data-vent-component="alarms"] .vm-alarms>.vm-panel{display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.vent-modular[data-vent-component="alarms"] .vm-table-wrap{flex:1 1 0;min-height:0}
+
+.vent-modular[data-vent-component="settings"]>.vm-settings{overflow:auto}
+.vent-modular .vm-table-wrap{overflow:auto}
+.vent-modular .vm-table-wrap th{position:sticky;top:0;z-index:1;background:#01283d}
+
+.vent-modular.vm-narrow[data-vent-component="history"] .vm-chart-wrap{min-height:140px}
+.vent-modular .vm-chart .humidity{fill:none;stroke:#2ee6a8;stroke-width:2.5;stroke-dasharray:6 4}
+.vent-modular .vm-legend .humidity{background:#2ee6a8}
+.vent-modular.vm-narrow .vm-header__title{min-width:0;max-width:100%}
+.vent-modular.vm-narrow .vm-header__title h1{font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}

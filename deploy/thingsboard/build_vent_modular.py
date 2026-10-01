@@ -15,19 +15,29 @@ MULTI_ENTITY_KINDS = ('overview',)
 TB_TYPE = {'overview': 'latest'}
 FQNS = {kind: 'siba_vent_demo.modular_' + kind for kind in KINDS}
 # Position is native ThingsBoard grid; widget data/settings are independently editable.
-# Desktop uses proportional rows to fill the available dashboard viewport. Mobile keeps
-# fixed rows and natural page scrolling because its content cannot reasonably fit one screen.
+# FULL MÀN HÌNH (VENT-013): mọi trang cùng TỔNG 21 hàng và header 3 hàng, nên với autoFillHeight
+# mỗi hàng cao như nhau ở mọi tab, header không nhảy khi đổi trang, và dashboard không tự cuộn.
+# Nếu một trang có tổng hàng khác, hàng của trang đó cao khác và tab đổi sẽ lệch (bẫy #36 trong kit).
+LAYOUT_ROWS, HEADER_ROWS = 21, 3
 LAYOUTS = {
-    'default': [('header', 0, 0, 24, 3), ('overview', 0, 3, 24, 15)],
-    # Giám sát có một cuộn trang duy nhất. Header một hàng và KPI lấp đầy ô giúp loại bỏ
-    # dải trống trên laptop thấp; tổng 21 hàng thay vì 23 nhưng không ép nhỏ sơ đồ thiết bị.
-    'vent_detail': [('header', 0, 0, 24, 2), ('kpis', 0, 2, 24, 2),
-                    ('synoptic', 0, 4, 16, 11), ('controller', 16, 4, 8, 11),
-                    ('metrics', 0, 15, 24, 6)],
-    'vent_history': [('header', 0, 0, 24, 4), ('history', 0, 4, 24, 22)],
-    'vent_alarms': [('header', 0, 0, 24, 4), ('alarms', 0, 4, 24, 18)],
-    'vent_settings': [('header', 0, 0, 24, 4), ('settings', 0, 4, 24, 20)],
+    'default': [('header', 0, 0, 24, 3), ('overview', 0, 3, 24, 18)],
+    # Cột phải cho bộ điều khiển (nhiều dòng nhất); cột trái xếp sơ đồ rồi thông số, cùng cách bố trí với máy nghiền.
+    'vent_detail': [('header', 0, 0, 24, 3), ('kpis', 0, 3, 24, 3),
+                    ('synoptic', 0, 6, 16, 9), ('metrics', 0, 15, 16, 6),
+                    ('controller', 16, 6, 8, 15)],
+    'vent_history': [('header', 0, 0, 24, 3), ('history', 0, 3, 24, 18)],
+    'vent_alarms': [('header', 0, 0, 24, 3), ('alarms', 0, 3, 24, 18)],
+    'vent_settings': [('header', 0, 0, 24, 3), ('settings', 0, 3, 24, 18)],
 }
+# Chiều cao mong muốn trên MÀN HẸP (px). ThingsBoard đo chiều cao di động bằng SỐ HÀNG
+# (cao = hàng × (rowHeight + margin) − margin), không phải px, nên đổi sang hàng khi ghi layout.
+MOBILE_HEIGHT_PX = {'header': 190, 'overview': 660, 'kpis': 220, 'synoptic': 540, 'controller': 550,
+                    'metrics': 440, 'history': 750, 'alarms': 650, 'settings': 650}
+ROW_PX, MARGIN_PX = 24, 6
+
+
+def mobile_rows(px):
+    return -(-(px + MARGIN_PX) // (ROW_PX + MARGIN_PX))
 
 
 def kind_for(component):
@@ -153,7 +163,8 @@ self.typeParameters = function () {
 
 def widget_types():
     css = (strip_css_comments(read('dashboard/modular.css')) +
-           strip_css_comments(read('dashboard/modular-accessibility.css'))) + '''
+           strip_css_comments(read('dashboard/modular-accessibility.css')) +
+           strip_css_comments(read('dashboard/modular-fit.css'))) + '''
 .vent-modular-root{height:100%;overflow:auto;overscroll-behavior:contain;min-width:0}
 .vent-modular-root h1,.vent-modular-root h2,.vent-modular-root h3{font-weight:700;line-height:1.25}
 .vent-modular-root p{line-height:1.42}
@@ -196,17 +207,15 @@ def dashboard():
                       **alarm_source(TB_TYPE.get(kind_for(component), kind_for(component))),
                       'settings': {'component': component, 'viewState': state, 'sourceMode': 'demo',
                                    'demoUseSubscription': False, 'keyMap': {}, 'freshnessMs': {}},
-                      'mobileHeight': {'header': 110, 'overview': 660, 'kpis': 220,
-                                       'synoptic': 540, 'controller': 550, 'metrics': 440,
-                                       'history': 750, 'alarms': 650, 'settings': 650}.get(component, 300)}
+                      }
             widgets[wid] = {'id': wid, 'typeFullFqn': 'tenant.' + FQNS[kind_for(component)],
                             'type': TB_TYPE.get(kind_for(component), kind_for(component)), **position, 'config': config}
-            layout[wid] = position
+            layout[wid] = {**position, 'mobileHeight': mobile_rows(MOBILE_HEIGHT_PX.get(component, 300))}
         states[state] = {'name': {'default': 'Tổng quan', 'vent_detail': 'Giám sát', 'vent_history': 'Lịch sử',
                                    'vent_alarms': 'Cảnh báo', 'vent_settings': 'Cài đặt · chỉ đọc'}[state],
                          'root': state == 'default', 'layouts': {'main': {'widgets': layout, 'gridSettings': {
                              'layoutType': 'default', 'columns': 24, 'margin': 6, 'outerMargin': True,
-                             'autoFillHeight': state != 'vent_detail',
+                             'autoFillHeight': True,
                              'mobileAutoFillHeight': False, 'mobileRowHeight': 24,
                              'rowHeight': 24, 'backgroundColor': '#001827'}}}}
     return {'title': DASHBOARD_TITLE, 'name': DASHBOARD_TITLE, 'configuration': {
@@ -221,6 +230,20 @@ def dashboard():
 
 def validate(types, dash):
     assert list(dash['configuration']['states']) == STATES
+    # Full màn hình: mọi trang cùng tổng hàng và header cùng cao, autoFillHeight bật, mobileHeight là SỐ HÀNG.
+    widgets_by_id = dash['configuration']['widgets']
+    for state, st in dash['configuration']['states'].items():
+        layout = st['layouts']['main']
+        assert layout['gridSettings']['autoFillHeight'] is True, state
+        assert layout['gridSettings']['mobileAutoFillHeight'] is False, state
+        total = max(widgets_by_id[w]['row'] + widgets_by_id[w]['sizeY'] for w in layout['widgets'])
+        assert total == LAYOUT_ROWS, (state, total)
+        header = next(w for w in layout['widgets'] if widgets_by_id[w]['config']['settings']['component'] == 'header')
+        assert widgets_by_id[header]['sizeY'] == HEADER_ROWS, state
+        for wid, pos in layout['widgets'].items():
+            comp = widgets_by_id[wid]['config']['settings']['component']
+            assert pos['mobileHeight'] == mobile_rows(MOBILE_HEIGHT_PX[comp]), (state, comp)
+            assert 'mobileHeight' not in widgets_by_id[wid]['config'], (state, comp)
     for kind, widget in types.items():
         descriptor = widget['descriptor']
         assert descriptor['type'] == TB_TYPE.get(kind, kind)

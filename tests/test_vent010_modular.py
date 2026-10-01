@@ -74,7 +74,16 @@ class ModularBuildStaticTest(unittest.TestCase):
             layout = definition['layouts']['main']
             native = layout['widgets']
             self.assertGreater(len(native), 1, state)
-            self.assertEqual(layout['gridSettings']['autoFillHeight'], state != 'vent_detail', state)
+            # Full màn hình (VENT-013): mọi trang autoFillHeight, cùng tổng 21 hàng, header 3 hàng.
+            self.assertTrue(layout['gridSettings']['autoFillHeight'], state)
+            self.assertEqual(max(widgets[wid]['row'] + widgets[wid]['sizeY'] for wid in native), 21, state)
+            header = next(wid for wid in native if widgets[wid]['config']['settings']['component'] == 'header')
+            self.assertEqual((widgets[header]['row'], widgets[header]['sizeY']), (0, 3), state)
+            # mobileHeight là SỐ HÀNG của lưới, nằm trong layout (config.mobileHeight không có tác dụng).
+            for wid in native:
+                self.assertIsInstance(native[wid]['mobileHeight'], int, state)
+                self.assertLess(native[wid]['mobileHeight'], 40, state)
+                self.assertNotIn('mobileHeight', widgets[wid]['config'], state)
             self.assertFalse(layout['gridSettings']['mobileAutoFillHeight'], state)
             if state == 'vent_detail':
                 # LAYOUTS là nguồn chuẩn: 5 widget chức năng độc lập cho màn giám sát.
@@ -82,8 +91,8 @@ class ModularBuildStaticTest(unittest.TestCase):
                                  {'header', 'kpis', 'synoptic', 'controller', 'metrics'})
                 positions = {widgets[wid]['config']['settings']['component']: native[wid]
                              for wid in native}
-                self.assertEqual((positions['header']['row'], positions['header']['sizeY']), (0, 2))
-                self.assertEqual((positions['kpis']['row'], positions['kpis']['sizeY']), (2, 2))
+                self.assertEqual((positions['header']['row'], positions['header']['sizeY']), (0, 3))
+                self.assertEqual((positions['kpis']['row'], positions['kpis']['sizeY']), (3, 3))
             if state == 'default':
                 self.assertEqual({widgets[wid]['config']['settings']['component'] for wid in native},
                                  {'header', 'overview'})

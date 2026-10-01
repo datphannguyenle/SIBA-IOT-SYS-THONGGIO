@@ -1,0 +1,3610 @@
+{
+  "task": "VENT-013",
+  "checked_at": "2026-10-01T10:01:10+0700",
+  "problems": {
+    "GATEWAY": [],
+    "SIM": [],
+    "DEMO": []
+  },
+  "views": {
+    "GATEWAY 1366x768": {
+      "default": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 768,
+        "lowest": 762,
+        "titleTop": null,
+        "backTop": null,
+        "errors": 0,
+        "text": "SIBA · THÔNG GIÓ\n\nTổng quan toàn trại\n\nGiám sát chỉ xem · SIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\n\nSIM Số nhà\n\n4\nToàn trại · SIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\n\nTrực tuyến\n\n4\nSIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\n\nCần chú ý\n\n4\nSIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\n\nCảnh báo đang mở\n\n0\nSIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\nChọn nhà\n\nChọn nhà để vào ngữ cảnh giám sát.\n\nTìm nhà\n[SIM] Bộ điều khiển thông gió ND2-4\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 9\n[SIM] Bộ điều khiển thông gió ND2-3\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nThủ công · Cấp 3\n[SIM] Bộ điều khiển thông gió ND2-2\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 0\n[SIM] Bộ điều khiển thông gió ND2-1\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 4",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 164,
+            "h": 94,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "overview",
+            "top": 170,
+            "bottom": 762,
+            "h": 592,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_detail": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 768,
+        "lowest": 762,
+        "titleTop": 112,
+        "backTop": 99,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\n[SIM] Bộ điều khiển thông gió ND2-4\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nSIM Nhiệt độ trong nhà\n\n32 °C\nDữ liệu cũ\n\nNhiệt độ ngoài trời\n\n27.4 °C\nDữ liệu cũ\n\nĐộ ẩm trong nhà\n\n59.5 %RH\nDữ liệu cũ\n\nNhiệt độ cảm nhận\n\n29.5 °C\nDữ liệu cũ Sơ đồ thông gió\nTín hiệu lỗi thiết bị tổng từ DI: Bình thường\nCảnh báo nhiệt độ cao từ thermostat ngoài: Bình thường\nCửa chớp trần · 99 %Cửa chớp hông · 81 %Quạt 01Đang chạyQuạt 02Đang chạyQuạt 03Đang chạyQuạt 04Đang chạyQuạt 05Đang chạyQuạt 06Đang chạyBơm làm mát 01Đang chạyBơm làm mát 02Đã dừng\nCửa chớp trần\n99\n%\nDữ liệu cũ\nCửa chớp hông\n81\n%\nDữ liệu cũ Bộ điều khiển\nKết nối\nTrực tuyến\nChế độ\nTự động\nCơ sở điều khiển\nNhiệt độ thực\nĐiều khiển quạt\nTheo cấp\nCấp hiện tại\n9\nKhử ẩm\nTắt\nChất lượng dữ liệu\n--\nDữ liệu bổ sung\nTốc độ gió\n2.1 m/s\nLưu lượng gió\n216000 m3/h\nNước tiêu thụ (tổng tích lũy)\n33633.7891 L\nLưu lượng nước\n11.37 L/min Thông số vận hành\nNhiệt độ đặt hiện tại\n27 °C\nDữ liệu cũ\nNhiệt độ cảm nhận đặt\n26 °C\nDữ liệu cũ\nĐộ ẩm đặt hiện tại\n65 %RH\nDữ liệu cũ\nNhiệt độ cảm biến 1\n31.8 °C\nDữ liệu cũ\nNhiệt độ cảm biến 2\n32.1 °C\nDữ liệu cũ\nTổng đàn\n1200 count\nDữ liệu cũ\nHeo chết tích lũy\n4 count\nDữ liệu cũ\nNgày tuổi\n36 day\nDữ liệu cũ",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 164,
+            "h": 94,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "kpis",
+            "top": 170,
+            "bottom": 263,
+            "h": 94,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 4,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "synoptic",
+            "top": 269,
+            "bottom": 563,
+            "h": 293,
+            "w": 730,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [
+              "vm-panel:40"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "controller",
+            "top": 269,
+            "bottom": 762,
+            "h": 493,
+            "w": 362,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [
+              "vm-controller:25"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "metrics",
+            "top": 569,
+            "bottom": 762,
+            "h": 193,
+            "w": 730,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [
+              "vm-panel:29"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_history": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 768,
+        "lowest": 762,
+        "titleTop": 112,
+        "backTop": 99,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\n[SIM] Bộ điều khiển thông gió ND2-4\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nSIM Lịch sử môi trường\n\nNguồn: SIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật. Chưa có mẫu lịch sử.",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 164,
+            "h": 94,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "history",
+            "top": 170,
+            "bottom": 762,
+            "h": 592,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      },
+      "vent_alarms": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 768,
+        "lowest": 762,
+        "titleTop": 112,
+        "backTop": 99,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\n[SIM] Bộ điều khiển thông gió ND2-4\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nSIM Cảnh báo\n\nNguồn: SIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật · chỉ xem.\n\n0\nđang hoạt động\nMức\tNội dung\tNguồn\tĐối tượng\tThời gian\tTrạng thái",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 164,
+            "h": 94,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "alarms",
+            "top": 170,
+            "bottom": 762,
+            "h": 592,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_settings": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 768,
+        "lowest": 762,
+        "titleTop": 112,
+        "backTop": 99,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\n[SIM] Bộ điều khiển thông gió ND2-4\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nSIM Cài đặt bộ điều khiển\n\nChỉ đọc · 224 thông số · -- là chưa có dữ liệu, không phải 0.\n\nTìm thông số\nHỆ THỐNG 14\nNHIỆT ĐỘ 40\nNHIỆT ĐỘ CẢM NHẬN 40\nCẤP THÔNG GIÓ 108\nTHỜI GIAN 18\nHIỆU CHỈNH 4\nCÀI ĐẶT - HỆ THỐNG\nChọn điều khiển theo nhiệt độ hay nhiệt độ cảm nhận\nNhiệt độ thực\nBật/tắt khử ẩm\nTắt\nChọn từng cấp quạt / vô cấp quạt VFD\nTheo cấp\nChiều dài chuồng\n90 m\nChiều rộng chuồng\n15 m\nChiều cao chuồng\n3.2 m\nCông suất/lưu lượng danh định quạt thông gió\n36000 m3/h\nSố lượng heo nhập chuồng / tổng đàn cấu hình\n1200 count\nSố heo chết nhập/cập nhật\n4 count\nNgày tuổi ban đầu / ngày tuổi cấu hình\n36 day\nĐộ ẩm cài đặt\n65 %RH\nNgưỡng độ ẩm thấp\n45 %RH\nOffset nhiệt độ làm mát\n1.5 °C\nĐộ lệch nhiệt cho sưởi\n2 °C",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 164,
+            "h": 94,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "settings",
+            "top": 170,
+            "bottom": 762,
+            "h": 592,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      }
+    },
+    "GATEWAY 1536x734": {
+      "default": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 734,
+        "lowest": 728,
+        "titleTop": null,
+        "backTop": null,
+        "errors": 0,
+        "text": "SIBA · THÔNG GIÓ\n\nTổng quan toàn trại\n\nGiám sát chỉ xem · SIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\n\nSIM Số nhà\n\n4\nToàn trại · SIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\n\nTrực tuyến\n\n4\nSIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\n\nCần chú ý\n\n4\nSIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\n\nCảnh báo đang mở\n\n0\nSIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\nChọn nhà\n\nChọn nhà để vào ngữ cảnh giám sát.\n\nTìm nhà\n[SIM] Bộ điều khiển thông gió ND2-4\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 9\n[SIM] Bộ điều khiển thông gió ND2-3\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nThủ công · Cấp 3\n[SIM] Bộ điều khiển thông gió ND2-2\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 0\n[SIM] Bộ điều khiển thông gió ND2-1\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 4",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 159,
+            "h": 89,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "overview",
+            "top": 165,
+            "bottom": 728,
+            "h": 563,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_detail": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 734,
+        "lowest": 728,
+        "titleTop": 109,
+        "backTop": 97,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\n[SIM] Bộ điều khiển thông gió ND2-4\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nSIM Nhiệt độ trong nhà\n\n32 °C\nDữ liệu cũ\n\nNhiệt độ ngoài trời\n\n27.4 °C\nDữ liệu cũ\n\nĐộ ẩm trong nhà\n\n59.5 %RH\nDữ liệu cũ\n\nNhiệt độ cảm nhận\n\n29.5 °C\nDữ liệu cũ Sơ đồ thông gió\nTín hiệu lỗi thiết bị tổng từ DI: Bình thường\nCảnh báo nhiệt độ cao từ thermostat ngoài: Bình thường\nCửa chớp trần · 99 %Cửa chớp hông · 81 %Quạt 01Đang chạyQuạt 02Đang chạyQuạt 03Đang chạyQuạt 04Đang chạyQuạt 05Đang chạyQuạt 06Đang chạyBơm làm mát 01Đang chạyBơm làm mát 02Đã dừng\nCửa chớp trần\n99\n%\nDữ liệu cũ\nCửa chớp hông\n81\n%\nDữ liệu cũ Bộ điều khiển\nKết nối\nTrực tuyến\nChế độ\nTự động\nCơ sở điều khiển\nNhiệt độ thực\nĐiều khiển quạt\nTheo cấp\nCấp hiện tại\n9\nKhử ẩm\nTắt\nChất lượng dữ liệu\n--\nDữ liệu bổ sung\nTốc độ gió\n2.1 m/s\nLưu lượng gió\n216000 m3/h\nNước tiêu thụ (tổng tích lũy)\n33633.7891 L\nLưu lượng nước\n11.37 L/min Thông số vận hành\nNhiệt độ đặt hiện tại\n27 °C\nDữ liệu cũ\nNhiệt độ cảm nhận đặt\n26 °C\nDữ liệu cũ\nĐộ ẩm đặt hiện tại\n65 %RH\nDữ liệu cũ\nNhiệt độ cảm biến 1\n31.8 °C\nDữ liệu cũ\nNhiệt độ cảm biến 2\n32.1 °C\nDữ liệu cũ\nTổng đàn\n1200 count\nDữ liệu cũ\nHeo chết tích lũy\n4 count\nDữ liệu cũ\nNgày tuổi\n36 day\nDữ liệu cũ",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 159,
+            "h": 89,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "kpis",
+            "top": 165,
+            "bottom": 254,
+            "h": 89,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 4,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "synoptic",
+            "top": 260,
+            "bottom": 538,
+            "h": 279,
+            "w": 843,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [
+              "vm-panel:56"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "controller",
+            "top": 260,
+            "bottom": 728,
+            "h": 468,
+            "w": 419,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [
+              "vm-controller:49"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "metrics",
+            "top": 544,
+            "bottom": 728,
+            "h": 184,
+            "w": 843,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [
+              "vm-panel:38"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_history": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 734,
+        "lowest": 728,
+        "titleTop": 109,
+        "backTop": 97,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\n[SIM] Bộ điều khiển thông gió ND2-4\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nSIM Lịch sử môi trường\n\nNguồn: SIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật. Chưa có mẫu lịch sử.",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 159,
+            "h": 89,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "history",
+            "top": 165,
+            "bottom": 728,
+            "h": 563,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      },
+      "vent_alarms": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 734,
+        "lowest": 728,
+        "titleTop": 109,
+        "backTop": 97,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\n[SIM] Bộ điều khiển thông gió ND2-4\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nSIM Cảnh báo\n\nNguồn: SIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật · chỉ xem.\n\n0\nđang hoạt động\nMức\tNội dung\tNguồn\tĐối tượng\tThời gian\tTrạng thái",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 159,
+            "h": 89,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "alarms",
+            "top": 165,
+            "bottom": 728,
+            "h": 563,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_settings": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 734,
+        "lowest": 728,
+        "titleTop": 109,
+        "backTop": 97,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\n[SIM] Bộ điều khiển thông gió ND2-4\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nSIM Cài đặt bộ điều khiển\n\nChỉ đọc · 224 thông số · -- là chưa có dữ liệu, không phải 0.\n\nTìm thông số\nHỆ THỐNG 14\nNHIỆT ĐỘ 40\nNHIỆT ĐỘ CẢM NHẬN 40\nCẤP THÔNG GIÓ 108\nTHỜI GIAN 18\nHIỆU CHỈNH 4\nCÀI ĐẶT - HỆ THỐNG\nChọn điều khiển theo nhiệt độ hay nhiệt độ cảm nhận\nNhiệt độ thực\nBật/tắt khử ẩm\nTắt\nChọn từng cấp quạt / vô cấp quạt VFD\nTheo cấp\nChiều dài chuồng\n90 m\nChiều rộng chuồng\n15 m\nChiều cao chuồng\n3.2 m\nCông suất/lưu lượng danh định quạt thông gió\n36000 m3/h\nSố lượng heo nhập chuồng / tổng đàn cấu hình\n1200 count\nSố heo chết nhập/cập nhật\n4 count\nNgày tuổi ban đầu / ngày tuổi cấu hình\n36 day\nĐộ ẩm cài đặt\n65 %RH\nNgưỡng độ ẩm thấp\n45 %RH\nOffset nhiệt độ làm mát\n1.5 °C\nĐộ lệch nhiệt cho sưởi\n2 °C",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 159,
+            "h": 89,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "settings",
+            "top": 165,
+            "bottom": 728,
+            "h": 563,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      }
+    },
+    "GATEWAY 1920x1080": {
+      "default": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 1080,
+        "lowest": 1074,
+        "titleTop": null,
+        "backTop": null,
+        "errors": 0,
+        "text": "SIBA · THÔNG GIÓ\n\nTổng quan toàn trại\n\nGiám sát chỉ xem · SIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\n\nSIM Số nhà\n\n4\nToàn trại · SIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\n\nTrực tuyến\n\n4\nSIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\n\nCần chú ý\n\n4\nSIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\n\nCảnh báo đang mở\n\n0\nSIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\nChọn nhà\n\nChọn nhà để vào ngữ cảnh giám sát.\n\nTìm nhà\n[SIM] Bộ điều khiển thông gió ND2-4\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 9\n[SIM] Bộ điều khiển thông gió ND2-3\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nThủ công · Cấp 3\n[SIM] Bộ điều khiển thông gió ND2-2\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 0\n[SIM] Bộ điều khiển thông gió ND2-1\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 4",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 208,
+            "h": 138,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 34,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "overview",
+            "top": 214,
+            "bottom": 1074,
+            "h": 860,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_detail": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 1080,
+        "lowest": 1074,
+        "titleTop": 130,
+        "backTop": 117,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\n[SIM] Bộ điều khiển thông gió ND2-4\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nSIM Nhiệt độ trong nhà\n\n32 °C\nDữ liệu cũ\n\nNhiệt độ ngoài trời\n\n27.4 °C\nDữ liệu cũ\n\nĐộ ẩm trong nhà\n\n59.5 %RH\nDữ liệu cũ\n\nNhiệt độ cảm nhận\n\n29.5 °C\nDữ liệu cũ Sơ đồ thông gió\nTín hiệu lỗi thiết bị tổng từ DI: Bình thường\nCảnh báo nhiệt độ cao từ thermostat ngoài: Bình thường\nCửa chớp trần · 99 %Cửa chớp hông · 81 %Quạt 01Đang chạyQuạt 02Đang chạyQuạt 03Đang chạyQuạt 04Đang chạyQuạt 05Đang chạyQuạt 06Đang chạyBơm làm mát 01Đang chạyBơm làm mát 02Đã dừng\nCửa chớp trần\n99\n%\nDữ liệu cũ\nCửa chớp hông\n81\n%\nDữ liệu cũ Bộ điều khiển\nKết nối\nTrực tuyến\nChế độ\nTự động\nCơ sở điều khiển\nNhiệt độ thực\nĐiều khiển quạt\nTheo cấp\nCấp hiện tại\n9\nKhử ẩm\nTắt\nChất lượng dữ liệu\n--\nDữ liệu bổ sung\nTốc độ gió\n2.1 m/s\nLưu lượng gió\n216000 m3/h\nNước tiêu thụ (tổng tích lũy)\n33633.7891 L\nLưu lượng nước\n11.37 L/min Thông số vận hành\nNhiệt độ đặt hiện tại\n27 °C\nDữ liệu cũ\nNhiệt độ cảm nhận đặt\n26 °C\nDữ liệu cũ\nĐộ ẩm đặt hiện tại\n65 %RH\nDữ liệu cũ\nNhiệt độ cảm biến 1\n31.8 °C\nDữ liệu cũ\nNhiệt độ cảm biến 2\n32.1 °C\nDữ liệu cũ\nTổng đàn\n1200 count\nDữ liệu cũ\nHeo chết tích lũy\n4 count\nDữ liệu cũ\nNgày tuổi\n36 day\nDữ liệu cũ",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 208,
+            "h": 138,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 42,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "kpis",
+            "top": 214,
+            "bottom": 353,
+            "h": 138,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "synoptic",
+            "top": 359,
+            "bottom": 785,
+            "h": 427,
+            "w": 1099,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "controller",
+            "top": 359,
+            "bottom": 1074,
+            "h": 715,
+            "w": 547,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "metrics",
+            "top": 791,
+            "bottom": 1074,
+            "h": 283,
+            "w": 1099,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_history": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 1080,
+        "lowest": 1074,
+        "titleTop": 130,
+        "backTop": 117,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\n[SIM] Bộ điều khiển thông gió ND2-4\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nSIM Lịch sử môi trường\n\nNguồn: SIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật. Chưa có mẫu lịch sử.",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 208,
+            "h": 138,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 42,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "history",
+            "top": 214,
+            "bottom": 1074,
+            "h": 860,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      },
+      "vent_alarms": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 1080,
+        "lowest": 1074,
+        "titleTop": 130,
+        "backTop": 117,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\n[SIM] Bộ điều khiển thông gió ND2-4\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nSIM Cảnh báo\n\nNguồn: SIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật · chỉ xem.\n\n0\nđang hoạt động\nMức\tNội dung\tNguồn\tĐối tượng\tThời gian\tTrạng thái",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 208,
+            "h": 138,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 42,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "alarms",
+            "top": 214,
+            "bottom": 1074,
+            "h": 860,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_settings": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 1080,
+        "lowest": 1074,
+        "titleTop": 130,
+        "backTop": 117,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\n[SIM] Bộ điều khiển thông gió ND2-4\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nSIM Cài đặt bộ điều khiển\n\nChỉ đọc · 224 thông số · -- là chưa có dữ liệu, không phải 0.\n\nTìm thông số\nHỆ THỐNG 14\nNHIỆT ĐỘ 40\nNHIỆT ĐỘ CẢM NHẬN 40\nCẤP THÔNG GIÓ 108\nTHỜI GIAN 18\nHIỆU CHỈNH 4\nCÀI ĐẶT - HỆ THỐNG\nChọn điều khiển theo nhiệt độ hay nhiệt độ cảm nhận\nNhiệt độ thực\nBật/tắt khử ẩm\nTắt\nChọn từng cấp quạt / vô cấp quạt VFD\nTheo cấp\nChiều dài chuồng\n90 m\nChiều rộng chuồng\n15 m\nChiều cao chuồng\n3.2 m\nCông suất/lưu lượng danh định quạt thông gió\n36000 m3/h\nSố lượng heo nhập chuồng / tổng đàn cấu hình\n1200 count\nSố heo chết nhập/cập nhật\n4 count\nNgày tuổi ban đầu / ngày tuổi cấu hình\n36 day\nĐộ ẩm cài đặt\n65 %RH\nNgưỡng độ ẩm thấp\n45 %RH\nOffset nhiệt độ làm mát\n1.5 °C\nĐộ lệch nhiệt cho sưởi\n2 °C",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 208,
+            "h": 138,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 42,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "settings",
+            "top": 214,
+            "bottom": 1074,
+            "h": 860,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      }
+    },
+    "GATEWAY 900x800": {
+      "default": {
+        "dashScroll": [
+          "GRIDSTER.mobile:176"
+        ],
+        "pageX": 0,
+        "gridBottom": 800,
+        "lowest": 964,
+        "titleTop": null,
+        "backTop": null,
+        "errors": 0,
+        "text": "SIBA · THÔNG GIÓ\n\nTổng quan toàn trại\n\nGiám sát chỉ xem · SIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\n\nSIM Số nhà\n\n4\nToàn trại · SIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\n\nTrực tuyến\n\n4\nSIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\n\nCần chú ý\n\n4\nSIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\n\nCảnh báo đang mở\n\n0\nSIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\nChọn nhà\n\nChọn nhà để vào ngữ cảnh giám sát.\n\nTìm nhà\n[SIM] Bộ điều khiển thông gió ND2-4\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 9\n[SIM] Bộ điều khiển thông gió ND2-3\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nThủ công · Cấp 3\n[SIM] Bộ điều khiển thông gió ND2-2\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 0\n[SIM] Bộ điều khiển thông gió ND2-1\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 4",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 274,
+            "h": 204,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 67,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "overview",
+            "top": 280,
+            "bottom": 964,
+            "h": 684,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_detail": {
+        "dashScroll": [
+          "GRIDSTER.mobile:1316"
+        ],
+        "pageX": 0,
+        "gridBottom": 800,
+        "lowest": 2104,
+        "titleTop": 162,
+        "backTop": 150,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\n[SIM] Bộ điều khiển thông gió ND2-4\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nSIM Nhiệt độ trong nhà\n\n32 °C\nDữ liệu cũ\n\nNhiệt độ ngoài trời\n\n27.4 °C\nDữ liệu cũ\n\nĐộ ẩm trong nhà\n\n59.5 %RH\nDữ liệu cũ\n\nNhiệt độ cảm nhận\n\n29.5 °C\nDữ liệu cũ Sơ đồ thông gió\nTín hiệu lỗi thiết bị tổng từ DI: Bình thường\nCảnh báo nhiệt độ cao từ thermostat ngoài: Bình thường\nCửa chớp trần · 99 %Cửa chớp hông · 81 %Quạt 01Đang chạyQuạt 02Đang chạyQuạt 03Đang chạyQuạt 04Đang chạyQuạt 05Đang chạyQuạt 06Đang chạyBơm làm mát 01Đang chạyBơm làm mát 02Đã dừng\nCửa chớp trần\n99\n%\nDữ liệu cũ\nCửa chớp hông\n81\n%\nDữ liệu cũ Bộ điều khiển\nKết nối\nTrực tuyến\nChế độ\nTự động\nCơ sở điều khiển\nNhiệt độ thực\nĐiều khiển quạt\nTheo cấp\nCấp hiện tại\n9\nKhử ẩm\nTắt\nChất lượng dữ liệu\n--\nDữ liệu bổ sung\nTốc độ gió\n2.1 m/s\nLưu lượng gió\n216000 m3/h\nNước tiêu thụ (tổng tích lũy)\n33633.7891 L\nLưu lượng nước\n11.37 L/min Thông số vận hành\nNhiệt độ đặt hiện tại\n27 °C\nDữ liệu cũ\nNhiệt độ cảm nhận đặt\n26 °C\nDữ liệu cũ\nĐộ ẩm đặt hiện tại\n65 %RH\nDữ liệu cũ\nNhiệt độ cảm biến 1\n31.8 °C\nDữ liệu cũ\nNhiệt độ cảm biến 2\n32.1 °C\nDữ liệu cũ\nTổng đàn\n1200 count\nDữ liệu cũ\nHeo chết tích lũy\n4 count\nDữ liệu cũ\nNgày tuổi\n36 day\nDữ liệu cũ",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 274,
+            "h": 204,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 75,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "kpis",
+            "top": 280,
+            "bottom": 514,
+            "h": 234,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "synoptic",
+            "top": 520,
+            "bottom": 1084,
+            "h": 564,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "controller",
+            "top": 1090,
+            "bottom": 1654,
+            "h": 564,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [
+              "vm-controller:39"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "metrics",
+            "top": 1660,
+            "bottom": 2104,
+            "h": 444,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_history": {
+        "dashScroll": [
+          "GRIDSTER.mobile:266"
+        ],
+        "pageX": 0,
+        "gridBottom": 800,
+        "lowest": 1054,
+        "titleTop": 162,
+        "backTop": 150,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\n[SIM] Bộ điều khiển thông gió ND2-4\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nSIM Lịch sử môi trường\n\nNguồn: SIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật. Chưa có mẫu lịch sử.",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 274,
+            "h": 204,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 75,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "history",
+            "top": 280,
+            "bottom": 1054,
+            "h": 774,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      },
+      "vent_alarms": {
+        "dashScroll": [
+          "GRIDSTER.mobile:146"
+        ],
+        "pageX": 0,
+        "gridBottom": 800,
+        "lowest": 934,
+        "titleTop": 162,
+        "backTop": 150,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\n[SIM] Bộ điều khiển thông gió ND2-4\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nSIM Cảnh báo\n\nNguồn: SIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật · chỉ xem.\n\n0\nđang hoạt động\nMức\tNội dung\tNguồn\tĐối tượng\tThời gian\tTrạng thái",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 274,
+            "h": 204,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 75,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "alarms",
+            "top": 280,
+            "bottom": 934,
+            "h": 654,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_settings": {
+        "dashScroll": [
+          "GRIDSTER.mobile:146"
+        ],
+        "pageX": 0,
+        "gridBottom": 800,
+        "lowest": 934,
+        "titleTop": 162,
+        "backTop": 150,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\n[SIM] Bộ điều khiển thông gió ND2-4\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nSIM Cài đặt bộ điều khiển\n\nChỉ đọc · 224 thông số · -- là chưa có dữ liệu, không phải 0.\n\nTìm thông số\nHỆ THỐNG 14\nNHIỆT ĐỘ 40\nNHIỆT ĐỘ CẢM NHẬN 40\nCẤP THÔNG GIÓ 108\nTHỜI GIAN 18\nHIỆU CHỈNH 4\nCÀI ĐẶT - HỆ THỐNG\nChọn điều khiển theo nhiệt độ hay nhiệt độ cảm nhận\nNhiệt độ thực\nBật/tắt khử ẩm\nTắt\nChọn từng cấp quạt / vô cấp quạt VFD\nTheo cấp\nChiều dài chuồng\n90 m\nChiều rộng chuồng\n15 m\nChiều cao chuồng\n3.2 m\nCông suất/lưu lượng danh định quạt thông gió\n36000 m3/h\nSố lượng heo nhập chuồng / tổng đàn cấu hình\n1200 count\nSố heo chết nhập/cập nhật\n4 count\nNgày tuổi ban đầu / ngày tuổi cấu hình\n36 day\nĐộ ẩm cài đặt\n65 %RH\nNgưỡng độ ẩm thấp\n45 %RH\nOffset nhiệt độ làm mát\n1.5 °C\nĐộ lệch nhiệt cho sưởi\n2 °C",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 274,
+            "h": 204,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 75,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "settings",
+            "top": 280,
+            "bottom": 934,
+            "h": 654,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      }
+    },
+    "GATEWAY mobile390": {
+      "default": {
+        "dashScroll": [
+          "GRIDSTER.mobile:124"
+        ],
+        "pageX": 0,
+        "gridBottom": 844,
+        "lowest": 956,
+        "titleTop": null,
+        "backTop": null,
+        "errors": 0,
+        "text": "SIBA · THÔNG GIÓ\n\nTổng quan toàn trại\n\nGiám sát chỉ xem · SIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\n\nSIM Số nhà\n\n4\nToàn trại · SIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\n\nTrực tuyến\n\n4\nSIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\n\nCần chú ý\n\n4\nSIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\n\nCảnh báo đang mở\n\n0\nSIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật\nChọn nhà\n\nChọn nhà để vào ngữ cảnh giám sát.\n\nTìm nhà\n[SIM] Bộ điều khiển thông gió ND2-4\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 9\n[SIM] Bộ điều khiển thông gió ND2-3\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nThủ công · Cấp 3\n[SIM] Bộ điều khiển thông gió ND2-2\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 0\n[SIM] Bộ điều khiển thông gió ND2-1\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 4",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 62,
+            "bottom": 266,
+            "h": 204,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 38,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "overview",
+            "top": 272,
+            "bottom": 956,
+            "h": 684,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [
+              "vm-barn-grid:190"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_detail": {
+        "dashScroll": [
+          "GRIDSTER.mobile:1264"
+        ],
+        "pageX": 0,
+        "gridBottom": 844,
+        "lowest": 2096,
+        "titleTop": 152,
+        "backTop": 88,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\n[SIM] Bộ điều khiển thông gió ND2-4\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nSIM Nhiệt độ trong nhà\n\n32 °C\nDữ liệu cũ\n\nNhiệt độ ngoài trời\n\n27.4 °C\nDữ liệu cũ\n\nĐộ ẩm trong nhà\n\n59.5 %RH\nDữ liệu cũ\n\nNhiệt độ cảm nhận\n\n29.5 °C\nDữ liệu cũ Sơ đồ thông gió\nTín hiệu lỗi thiết bị tổng từ DI: Bình thường\nCảnh báo nhiệt độ cao từ thermostat ngoài: Bình thường\nCửa chớp trần\n99\n%\nDữ liệu cũ\nCửa chớp hông\n81\n%\nDữ liệu cũ\nQuạt 01\nĐang chạy\nDữ liệu cũ\nQuạt 02\nĐang chạy\nDữ liệu cũ\nQuạt 03\nĐang chạy\nDữ liệu cũ\nQuạt 04\nĐang chạy\nDữ liệu cũ\nQuạt 05\nĐang chạy\nDữ liệu cũ\nQuạt 06\nĐang chạy\nDữ liệu cũ\nBơm làm mát 01\nĐang chạy\nDữ liệu cũ\nBơm làm mát 02\nĐã dừng\nDữ liệu cũ Bộ điều khiển\nKết nối\nTrực tuyến\nChế độ\nTự động\nCơ sở điều khiển\nNhiệt độ thực\nĐiều khiển quạt\nTheo cấp\nCấp hiện tại\n9\nKhử ẩm\nTắt\nChất lượng dữ liệu\n--\nDữ liệu bổ sung\nTốc độ gió\n2.1 m/s\nLưu lượng gió\n216000 m3/h\nNước tiêu thụ (tổng tích lũy)\n33633.7891 L\nLưu lượng nước\n11.37 L/min Thông số vận hành\nNhiệt độ đặt hiện tại\n27 °C\nDữ liệu cũ\nNhiệt độ cảm nhận đặt\n26 °C\nDữ liệu cũ\nĐộ ẩm đặt hiện tại\n65 %RH\nDữ liệu cũ\nNhiệt độ cảm biến 1\n31.8 °C\nDữ liệu cũ\nNhiệt độ cảm biến 2\n32.1 °C\nDữ liệu cũ\nTổng đàn\n1200 count\nDữ liệu cũ\nHeo chết tích lũy\n4 count\nDữ liệu cũ\nNgày tuổi\n36 day\nDữ liệu cũ",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 62,
+            "bottom": 266,
+            "h": 204,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 26,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "kpis",
+            "top": 272,
+            "bottom": 506,
+            "h": 234,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "synoptic",
+            "top": 512,
+            "bottom": 1076,
+            "h": 564,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [
+              "vm-panel:295"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "controller",
+            "top": 1082,
+            "bottom": 1646,
+            "h": 564,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [
+              "vm-controller:31"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "metrics",
+            "top": 1652,
+            "bottom": 2096,
+            "h": 444,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_history": {
+        "dashScroll": [
+          "GRIDSTER.mobile:214"
+        ],
+        "pageX": 0,
+        "gridBottom": 844,
+        "lowest": 1046,
+        "titleTop": 152,
+        "backTop": 88,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\n[SIM] Bộ điều khiển thông gió ND2-4\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nSIM Lịch sử môi trường\n\nNguồn: SIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật. Chưa có mẫu lịch sử.",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 62,
+            "bottom": 266,
+            "h": 204,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 26,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "history",
+            "top": 272,
+            "bottom": 1046,
+            "h": 774,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      },
+      "vent_alarms": {
+        "dashScroll": [
+          "GRIDSTER.mobile:94"
+        ],
+        "pageX": 0,
+        "gridBottom": 844,
+        "lowest": 926,
+        "titleTop": 152,
+        "backTop": 88,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\n[SIM] Bộ điều khiển thông gió ND2-4\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nSIM Cảnh báo\n\nNguồn: SIM · MÔ PHỎNG QUA GATEWAY · Không phải dữ liệu PLC thật · chỉ xem.\n\n0\nđang hoạt động\nMức\tNội dung\tNguồn\tĐối tượng\tThời gian\tTrạng thái",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 62,
+            "bottom": 266,
+            "h": 204,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 26,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "alarms",
+            "top": 272,
+            "bottom": 926,
+            "h": 654,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_settings": {
+        "dashScroll": [
+          "GRIDSTER.mobile:94"
+        ],
+        "pageX": 0,
+        "gridBottom": 844,
+        "lowest": 926,
+        "titleTop": 152,
+        "backTop": 88,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\n[SIM] Bộ điều khiển thông gió ND2-4\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nSIM Cài đặt bộ điều khiển\n\nChỉ đọc · 224 thông số · -- là chưa có dữ liệu, không phải 0.\n\nTìm thông số\nHỆ THỐNG 14\nNHIỆT ĐỘ 40\nNHIỆT ĐỘ CẢM NHẬN 40\nCẤP THÔNG GIÓ 108\nTHỜI GIAN 18\nHIỆU CHỈNH 4\nCÀI ĐẶT - HỆ THỐNG\nChọn điều khiển theo nhiệt độ hay nhiệt độ cảm nhận\nNhiệt độ thực\nBật/tắt khử ẩm\nTắt\nChọn từng cấp quạt / vô cấp quạt VFD\nTheo cấp\nChiều dài chuồng\n90 m\nChiều rộng chuồng\n15 m\nChiều cao chuồng\n3.2 m\nCông suất/lưu lượng danh định quạt thông gió\n36000 m3/h\nSố lượng heo nhập chuồng / tổng đàn cấu hình\n1200 count\nSố heo chết nhập/cập nhật\n4 count\nNgày tuổi ban đầu / ngày tuổi cấu hình\n36 day\nĐộ ẩm cài đặt\n65 %RH\nNgưỡng độ ẩm thấp\n45 %RH\nOffset nhiệt độ làm mát\n1.5 °C\nĐộ lệch nhiệt cho sưởi\n2 °C",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 62,
+            "bottom": 266,
+            "h": 204,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 26,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "settings",
+            "top": 272,
+            "bottom": 926,
+            "h": 654,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [
+              "vm-panel:243"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      }
+    },
+    "SIM 1366x768": {
+      "default": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 768,
+        "lowest": 762,
+        "titleTop": null,
+        "backTop": null,
+        "errors": 0,
+        "text": "SIBA · THÔNG GIÓ\n\nTổng quan toàn trại\n\nGiám sát chỉ xem · LIVE · Dữ liệu trực tiếp\n\nLIVE Số nhà\n\n7\nToàn trại · LIVE · Dữ liệu trực tiếp\n\nTrực tuyến\n\n0\nLIVE · Dữ liệu trực tiếp\n\nCần chú ý\n\n7\nLIVE · Dữ liệu trực tiếp\n\nCảnh báo đang mở\n\n--\nLIVE · Dữ liệu trực tiếp\nChọn nhà\n\nChọn nhà để vào ngữ cảnh giám sát.\n\nTìm nhà\nNhà mô phỏng · mất kết nối\nNgoại tuyến\nDữ liệu: Chưa rõ\nChưa rõ · Cấp --\nNhà mô phỏng · thiếu mapping\nNgoại tuyến\nDữ liệu: Chưa rõ\nChưa rõ · Cấp --\nNhà mô phỏng · dữ liệu cũ\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 3\nNhà mô phỏng · lỗi thiết bị\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 9\nNhà mô phỏng · chế độ tay VFD\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nThủ công · Cấp 3\nNhà mô phỏng · cấp 0 và số 0 thật\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 0\nNhà mô phỏng · chạy tự động\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 3",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 164,
+            "h": 94,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "overview",
+            "top": 170,
+            "bottom": 762,
+            "h": 592,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_detail": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 768,
+        "lowest": 762,
+        "titleTop": 112,
+        "backTop": 99,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nNhà mô phỏng · mất kết nối\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nLIVE Nhiệt độ trong nhà\n\n--\nChưa rõ\n\nNhiệt độ ngoài trời\n\n--\nChưa rõ\n\nĐộ ẩm trong nhà\n\n--\nChưa rõ\n\nNhiệt độ cảm nhận\n\n--\nChưa rõ Sơ đồ thông gió\nTín hiệu lỗi thiết bị tổng từ DI: Chưa rõ\nCảnh báo nhiệt độ cao từ thermostat ngoài: Chưa rõ\nCửa chớp trần · --Cửa chớp hông · --Quạt 01Chưa rõQuạt 02Chưa rõQuạt 03Chưa rõQuạt 04Chưa rõQuạt 05Chưa rõQuạt 06Chưa rõBơm làm mát 01Chưa rõBơm làm mát 02Chưa rõ\nCửa chớp trần\n--\nChưa rõ\nCửa chớp hông\n--\nChưa rõ Bộ điều khiển\nKết nối\nNgoại tuyến\nChế độ\n--\nCơ sở điều khiển\n--\nĐiều khiển quạt\n--\nCấp hiện tại\n--\nKhử ẩm\n--\nChất lượng dữ liệu\n--\nDữ liệu bổ sung\nTốc độ gió\n--\nLưu lượng gió\n--\nNước tiêu thụ (tổng tích lũy)\n--\nLưu lượng nước\n-- Thông số vận hành\nNhiệt độ đặt hiện tại\n--\nChưa rõ\nNhiệt độ cảm nhận đặt\n--\nChưa rõ\nĐộ ẩm đặt hiện tại\n--\nChưa rõ\nNhiệt độ cảm biến 1\n--\nChưa rõ\nNhiệt độ cảm biến 2\n--\nChưa rõ\nTổng đàn\n--\nChưa rõ\nHeo chết tích lũy\n--\nChưa rõ\nNgày tuổi\n--\nChưa rõ",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 164,
+            "h": 94,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "kpis",
+            "top": 170,
+            "bottom": 263,
+            "h": 94,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 4,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "synoptic",
+            "top": 269,
+            "bottom": 563,
+            "h": 293,
+            "w": 730,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [
+              "vm-panel:23"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "controller",
+            "top": 269,
+            "bottom": 762,
+            "h": 493,
+            "w": 362,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [
+              "vm-controller:25"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "metrics",
+            "top": 569,
+            "bottom": 762,
+            "h": 193,
+            "w": 730,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [
+              "vm-panel:29"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_history": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 768,
+        "lowest": 762,
+        "titleTop": 112,
+        "backTop": 99,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nNhà mô phỏng · mất kết nối\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nLIVE Lịch sử môi trường\n\nNguồn: LIVE · Dữ liệu trực tiếp. Chưa có mẫu lịch sử.",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 164,
+            "h": 94,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "history",
+            "top": 170,
+            "bottom": 762,
+            "h": 592,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      },
+      "vent_alarms": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 768,
+        "lowest": 762,
+        "titleTop": 112,
+        "backTop": 99,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nNhà mô phỏng · mất kết nối\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nLIVE Cảnh báo\n\nNguồn: LIVE · Dữ liệu trực tiếp · chỉ xem.\n\n0\nđang hoạt động\nMức\tNội dung\tNguồn\tĐối tượng\tThời gian\tTrạng thái",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 164,
+            "h": 94,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "alarms",
+            "top": 170,
+            "bottom": 762,
+            "h": 592,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_settings": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 768,
+        "lowest": 762,
+        "titleTop": 112,
+        "backTop": 99,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nNhà mô phỏng · mất kết nối\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nLIVE Cài đặt bộ điều khiển\n\nChỉ đọc · 224 thông số · -- là chưa có dữ liệu, không phải 0.\n\nTìm thông số\nHỆ THỐNG 14\nNHIỆT ĐỘ 40\nNHIỆT ĐỘ CẢM NHẬN 40\nCẤP THÔNG GIÓ 108\nTHỜI GIAN 18\nHIỆU CHỈNH 4\nCÀI ĐẶT - HỆ THỐNG\nChọn điều khiển theo nhiệt độ hay nhiệt độ cảm nhận\n--\nBật/tắt khử ẩm\n--\nChọn từng cấp quạt / vô cấp quạt VFD\n--\nChiều dài chuồng\n--\nChiều rộng chuồng\n--\nChiều cao chuồng\n--\nCông suất/lưu lượng danh định quạt thông gió\n--\nSố lượng heo nhập chuồng / tổng đàn cấu hình\n--\nSố heo chết nhập/cập nhật\n--\nNgày tuổi ban đầu / ngày tuổi cấu hình\n--\nĐộ ẩm cài đặt\n--\nNgưỡng độ ẩm thấp\n--\nOffset nhiệt độ làm mát\n--\nĐộ lệch nhiệt cho sưởi\n--",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 164,
+            "h": 94,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "settings",
+            "top": 170,
+            "bottom": 762,
+            "h": 592,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      }
+    },
+    "SIM 1536x734": {
+      "default": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 734,
+        "lowest": 728,
+        "titleTop": null,
+        "backTop": null,
+        "errors": 0,
+        "text": "SIBA · THÔNG GIÓ\n\nTổng quan toàn trại\n\nGiám sát chỉ xem · LIVE · Dữ liệu trực tiếp\n\nLIVE Số nhà\n\n7\nToàn trại · LIVE · Dữ liệu trực tiếp\n\nTrực tuyến\n\n0\nLIVE · Dữ liệu trực tiếp\n\nCần chú ý\n\n7\nLIVE · Dữ liệu trực tiếp\n\nCảnh báo đang mở\n\n--\nLIVE · Dữ liệu trực tiếp\nChọn nhà\n\nChọn nhà để vào ngữ cảnh giám sát.\n\nTìm nhà\nNhà mô phỏng · mất kết nối\nNgoại tuyến\nDữ liệu: Chưa rõ\nChưa rõ · Cấp --\nNhà mô phỏng · thiếu mapping\nNgoại tuyến\nDữ liệu: Chưa rõ\nChưa rõ · Cấp --\nNhà mô phỏng · dữ liệu cũ\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 3\nNhà mô phỏng · lỗi thiết bị\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 9\nNhà mô phỏng · chế độ tay VFD\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nThủ công · Cấp 3\nNhà mô phỏng · cấp 0 và số 0 thật\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 0\nNhà mô phỏng · chạy tự động\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 3",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 159,
+            "h": 89,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "overview",
+            "top": 165,
+            "bottom": 728,
+            "h": 563,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_detail": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 734,
+        "lowest": 728,
+        "titleTop": 109,
+        "backTop": 97,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nNhà mô phỏng · mất kết nối\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nLIVE Nhiệt độ trong nhà\n\n--\nChưa rõ\n\nNhiệt độ ngoài trời\n\n--\nChưa rõ\n\nĐộ ẩm trong nhà\n\n--\nChưa rõ\n\nNhiệt độ cảm nhận\n\n--\nChưa rõ Sơ đồ thông gió\nTín hiệu lỗi thiết bị tổng từ DI: Chưa rõ\nCảnh báo nhiệt độ cao từ thermostat ngoài: Chưa rõ\nCửa chớp trần · --Cửa chớp hông · --Quạt 01Chưa rõQuạt 02Chưa rõQuạt 03Chưa rõQuạt 04Chưa rõQuạt 05Chưa rõQuạt 06Chưa rõBơm làm mát 01Chưa rõBơm làm mát 02Chưa rõ\nCửa chớp trần\n--\nChưa rõ\nCửa chớp hông\n--\nChưa rõ Bộ điều khiển\nKết nối\nNgoại tuyến\nChế độ\n--\nCơ sở điều khiển\n--\nĐiều khiển quạt\n--\nCấp hiện tại\n--\nKhử ẩm\n--\nChất lượng dữ liệu\n--\nDữ liệu bổ sung\nTốc độ gió\n--\nLưu lượng gió\n--\nNước tiêu thụ (tổng tích lũy)\n--\nLưu lượng nước\n-- Thông số vận hành\nNhiệt độ đặt hiện tại\n--\nChưa rõ\nNhiệt độ cảm nhận đặt\n--\nChưa rõ\nĐộ ẩm đặt hiện tại\n--\nChưa rõ\nNhiệt độ cảm biến 1\n--\nChưa rõ\nNhiệt độ cảm biến 2\n--\nChưa rõ\nTổng đàn\n--\nChưa rõ\nHeo chết tích lũy\n--\nChưa rõ\nNgày tuổi\n--\nChưa rõ",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 159,
+            "h": 89,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "kpis",
+            "top": 165,
+            "bottom": 254,
+            "h": 89,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 4,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "synoptic",
+            "top": 260,
+            "bottom": 538,
+            "h": 279,
+            "w": 843,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [
+              "vm-panel:39"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "controller",
+            "top": 260,
+            "bottom": 728,
+            "h": 468,
+            "w": 419,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [
+              "vm-controller:49"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "metrics",
+            "top": 544,
+            "bottom": 728,
+            "h": 184,
+            "w": 843,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [
+              "vm-panel:38"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_history": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 734,
+        "lowest": 728,
+        "titleTop": 109,
+        "backTop": 97,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nNhà mô phỏng · mất kết nối\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nLIVE Lịch sử môi trường\n\nNguồn: LIVE · Dữ liệu trực tiếp. Chưa có mẫu lịch sử.",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 159,
+            "h": 89,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "history",
+            "top": 165,
+            "bottom": 728,
+            "h": 563,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      },
+      "vent_alarms": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 734,
+        "lowest": 728,
+        "titleTop": 109,
+        "backTop": 97,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nNhà mô phỏng · mất kết nối\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nLIVE Cảnh báo\n\nNguồn: LIVE · Dữ liệu trực tiếp · chỉ xem.\n\n0\nđang hoạt động\nMức\tNội dung\tNguồn\tĐối tượng\tThời gian\tTrạng thái",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 159,
+            "h": 89,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "alarms",
+            "top": 165,
+            "bottom": 728,
+            "h": 563,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_settings": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 734,
+        "lowest": 728,
+        "titleTop": 109,
+        "backTop": 97,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nNhà mô phỏng · mất kết nối\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nLIVE Cài đặt bộ điều khiển\n\nChỉ đọc · 224 thông số · -- là chưa có dữ liệu, không phải 0.\n\nTìm thông số\nHỆ THỐNG 14\nNHIỆT ĐỘ 40\nNHIỆT ĐỘ CẢM NHẬN 40\nCẤP THÔNG GIÓ 108\nTHỜI GIAN 18\nHIỆU CHỈNH 4\nCÀI ĐẶT - HỆ THỐNG\nChọn điều khiển theo nhiệt độ hay nhiệt độ cảm nhận\n--\nBật/tắt khử ẩm\n--\nChọn từng cấp quạt / vô cấp quạt VFD\n--\nChiều dài chuồng\n--\nChiều rộng chuồng\n--\nChiều cao chuồng\n--\nCông suất/lưu lượng danh định quạt thông gió\n--\nSố lượng heo nhập chuồng / tổng đàn cấu hình\n--\nSố heo chết nhập/cập nhật\n--\nNgày tuổi ban đầu / ngày tuổi cấu hình\n--\nĐộ ẩm cài đặt\n--\nNgưỡng độ ẩm thấp\n--\nOffset nhiệt độ làm mát\n--\nĐộ lệch nhiệt cho sưởi\n--",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 159,
+            "h": 89,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "settings",
+            "top": 165,
+            "bottom": 728,
+            "h": 563,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      }
+    },
+    "SIM 1920x1080": {
+      "default": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 1080,
+        "lowest": 1074,
+        "titleTop": null,
+        "backTop": null,
+        "errors": 0,
+        "text": "SIBA · THÔNG GIÓ\n\nTổng quan toàn trại\n\nGiám sát chỉ xem · LIVE · Dữ liệu trực tiếp\n\nLIVE Số nhà\n\n7\nToàn trại · LIVE · Dữ liệu trực tiếp\n\nTrực tuyến\n\n0\nLIVE · Dữ liệu trực tiếp\n\nCần chú ý\n\n7\nLIVE · Dữ liệu trực tiếp\n\nCảnh báo đang mở\n\n--\nLIVE · Dữ liệu trực tiếp\nChọn nhà\n\nChọn nhà để vào ngữ cảnh giám sát.\n\nTìm nhà\nNhà mô phỏng · mất kết nối\nNgoại tuyến\nDữ liệu: Chưa rõ\nChưa rõ · Cấp --\nNhà mô phỏng · thiếu mapping\nNgoại tuyến\nDữ liệu: Chưa rõ\nChưa rõ · Cấp --\nNhà mô phỏng · dữ liệu cũ\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 3\nNhà mô phỏng · lỗi thiết bị\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 9\nNhà mô phỏng · chế độ tay VFD\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nThủ công · Cấp 3\nNhà mô phỏng · cấp 0 và số 0 thật\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 0\nNhà mô phỏng · chạy tự động\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 3",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 208,
+            "h": 138,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 34,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "overview",
+            "top": 214,
+            "bottom": 1074,
+            "h": 860,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_detail": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 1080,
+        "lowest": 1074,
+        "titleTop": 130,
+        "backTop": 117,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nNhà mô phỏng · mất kết nối\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nLIVE Nhiệt độ trong nhà\n\n--\nChưa rõ\n\nNhiệt độ ngoài trời\n\n--\nChưa rõ\n\nĐộ ẩm trong nhà\n\n--\nChưa rõ\n\nNhiệt độ cảm nhận\n\n--\nChưa rõ Sơ đồ thông gió\nTín hiệu lỗi thiết bị tổng từ DI: Chưa rõ\nCảnh báo nhiệt độ cao từ thermostat ngoài: Chưa rõ\nCửa chớp trần · --Cửa chớp hông · --Quạt 01Chưa rõQuạt 02Chưa rõQuạt 03Chưa rõQuạt 04Chưa rõQuạt 05Chưa rõQuạt 06Chưa rõBơm làm mát 01Chưa rõBơm làm mát 02Chưa rõ\nCửa chớp trần\n--\nChưa rõ\nCửa chớp hông\n--\nChưa rõ Bộ điều khiển\nKết nối\nNgoại tuyến\nChế độ\n--\nCơ sở điều khiển\n--\nĐiều khiển quạt\n--\nCấp hiện tại\n--\nKhử ẩm\n--\nChất lượng dữ liệu\n--\nDữ liệu bổ sung\nTốc độ gió\n--\nLưu lượng gió\n--\nNước tiêu thụ (tổng tích lũy)\n--\nLưu lượng nước\n-- Thông số vận hành\nNhiệt độ đặt hiện tại\n--\nChưa rõ\nNhiệt độ cảm nhận đặt\n--\nChưa rõ\nĐộ ẩm đặt hiện tại\n--\nChưa rõ\nNhiệt độ cảm biến 1\n--\nChưa rõ\nNhiệt độ cảm biến 2\n--\nChưa rõ\nTổng đàn\n--\nChưa rõ\nHeo chết tích lũy\n--\nChưa rõ\nNgày tuổi\n--\nChưa rõ",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 208,
+            "h": 138,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 42,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "kpis",
+            "top": 214,
+            "bottom": 353,
+            "h": 138,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "synoptic",
+            "top": 359,
+            "bottom": 785,
+            "h": 427,
+            "w": 1099,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "controller",
+            "top": 359,
+            "bottom": 1074,
+            "h": 715,
+            "w": 547,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "metrics",
+            "top": 791,
+            "bottom": 1074,
+            "h": 283,
+            "w": 1099,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_history": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 1080,
+        "lowest": 1074,
+        "titleTop": 130,
+        "backTop": 117,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nNhà mô phỏng · mất kết nối\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nLIVE Lịch sử môi trường\n\nNguồn: LIVE · Dữ liệu trực tiếp. Chưa có mẫu lịch sử.",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 208,
+            "h": 138,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 42,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "history",
+            "top": 214,
+            "bottom": 1074,
+            "h": 860,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      },
+      "vent_alarms": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 1080,
+        "lowest": 1074,
+        "titleTop": 130,
+        "backTop": 117,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nNhà mô phỏng · mất kết nối\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nLIVE Cảnh báo\n\nNguồn: LIVE · Dữ liệu trực tiếp · chỉ xem.\n\n0\nđang hoạt động\nMức\tNội dung\tNguồn\tĐối tượng\tThời gian\tTrạng thái",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 208,
+            "h": 138,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 42,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "alarms",
+            "top": 214,
+            "bottom": 1074,
+            "h": 860,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_settings": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 1080,
+        "lowest": 1074,
+        "titleTop": 130,
+        "backTop": 117,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nNhà mô phỏng · mất kết nối\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nLIVE Cài đặt bộ điều khiển\n\nChỉ đọc · 224 thông số · -- là chưa có dữ liệu, không phải 0.\n\nTìm thông số\nHỆ THỐNG 14\nNHIỆT ĐỘ 40\nNHIỆT ĐỘ CẢM NHẬN 40\nCẤP THÔNG GIÓ 108\nTHỜI GIAN 18\nHIỆU CHỈNH 4\nCÀI ĐẶT - HỆ THỐNG\nChọn điều khiển theo nhiệt độ hay nhiệt độ cảm nhận\n--\nBật/tắt khử ẩm\n--\nChọn từng cấp quạt / vô cấp quạt VFD\n--\nChiều dài chuồng\n--\nChiều rộng chuồng\n--\nChiều cao chuồng\n--\nCông suất/lưu lượng danh định quạt thông gió\n--\nSố lượng heo nhập chuồng / tổng đàn cấu hình\n--\nSố heo chết nhập/cập nhật\n--\nNgày tuổi ban đầu / ngày tuổi cấu hình\n--\nĐộ ẩm cài đặt\n--\nNgưỡng độ ẩm thấp\n--\nOffset nhiệt độ làm mát\n--\nĐộ lệch nhiệt cho sưởi\n--",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 208,
+            "h": 138,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 42,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "settings",
+            "top": 214,
+            "bottom": 1074,
+            "h": 860,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      }
+    },
+    "SIM 900x800": {
+      "default": {
+        "dashScroll": [
+          "GRIDSTER.mobile:176"
+        ],
+        "pageX": 0,
+        "gridBottom": 800,
+        "lowest": 964,
+        "titleTop": null,
+        "backTop": null,
+        "errors": 0,
+        "text": "SIBA · THÔNG GIÓ\n\nTổng quan toàn trại\n\nGiám sát chỉ xem · LIVE · Dữ liệu trực tiếp\n\nLIVE Số nhà\n\n7\nToàn trại · LIVE · Dữ liệu trực tiếp\n\nTrực tuyến\n\n0\nLIVE · Dữ liệu trực tiếp\n\nCần chú ý\n\n7\nLIVE · Dữ liệu trực tiếp\n\nCảnh báo đang mở\n\n--\nLIVE · Dữ liệu trực tiếp\nChọn nhà\n\nChọn nhà để vào ngữ cảnh giám sát.\n\nTìm nhà\nNhà mô phỏng · mất kết nối\nNgoại tuyến\nDữ liệu: Chưa rõ\nChưa rõ · Cấp --\nNhà mô phỏng · thiếu mapping\nNgoại tuyến\nDữ liệu: Chưa rõ\nChưa rõ · Cấp --\nNhà mô phỏng · dữ liệu cũ\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 3\nNhà mô phỏng · lỗi thiết bị\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 9\nNhà mô phỏng · chế độ tay VFD\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nThủ công · Cấp 3\nNhà mô phỏng · cấp 0 và số 0 thật\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 0\nNhà mô phỏng · chạy tự động\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 3",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 274,
+            "h": 204,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 67,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "overview",
+            "top": 280,
+            "bottom": 964,
+            "h": 684,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_detail": {
+        "dashScroll": [
+          "GRIDSTER.mobile:1316"
+        ],
+        "pageX": 0,
+        "gridBottom": 800,
+        "lowest": 2104,
+        "titleTop": 162,
+        "backTop": 150,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nNhà mô phỏng · mất kết nối\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nLIVE Nhiệt độ trong nhà\n\n--\nChưa rõ\n\nNhiệt độ ngoài trời\n\n--\nChưa rõ\n\nĐộ ẩm trong nhà\n\n--\nChưa rõ\n\nNhiệt độ cảm nhận\n\n--\nChưa rõ Sơ đồ thông gió\nTín hiệu lỗi thiết bị tổng từ DI: Chưa rõ\nCảnh báo nhiệt độ cao từ thermostat ngoài: Chưa rõ\nCửa chớp trần · --Cửa chớp hông · --Quạt 01Chưa rõQuạt 02Chưa rõQuạt 03Chưa rõQuạt 04Chưa rõQuạt 05Chưa rõQuạt 06Chưa rõBơm làm mát 01Chưa rõBơm làm mát 02Chưa rõ\nCửa chớp trần\n--\nChưa rõ\nCửa chớp hông\n--\nChưa rõ Bộ điều khiển\nKết nối\nNgoại tuyến\nChế độ\n--\nCơ sở điều khiển\n--\nĐiều khiển quạt\n--\nCấp hiện tại\n--\nKhử ẩm\n--\nChất lượng dữ liệu\n--\nDữ liệu bổ sung\nTốc độ gió\n--\nLưu lượng gió\n--\nNước tiêu thụ (tổng tích lũy)\n--\nLưu lượng nước\n-- Thông số vận hành\nNhiệt độ đặt hiện tại\n--\nChưa rõ\nNhiệt độ cảm nhận đặt\n--\nChưa rõ\nĐộ ẩm đặt hiện tại\n--\nChưa rõ\nNhiệt độ cảm biến 1\n--\nChưa rõ\nNhiệt độ cảm biến 2\n--\nChưa rõ\nTổng đàn\n--\nChưa rõ\nHeo chết tích lũy\n--\nChưa rõ\nNgày tuổi\n--\nChưa rõ",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 274,
+            "h": 204,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 75,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "kpis",
+            "top": 280,
+            "bottom": 514,
+            "h": 234,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "synoptic",
+            "top": 520,
+            "bottom": 1084,
+            "h": 564,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "controller",
+            "top": 1090,
+            "bottom": 1654,
+            "h": 564,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [
+              "vm-controller:39"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "metrics",
+            "top": 1660,
+            "bottom": 2104,
+            "h": 444,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_history": {
+        "dashScroll": [
+          "GRIDSTER.mobile:266"
+        ],
+        "pageX": 0,
+        "gridBottom": 800,
+        "lowest": 1054,
+        "titleTop": 162,
+        "backTop": 150,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nNhà mô phỏng · mất kết nối\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nLIVE Lịch sử môi trường\n\nNguồn: LIVE · Dữ liệu trực tiếp. Chưa có mẫu lịch sử.",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 274,
+            "h": 204,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 75,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "history",
+            "top": 280,
+            "bottom": 1054,
+            "h": 774,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      },
+      "vent_alarms": {
+        "dashScroll": [
+          "GRIDSTER.mobile:146"
+        ],
+        "pageX": 0,
+        "gridBottom": 800,
+        "lowest": 934,
+        "titleTop": 162,
+        "backTop": 150,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nNhà mô phỏng · mất kết nối\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nLIVE Cảnh báo\n\nNguồn: LIVE · Dữ liệu trực tiếp · chỉ xem.\n\n0\nđang hoạt động\nMức\tNội dung\tNguồn\tĐối tượng\tThời gian\tTrạng thái",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 274,
+            "h": 204,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 75,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "alarms",
+            "top": 280,
+            "bottom": 934,
+            "h": 654,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_settings": {
+        "dashScroll": [
+          "GRIDSTER.mobile:146"
+        ],
+        "pageX": 0,
+        "gridBottom": 800,
+        "lowest": 934,
+        "titleTop": 162,
+        "backTop": 150,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nNhà mô phỏng · mất kết nối\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nLIVE Cài đặt bộ điều khiển\n\nChỉ đọc · 224 thông số · -- là chưa có dữ liệu, không phải 0.\n\nTìm thông số\nHỆ THỐNG 14\nNHIỆT ĐỘ 40\nNHIỆT ĐỘ CẢM NHẬN 40\nCẤP THÔNG GIÓ 108\nTHỜI GIAN 18\nHIỆU CHỈNH 4\nCÀI ĐẶT - HỆ THỐNG\nChọn điều khiển theo nhiệt độ hay nhiệt độ cảm nhận\n--\nBật/tắt khử ẩm\n--\nChọn từng cấp quạt / vô cấp quạt VFD\n--\nChiều dài chuồng\n--\nChiều rộng chuồng\n--\nChiều cao chuồng\n--\nCông suất/lưu lượng danh định quạt thông gió\n--\nSố lượng heo nhập chuồng / tổng đàn cấu hình\n--\nSố heo chết nhập/cập nhật\n--\nNgày tuổi ban đầu / ngày tuổi cấu hình\n--\nĐộ ẩm cài đặt\n--\nNgưỡng độ ẩm thấp\n--\nOffset nhiệt độ làm mát\n--\nĐộ lệch nhiệt cho sưởi\n--",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 274,
+            "h": 204,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 75,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "settings",
+            "top": 280,
+            "bottom": 934,
+            "h": 654,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      }
+    },
+    "SIM mobile390": {
+      "default": {
+        "dashScroll": [
+          "GRIDSTER.mobile:124"
+        ],
+        "pageX": 0,
+        "gridBottom": 844,
+        "lowest": 956,
+        "titleTop": null,
+        "backTop": null,
+        "errors": 0,
+        "text": "SIBA · THÔNG GIÓ\n\nTổng quan toàn trại\n\nGiám sát chỉ xem · LIVE · Dữ liệu trực tiếp\n\nLIVE Số nhà\n\n7\nToàn trại · LIVE · Dữ liệu trực tiếp\n\nTrực tuyến\n\n0\nLIVE · Dữ liệu trực tiếp\n\nCần chú ý\n\n7\nLIVE · Dữ liệu trực tiếp\n\nCảnh báo đang mở\n\n--\nLIVE · Dữ liệu trực tiếp\nChọn nhà\n\nChọn nhà để vào ngữ cảnh giám sát.\n\nTìm nhà\nNhà mô phỏng · mất kết nối\nNgoại tuyến\nDữ liệu: Chưa rõ\nChưa rõ · Cấp --\nNhà mô phỏng · thiếu mapping\nNgoại tuyến\nDữ liệu: Chưa rõ\nChưa rõ · Cấp --\nNhà mô phỏng · dữ liệu cũ\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 3\nNhà mô phỏng · lỗi thiết bị\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 9\nNhà mô phỏng · chế độ tay VFD\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nThủ công · Cấp 3\nNhà mô phỏng · cấp 0 và số 0 thật\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 0\nNhà mô phỏng · chạy tự động\nNgoại tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 3",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 62,
+            "bottom": 266,
+            "h": 204,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 46,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "overview",
+            "top": 272,
+            "bottom": 956,
+            "h": 684,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [
+              "vm-barn-grid:446"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_detail": {
+        "dashScroll": [
+          "GRIDSTER.mobile:1264"
+        ],
+        "pageX": 0,
+        "gridBottom": 844,
+        "lowest": 2096,
+        "titleTop": 110,
+        "backTop": 93,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nNhà mô phỏng · mất kết nối\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nLIVE Nhiệt độ trong nhà\n\n--\nChưa rõ\n\nNhiệt độ ngoài trời\n\n--\nChưa rõ\n\nĐộ ẩm trong nhà\n\n--\nChưa rõ\n\nNhiệt độ cảm nhận\n\n--\nChưa rõ Sơ đồ thông gió\nTín hiệu lỗi thiết bị tổng từ DI: Chưa rõ\nCảnh báo nhiệt độ cao từ thermostat ngoài: Chưa rõ\nCửa chớp trần\n--\nChưa rõ\nCửa chớp hông\n--\nChưa rõ\nQuạt 01\nChưa rõ\nChưa rõ\nQuạt 02\nChưa rõ\nChưa rõ\nQuạt 03\nChưa rõ\nChưa rõ\nQuạt 04\nChưa rõ\nChưa rõ\nQuạt 05\nChưa rõ\nChưa rõ\nQuạt 06\nChưa rõ\nChưa rõ\nBơm làm mát 01\nChưa rõ\nChưa rõ\nBơm làm mát 02\nChưa rõ\nChưa rõ Bộ điều khiển\nKết nối\nNgoại tuyến\nChế độ\n--\nCơ sở điều khiển\n--\nĐiều khiển quạt\n--\nCấp hiện tại\n--\nKhử ẩm\n--\nChất lượng dữ liệu\n--\nDữ liệu bổ sung\nTốc độ gió\n--\nLưu lượng gió\n--\nNước tiêu thụ (tổng tích lũy)\n--\nLưu lượng nước\n-- Thông số vận hành\nNhiệt độ đặt hiện tại\n--\nChưa rõ\nNhiệt độ cảm nhận đặt\n--\nChưa rõ\nĐộ ẩm đặt hiện tại\n--\nChưa rõ\nNhiệt độ cảm biến 1\n--\nChưa rõ\nNhiệt độ cảm biến 2\n--\nChưa rõ\nTổng đàn\n--\nChưa rõ\nHeo chết tích lũy\n--\nChưa rõ\nNgày tuổi\n--\nChưa rõ",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 62,
+            "bottom": 266,
+            "h": 204,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 31,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "kpis",
+            "top": 272,
+            "bottom": 506,
+            "h": 234,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "synoptic",
+            "top": 512,
+            "bottom": 1076,
+            "h": 564,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [
+              "vm-panel:278"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "controller",
+            "top": 1082,
+            "bottom": 1646,
+            "h": 564,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [
+              "vm-controller:31"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "metrics",
+            "top": 1652,
+            "bottom": 2096,
+            "h": 444,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_history": {
+        "dashScroll": [
+          "GRIDSTER.mobile:214"
+        ],
+        "pageX": 0,
+        "gridBottom": 844,
+        "lowest": 1046,
+        "titleTop": 110,
+        "backTop": 93,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nNhà mô phỏng · mất kết nối\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nLIVE Lịch sử môi trường\n\nNguồn: LIVE · Dữ liệu trực tiếp. Chưa có mẫu lịch sử.",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 62,
+            "bottom": 266,
+            "h": 204,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 31,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "history",
+            "top": 272,
+            "bottom": 1046,
+            "h": 774,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      },
+      "vent_alarms": {
+        "dashScroll": [
+          "GRIDSTER.mobile:94"
+        ],
+        "pageX": 0,
+        "gridBottom": 844,
+        "lowest": 926,
+        "titleTop": 110,
+        "backTop": 93,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nNhà mô phỏng · mất kết nối\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nLIVE Cảnh báo\n\nNguồn: LIVE · Dữ liệu trực tiếp · chỉ xem.\n\n0\nđang hoạt động\nMức\tNội dung\tNguồn\tĐối tượng\tThời gian\tTrạng thái",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 62,
+            "bottom": 266,
+            "h": 204,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 31,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "alarms",
+            "top": 272,
+            "bottom": 926,
+            "h": 654,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_settings": {
+        "dashScroll": [
+          "GRIDSTER.mobile:94"
+        ],
+        "pageX": 0,
+        "gridBottom": 844,
+        "lowest": 926,
+        "titleTop": 110,
+        "backTop": 93,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nNhà mô phỏng · mất kết nối\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nLIVE Cài đặt bộ điều khiển\n\nChỉ đọc · 224 thông số · -- là chưa có dữ liệu, không phải 0.\n\nTìm thông số\nHỆ THỐNG 14\nNHIỆT ĐỘ 40\nNHIỆT ĐỘ CẢM NHẬN 40\nCẤP THÔNG GIÓ 108\nTHỜI GIAN 18\nHIỆU CHỈNH 4\nCÀI ĐẶT - HỆ THỐNG\nChọn điều khiển theo nhiệt độ hay nhiệt độ cảm nhận\n--\nBật/tắt khử ẩm\n--\nChọn từng cấp quạt / vô cấp quạt VFD\n--\nChiều dài chuồng\n--\nChiều rộng chuồng\n--\nChiều cao chuồng\n--\nCông suất/lưu lượng danh định quạt thông gió\n--\nSố lượng heo nhập chuồng / tổng đàn cấu hình\n--\nSố heo chết nhập/cập nhật\n--\nNgày tuổi ban đầu / ngày tuổi cấu hình\n--\nĐộ ẩm cài đặt\n--\nNgưỡng độ ẩm thấp\n--\nOffset nhiệt độ làm mát\n--\nĐộ lệch nhiệt cho sưởi\n--",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 62,
+            "bottom": 266,
+            "h": 204,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 31,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "settings",
+            "top": 272,
+            "bottom": 926,
+            "h": 654,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [
+              "vm-panel:207"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      }
+    },
+    "DEMO 1366x768": {
+      "default": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 768,
+        "lowest": 762,
+        "titleTop": null,
+        "backTop": null,
+        "errors": 0,
+        "text": "SIBA · THÔNG GIÓ\n\nTổng quan toàn trại\n\nGiám sát chỉ xem · DEMO · Dữ liệu minh họa\n\nTrại SIBA · Đông Anh · Khu ND2\nDEMO Số nhà\n\n6\nToàn trại · DEMO · Dữ liệu minh họa\n\nTrực tuyến\n\n4\nDEMO · Dữ liệu minh họa\n\nCần chú ý\n\n3\nDEMO · Dữ liệu minh họa\n\nCảnh báo đang mở\n\n3\nDEMO · Dữ liệu minh họa\nChọn nhà\n\nChọn nhà để vào ngữ cảnh giám sát.\n\nTìm nhà\nND2-1\nTrực tuyến\nDữ liệu: Hiện tại\nTự động · Cấp 4\nND2-2\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 3\nND2-3\nNgoại tuyến\nDữ liệu: Chưa rõ\nChưa rõ · Cấp --\nND2-4\nTrực tuyến\nDữ liệu: Hiện tại\nThủ công · Cấp 2\nDEMO-05 MINH HỌA\nChưa rõ\nDữ liệu: Chưa rõ\nChưa rõ · Cấp --\nDEMO-06 MINH HỌA\nTrực tuyến\nDữ liệu: Hiện tại\nTự động · Cấp 5",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 164,
+            "h": 94,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "overview",
+            "top": 170,
+            "bottom": 762,
+            "h": 592,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_detail": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 768,
+        "lowest": 762,
+        "titleTop": 112,
+        "backTop": 99,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nND2-1\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nDEMO Nhiệt độ trong nhà\n\n27.8 °C\nHiện tại\n\nNhiệt độ ngoài trời\n\n31.2 °C\nHiện tại\n\nĐộ ẩm trong nhà\n\n74 %RH\nHiện tại\n\nNhiệt độ cảm nhận\n\n29.1 °C\nHiện tại Sơ đồ thông gió\nTín hiệu lỗi thiết bị tổng từ DI: Đang bật\nCảnh báo nhiệt độ cao từ thermostat ngoài: Bình thường\nCửa chớp trần · 65 %Cửa chớp hông · 40 %Quạt 01Đang chạyQuạt 02Đang chạyQuạt 03Đang chạyQuạt 04Đã dừngQuạt 05Chưa rõQuạt 06Đã dừngBơm làm mát 01Đang chạyBơm làm mát 02Chưa cấu hình\nCửa chớp trần\n65\n%\nDữ liệu cũ\nCửa chớp hông\n40\n%\nHiện tại Bộ điều khiển\nKết nối\nTrực tuyến\nChế độ\nTự động\nCơ sở điều khiển\nNhiệt độ thực\nĐiều khiển quạt\nTheo cấp\nCấp hiện tại\n4\nKhử ẩm\nTắt\nChất lượng dữ liệu\nHiện tại\nDữ liệu bổ sung\nTốc độ gió\n--\nLưu lượng gió\n--\nNước tiêu thụ (tổng tích lũy)\n--\nLưu lượng nước\nNOT_CONFIGURED Thông số vận hành\nNhiệt độ đặt hiện tại\n--\nChưa rõ\nNhiệt độ cảm nhận đặt\n--\nChưa rõ\nĐộ ẩm đặt hiện tại\n--\nChưa rõ\nNhiệt độ cảm biến 1\n27.6 °C\nHiện tại\nNhiệt độ cảm biến 2\n28 °C\nHiện tại\nTổng đàn\n--\nChưa rõ\nHeo chết tích lũy\n--\nChưa rõ\nNgày tuổi\n--\nChưa rõ",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 164,
+            "h": 94,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "kpis",
+            "top": 170,
+            "bottom": 263,
+            "h": 94,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 4,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "synoptic",
+            "top": 269,
+            "bottom": 563,
+            "h": 293,
+            "w": 730,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [
+              "vm-panel:40"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "controller",
+            "top": 269,
+            "bottom": 762,
+            "h": 493,
+            "w": 362,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [
+              "vm-controller:25"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "metrics",
+            "top": 569,
+            "bottom": 762,
+            "h": 193,
+            "w": 730,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [
+              "vm-panel:29"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_history": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 768,
+        "lowest": 762,
+        "titleTop": 112,
+        "backTop": 99,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nND2-1\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nDEMO Lịch sử môi trường\n\nNguồn: DEMO · Dữ liệu minh họa. Điểm thiếu tạo khoảng trống.\n\nTrong nhà\nNgoài trời\nCảm nhận\nĐộ ẩm\n\n32°C78.5%02:3008:30\nBảng số liệu\n\nNước là bộ đếm tổng tích lũy; không suy ra lượng theo ngày/lứa.\n\nThời gian\tTrong nhà\tNgoài trời\tCảm nhận\tĐộ ẩm\tTốc độ gió\tLưu lượng gió\tNước (tổng)\tChất lượng\n08:30:00 17/9/2026\t27.8 °C\t31.2 °C\t29.1 °C\t74 %RH\t--\t--\t--\tHiện tại\n07:30:00 17/9/2026\t--\t30.7 °C\t28.9 °C\t74 %RH\t--\t--\t--\tMISSING\n06:30:00 17/9/2026\t27.5 °C\t30.1 °C\t28.7 °C\t75 %RH\t--\t--\t--\tHiện tại\n05:30:00 17/9/2026\t27.2 °C\t29.3 °C\t28.3 °C\t75 %RH\t--\t--\t--\tHiện tại\n04:30:00 17/9/2026\t27 °C\t28.6 °C\t28 °C\t76 %RH\t--\t--\t--\tHiện tại\n03:30:00 17/9/2026\t26.7 °C\t27.9 °C\t27.5 °C\t77 %RH\t--\t--\t--\tHiện tại\n02:30:00 17/9/2026\t26.4 °C\t27.3 °C\t27.1 °C\t78 %RH\t--\t--\t--\tHiện tại",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 164,
+            "h": 94,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "history",
+            "top": 170,
+            "bottom": 762,
+            "h": 592,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [
+              "vm-table-wrap:66"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_alarms": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 768,
+        "lowest": 762,
+        "titleTop": 112,
+        "backTop": 99,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nND2-1\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nDEMO Cảnh báo\n\nNguồn: DEMO · Dữ liệu minh họa · chỉ xem.\n\n3\nđang hoạt động\nMức\tNội dung\tNguồn\tĐối tượng\tThời gian\tTrạng thái\nCao\tEQUIPMENT_FAULT_ACTIVE\nTín hiệu lỗi thiết bị tổng đang bật; PLC không cho biết thiết bị nào (dữ liệu demo)\tPLC\tND2-1 / bộ điều khiển demo\t08:18:00 17/9/2026\tĐang bật\nCảnh báo\tTELEMETRY_STALE\nDữ liệu từ bộ điều khiển đã cũ (dữ liệu demo)\tPLATFORM\tND2-2 / bộ điều khiển demo\t08:23:00 17/9/2026\tĐang bật\nCao\tDEVICE_OFFLINE\nMất kết nối gateway/bộ điều khiển (dữ liệu demo)\tPLATFORM\tND2-3 / bộ điều khiển demo\t07:51:00 17/9/2026\tĐang bật",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 164,
+            "h": 94,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "alarms",
+            "top": 170,
+            "bottom": 762,
+            "h": 592,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_settings": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 768,
+        "lowest": 762,
+        "titleTop": 112,
+        "backTop": 99,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nND2-1\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nDEMO Cài đặt bộ điều khiển\n\nChỉ đọc · 224 thông số · -- là chưa có dữ liệu, không phải 0.\n\nTìm thông số\nHỆ THỐNG 14\nNHIỆT ĐỘ 40\nNHIỆT ĐỘ CẢM NHẬN 40\nCẤP THÔNG GIÓ 108\nTHỜI GIAN 18\nHIỆU CHỈNH 4\nCÀI ĐẶT - HỆ THỐNG\nChọn điều khiển theo nhiệt độ hay nhiệt độ cảm nhận\n--\nBật/tắt khử ẩm\n--\nChọn từng cấp quạt / vô cấp quạt VFD\n--\nChiều dài chuồng\n--\nChiều rộng chuồng\n--\nChiều cao chuồng\n--\nCông suất/lưu lượng danh định quạt thông gió\n--\nSố lượng heo nhập chuồng / tổng đàn cấu hình\n--\nSố heo chết nhập/cập nhật\n--\nNgày tuổi ban đầu / ngày tuổi cấu hình\n--\nĐộ ẩm cài đặt\n--\nNgưỡng độ ẩm thấp\n--\nOffset nhiệt độ làm mát\n--\nĐộ lệch nhiệt cho sưởi\n--",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 164,
+            "h": 94,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "settings",
+            "top": 170,
+            "bottom": 762,
+            "h": 592,
+            "w": 1098,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      }
+    },
+    "DEMO 1536x734": {
+      "default": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 734,
+        "lowest": 728,
+        "titleTop": null,
+        "backTop": null,
+        "errors": 0,
+        "text": "SIBA · THÔNG GIÓ\n\nTổng quan toàn trại\n\nGiám sát chỉ xem · DEMO · Dữ liệu minh họa\n\nTrại SIBA · Đông Anh · Khu ND2\nDEMO Số nhà\n\n6\nToàn trại · DEMO · Dữ liệu minh họa\n\nTrực tuyến\n\n4\nDEMO · Dữ liệu minh họa\n\nCần chú ý\n\n3\nDEMO · Dữ liệu minh họa\n\nCảnh báo đang mở\n\n3\nDEMO · Dữ liệu minh họa\nChọn nhà\n\nChọn nhà để vào ngữ cảnh giám sát.\n\nTìm nhà\nND2-1\nTrực tuyến\nDữ liệu: Hiện tại\nTự động · Cấp 4\nND2-2\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 3\nND2-3\nNgoại tuyến\nDữ liệu: Chưa rõ\nChưa rõ · Cấp --\nND2-4\nTrực tuyến\nDữ liệu: Hiện tại\nThủ công · Cấp 2\nDEMO-05 MINH HỌA\nChưa rõ\nDữ liệu: Chưa rõ\nChưa rõ · Cấp --\nDEMO-06 MINH HỌA\nTrực tuyến\nDữ liệu: Hiện tại\nTự động · Cấp 5",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 159,
+            "h": 89,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "overview",
+            "top": 165,
+            "bottom": 728,
+            "h": 563,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_detail": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 734,
+        "lowest": 728,
+        "titleTop": 109,
+        "backTop": 97,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nND2-1\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nDEMO Nhiệt độ trong nhà\n\n27.8 °C\nHiện tại\n\nNhiệt độ ngoài trời\n\n31.2 °C\nHiện tại\n\nĐộ ẩm trong nhà\n\n74 %RH\nHiện tại\n\nNhiệt độ cảm nhận\n\n29.1 °C\nHiện tại Sơ đồ thông gió\nTín hiệu lỗi thiết bị tổng từ DI: Đang bật\nCảnh báo nhiệt độ cao từ thermostat ngoài: Bình thường\nCửa chớp trần · 65 %Cửa chớp hông · 40 %Quạt 01Đang chạyQuạt 02Đang chạyQuạt 03Đang chạyQuạt 04Đã dừngQuạt 05Chưa rõQuạt 06Đã dừngBơm làm mát 01Đang chạyBơm làm mát 02Chưa cấu hình\nCửa chớp trần\n65\n%\nDữ liệu cũ\nCửa chớp hông\n40\n%\nHiện tại Bộ điều khiển\nKết nối\nTrực tuyến\nChế độ\nTự động\nCơ sở điều khiển\nNhiệt độ thực\nĐiều khiển quạt\nTheo cấp\nCấp hiện tại\n4\nKhử ẩm\nTắt\nChất lượng dữ liệu\nHiện tại\nDữ liệu bổ sung\nTốc độ gió\n--\nLưu lượng gió\n--\nNước tiêu thụ (tổng tích lũy)\n--\nLưu lượng nước\nNOT_CONFIGURED Thông số vận hành\nNhiệt độ đặt hiện tại\n--\nChưa rõ\nNhiệt độ cảm nhận đặt\n--\nChưa rõ\nĐộ ẩm đặt hiện tại\n--\nChưa rõ\nNhiệt độ cảm biến 1\n27.6 °C\nHiện tại\nNhiệt độ cảm biến 2\n28 °C\nHiện tại\nTổng đàn\n--\nChưa rõ\nHeo chết tích lũy\n--\nChưa rõ\nNgày tuổi\n--\nChưa rõ",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 159,
+            "h": 89,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "kpis",
+            "top": 165,
+            "bottom": 254,
+            "h": 89,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 4,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "synoptic",
+            "top": 260,
+            "bottom": 538,
+            "h": 279,
+            "w": 843,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [
+              "vm-panel:56"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "controller",
+            "top": 260,
+            "bottom": 728,
+            "h": 468,
+            "w": 419,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [
+              "vm-controller:49"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "metrics",
+            "top": 544,
+            "bottom": 728,
+            "h": 184,
+            "w": 843,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [
+              "vm-panel:38"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_history": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 734,
+        "lowest": 728,
+        "titleTop": 109,
+        "backTop": 97,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nND2-1\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nDEMO Lịch sử môi trường\n\nNguồn: DEMO · Dữ liệu minh họa. Điểm thiếu tạo khoảng trống.\n\nTrong nhà\nNgoài trời\nCảm nhận\nĐộ ẩm\n\n32°C78.5%02:3008:30\nBảng số liệu\n\nNước là bộ đếm tổng tích lũy; không suy ra lượng theo ngày/lứa.\n\nThời gian\tTrong nhà\tNgoài trời\tCảm nhận\tĐộ ẩm\tTốc độ gió\tLưu lượng gió\tNước (tổng)\tChất lượng\n08:30:00 17/9/2026\t27.8 °C\t31.2 °C\t29.1 °C\t74 %RH\t--\t--\t--\tHiện tại\n07:30:00 17/9/2026\t--\t30.7 °C\t28.9 °C\t74 %RH\t--\t--\t--\tMISSING\n06:30:00 17/9/2026\t27.5 °C\t30.1 °C\t28.7 °C\t75 %RH\t--\t--\t--\tHiện tại\n05:30:00 17/9/2026\t27.2 °C\t29.3 °C\t28.3 °C\t75 %RH\t--\t--\t--\tHiện tại\n04:30:00 17/9/2026\t27 °C\t28.6 °C\t28 °C\t76 %RH\t--\t--\t--\tHiện tại\n03:30:00 17/9/2026\t26.7 °C\t27.9 °C\t27.5 °C\t77 %RH\t--\t--\t--\tHiện tại\n02:30:00 17/9/2026\t26.4 °C\t27.3 °C\t27.1 °C\t78 %RH\t--\t--\t--\tHiện tại",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 159,
+            "h": 89,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "history",
+            "top": 165,
+            "bottom": 728,
+            "h": 563,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [
+              "vm-table-wrap:80"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_alarms": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 734,
+        "lowest": 728,
+        "titleTop": 109,
+        "backTop": 97,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nND2-1\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nDEMO Cảnh báo\n\nNguồn: DEMO · Dữ liệu minh họa · chỉ xem.\n\n3\nđang hoạt động\nMức\tNội dung\tNguồn\tĐối tượng\tThời gian\tTrạng thái\nCao\tEQUIPMENT_FAULT_ACTIVE\nTín hiệu lỗi thiết bị tổng đang bật; PLC không cho biết thiết bị nào (dữ liệu demo)\tPLC\tND2-1 / bộ điều khiển demo\t08:18:00 17/9/2026\tĐang bật\nCảnh báo\tTELEMETRY_STALE\nDữ liệu từ bộ điều khiển đã cũ (dữ liệu demo)\tPLATFORM\tND2-2 / bộ điều khiển demo\t08:23:00 17/9/2026\tĐang bật\nCao\tDEVICE_OFFLINE\nMất kết nối gateway/bộ điều khiển (dữ liệu demo)\tPLATFORM\tND2-3 / bộ điều khiển demo\t07:51:00 17/9/2026\tĐang bật",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 159,
+            "h": 89,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "alarms",
+            "top": 165,
+            "bottom": 728,
+            "h": 563,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_settings": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 734,
+        "lowest": 728,
+        "titleTop": 109,
+        "backTop": 97,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nND2-1\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nDEMO Cài đặt bộ điều khiển\n\nChỉ đọc · 224 thông số · -- là chưa có dữ liệu, không phải 0.\n\nTìm thông số\nHỆ THỐNG 14\nNHIỆT ĐỘ 40\nNHIỆT ĐỘ CẢM NHẬN 40\nCẤP THÔNG GIÓ 108\nTHỜI GIAN 18\nHIỆU CHỈNH 4\nCÀI ĐẶT - HỆ THỐNG\nChọn điều khiển theo nhiệt độ hay nhiệt độ cảm nhận\n--\nBật/tắt khử ẩm\n--\nChọn từng cấp quạt / vô cấp quạt VFD\n--\nChiều dài chuồng\n--\nChiều rộng chuồng\n--\nChiều cao chuồng\n--\nCông suất/lưu lượng danh định quạt thông gió\n--\nSố lượng heo nhập chuồng / tổng đàn cấu hình\n--\nSố heo chết nhập/cập nhật\n--\nNgày tuổi ban đầu / ngày tuổi cấu hình\n--\nĐộ ẩm cài đặt\n--\nNgưỡng độ ẩm thấp\n--\nOffset nhiệt độ làm mát\n--\nĐộ lệch nhiệt cho sưởi\n--",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 159,
+            "h": 89,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 5,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "settings",
+            "top": 165,
+            "bottom": 728,
+            "h": 563,
+            "w": 1268,
+            "rootScroll": 0,
+            "fillGap": 9,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      }
+    },
+    "DEMO 1920x1080": {
+      "default": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 1080,
+        "lowest": 1074,
+        "titleTop": null,
+        "backTop": null,
+        "errors": 0,
+        "text": "SIBA · THÔNG GIÓ\n\nTổng quan toàn trại\n\nGiám sát chỉ xem · DEMO · Dữ liệu minh họa\n\nTrại SIBA · Đông Anh · Khu ND2\nDEMO Số nhà\n\n6\nToàn trại · DEMO · Dữ liệu minh họa\n\nTrực tuyến\n\n4\nDEMO · Dữ liệu minh họa\n\nCần chú ý\n\n3\nDEMO · Dữ liệu minh họa\n\nCảnh báo đang mở\n\n3\nDEMO · Dữ liệu minh họa\nChọn nhà\n\nChọn nhà để vào ngữ cảnh giám sát.\n\nTìm nhà\nND2-1\nTrực tuyến\nDữ liệu: Hiện tại\nTự động · Cấp 4\nND2-2\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 3\nND2-3\nNgoại tuyến\nDữ liệu: Chưa rõ\nChưa rõ · Cấp --\nND2-4\nTrực tuyến\nDữ liệu: Hiện tại\nThủ công · Cấp 2\nDEMO-05 MINH HỌA\nChưa rõ\nDữ liệu: Chưa rõ\nChưa rõ · Cấp --\nDEMO-06 MINH HỌA\nTrực tuyến\nDữ liệu: Hiện tại\nTự động · Cấp 5",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 208,
+            "h": 138,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 34,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "overview",
+            "top": 214,
+            "bottom": 1074,
+            "h": 860,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_detail": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 1080,
+        "lowest": 1074,
+        "titleTop": 130,
+        "backTop": 117,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nND2-1\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nTrại SIBA · Đông Anh · Khu ND2\nDEMO Nhiệt độ trong nhà\n\n27.8 °C\nHiện tại\n\nNhiệt độ ngoài trời\n\n31.2 °C\nHiện tại\n\nĐộ ẩm trong nhà\n\n74 %RH\nHiện tại\n\nNhiệt độ cảm nhận\n\n29.1 °C\nHiện tại Sơ đồ thông gió\nTín hiệu lỗi thiết bị tổng từ DI: Đang bật\nCảnh báo nhiệt độ cao từ thermostat ngoài: Bình thường\nCửa chớp trần · 65 %Cửa chớp hông · 40 %Quạt 01Đang chạyQuạt 02Đang chạyQuạt 03Đang chạyQuạt 04Đã dừngQuạt 05Chưa rõQuạt 06Đã dừngBơm làm mát 01Đang chạyBơm làm mát 02Chưa cấu hình\nCửa chớp trần\n65\n%\nDữ liệu cũ\nCửa chớp hông\n40\n%\nHiện tại Bộ điều khiển\nKết nối\nTrực tuyến\nChế độ\nTự động\nCơ sở điều khiển\nNhiệt độ thực\nĐiều khiển quạt\nTheo cấp\nCấp hiện tại\n4\nKhử ẩm\nTắt\nChất lượng dữ liệu\nHiện tại\nDữ liệu bổ sung\nTốc độ gió\n--\nLưu lượng gió\n--\nNước tiêu thụ (tổng tích lũy)\n--\nLưu lượng nước\nNOT_CONFIGURED Thông số vận hành\nNhiệt độ đặt hiện tại\n--\nChưa rõ\nNhiệt độ cảm nhận đặt\n--\nChưa rõ\nĐộ ẩm đặt hiện tại\n--\nChưa rõ\nNhiệt độ cảm biến 1\n27.6 °C\nHiện tại\nNhiệt độ cảm biến 2\n28 °C\nHiện tại\nTổng đàn\n--\nChưa rõ\nHeo chết tích lũy\n--\nChưa rõ\nNgày tuổi\n--\nChưa rõ",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 208,
+            "h": 138,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 42,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "kpis",
+            "top": 214,
+            "bottom": 353,
+            "h": 138,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "synoptic",
+            "top": 359,
+            "bottom": 785,
+            "h": 427,
+            "w": 1099,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "controller",
+            "top": 359,
+            "bottom": 1074,
+            "h": 715,
+            "w": 547,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "metrics",
+            "top": 791,
+            "bottom": 1074,
+            "h": 283,
+            "w": 1099,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_history": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 1080,
+        "lowest": 1074,
+        "titleTop": 130,
+        "backTop": 117,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nND2-1\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nTrại SIBA · Đông Anh · Khu ND2\nDEMO Lịch sử môi trường\n\nNguồn: DEMO · Dữ liệu minh họa. Điểm thiếu tạo khoảng trống.\n\nTrong nhà\nNgoài trời\nCảm nhận\nĐộ ẩm\n\n32°C78.5%02:3008:30\nBảng số liệu\n\nNước là bộ đếm tổng tích lũy; không suy ra lượng theo ngày/lứa.\n\nThời gian\tTrong nhà\tNgoài trời\tCảm nhận\tĐộ ẩm\tTốc độ gió\tLưu lượng gió\tNước (tổng)\tChất lượng\n08:30:00 17/9/2026\t27.8 °C\t31.2 °C\t29.1 °C\t74 %RH\t--\t--\t--\tHiện tại\n07:30:00 17/9/2026\t--\t30.7 °C\t28.9 °C\t74 %RH\t--\t--\t--\tMISSING\n06:30:00 17/9/2026\t27.5 °C\t30.1 °C\t28.7 °C\t75 %RH\t--\t--\t--\tHiện tại\n05:30:00 17/9/2026\t27.2 °C\t29.3 °C\t28.3 °C\t75 %RH\t--\t--\t--\tHiện tại\n04:30:00 17/9/2026\t27 °C\t28.6 °C\t28 °C\t76 %RH\t--\t--\t--\tHiện tại\n03:30:00 17/9/2026\t26.7 °C\t27.9 °C\t27.5 °C\t77 %RH\t--\t--\t--\tHiện tại\n02:30:00 17/9/2026\t26.4 °C\t27.3 °C\t27.1 °C\t78 %RH\t--\t--\t--\tHiện tại",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 208,
+            "h": 138,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 42,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "history",
+            "top": 214,
+            "bottom": 1074,
+            "h": 860,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_alarms": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 1080,
+        "lowest": 1074,
+        "titleTop": 130,
+        "backTop": 117,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nND2-1\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nTrại SIBA · Đông Anh · Khu ND2\nDEMO Cảnh báo\n\nNguồn: DEMO · Dữ liệu minh họa · chỉ xem.\n\n3\nđang hoạt động\nMức\tNội dung\tNguồn\tĐối tượng\tThời gian\tTrạng thái\nCao\tEQUIPMENT_FAULT_ACTIVE\nTín hiệu lỗi thiết bị tổng đang bật; PLC không cho biết thiết bị nào (dữ liệu demo)\tPLC\tND2-1 / bộ điều khiển demo\t08:18:00 17/9/2026\tĐang bật\nCảnh báo\tTELEMETRY_STALE\nDữ liệu từ bộ điều khiển đã cũ (dữ liệu demo)\tPLATFORM\tND2-2 / bộ điều khiển demo\t08:23:00 17/9/2026\tĐang bật\nCao\tDEVICE_OFFLINE\nMất kết nối gateway/bộ điều khiển (dữ liệu demo)\tPLATFORM\tND2-3 / bộ điều khiển demo\t07:51:00 17/9/2026\tĐang bật",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 208,
+            "h": 138,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 42,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "alarms",
+            "top": 214,
+            "bottom": 1074,
+            "h": 860,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_settings": {
+        "dashScroll": [],
+        "pageX": 0,
+        "gridBottom": 1080,
+        "lowest": 1074,
+        "titleTop": 130,
+        "backTop": 117,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nND2-1\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nTrại SIBA · Đông Anh · Khu ND2\nDEMO Cài đặt bộ điều khiển\n\nChỉ đọc · 224 thông số · -- là chưa có dữ liệu, không phải 0.\n\nTìm thông số\nHỆ THỐNG 14\nNHIỆT ĐỘ 40\nNHIỆT ĐỘ CẢM NHẬN 40\nCẤP THÔNG GIÓ 108\nTHỜI GIAN 18\nHIỆU CHỈNH 4\nCÀI ĐẶT - HỆ THỐNG\nChọn điều khiển theo nhiệt độ hay nhiệt độ cảm nhận\n--\nBật/tắt khử ẩm\n--\nChọn từng cấp quạt / vô cấp quạt VFD\n--\nChiều dài chuồng\n--\nChiều rộng chuồng\n--\nChiều cao chuồng\n--\nCông suất/lưu lượng danh định quạt thông gió\n--\nSố lượng heo nhập chuồng / tổng đàn cấu hình\n--\nSố heo chết nhập/cập nhật\n--\nNgày tuổi ban đầu / ngày tuổi cấu hình\n--\nĐộ ẩm cài đặt\n--\nNgưỡng độ ẩm thấp\n--\nOffset nhiệt độ làm mát\n--\nĐộ lệch nhiệt cho sưởi\n--",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 208,
+            "h": 138,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 42,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "settings",
+            "top": 214,
+            "bottom": 1074,
+            "h": 860,
+            "w": 1652,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      }
+    },
+    "DEMO 900x800": {
+      "default": {
+        "dashScroll": [
+          "GRIDSTER.mobile:176"
+        ],
+        "pageX": 0,
+        "gridBottom": 800,
+        "lowest": 964,
+        "titleTop": null,
+        "backTop": null,
+        "errors": 0,
+        "text": "SIBA · THÔNG GIÓ\n\nTổng quan toàn trại\n\nGiám sát chỉ xem · DEMO · Dữ liệu minh họa\n\nTrại SIBA · Đông Anh · Khu ND2\nDEMO Số nhà\n\n6\nToàn trại · DEMO · Dữ liệu minh họa\n\nTrực tuyến\n\n4\nDEMO · Dữ liệu minh họa\n\nCần chú ý\n\n3\nDEMO · Dữ liệu minh họa\n\nCảnh báo đang mở\n\n3\nDEMO · Dữ liệu minh họa\nChọn nhà\n\nChọn nhà để vào ngữ cảnh giám sát.\n\nTìm nhà\nND2-1\nTrực tuyến\nDữ liệu: Hiện tại\nTự động · Cấp 4\nND2-2\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 3\nND2-3\nNgoại tuyến\nDữ liệu: Chưa rõ\nChưa rõ · Cấp --\nND2-4\nTrực tuyến\nDữ liệu: Hiện tại\nThủ công · Cấp 2\nDEMO-05 MINH HỌA\nChưa rõ\nDữ liệu: Chưa rõ\nChưa rõ · Cấp --\nDEMO-06 MINH HỌA\nTrực tuyến\nDữ liệu: Hiện tại\nTự động · Cấp 5",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 274,
+            "h": 204,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 67,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "overview",
+            "top": 280,
+            "bottom": 964,
+            "h": 684,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_detail": {
+        "dashScroll": [
+          "GRIDSTER.mobile:1316"
+        ],
+        "pageX": 0,
+        "gridBottom": 800,
+        "lowest": 2104,
+        "titleTop": 162,
+        "backTop": 150,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nND2-1\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nTrại SIBA · Đông Anh · Khu ND2\nDEMO Nhiệt độ trong nhà\n\n27.8 °C\nHiện tại\n\nNhiệt độ ngoài trời\n\n31.2 °C\nHiện tại\n\nĐộ ẩm trong nhà\n\n74 %RH\nHiện tại\n\nNhiệt độ cảm nhận\n\n29.1 °C\nHiện tại Sơ đồ thông gió\nTín hiệu lỗi thiết bị tổng từ DI: Đang bật\nCảnh báo nhiệt độ cao từ thermostat ngoài: Bình thường\nCửa chớp trần · 65 %Cửa chớp hông · 40 %Quạt 01Đang chạyQuạt 02Đang chạyQuạt 03Đang chạyQuạt 04Đã dừngQuạt 05Chưa rõQuạt 06Đã dừngBơm làm mát 01Đang chạyBơm làm mát 02Chưa cấu hình\nCửa chớp trần\n65\n%\nDữ liệu cũ\nCửa chớp hông\n40\n%\nHiện tại Bộ điều khiển\nKết nối\nTrực tuyến\nChế độ\nTự động\nCơ sở điều khiển\nNhiệt độ thực\nĐiều khiển quạt\nTheo cấp\nCấp hiện tại\n4\nKhử ẩm\nTắt\nChất lượng dữ liệu\nHiện tại\nDữ liệu bổ sung\nTốc độ gió\n--\nLưu lượng gió\n--\nNước tiêu thụ (tổng tích lũy)\n--\nLưu lượng nước\nNOT_CONFIGURED Thông số vận hành\nNhiệt độ đặt hiện tại\n--\nChưa rõ\nNhiệt độ cảm nhận đặt\n--\nChưa rõ\nĐộ ẩm đặt hiện tại\n--\nChưa rõ\nNhiệt độ cảm biến 1\n27.6 °C\nHiện tại\nNhiệt độ cảm biến 2\n28 °C\nHiện tại\nTổng đàn\n--\nChưa rõ\nHeo chết tích lũy\n--\nChưa rõ\nNgày tuổi\n--\nChưa rõ",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 274,
+            "h": 204,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 75,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "kpis",
+            "top": 280,
+            "bottom": 514,
+            "h": 234,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "synoptic",
+            "top": 520,
+            "bottom": 1084,
+            "h": 564,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "controller",
+            "top": 1090,
+            "bottom": 1654,
+            "h": 564,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [
+              "vm-controller:39"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "metrics",
+            "top": 1660,
+            "bottom": 2104,
+            "h": 444,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_history": {
+        "dashScroll": [
+          "GRIDSTER.mobile:266"
+        ],
+        "pageX": 0,
+        "gridBottom": 800,
+        "lowest": 1054,
+        "titleTop": 162,
+        "backTop": 150,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nND2-1\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nTrại SIBA · Đông Anh · Khu ND2\nDEMO Lịch sử môi trường\n\nNguồn: DEMO · Dữ liệu minh họa. Điểm thiếu tạo khoảng trống.\n\nTrong nhà\nNgoài trời\nCảm nhận\nĐộ ẩm\n\n32°C78.5%02:3008:30\nBảng số liệu\n\nNước là bộ đếm tổng tích lũy; không suy ra lượng theo ngày/lứa.\n\nThời gian\tTrong nhà\tNgoài trời\tCảm nhận\tĐộ ẩm\tTốc độ gió\tLưu lượng gió\tNước (tổng)\tChất lượng\n08:30:00 17/9/2026\t27.8 °C\t31.2 °C\t29.1 °C\t74 %RH\t--\t--\t--\tHiện tại\n07:30:00 17/9/2026\t--\t30.7 °C\t28.9 °C\t74 %RH\t--\t--\t--\tMISSING\n06:30:00 17/9/2026\t27.5 °C\t30.1 °C\t28.7 °C\t75 %RH\t--\t--\t--\tHiện tại\n05:30:00 17/9/2026\t27.2 °C\t29.3 °C\t28.3 °C\t75 %RH\t--\t--\t--\tHiện tại\n04:30:00 17/9/2026\t27 °C\t28.6 °C\t28 °C\t76 %RH\t--\t--\t--\tHiện tại\n03:30:00 17/9/2026\t26.7 °C\t27.9 °C\t27.5 °C\t77 %RH\t--\t--\t--\tHiện tại\n02:30:00 17/9/2026\t26.4 °C\t27.3 °C\t27.1 °C\t78 %RH\t--\t--\t--\tHiện tại",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 274,
+            "h": 204,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 75,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "history",
+            "top": 280,
+            "bottom": 1054,
+            "h": 774,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [
+              "vm-table-wrap:23"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_alarms": {
+        "dashScroll": [
+          "GRIDSTER.mobile:146"
+        ],
+        "pageX": 0,
+        "gridBottom": 800,
+        "lowest": 934,
+        "titleTop": 162,
+        "backTop": 150,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nND2-1\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nTrại SIBA · Đông Anh · Khu ND2\nDEMO Cảnh báo\n\nNguồn: DEMO · Dữ liệu minh họa · chỉ xem.\n\n3\nđang hoạt động\nMức\tNội dung\tNguồn\tĐối tượng\tThời gian\tTrạng thái\nCao\tEQUIPMENT_FAULT_ACTIVE\nTín hiệu lỗi thiết bị tổng đang bật; PLC không cho biết thiết bị nào (dữ liệu demo)\tPLC\tND2-1 / bộ điều khiển demo\t08:18:00 17/9/2026\tĐang bật\nCảnh báo\tTELEMETRY_STALE\nDữ liệu từ bộ điều khiển đã cũ (dữ liệu demo)\tPLATFORM\tND2-2 / bộ điều khiển demo\t08:23:00 17/9/2026\tĐang bật\nCao\tDEVICE_OFFLINE\nMất kết nối gateway/bộ điều khiển (dữ liệu demo)\tPLATFORM\tND2-3 / bộ điều khiển demo\t07:51:00 17/9/2026\tĐang bật",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 274,
+            "h": 204,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 75,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "alarms",
+            "top": 280,
+            "bottom": 934,
+            "h": 654,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_settings": {
+        "dashScroll": [
+          "GRIDSTER.mobile:146"
+        ],
+        "pageX": 0,
+        "gridBottom": 800,
+        "lowest": 934,
+        "titleTop": 162,
+        "backTop": 150,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nND2-1\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nTrại SIBA · Đông Anh · Khu ND2\nDEMO Cài đặt bộ điều khiển\n\nChỉ đọc · 224 thông số · -- là chưa có dữ liệu, không phải 0.\n\nTìm thông số\nHỆ THỐNG 14\nNHIỆT ĐỘ 40\nNHIỆT ĐỘ CẢM NHẬN 40\nCẤP THÔNG GIÓ 108\nTHỜI GIAN 18\nHIỆU CHỈNH 4\nCÀI ĐẶT - HỆ THỐNG\nChọn điều khiển theo nhiệt độ hay nhiệt độ cảm nhận\n--\nBật/tắt khử ẩm\n--\nChọn từng cấp quạt / vô cấp quạt VFD\n--\nChiều dài chuồng\n--\nChiều rộng chuồng\n--\nChiều cao chuồng\n--\nCông suất/lưu lượng danh định quạt thông gió\n--\nSố lượng heo nhập chuồng / tổng đàn cấu hình\n--\nSố heo chết nhập/cập nhật\n--\nNgày tuổi ban đầu / ngày tuổi cấu hình\n--\nĐộ ẩm cài đặt\n--\nNgưỡng độ ẩm thấp\n--\nOffset nhiệt độ làm mát\n--\nĐộ lệch nhiệt cho sưởi\n--",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 70,
+            "bottom": 274,
+            "h": 204,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 75,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "settings",
+            "top": 280,
+            "bottom": 934,
+            "h": 654,
+            "w": 876,
+            "rootScroll": 0,
+            "fillGap": 12,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      }
+    },
+    "DEMO mobile390": {
+      "default": {
+        "dashScroll": [
+          "GRIDSTER.mobile:124"
+        ],
+        "pageX": 0,
+        "gridBottom": 844,
+        "lowest": 956,
+        "titleTop": null,
+        "backTop": null,
+        "errors": 0,
+        "text": "SIBA · THÔNG GIÓ\n\nTổng quan toàn trại\n\nGiám sát chỉ xem · DEMO · Dữ liệu minh họa\n\nTrại SIBA · Đông Anh · Khu ND2\nDEMO Số nhà\n\n6\nToàn trại · DEMO · Dữ liệu minh họa\n\nTrực tuyến\n\n4\nDEMO · Dữ liệu minh họa\n\nCần chú ý\n\n3\nDEMO · Dữ liệu minh họa\n\nCảnh báo đang mở\n\n3\nDEMO · Dữ liệu minh họa\nChọn nhà\n\nChọn nhà để vào ngữ cảnh giám sát.\n\nTìm nhà\nND2-1\nTrực tuyến\nDữ liệu: Hiện tại\nTự động · Cấp 4\nND2-2\nTrực tuyến\nDữ liệu: Dữ liệu cũ\nTự động · Cấp 3\nND2-3\nNgoại tuyến\nDữ liệu: Chưa rõ\nChưa rõ · Cấp --\nND2-4\nTrực tuyến\nDữ liệu: Hiện tại\nThủ công · Cấp 2\nDEMO-05 MINH HỌA\nChưa rõ\nDữ liệu: Chưa rõ\nChưa rõ · Cấp --\nDEMO-06 MINH HỌA\nTrực tuyến\nDữ liệu: Hiện tại\nTự động · Cấp 5",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 62,
+            "bottom": 266,
+            "h": 204,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 46,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "overview",
+            "top": 272,
+            "bottom": 956,
+            "h": 684,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [
+              "vm-barn-grid:336"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_detail": {
+        "dashScroll": [
+          "GRIDSTER.mobile:1264"
+        ],
+        "pageX": 0,
+        "gridBottom": 844,
+        "lowest": 2096,
+        "titleTop": 129,
+        "backTop": 112,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nND2-1\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nDEMO Nhiệt độ trong nhà\n\n27.8 °C\nHiện tại\n\nNhiệt độ ngoài trời\n\n31.2 °C\nHiện tại\n\nĐộ ẩm trong nhà\n\n74 %RH\nHiện tại\n\nNhiệt độ cảm nhận\n\n29.1 °C\nHiện tại Sơ đồ thông gió\nTín hiệu lỗi thiết bị tổng từ DI: Đang bật\nCảnh báo nhiệt độ cao từ thermostat ngoài: Bình thường\nCửa chớp trần\n65\n%\nDữ liệu cũ\nCửa chớp hông\n40\n%\nHiện tại\nQuạt 01\nĐang chạy\nHiện tại\nQuạt 02\nĐang chạy\nHiện tại\nQuạt 03\nĐang chạy\nHiện tại\nQuạt 04\nĐã dừng\nHiện tại\nQuạt 05\nChưa rõ\nChưa rõ\nQuạt 06\nĐã dừng\nHiện tại\nBơm làm mát 01\nĐang chạy\nHiện tại\nBơm làm mát 02\nChưa cấu hình\nChưa rõ Bộ điều khiển\nKết nối\nTrực tuyến\nChế độ\nTự động\nCơ sở điều khiển\nNhiệt độ thực\nĐiều khiển quạt\nTheo cấp\nCấp hiện tại\n4\nKhử ẩm\nTắt\nChất lượng dữ liệu\nHiện tại\nDữ liệu bổ sung\nTốc độ gió\n--\nLưu lượng gió\n--\nNước tiêu thụ (tổng tích lũy)\n--\nLưu lượng nước\nNOT_CONFIGURED Thông số vận hành\nNhiệt độ đặt hiện tại\n--\nChưa rõ\nNhiệt độ cảm nhận đặt\n--\nChưa rõ\nĐộ ẩm đặt hiện tại\n--\nChưa rõ\nNhiệt độ cảm biến 1\n27.6 °C\nHiện tại\nNhiệt độ cảm biến 2\n28 °C\nHiện tại\nTổng đàn\n--\nChưa rõ\nHeo chết tích lũy\n--\nChưa rõ\nNgày tuổi\n--\nChưa rõ",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 62,
+            "bottom": 266,
+            "h": 204,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 50,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "kpis",
+            "top": 272,
+            "bottom": 506,
+            "h": 234,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "synoptic",
+            "top": 512,
+            "bottom": 1076,
+            "h": 564,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [
+              "vm-panel:295"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "controller",
+            "top": 1082,
+            "bottom": 1646,
+            "h": 564,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [
+              "vm-controller:31"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "metrics",
+            "top": 1652,
+            "bottom": 2096,
+            "h": 444,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_history": {
+        "dashScroll": [
+          "GRIDSTER.mobile:214"
+        ],
+        "pageX": 0,
+        "gridBottom": 844,
+        "lowest": 1046,
+        "titleTop": 129,
+        "backTop": 112,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nND2-1\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nDEMO Lịch sử môi trường\n\nNguồn: DEMO · Dữ liệu minh họa. Điểm thiếu tạo khoảng trống.\n\nTrong nhà\nNgoài trời\nCảm nhận\nĐộ ẩm\n\n32°C78.5%02:3008:30\nBảng số liệu\n\nNước là bộ đếm tổng tích lũy; không suy ra lượng theo ngày/lứa.\n\nThời gian\tTrong nhà\tNgoài trời\tCảm nhận\tĐộ ẩm\tTốc độ gió\tLưu lượng gió\tNước (tổng)\tChất lượng\n08:30:00 17/9/2026\t27.8 °C\t31.2 °C\t29.1 °C\t74 %RH\t--\t--\t--\tHiện tại\n07:30:00 17/9/2026\t--\t30.7 °C\t28.9 °C\t74 %RH\t--\t--\t--\tMISSING\n06:30:00 17/9/2026\t27.5 °C\t30.1 °C\t28.7 °C\t75 %RH\t--\t--\t--\tHiện tại\n05:30:00 17/9/2026\t27.2 °C\t29.3 °C\t28.3 °C\t75 %RH\t--\t--\t--\tHiện tại\n04:30:00 17/9/2026\t27 °C\t28.6 °C\t28 °C\t76 %RH\t--\t--\t--\tHiện tại\n03:30:00 17/9/2026\t26.7 °C\t27.9 °C\t27.5 °C\t77 %RH\t--\t--\t--\tHiện tại\n02:30:00 17/9/2026\t26.4 °C\t27.3 °C\t27.1 °C\t78 %RH\t--\t--\t--\tHiện tại",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 62,
+            "bottom": 266,
+            "h": 204,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 50,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "history",
+            "top": 272,
+            "bottom": 1046,
+            "h": 774,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [
+              "vm-table-wrap:42"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_alarms": {
+        "dashScroll": [
+          "GRIDSTER.mobile:94"
+        ],
+        "pageX": 0,
+        "gridBottom": 844,
+        "lowest": 926,
+        "titleTop": 129,
+        "backTop": 112,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nND2-1\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nDEMO Cảnh báo\n\nNguồn: DEMO · Dữ liệu minh họa · chỉ xem.\n\n3\nđang hoạt động\nMức\tNội dung\tNguồn\tĐối tượng\tThời gian\tTrạng thái\nCao\tEQUIPMENT_FAULT_ACTIVE\nTín hiệu lỗi thiết bị tổng đang bật; PLC không cho biết thiết bị nào (dữ liệu demo)\tPLC\tND2-1 / bộ điều khiển demo\t08:18:00 17/9/2026\tĐang bật\nCảnh báo\tTELEMETRY_STALE\nDữ liệu từ bộ điều khiển đã cũ (dữ liệu demo)\tPLATFORM\tND2-2 / bộ điều khiển demo\t08:23:00 17/9/2026\tĐang bật\nCao\tDEVICE_OFFLINE\nMất kết nối gateway/bộ điều khiển (dữ liệu demo)\tPLATFORM\tND2-3 / bộ điều khiển demo\t07:51:00 17/9/2026\tĐang bật",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 62,
+            "bottom": 266,
+            "h": 204,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 50,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "alarms",
+            "top": 272,
+            "bottom": 926,
+            "h": 654,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          }
+        ]
+      },
+      "vent_settings": {
+        "dashScroll": [
+          "GRIDSTER.mobile:94"
+        ],
+        "pageX": 0,
+        "gridBottom": 844,
+        "lowest": 926,
+        "titleTop": 129,
+        "backTop": 112,
+        "errors": 0,
+        "text": "← Tổng quan\n\nSIBA · THÔNG GIÓ\n\nND2-1\nGiám sát\nLịch sử\nCảnh báo\nCài đặt\nDEMO Cài đặt bộ điều khiển\n\nChỉ đọc · 224 thông số · -- là chưa có dữ liệu, không phải 0.\n\nTìm thông số\nHỆ THỐNG 14\nNHIỆT ĐỘ 40\nNHIỆT ĐỘ CẢM NHẬN 40\nCẤP THÔNG GIÓ 108\nTHỜI GIAN 18\nHIỆU CHỈNH 4\nCÀI ĐẶT - HỆ THỐNG\nChọn điều khiển theo nhiệt độ hay nhiệt độ cảm nhận\n--\nBật/tắt khử ẩm\n--\nChọn từng cấp quạt / vô cấp quạt VFD\n--\nChiều dài chuồng\n--\nChiều rộng chuồng\n--\nChiều cao chuồng\n--\nCông suất/lưu lượng danh định quạt thông gió\n--\nSố lượng heo nhập chuồng / tổng đàn cấu hình\n--\nSố heo chết nhập/cập nhật\n--\nNgày tuổi ban đầu / ngày tuổi cấu hình\n--\nĐộ ẩm cài đặt\n--\nNgưỡng độ ẩm thấp\n--\nOffset nhiệt độ làm mát\n--\nĐộ lệch nhiệt cho sưởi\n--",
+        "widgets": [
+          {
+            "comp": "header",
+            "top": 62,
+            "bottom": 266,
+            "h": 204,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 50,
+            "scrollers": [],
+            "clipped": [],
+            "tiny": 0,
+            "notice": false
+          },
+          {
+            "comp": "settings",
+            "top": 272,
+            "bottom": 926,
+            "h": 654,
+            "w": 366,
+            "rootScroll": 0,
+            "fillGap": 8,
+            "scrollers": [
+              "vm-panel:207"
+            ],
+            "clipped": [],
+            "tiny": 0,
+            "notice": true
+          }
+        ]
+      }
+    }
+  }
+}

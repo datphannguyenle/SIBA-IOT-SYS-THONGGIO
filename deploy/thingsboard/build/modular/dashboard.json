@@ -30,8 +30,7 @@
             "demoUseSubscription": false,
             "keyMap": {},
             "freshnessMs": {}
-          },
-          "mobileHeight": 110
+          }
         }
       },
       "a62667df-dd96-5b8d-b7f6-4cefe97fccd4": {
@@ -41,7 +40,7 @@
         "col": 0,
         "row": 3,
         "sizeX": 24,
-        "sizeY": 15,
+        "sizeY": 18,
         "config": {
           "title": "overview",
           "showTitle": false,
@@ -61,8 +60,7 @@
             "demoUseSubscription": false,
             "keyMap": {},
             "freshnessMs": {}
-          },
-          "mobileHeight": 660
+          }
         }
       },
       "54e65511-ad67-572f-b40f-7b426e01e0bb": {
@@ -72,7 +70,7 @@
         "col": 0,
         "row": 0,
         "sizeX": 24,
-        "sizeY": 2,
+        "sizeY": 3,
         "config": {
           "title": "header",
           "showTitle": false,
@@ -92,8 +90,7 @@
             "demoUseSubscription": false,
             "keyMap": {},
             "freshnessMs": {}
-          },
-          "mobileHeight": 110
+          }
         }
       },
       "dbbc31e4-bdb0-59c7-a724-6d86460a6aa9": {
@@ -101,9 +98,9 @@
         "typeFullFqn": "tenant.siba_vent_demo.modular_latest",
         "type": "latest",
         "col": 0,
-        "row": 2,
+        "row": 3,
         "sizeX": 24,
-        "sizeY": 2,
+        "sizeY": 3,
         "config": {
           "title": "kpis",
           "showTitle": false,
@@ -123,8 +120,7 @@
             "demoUseSubscription": false,
             "keyMap": {},
             "freshnessMs": {}
-          },
-          "mobileHeight": 220
+          }
         }
       },
       "5f59f395-5c27-5101-963c-826ffdd45522": {
@@ -132,9 +128,9 @@
         "typeFullFqn": "tenant.siba_vent_demo.modular_latest",
         "type": "latest",
         "col": 0,
-        "row": 4,
+        "row": 6,
         "sizeX": 16,
-        "sizeY": 11,
+        "sizeY": 9,
         "config": {
           "title": "synoptic",
           "showTitle": false,
@@ -154,39 +150,7 @@
             "demoUseSubscription": false,
             "keyMap": {},
             "freshnessMs": {}
-          },
-          "mobileHeight": 540
-        }
-      },
-      "6e90214b-2e9e-55f8-b503-5f1e5895a986": {
-        "id": "6e90214b-2e9e-55f8-b503-5f1e5895a986",
-        "typeFullFqn": "tenant.siba_vent_demo.modular_latest",
-        "type": "latest",
-        "col": 16,
-        "row": 4,
-        "sizeX": 8,
-        "sizeY": 11,
-        "config": {
-          "title": "controller",
-          "showTitle": false,
-          "showTitleIcon": false,
-          "padding": "0px",
-          "backgroundColor": "#001827",
-          "color": "#f0f5ff",
-          "dropShadow": false,
-          "enableFullscreen": false,
-          "enableDataExport": false,
-          "actions": {},
-          "datasources": [],
-          "settings": {
-            "component": "controller",
-            "viewState": "vent_detail",
-            "sourceMode": "demo",
-            "demoUseSubscription": false,
-            "keyMap": {},
-            "freshnessMs": {}
-          },
-          "mobileHeight": 550
+          }
         }
       },
       "ca243689-0c27-5a13-a056-ed58cf2b94ce": {
@@ -195,7 +159,7 @@
         "type": "latest",
         "col": 0,
         "row": 15,
-        "sizeX": 24,
+        "sizeX": 16,
         "sizeY": 6,
         "config": {
           "title": "metrics",
@@ -216,8 +180,37 @@
             "demoUseSubscription": false,
             "keyMap": {},
             "freshnessMs": {}
-          },
-          "mobileHeight": 440
+          }
+        }
+      },
+      "6e90214b-2e9e-55f8-b503-5f1e5895a986": {
+        "id": "6e90214b-2e9e-55f8-b503-5f1e5895a986",
+        "typeFullFqn": "tenant.siba_vent_demo.modular_latest",
+        "type": "latest",
+        "col": 16,
+        "row": 6,
+        "sizeX": 8,
+        "sizeY": 15,
+        "config": {
+          "title": "controller",
+          "showTitle": false,
+          "showTitleIcon": false,
+          "padding": "0px",
+          "backgroundColor": "#001827",
+          "color": "#f0f5ff",
+          "dropShadow": false,
+          "enableFullscreen": false,
+          "enableDataExport": false,
+          "actions": {},
+          "datasources": [],
+          "settings": {
+            "component": "controller",
+            "viewState": "vent_detail",
+            "sourceMode": "demo",
+            "demoUseSubscription": false,
+            "keyMap": {},
+            "freshnessMs": {}
+          }
         }
       },
       "0e95b8a2-ebc8-5bd3-a86b-68adf93170c5": {
@@ -227,7 +220,7 @@
         "col": 0,
         "row": 0,
         "sizeX": 24,
-        "sizeY": 4,
+        "sizeY": 3,
         "config": {
           "title": "header",
           "showTitle": false,
@@ -247,8 +240,7 @@
             "demoUseSubscription": false,
             "keyMap": {},
             "freshnessMs": {}
-          },
-          "mobileHeight": 110
+          }
         }
       },
       "6b96c5df-e2be-5f3b-b42d-f29a9c00f41e": {
@@ -256,9 +248,9 @@
         "typeFullFqn": "tenant.siba_vent_demo.modular_timeseries",
         "type": "timeseries",
         "col": 0,
-        "row": 4,
+        "row": 3,
         "sizeX": 24,
-        "sizeY": 22,
+        "sizeY": 18,
         "config": {
           "title": "history",
           "showTitle": false,
@@ -278,8 +270,7 @@
             "demoUseSubscription": false,
             "keyMap": {},
             "freshnessMs": {}
-          },
-          "mobileHeight": 750
+          }
         }
       },
       "7de45866-fd6c-5ffb-b958-692b86fc9d47": {
@@ -289,7 +280,7 @@
         "col": 0,
         "row": 0,
         "sizeX": 24,
-        "sizeY": 4,
+        "sizeY": 3,
         "config": {
           "title": "header",
           "showTitle": false,
@@ -309,8 +300,7 @@
             "demoUseSubscription": false,
             "keyMap": {},
             "freshnessMs": {}
-          },
-          "mobileHeight": 110
+          }
         }
       },
       "69d23974-1467-5f0d-bb36-b6c0da92fdae": {
@@ -318,7 +308,7 @@
         "typeFullFqn": "tenant.siba_vent_demo.modular_alarm",
         "type": "alarm",
         "col": 0,
-        "row": 4,
+        "row": 3,
         "sizeX": 24,
         "sizeY": 18,
         "config": {
@@ -345,8 +335,7 @@
             "demoUseSubscription": false,
             "keyMap": {},
             "freshnessMs": {}
-          },
-          "mobileHeight": 650
+          }
         }
       },
       "26fc72f9-5fff-58dc-87fb-6aafd8b61f86": {
@@ -356,7 +345,7 @@
         "col": 0,
         "row": 0,
         "sizeX": 24,
-        "sizeY": 4,
+        "sizeY": 3,
         "config": {
           "title": "header",
           "showTitle": false,
@@ -376,8 +365,7 @@
             "demoUseSubscription": false,
             "keyMap": {},
             "freshnessMs": {}
-          },
-          "mobileHeight": 110
+          }
         }
       },
       "e5fa09a8-bc6b-59a8-878a-401bceb12a52": {
@@ -385,9 +373,9 @@
         "typeFullFqn": "tenant.siba_vent_demo.modular_latest",
         "type": "latest",
         "col": 0,
-        "row": 4,
+        "row": 3,
         "sizeX": 24,
-        "sizeY": 20,
+        "sizeY": 18,
         "config": {
           "title": "settings",
           "showTitle": false,
@@ -407,8 +395,7 @@
             "demoUseSubscription": false,
             "keyMap": {},
             "freshnessMs": {}
-          },
-          "mobileHeight": 650
+          }
         }
       }
     },
@@ -423,13 +410,15 @@
                 "col": 0,
                 "row": 0,
                 "sizeX": 24,
-                "sizeY": 3
+                "sizeY": 3,
+                "mobileHeight": 7
               },
               "a62667df-dd96-5b8d-b7f6-4cefe97fccd4": {
                 "col": 0,
                 "row": 3,
                 "sizeX": 24,
-                "sizeY": 15
+                "sizeY": 18,
+                "mobileHeight": 23
               }
             },
             "gridSettings": {
@@ -456,31 +445,36 @@
                 "col": 0,
                 "row": 0,
                 "sizeX": 24,
-                "sizeY": 2
+                "sizeY": 3,
+                "mobileHeight": 7
               },
               "dbbc31e4-bdb0-59c7-a724-6d86460a6aa9": {
                 "col": 0,
-                "row": 2,
+                "row": 3,
                 "sizeX": 24,
-                "sizeY": 2
+                "sizeY": 3,
+                "mobileHeight": 8
               },
               "5f59f395-5c27-5101-963c-826ffdd45522": {
                 "col": 0,
-                "row": 4,
+                "row": 6,
                 "sizeX": 16,
-                "sizeY": 11
-              },
-              "6e90214b-2e9e-55f8-b503-5f1e5895a986": {
-                "col": 16,
-                "row": 4,
-                "sizeX": 8,
-                "sizeY": 11
+                "sizeY": 9,
+                "mobileHeight": 19
               },
               "ca243689-0c27-5a13-a056-ed58cf2b94ce": {
                 "col": 0,
                 "row": 15,
-                "sizeX": 24,
-                "sizeY": 6
+                "sizeX": 16,
+                "sizeY": 6,
+                "mobileHeight": 15
+              },
+              "6e90214b-2e9e-55f8-b503-5f1e5895a986": {
+                "col": 16,
+                "row": 6,
+                "sizeX": 8,
+                "sizeY": 15,
+                "mobileHeight": 19
               }
             },
             "gridSettings": {
@@ -488,7 +482,7 @@
               "columns": 24,
               "margin": 6,
               "outerMargin": true,
-              "autoFillHeight": false,
+              "autoFillHeight": true,
               "mobileAutoFillHeight": false,
               "mobileRowHeight": 24,
               "rowHeight": 24,
@@ -507,13 +501,15 @@
                 "col": 0,
                 "row": 0,
                 "sizeX": 24,
-                "sizeY": 4
+                "sizeY": 3,
+                "mobileHeight": 7
               },
               "6b96c5df-e2be-5f3b-b42d-f29a9c00f41e": {
                 "col": 0,
-                "row": 4,
+                "row": 3,
                 "sizeX": 24,
-                "sizeY": 22
+                "sizeY": 18,
+                "mobileHeight": 26
               }
             },
             "gridSettings": {
@@ -540,13 +536,15 @@
                 "col": 0,
                 "row": 0,
                 "sizeX": 24,
-                "sizeY": 4
+                "sizeY": 3,
+                "mobileHeight": 7
               },
               "69d23974-1467-5f0d-bb36-b6c0da92fdae": {
                 "col": 0,
-                "row": 4,
+                "row": 3,
                 "sizeX": 24,
-                "sizeY": 18
+                "sizeY": 18,
+                "mobileHeight": 22
               }
             },
             "gridSettings": {
@@ -573,13 +571,15 @@
                 "col": 0,
                 "row": 0,
                 "sizeX": 24,
-                "sizeY": 4
+                "sizeY": 3,
+                "mobileHeight": 7
               },
               "e5fa09a8-bc6b-59a8-878a-401bceb12a52": {
                 "col": 0,
-                "row": 4,
+                "row": 3,
                 "sizeX": 24,
-                "sizeY": 20
+                "sizeY": 18,
+                "mobileHeight": 22
               }
             },
             "gridSettings": {

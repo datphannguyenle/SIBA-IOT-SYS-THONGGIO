@@ -53,14 +53,15 @@ hệ khác. Mỗi hệ vẫn phải giữ hợp đồng dữ liệu và nghiệp
   vụ nhưng giữ cùng kiểu điều hướng và phải giữ entity đã chọn.
 - Giám sát: KPI → vùng trực quan chính + cột trạng thái → thông tin bổ sung.
 - Nội dung dày được gộp có chủ đích; không tạo nhiều widget nhỏ để lại khoảng trống lớn.
-- Một trang chỉ dùng một cuộn dọc tự nhiên. Cuộn nội bộ chỉ dành cho bảng rộng hoặc sơ đồ
-  thật sự cần pan ngang.
+- **Từ 01/10/2026 (VENT-013): dashboard KHÔNG cuộn ở cấp trang.** Mọi trang vừa đúng khung nhìn; vùng dữ
+  liệu dài (danh sách nhà, bảng, cài đặt, cột bộ điều khiển) tự cuộn BÊN TRONG panel bằng thanh cuộn mảnh
+  tối. Thay cho quy tắc cũ "một cuộn dọc tự nhiên" của baseline v1.
 
 ## Responsive và độ vừa màn hình
 
 - Laptop tối thiểu bắt buộc kiểm cả 1366×768 và 1536×734 khi sidebar/toolbar ThingsBoard mở.
 - Không thu nhỏ toàn dashboard để “vừa”; ưu tiên nén khoảng cách, gộp nội dung và sắp xếp lại.
-- Desktop: bốn màn thông tin phụ lấp viewport; Giám sát được phép cuộn dọc ngắn do sơ đồ.
+- Desktop: cả năm trang lấp viewport; mọi trang cùng TỔNG 21 hàng và header 3 hàng (xem `deployment/VENT-013-full-man-hinh.md`).
 - Mobile: xếp một cột, menu/tab được wrap hoặc cuộn ngang cục bộ, không tràn ngang trang.
 - Không dùng chiều cao cố định khiến nội dung bị cắt; không coi `autoFillHeight` là đủ nếu nội
   dung bên trong widget không lấp ô.
