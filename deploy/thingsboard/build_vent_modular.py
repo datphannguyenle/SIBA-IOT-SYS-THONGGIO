@@ -69,6 +69,7 @@ self.onInit = function () {
     var params = Object.assign({}, ctx.stateController && ctx.stateController.getStateParams ? ctx.stateController.getStateParams() : {});
     params.state = settings.viewState || (ctx.stateController && ctx.stateController.getStateId ? ctx.stateController.getStateId() : 'default');
     if (settings.hubDashboardId) params.hubDashboardId = settings.hubDashboardId;
+    if (settings.showcaseBanner) params.showcaseBanner = settings.showcaseBanner;
     if (savedTab) params.settingsGroup = Number(savedTab.getAttribute('data-settings-tab'));
     var vm = __vent.VentilationSource.createViewModel(ctx, settings, settings.sourceMode === 'demo' ? fixture : undefined);
     if (self._ventAlarmTotal && vm.summary) {
