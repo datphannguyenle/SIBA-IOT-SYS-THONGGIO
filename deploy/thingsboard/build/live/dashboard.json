@@ -581,7 +581,7 @@
         "col": 0,
         "row": 6,
         "sizeX": 16,
-        "sizeY": 9,
+        "sizeY": 11,
         "config": {
           "title": "synoptic",
           "showTitle": false,
@@ -999,9 +999,9 @@
         "typeFullFqn": "tenant.siba_vent_demo.modular_latest",
         "type": "latest",
         "col": 0,
-        "row": 15,
+        "row": 17,
         "sizeX": 16,
-        "sizeY": 6,
+        "sizeY": 4,
         "config": {
           "title": "metrics",
           "showTitle": false,
@@ -4244,14 +4244,14 @@
                 "col": 0,
                 "row": 6,
                 "sizeX": 16,
-                "sizeY": 9,
+                "sizeY": 11,
                 "mobileHeight": 19
               },
               "ca243689-0c27-5a13-a056-ed58cf2b94ce": {
                 "col": 0,
-                "row": 15,
+                "row": 17,
                 "sizeX": 16,
-                "sizeY": 6,
+                "sizeY": 4,
                 "mobileHeight": 15
               },
               "6e90214b-2e9e-55f8-b503-5f1e5895a986": {

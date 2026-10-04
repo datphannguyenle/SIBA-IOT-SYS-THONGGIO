@@ -23,7 +23,7 @@ LAYOUTS = {
     'default': [('header', 0, 0, 24, 3), ('overview', 0, 3, 24, 18)],
     # Cột phải cho bộ điều khiển (nhiều dòng nhất); cột trái xếp sơ đồ rồi thông số, cùng cách bố trí với máy nghiền.
     'vent_detail': [('header', 0, 0, 24, 3), ('kpis', 0, 3, 24, 3),
-                    ('synoptic', 0, 6, 16, 9), ('metrics', 0, 15, 16, 6),
+                    ('synoptic', 0, 6, 16, 11), ('metrics', 0, 17, 16, 4),
                     ('controller', 16, 6, 8, 15)],
     'vent_history': [('header', 0, 0, 24, 3), ('history', 0, 3, 24, 18)],
     'vent_alarms': [('header', 0, 0, 24, 3), ('alarms', 0, 3, 24, 18)],
