@@ -27,4 +27,4 @@
 .vm-card--warn{--tone:var(--vm-warn)}
 .vm-card--danger{--tone:var(--vm-danger)}
 @media(max-width:720px){.vm-shell__line{flex-wrap:wrap;gap:7px}.vm-shell__meta{width:100%;margin-left:0;overflow:auto}.vm-shell__brand h1{font-size:18px}.vm-shell__scope{display:none}}
-.siba-home{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--vm-cyan)!important;text-decoration:none!important;cursor:pointer}.siba-home:hover,.siba-home:focus-visible{text-decoration:underline!important;outline:none}
+.siba-home{display:block;font-size:12px;font-weight:700;letter-spacing:0;text-transform:uppercase;color:var(--vm-cyan)!important;text-decoration:none!important;cursor:pointer}.siba-home:hover,.siba-home:focus-visible{text-decoration:underline!important;outline:none}

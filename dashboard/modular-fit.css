@@ -55,3 +55,4 @@
 .vent-modular .vm-legend .humidity{background:#2ee6a8}
 .vent-modular.vm-narrow .vm-header__title{min-width:0;max-width:100%}
 .vent-modular.vm-narrow .vm-header__title h1{font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(min-width:1051px){.vent-modular[data-vent-component="overview"]>.vm-overview{grid-template-rows:calc((100% + 6px)*4/18 - 6px) minmax(0,1fr)}.vent-modular[data-vent-component="overview"] .vm-kpis{height:100%}}

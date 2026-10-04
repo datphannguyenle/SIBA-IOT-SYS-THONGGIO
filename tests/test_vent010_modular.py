@@ -175,6 +175,11 @@ class ModularRuntimeTest(unittest.TestCase):
         heading = self.browser.run("return document.querySelector('.vent-modular-root .vm-shell__sub').innerText")
         self.assertEqual(heading, 'Nhà chưa chọn')
 
+    def test_default_header_exposes_all_states_without_a_controller(self):
+        self.mount('static', 'header', 'default')
+        states = self.browser.run("return [].map.call(document.querySelectorAll('[data-nav]'),function(e){return e.getAttribute('data-nav')})")
+        self.assertEqual(states, ['default', 'vent_detail', 'vent_history', 'vent_alarms', 'vent_settings'])
+
     def test_live_empty_default_never_uses_demo_fixture_or_fake_barn(self):
         self.mount('latest', 'kpis', settings={'context': {'farm': 'Trại test'}})
         text = self.browser.run("return document.querySelector('.vent-modular-root').innerText")
