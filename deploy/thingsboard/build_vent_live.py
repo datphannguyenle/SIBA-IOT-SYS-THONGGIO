@@ -29,7 +29,7 @@ ONLINE_ATTRIBUTE = 'active'
 OVERVIEW_KEYS = ('fanStage', 'operatingMode', 'controllerOnline',
                  'equipmentFaultActive', 'externalHighTemperatureAlarm')
 # Cảm biến 2 (độ ẩm, tốc độ gió) là khóa mở rộng của giao diện, xem widgets/ventilation-adapter.js.
-UI_EXTENSION_KEYS = ('relativeHumidity02', 'airSpeed02', 'mistingRun')
+UI_EXTENSION_KEYS = ('relativeHumidity02', 'airSpeed02', 'mistingValve01Run', 'mistingValve02Run', 'mistingFlow')
 HISTORY_KEYS = ('indoorTemperatureAvg', 'outdoorTemperature', 'perceivedTemperature',
                 'relativeHumidity', 'airSpeed', 'airFlow', 'waterConsumptionTotal') + UI_EXTENSION_KEYS[:2]
 DETAIL_COMPONENTS = ('kpis', 'synoptic', 'controller', 'metrics')

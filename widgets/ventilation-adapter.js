@@ -11,8 +11,9 @@
   var HISTORY_KEYS = ["indoorTemperatureAvg", "outdoorTemperature", "perceivedTemperature", "relativeHumidity",
     "airSpeed", "airFlow", "waterConsumptionTotal"];
   var EXTENSION_KEYS = ["relativeHumidity02", "airSpeed02"];
-  // Hệ thống phun sương (mới): một biến bật/tắt dùng mã như quạt/bơm (0=STOPPED, 1=RUNNING). Khóa mở rộng, chưa có thanh ghi PLC.
-  var EXT_RUN_KEYS = ["mistingRun"];
+  // Hệ thống phun sương (mới): 2 van (mã như quạt/bơm: 0=STOPPED=đóng, 1=RUNNING=mở) và 1 cảm biến lưu lượng.
+  // Khóa mở rộng của giao diện, chưa có thanh ghi PLC. Đơn vị lưu lượng L/min là GIẢ ĐỊNH theo `waterFlow`, chờ xác nhận.
+  var EXT_RUN_KEYS = ["mistingValve01Run", "mistingValve02Run"];
   function isRunKey(key) { return RUN_KEYS.indexOf(key) >= 0 || EXT_RUN_KEYS.indexOf(key) >= 0; }
   // Lịch sử đọc cả khóa mở rộng. Nhiệt độ ngoài trời vẫn nằm trong hợp đồng/dữ liệu nhưng giao diện không hiển thị.
   var ALL_HISTORY_KEYS = HISTORY_KEYS.concat(EXTENSION_KEYS);
@@ -29,7 +30,9 @@
     });
     c.variables.push(["relativeHumidity02", "GIÁM SÁT", "monitoring", "UI_EXTENSION", "Độ ẩm trong nhà cảm biến 2", "%RH", "float32"],
       ["airSpeed02", "GIÁM SÁT", "monitoring", "UI_EXTENSION", "Tốc độ gió trong chuồng cảm biến 2", "m/s", "float32"],
-      ["mistingRun", "GIÁM SÁT", "monitoring", "UI_EXTENSION", "Hệ thống phun sương chạy", "", "uint16"]);
+      ["mistingValve01Run", "GIÁM SÁT", "monitoring", "UI_EXTENSION", "Van phun sương 1 mở", "", "uint16"],
+      ["mistingValve02Run", "GIÁM SÁT", "monitoring", "UI_EXTENSION", "Van phun sương 2 mở", "", "uint16"],
+      ["mistingFlow", "GIÁM SÁT", "monitoring", "UI_EXTENSION", "Lưu lượng phun sương", "L/min", "float32"]);
   }());
   var SLOT_PATTERN = /^(temperatureProfile|perceivedProfile|stage|fan|coolingPump)(\d\d)([A-Z]\w*)$/;
   var SLOT_ROW_LABEL = {temperatureProfile: "Slot", perceivedProfile: "Slot", stage: "Slot", fan: "Quạt", coolingPump: "Bơm"};
@@ -149,6 +152,18 @@
     copy.synthetic = copy.identity === "SYNTHETIC";
     return copy;
   }
+  // Trạng thái chung của phun sương: có van mở thì RUNNING; chỉ STOPPED khi mọi van đã khai đều đóng; thiếu dữ liệu thì UNKNOWN.
+  function mistingState(metrics) {
+    var valves = EXT_RUN_KEYS.map(function (key, i) {
+      var m = metrics[key];
+      return { key: key, label: "Van phun " + (i + 1), state: m.value, quality: m.quality, configured: m.configured };
+    }), flow = metrics.mistingFlow, known = valves.filter(function (v) { return v.configured !== false; }), state;
+    if (!known.length) state = NOT_CONFIGURED;
+    else if (known.some(function (v) { return v.state === "RUNNING"; })) state = "RUNNING";
+    else if (known.every(function (v) { return v.state === "STOPPED"; })) state = "STOPPED";
+    else state = UNKNOWN;
+    return { valves: valves, flow: flow, state: state, configured: known.length > 0 };
+  }
   function createViewModel(raw) {
     if (!raw || raw.demo !== true) throw new Error("Fixture source must be explicitly marked demo");
     var c = contract();
@@ -171,7 +186,7 @@
         var m = metrics[key];
         return { key: key, label: equipmentLabel(key), state: m.value, quality: m.quality, configured: m.configured };
       }),
-      misting: { key: "mistingRun", label: "Phun sương", state: metrics.mistingRun.value, quality: metrics.mistingRun.quality, configured: metrics.mistingRun.configured },
+      misting: mistingState(metrics),
       systemFlags: ["equipmentFaultActive", "externalHighTemperatureAlarm", "temperatureLowAlarmActive", "temperatureHighAlarmActive",
         "perceivedTemperatureLowAlarmActive", "perceivedTemperatureHighAlarmActive"].map(function (key) { return metrics[key]; }),
       louvers: [Object.assign({}, metrics.roofInletPosition, {label: "Cửa chớp trần"}),

@@ -481,8 +481,22 @@
                   "settings": {}
                 },
                 {
-                  "name": "mistingRun",
-                  "label": "mistingRun",
+                  "name": "mistingValve01Run",
+                  "label": "mistingValve01Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "mistingValve02Run",
+                  "label": "mistingValve02Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "mistingFlow",
+                  "label": "mistingFlow",
                   "type": "timeseries",
                   "color": "#00d4e0",
                   "settings": {}
@@ -547,7 +561,9 @@
               "perceivedTemperatureHighAlarmActive": "perceivedTemperatureHighAlarmActive",
               "relativeHumidity02": "relativeHumidity02",
               "airSpeed02": "airSpeed02",
-              "mistingRun": "mistingRun",
+              "mistingValve01Run": "mistingValve01Run",
+              "mistingValve02Run": "mistingValve02Run",
+              "mistingFlow": "mistingFlow",
               "controllerOnline": "active"
             },
             "freshnessMs": {
@@ -594,7 +610,9 @@
               "perceivedTemperatureHighAlarmActive": 300000,
               "relativeHumidity02": 300000,
               "airSpeed02": 300000,
-              "mistingRun": 300000,
+              "mistingValve01Run": 300000,
+              "mistingValve02Run": 300000,
+              "mistingFlow": 300000,
               "controllerOnline": 300000
             },
             "alarmScope": "Thiết bị mô phỏng SIM-VentController (VENT-011), chưa xác minh trên PLC thật"
@@ -928,8 +946,22 @@
                   "settings": {}
                 },
                 {
-                  "name": "mistingRun",
-                  "label": "mistingRun",
+                  "name": "mistingValve01Run",
+                  "label": "mistingValve01Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "mistingValve02Run",
+                  "label": "mistingValve02Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "mistingFlow",
+                  "label": "mistingFlow",
                   "type": "timeseries",
                   "color": "#00d4e0",
                   "settings": {}
@@ -994,7 +1026,9 @@
               "perceivedTemperatureHighAlarmActive": "perceivedTemperatureHighAlarmActive",
               "relativeHumidity02": "relativeHumidity02",
               "airSpeed02": "airSpeed02",
-              "mistingRun": "mistingRun",
+              "mistingValve01Run": "mistingValve01Run",
+              "mistingValve02Run": "mistingValve02Run",
+              "mistingFlow": "mistingFlow",
               "controllerOnline": "active"
             },
             "freshnessMs": {
@@ -1041,7 +1075,9 @@
               "perceivedTemperatureHighAlarmActive": 300000,
               "relativeHumidity02": 300000,
               "airSpeed02": 300000,
-              "mistingRun": 300000,
+              "mistingValve01Run": 300000,
+              "mistingValve02Run": 300000,
+              "mistingFlow": 300000,
               "controllerOnline": 300000
             },
             "alarmScope": "Thiết bị mô phỏng SIM-VentController (VENT-011), chưa xác minh trên PLC thật"
@@ -1375,8 +1411,22 @@
                   "settings": {}
                 },
                 {
-                  "name": "mistingRun",
-                  "label": "mistingRun",
+                  "name": "mistingValve01Run",
+                  "label": "mistingValve01Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "mistingValve02Run",
+                  "label": "mistingValve02Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "mistingFlow",
+                  "label": "mistingFlow",
                   "type": "timeseries",
                   "color": "#00d4e0",
                   "settings": {}
@@ -1441,7 +1491,9 @@
               "perceivedTemperatureHighAlarmActive": "perceivedTemperatureHighAlarmActive",
               "relativeHumidity02": "relativeHumidity02",
               "airSpeed02": "airSpeed02",
-              "mistingRun": "mistingRun",
+              "mistingValve01Run": "mistingValve01Run",
+              "mistingValve02Run": "mistingValve02Run",
+              "mistingFlow": "mistingFlow",
               "controllerOnline": "active"
             },
             "freshnessMs": {
@@ -1488,7 +1540,9 @@
               "perceivedTemperatureHighAlarmActive": 300000,
               "relativeHumidity02": 300000,
               "airSpeed02": 300000,
-              "mistingRun": 300000,
+              "mistingValve01Run": 300000,
+              "mistingValve02Run": 300000,
+              "mistingFlow": 300000,
               "controllerOnline": 300000
             },
             "alarmScope": "Thiết bị mô phỏng SIM-VentController (VENT-011), chưa xác minh trên PLC thật"
@@ -1822,8 +1876,22 @@
                   "settings": {}
                 },
                 {
-                  "name": "mistingRun",
-                  "label": "mistingRun",
+                  "name": "mistingValve01Run",
+                  "label": "mistingValve01Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "mistingValve02Run",
+                  "label": "mistingValve02Run",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
+                  "name": "mistingFlow",
+                  "label": "mistingFlow",
                   "type": "timeseries",
                   "color": "#00d4e0",
                   "settings": {}
@@ -1888,7 +1956,9 @@
               "perceivedTemperatureHighAlarmActive": "perceivedTemperatureHighAlarmActive",
               "relativeHumidity02": "relativeHumidity02",
               "airSpeed02": "airSpeed02",
-              "mistingRun": "mistingRun",
+              "mistingValve01Run": "mistingValve01Run",
+              "mistingValve02Run": "mistingValve02Run",
+              "mistingFlow": "mistingFlow",
               "controllerOnline": "active"
             },
             "freshnessMs": {
@@ -1935,7 +2005,9 @@
               "perceivedTemperatureHighAlarmActive": 300000,
               "relativeHumidity02": 300000,
               "airSpeed02": 300000,
-              "mistingRun": 300000,
+              "mistingValve01Run": 300000,
+              "mistingValve02Run": 300000,
+              "mistingFlow": 300000,
               "controllerOnline": 300000
             },
             "alarmScope": "Thiết bị mô phỏng SIM-VentController (VENT-011), chưa xác minh trên PLC thật"

@@ -93,3 +93,11 @@
 .vm3-svg .vm3-cap--sm{font-size:11px}.vm3-item{padding:2px 4px;gap:4px}
 .vent-modular[data-vent-component="controller"] .vm-summary{gap:4px}.vent-modular[data-vent-component="controller"] .vm-summary>div{padding:5px 9px;min-height:0}.vent-modular[data-vent-component="controller"] h2{font-size:15px}
 .vm3-list .vm3-item:last-child{grid-column:span 2}
+
+/* Phun sương 2 van: mỗi van cấp một nửa dãy đầu phun */
+.vm3-list .vm3-item:last-child{grid-column:auto}
+.vm3-svg .vm3-mist .pl{stroke:#537b93}.vm3-svg .vm3-mist--RUNNING .pl{stroke:#537b93}
+.vm3-svg .vm3-mzone .pl{fill:none;stroke:#537b93;stroke-width:3;stroke-linecap:round}.vm3-svg .vm3-mzone .nz{fill:#6b8799}.vm3-svg .vm3-mzone .vm3-valve{fill:#6b8799;stroke:#9cc3da;stroke-width:1}
+.vm3-svg .vm3-mzone--RUNNING .pl{stroke:#6ad7ff}.vm3-svg .vm3-mzone--RUNNING .nz{fill:#6ad7ff}.vm3-svg .vm3-mzone--RUNNING .vm3-valve{fill:#2ee6a8;stroke:#2ee6a8}
+.vm3-svg .vm3-mzone--UNKNOWN .pl{stroke:#ffc857;stroke-dasharray:6 5}.vm3-svg .vm3-mzone--UNKNOWN .vm3-valve{fill:#ffc857}.vm3-svg .vm3-mzone--NOCONF{opacity:.35}
+.vm3-svg .vm3-vl{fill:#b9d0de;font-size:10px;text-anchor:middle}.vm3-svg .vm3-mist .pl--feed{stroke:#537b93}
