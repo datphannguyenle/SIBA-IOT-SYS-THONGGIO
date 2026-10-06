@@ -53,7 +53,7 @@ class DashboardBrowserTest(unittest.TestCase):
         vm = self.vm()
         self.assertEqual(vm["unknownKeys"], [])
         monitoring = {v["key"] for v in CONTRACT["variables"] if v["role"] != "setting"}
-        self.assertEqual(set(vm["metrics"]), monitoring | {"controllerOnline", "dataQuality"})
+        self.assertEqual(set(vm["metrics"]), monitoring | {"controllerOnline", "dataQuality", "relativeHumidity02", "airSpeed02"})  # 2 khóa mở rộng của giao diện
         for key in ("stageCount", "fan06Fault", "coolingPump01Fault"):
             self.assertNotIn(key, vm["metrics"])
         cls = {k: m["classification"] for k, m in vm["metrics"].items()}

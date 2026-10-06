@@ -183,7 +183,7 @@ class LiveDashboardPayloadTest(unittest.TestCase):
                 self.assertGreater(settings["freshnessMs"].get(semantic, 0), 0, (component, semantic))
 
     def test_key_map_only_uses_contract_keys(self):
-        allowed = set(sim.variables("monitoring")) | set(sim.variables("setting")) | {"controllerOnline"}
+        allowed = set(sim.variables("monitoring")) | set(sim.variables("setting")) | {"controllerOnline"} | set(live.UI_EXTENSION_KEYS)
         for component, widget in self.widgets.items():
             self.assertLessEqual(set(widget["config"]["settings"]["keyMap"]), allowed, component)
 

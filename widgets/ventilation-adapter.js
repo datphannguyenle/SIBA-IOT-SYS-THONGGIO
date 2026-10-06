@@ -10,6 +10,23 @@
     "temperatureHighAlarmActive", "perceivedTemperatureLowAlarmActive", "perceivedTemperatureHighAlarmActive"];
   var HISTORY_KEYS = ["indoorTemperatureAvg", "outdoorTemperature", "perceivedTemperature", "relativeHumidity",
     "airSpeed", "airFlow", "waterConsumptionTotal"];
+  var EXTENSION_KEYS = ["relativeHumidity02", "airSpeed02"];
+  // Lịch sử đọc cả khóa mở rộng. Nhiệt độ ngoài trời vẫn nằm trong hợp đồng/dữ liệu nhưng giao diện không hiển thị.
+  var ALL_HISTORY_KEYS = HISTORY_KEYS.concat(EXTENSION_KEYS);
+  // Trại thực tế có 2 cảm biến độ ẩm và 2 cảm biến tốc độ gió; hợp đồng v0.3 mới có 1 mỗi loại (D564, D568).
+  // Cảm biến 2 là khóa MỞ RỘNG của giao diện (chưa có địa chỉ thanh ghi PLC trong hợp đồng; PLC phải bổ sung).
+  // Thêm vào bảng biến lúc nạp để adapter và nguồn dữ liệu cùng thấy, không sửa file hợp đồng sinh tự động.
+  (function () {
+    var c = root.VentilationContract;
+    if (!c || c.__uiExtension) return;
+    c.__uiExtension = true;
+    c.variables.forEach(function (row) {
+      if (row[0] === "relativeHumidity") row[4] = "Độ ẩm trong nhà cảm biến 1";
+      if (row[0] === "airSpeed") row[4] = "Tốc độ gió trong chuồng cảm biến 1";
+    });
+    c.variables.push(["relativeHumidity02", "GIÁM SÁT", "monitoring", "UI_EXTENSION", "Độ ẩm trong nhà cảm biến 2", "%RH", "float32"],
+      ["airSpeed02", "GIÁM SÁT", "monitoring", "UI_EXTENSION", "Tốc độ gió trong chuồng cảm biến 2", "m/s", "float32"]);
+  }());
   var SLOT_PATTERN = /^(temperatureProfile|perceivedProfile|stage|fan|coolingPump)(\d\d)([A-Z]\w*)$/;
   var SLOT_ROW_LABEL = {temperatureProfile: "Slot", perceivedProfile: "Slot", stage: "Slot", fan: "Quạt", coolingPump: "Bơm"};
   var FIELD_LABEL_REWRITE = [
@@ -115,7 +132,7 @@
   }
   function mapHistory(row) {
     var mapped = { ts: row.ts, quality: isMissing(row.quality) ? UNKNOWN : row.quality };
-    HISTORY_KEYS.forEach(function (key) {
+    ALL_HISTORY_KEYS.forEach(function (key) {
       var sample = row[key];
       mapped[key] = typeof sample === "number" && isFinite(sample) ? sample : null;
     });
@@ -167,6 +184,6 @@
   function ThingsBoardSource() {}
   ThingsBoardSource.prototype.load = function () { return Promise.reject(new Error("ThingsBoard source is intentionally unconfigured until VENT-002 is implementation-ready")); };
   root.VentilationAdapter = { createViewModel: createViewModel, stageDisplay: stageDisplay, mapHistory: mapHistory,
-    RUN_KEYS: RUN_KEYS, FLAG_KEYS: FLAG_KEYS, HISTORY_KEYS: HISTORY_KEYS,
+    RUN_KEYS: RUN_KEYS, FLAG_KEYS: FLAG_KEYS, HISTORY_KEYS: ALL_HISTORY_KEYS,
     FixtureSource: FixtureSource, ThingsBoardSource: ThingsBoardSource };
 }(window));

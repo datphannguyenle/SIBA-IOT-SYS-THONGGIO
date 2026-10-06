@@ -28,8 +28,10 @@ ALARM_FIELDS = ('createdTime', 'originator', 'type', 'severity', 'status')
 ONLINE_ATTRIBUTE = 'active'
 OVERVIEW_KEYS = ('fanStage', 'operatingMode', 'controllerOnline',
                  'equipmentFaultActive', 'externalHighTemperatureAlarm')
+# Cảm biến 2 (độ ẩm, tốc độ gió) là khóa mở rộng của giao diện, xem widgets/ventilation-adapter.js.
+UI_EXTENSION_KEYS = ('relativeHumidity02', 'airSpeed02')
 HISTORY_KEYS = ('indoorTemperatureAvg', 'outdoorTemperature', 'perceivedTemperature',
-                'relativeHumidity', 'airSpeed', 'airFlow', 'waterConsumptionTotal')
+                'relativeHumidity', 'airSpeed', 'airFlow', 'waterConsumptionTotal') + UI_EXTENSION_KEYS
 DETAIL_COMPONENTS = ('kpis', 'synoptic', 'controller', 'metrics')
 # Chu kỳ bơm 60s; 5 phút là STALE. Cài đặt ghi thưa nên nới ngưỡng, không để mặc định UNKNOWN.
 FRESHNESS_MONITORING_MS = 300000
@@ -62,7 +64,7 @@ def keys_for(component):
     if component == 'settings':
         return sim.variables('setting')
     if component in DETAIL_COMPONENTS:
-        return sim.variables('monitoring')
+        return sim.variables('monitoring') + list(UI_EXTENSION_KEYS)
     return []
 
 
@@ -162,7 +164,7 @@ def validate(dash):
         mapped = set(config['settings']['keyMap'].values())
         assert declared <= mapped | {ONLINE_ATTRIBUTE}, component
         for semantic, actual in config['settings']['keyMap'].items():
-            assert semantic in monitoring | settings_keys | {'controllerOnline'}, (component, semantic)
+            assert semantic in monitoring | settings_keys | {'controllerOnline'} | set(UI_EXTENSION_KEYS), (component, semantic)
             assert actual in declared, (component, semantic, actual)
             assert config['settings']['freshnessMs'].get(semantic), (component, semantic)
         if component == 'overview':

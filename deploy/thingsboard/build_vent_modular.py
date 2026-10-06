@@ -23,7 +23,7 @@ LAYOUTS = {
     'default': [('header', 0, 0, 24, 3), ('overview', 0, 3, 24, 18)],
     # Cột phải cho bộ điều khiển (nhiều dòng nhất); cột trái xếp sơ đồ rồi thông số, cùng cách bố trí với máy nghiền.
     'vent_detail': [('header', 0, 0, 24, 3), ('kpis', 0, 3, 24, 3),
-                    ('synoptic', 0, 6, 16, 11), ('metrics', 0, 17, 16, 4),
+                    ('synoptic', 0, 6, 16, 12), ('metrics', 0, 18, 16, 3),
                     ('controller', 16, 6, 8, 15)],
     'vent_history': [('header', 0, 0, 24, 3), ('history', 0, 3, 24, 18)],
     'vent_alarms': [('header', 0, 0, 24, 3), ('alarms', 0, 3, 24, 18)],
@@ -48,7 +48,7 @@ def controller(multi_entity=False):
     # Keep the pure decoder, omit legacy standalone fixture-loading/network classes.
     adapter = read('widgets/ventilation-adapter.js').split('  function FixtureSource(')[0]
     adapter += '''  root.VentilationAdapter = {createViewModel:createViewModel, stageDisplay:stageDisplay,
-      mapHistory:mapHistory, RUN_KEYS:RUN_KEYS, FLAG_KEYS:FLAG_KEYS, HISTORY_KEYS:HISTORY_KEYS};
+      mapHistory:mapHistory, RUN_KEYS:RUN_KEYS, FLAG_KEYS:FLAG_KEYS, HISTORY_KEYS:ALL_HISTORY_KEYS};
 }(window));'''
     modules = '\n'.join((scope_iife(read('widgets/ventilation-contract-v03.js'), 'contract'),
                          scope_iife(adapter, 'pure-adapter'),
