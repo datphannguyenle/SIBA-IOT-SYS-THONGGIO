@@ -82,3 +82,6 @@
 .vent-modular[data-vent-component="metrics"] .vm-panel{overflow:hidden}
 .vm-shell.is-detail .vm-shell__meta>span:not([class]){display:none}
 .vm-kpi__body b.vm-kpi__dual{font-size:15px;line-height:1.2;margin:1px 0}.vm-kpi__body b.vm-kpi__dual>span{display:flex;align-items:baseline;gap:5px}.vm-kpi__body b.vm-kpi__dual>span>span{font-size:19px;font-weight:700}.vm-kpi__body b.vm-kpi__dual small{font-size:11px;margin-left:2px}
+
+.vm3-head .vm-flags{display:flex;flex-wrap:wrap;gap:4px}.vm3-head .vm-flags span{padding:3px 8px;font-size:11px}
+.vm3-head .vm-flags{display:grid;grid-template-columns:repeat(3,max-content);gap:3px 6px}.vm3-head .vm-flags span{padding:2px 7px;font-size:10.5px;white-space:nowrap}.vm3-head h2{font-size:15px}

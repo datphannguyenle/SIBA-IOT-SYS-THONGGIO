@@ -167,7 +167,8 @@
         var m = metrics[key];
         return { key: key, label: equipmentLabel(key), state: m.value, quality: m.quality, configured: m.configured };
       }),
-      systemFlags: ["equipmentFaultActive", "externalHighTemperatureAlarm"].map(function (key) { return metrics[key]; }),
+      systemFlags: ["equipmentFaultActive", "externalHighTemperatureAlarm", "temperatureLowAlarmActive", "temperatureHighAlarmActive",
+        "perceivedTemperatureLowAlarmActive", "perceivedTemperatureHighAlarmActive"].map(function (key) { return metrics[key]; }),
       louvers: [Object.assign({}, metrics.roofInletPosition, {label: "Cửa chớp trần"}),
         Object.assign({}, metrics.sideInletPosition, {label: "Cửa chớp hông"})],
       history: (raw.history || []).map(mapHistory),

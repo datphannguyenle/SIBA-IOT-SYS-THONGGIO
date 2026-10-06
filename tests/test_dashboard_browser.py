@@ -96,9 +96,9 @@ class DashboardBrowserTest(unittest.TestCase):
 
     def test_system_flags_do_not_name_devices(self):
         self.open_state("default")
-        flags = {f["key"]: f["value"] for f in self.vm()["systemFlags"]}
+        flags = {f["key"]: f["value"] for f in self.vm()["systemFlags"] if f["key"] in ("equipmentFaultActive", "externalHighTemperatureAlarm")}
         self.assertEqual(flags, {"equipmentFaultActive": "ACTIVE", "externalHighTemperatureAlarm": "NORMAL"})
-        flags = {f["key"]: f["value"] for f in self.vm("flagsCleared")["systemFlags"]}
+        flags = {f["key"]: f["value"] for f in self.vm("flagsCleared")["systemFlags"] if f["key"] in ("equipmentFaultActive", "externalHighTemperatureAlarm")}
         self.assertEqual(flags, {"equipmentFaultActive": "NORMAL", "externalHighTemperatureAlarm": "ACTIVE"})
         states = {e["state"] for e in self.vm()["equipment"]}
         self.assertNotIn("FAULT", states)
