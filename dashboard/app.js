@@ -117,7 +117,7 @@
   // Cờ cấp hệ thống: không suy ra quạt/bơm nào lỗi.
   function systemFlags() {
     var names = {equipmentFaultActive: 'Lỗi thiết bị tổng', externalHighTemperatureAlarm: 'Thermostat nhiệt độ cao'};
-    return '<div class="system-flags" aria-label="Cờ trạng thái cấp hệ thống">' + vm.systemFlags.map(function (flag) {
+    return '<div class="system-flags" aria-label="Cờ trạng thái cấp hệ thống">' + vm.systemFlags.filter(function (flag) { return flag.key === "equipmentFaultActive" || flag.key === "externalHighTemperatureAlarm"; }).map(function (flag) {
       return '<span class="system-flag flag-' + esc(flag.value) + '" data-raw-state="' + esc(flag.value) + '"><small>' + esc(names[flag.key]) + '</small><b>' + esc(stateLabel(flag.value)) + '</b></span>';
     }).join('') + '<span class="system-flag-note">Cấp hệ thống · PLC không chỉ rõ thiết bị lỗi</span></div>';
   }
