@@ -10,7 +10,7 @@
     "temperatureHighAlarmActive", "perceivedTemperatureLowAlarmActive", "perceivedTemperatureHighAlarmActive"];
   var HISTORY_KEYS = ["indoorTemperatureAvg", "outdoorTemperature", "perceivedTemperature", "relativeHumidity",
     "airSpeed", "airFlow", "waterConsumptionTotal"];
-  var EXTENSION_KEYS = ["relativeHumidity02", "airSpeed02"];
+  var EXTENSION_KEYS = ["relativeHumidity02", "airSpeed02", "mistingFlow"];
   // Hệ thống phun sương (mới): 2 van (mã như quạt/bơm: 0=STOPPED=đóng, 1=RUNNING=mở) và 1 cảm biến lưu lượng.
   // Khóa mở rộng của giao diện, chưa có thanh ghi PLC. Đơn vị lưu lượng L/min là GIẢ ĐỊNH theo `waterFlow`, chờ xác nhận.
   var EXT_RUN_KEYS = ["mistingValve01Run", "mistingValve02Run"];

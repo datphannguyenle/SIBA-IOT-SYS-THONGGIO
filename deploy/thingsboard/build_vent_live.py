@@ -31,7 +31,7 @@ OVERVIEW_KEYS = ('fanStage', 'operatingMode', 'controllerOnline',
 # Cảm biến 2 (độ ẩm, tốc độ gió) là khóa mở rộng của giao diện, xem widgets/ventilation-adapter.js.
 UI_EXTENSION_KEYS = ('relativeHumidity02', 'airSpeed02', 'mistingValve01Run', 'mistingValve02Run', 'mistingFlow')
 HISTORY_KEYS = ('indoorTemperatureAvg', 'outdoorTemperature', 'perceivedTemperature',
-                'relativeHumidity', 'airSpeed', 'airFlow', 'waterConsumptionTotal') + UI_EXTENSION_KEYS[:2]
+                'relativeHumidity', 'airSpeed', 'airFlow', 'waterConsumptionTotal') + ('relativeHumidity02', 'airSpeed02', 'mistingFlow')
 DETAIL_COMPONENTS = ('kpis', 'synoptic', 'controller', 'metrics')
 # Chu kỳ bơm 60s; 5 phút là STALE. Cài đặt ghi thưa nên nới ngưỡng, không để mặc định UNKNOWN.
 FRESHNESS_MONITORING_MS = 300000

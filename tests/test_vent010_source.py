@@ -134,7 +134,7 @@ class Vent010SourceTest(unittest.TestCase):
         fixture_vm = self.run_source({}, {"sourceMode": "demo"}, self.fixture)
         self.assertEqual(fixture_vm["sourceMode"], "demo")
         self.assertEqual(fixture_vm["metrics"]["fanStage"]["value"], 4)
-        self.assertEqual([{k: v for k, v in row.items() if k not in ("relativeHumidity02", "airSpeed02")} for row in fixture_vm["history"]],
+        self.assertEqual([{k: v for k, v in row.items() if k not in ("relativeHumidity02", "airSpeed02", "mistingFlow")} for row in fixture_vm["history"]],
                          self.fixture["history"])  # trừ 2 khóa mở rộng (cảm biến 2)
         override = self.run_source({"data": [{"dataKey": {"name": "fanStage"}, "data": [[1, 2]]}]},
                                    {"sourceMode": "demo", "demoUseSubscription": True}, self.fixture)
