@@ -190,12 +190,12 @@ class ModularRuntimeTest(unittest.TestCase):
         self.assertEqual(self.browser.run("return document.querySelectorAll('.vm-badge').length"), 0)
 
     def test_live_data_update_keeps_zero_and_turns_null_to_missing(self):
-        settings = {'keyMap': {'indoorTemperatureAvg': 'temp'}, 'freshnessMs': {'indoorTemperatureAvg': 999999999999}}
+        settings = {'keyMap': {'indoorTemperature01': 'temp'}, 'freshnessMs': {'indoorTemperature01': 999999999999}}
         ctx = {'data': [{'dataKey': {'name': 'temp'}, 'data': [[1, 0]]}]}
         self.mount('latest', 'kpis', settings=settings, ctx=ctx)
-        self.assertEqual(self.browser.run("return document.querySelector('[data-metric-key=indoorTemperatureAvg]').innerText"), '0 °C')
+        self.assertEqual(self.browser.run("return document.querySelector('[data-metric-key=indoorTemperature01]').innerText"), '0 °C')
         self.browser.run("window.__widgetSelf.ctx.data[0].data=[[2,null]]; window.__widgetSelf.onDataUpdated();")
-        self.assertEqual(self.browser.run("return document.querySelector('[data-metric-key=indoorTemperatureAvg]').innerText"), '--')
+        self.assertEqual(self.browser.run("return document.querySelector('[data-metric-key=indoorTemperature01]').innerText"), '--')
 
     def test_navigation_preserves_barn_params_and_uses_open_or_update(self):
         self.mount('static', 'header', state='vent_detail', settings={'sourceMode': 'demo'}, params={'barnId': 'barn-nd2-1'})
@@ -208,7 +208,7 @@ class ModularRuntimeTest(unittest.TestCase):
         self.assertEqual(self.browser.run('return window.__calls[1][0]'), 'openState')
 
     def test_destroy_disconnects_resize_observer_and_two_instances_are_independent(self):
-        self.mount('latest', 'kpis', settings={'keyMap': {'indoorTemperatureAvg': 'a'}},
+        self.mount('latest', 'kpis', settings={'keyMap': {'indoorTemperature01': 'a'}},
                    ctx={'data': [{'dataKey': {'name': 'a'}, 'data': [[1, 11]]}]})
         destroyed = self.browser.run("window.__widgetSelf.onDestroy(); return [window.__widgetSelf._ventNode,window.__widgetSelf._ventObserver,window.__widgetSelf._ventDraw]")
         self.assertEqual(destroyed, [None, None, None])
@@ -216,9 +216,9 @@ class ModularRuntimeTest(unittest.TestCase):
           var payload=arguments[0], a=document.createElement('div'),b=document.createElement('div'); document.body.append(a,b);
           function mount(host,key,value) {
             host.innerHTML=payload.descriptor.templateHtml;
-            var self={ctx:{$container:[host],settings:{component:'kpis',viewState:'vent_detail',sourceMode:'live',keyMap:{indoorTemperatureAvg:key}},
+            var self={ctx:{$container:[host],settings:{component:'kpis',viewState:'vent_detail',sourceMode:'live',keyMap:{indoorTemperature01:key}},
               data:[{dataKey:{name:key},data:[[1,value]]}],detectChanges:function(){},stateController:{getStateId:function(){return 'vent_detail';},getStateParams:function(){return {};}}}};
-            new Function('self',payload.descriptor.controllerScript)(self); self.onInit(); return host.querySelector('[data-metric-key=indoorTemperatureAvg]').innerText;
+            new Function('self',payload.descriptor.controllerScript)(self); self.onInit(); return host.querySelector('[data-metric-key=indoorTemperature01]').innerText;
           }
           return [mount(a,'a',1),mount(b,'b',0)];''', self.payloads['latest'])
         self.assertNotEqual(result[0], result[1])

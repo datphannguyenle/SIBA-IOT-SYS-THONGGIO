@@ -11,6 +11,9 @@
   var HISTORY_KEYS = ["indoorTemperatureAvg", "outdoorTemperature", "perceivedTemperature", "relativeHumidity",
     "airSpeed", "airFlow", "waterConsumptionTotal"];
   var EXTENSION_KEYS = ["relativeHumidity02", "airSpeed02"];
+  // Hệ thống phun sương (mới): một biến bật/tắt dùng mã như quạt/bơm (0=STOPPED, 1=RUNNING). Khóa mở rộng, chưa có thanh ghi PLC.
+  var EXT_RUN_KEYS = ["mistingRun"];
+  function isRunKey(key) { return RUN_KEYS.indexOf(key) >= 0 || EXT_RUN_KEYS.indexOf(key) >= 0; }
   // Lịch sử đọc cả khóa mở rộng. Nhiệt độ ngoài trời vẫn nằm trong hợp đồng/dữ liệu nhưng giao diện không hiển thị.
   var ALL_HISTORY_KEYS = HISTORY_KEYS.concat(EXTENSION_KEYS);
   // Trại thực tế có 2 cảm biến độ ẩm và 2 cảm biến tốc độ gió; hợp đồng v0.3 mới có 1 mỗi loại (D564, D568).
@@ -25,7 +28,8 @@
       if (row[0] === "airSpeed") row[4] = "Tốc độ gió trong chuồng cảm biến 1";
     });
     c.variables.push(["relativeHumidity02", "GIÁM SÁT", "monitoring", "UI_EXTENSION", "Độ ẩm trong nhà cảm biến 2", "%RH", "float32"],
-      ["airSpeed02", "GIÁM SÁT", "monitoring", "UI_EXTENSION", "Tốc độ gió trong chuồng cảm biến 2", "m/s", "float32"]);
+      ["airSpeed02", "GIÁM SÁT", "monitoring", "UI_EXTENSION", "Tốc độ gió trong chuồng cảm biến 2", "m/s", "float32"],
+      ["mistingRun", "GIÁM SÁT", "monitoring", "UI_EXTENSION", "Hệ thống phun sương chạy", "", "uint16"]);
   }());
   var SLOT_PATTERN = /^(temperatureProfile|perceivedProfile|stage|fan|coolingPump)(\d\d)([A-Z]\w*)$/;
   var SLOT_ROW_LABEL = {temperatureProfile: "Slot", perceivedProfile: "Slot", stage: "Slot", fan: "Quạt", coolingPump: "Bơm"};
@@ -63,7 +67,7 @@
   function decode(c, variable, raw) {
     var enumKey = c.enums[variable.key] ? variable.key : c.settingEnumAliases[variable.key];
     if (enumKey) return isMissing(raw) ? null : codeLookup(c.enums[enumKey], raw);
-    if (RUN_KEYS.indexOf(variable.key) >= 0) return isMissing(raw) ? UNKNOWN : codeLookup(c.equipmentRunCodes, raw);
+    if (isRunKey(variable.key)) return isMissing(raw) ? UNKNOWN : codeLookup(c.equipmentRunCodes, raw);
     if (FLAG_KEYS.indexOf(variable.key) >= 0) return isMissing(raw) ? UNKNOWN : codeLookup(c.flagDisplayCodes, raw);
     if (variable.type === "uint16") return isInteger(raw) && raw >= 0 && raw <= 65535 ? raw : null;
     return typeof raw === "number" && isFinite(raw) ? raw : null;
@@ -72,7 +76,7 @@
     sample = sample && typeof sample === "object" ? sample : {};
     var configured = notConfigured.indexOf(variable.key) < 0;
     var decoded = configured ? decode(c, variable, sample.value) : null;
-    var stateful = RUN_KEYS.indexOf(variable.key) >= 0 || FLAG_KEYS.indexOf(variable.key) >= 0;
+    var stateful = isRunKey(variable.key) || FLAG_KEYS.indexOf(variable.key) >= 0;
     return { key: variable.key, label: variable.label, unit: variable.unit, group: variable.group,
       classification: classify(c, variable), contractStatus: variable.status, configured: configured,
       raw: configured && sample.value !== undefined ? sample.value : null,
@@ -167,6 +171,7 @@
         var m = metrics[key];
         return { key: key, label: equipmentLabel(key), state: m.value, quality: m.quality, configured: m.configured };
       }),
+      misting: { key: "mistingRun", label: "Phun sương", state: metrics.mistingRun.value, quality: metrics.mistingRun.quality, configured: metrics.mistingRun.configured },
       systemFlags: ["equipmentFaultActive", "externalHighTemperatureAlarm", "temperatureLowAlarmActive", "temperatureHighAlarmActive",
         "perceivedTemperatureLowAlarmActive", "perceivedTemperatureHighAlarmActive"].map(function (key) { return metrics[key]; }),
       louvers: [Object.assign({}, metrics.roofInletPosition, {label: "Cửa chớp trần"}),

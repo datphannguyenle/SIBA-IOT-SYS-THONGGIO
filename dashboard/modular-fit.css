@@ -85,3 +85,11 @@
 
 .vm3-head .vm-flags{display:flex;flex-wrap:wrap;gap:4px}.vm3-head .vm-flags span{padding:3px 8px;font-size:11px}
 .vm3-head .vm-flags{display:grid;grid-template-columns:repeat(3,max-content);gap:3px 6px}.vm3-head .vm-flags span{padding:2px 7px;font-size:10.5px;white-space:nowrap}.vm3-head h2{font-size:15px}
+/* Phun sương: đường ống dưới trần, đầu phun, hạt sương rơi khi RUNNING */
+.vm3-svg .vm3-mist .pl{fill:none;stroke:#537b93;stroke-width:3;stroke-linecap:round}.vm3-svg .vm3-mist .nz{fill:#6b8799}
+.vm3-svg .vm3-mist--RUNNING .pl{stroke:#6ad7ff}.vm3-svg .vm3-mist--RUNNING .nz{fill:#6ad7ff}.vm3-svg .vm3-mist--UNKNOWN .pl{stroke:#ffc857;stroke-dasharray:6 5}.vm3-svg .vm3-mist--NOCONF{opacity:.35}
+.vm3-svg .vm3-drop{fill:none;stroke:#6ad7ff;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:3 9;opacity:.85;animation:vm3-air .7s linear infinite}
+.vm3-list{grid-template-columns:repeat(5,minmax(0,1fr))}.vm3-item{padding:2px 5px;gap:5px;font-size:10.5px}
+.vm3-svg .vm3-cap--sm{font-size:11px}.vm3-item{padding:2px 4px;gap:4px}
+.vent-modular[data-vent-component="controller"] .vm-summary{gap:4px}.vent-modular[data-vent-component="controller"] .vm-summary>div{padding:5px 9px;min-height:0}.vent-modular[data-vent-component="controller"] h2{font-size:15px}
+.vm3-list .vm3-item:last-child{grid-column:span 2}

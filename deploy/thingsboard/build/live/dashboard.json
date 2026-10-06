@@ -481,6 +481,13 @@
                   "settings": {}
                 },
                 {
+                  "name": "mistingRun",
+                  "label": "mistingRun",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
                   "name": "active",
                   "label": "active",
                   "type": "attribute",
@@ -540,6 +547,7 @@
               "perceivedTemperatureHighAlarmActive": "perceivedTemperatureHighAlarmActive",
               "relativeHumidity02": "relativeHumidity02",
               "airSpeed02": "airSpeed02",
+              "mistingRun": "mistingRun",
               "controllerOnline": "active"
             },
             "freshnessMs": {
@@ -586,6 +594,7 @@
               "perceivedTemperatureHighAlarmActive": 300000,
               "relativeHumidity02": 300000,
               "airSpeed02": 300000,
+              "mistingRun": 300000,
               "controllerOnline": 300000
             },
             "alarmScope": "Thiết bị mô phỏng SIM-VentController (VENT-011), chưa xác minh trên PLC thật"
@@ -919,6 +928,13 @@
                   "settings": {}
                 },
                 {
+                  "name": "mistingRun",
+                  "label": "mistingRun",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
                   "name": "active",
                   "label": "active",
                   "type": "attribute",
@@ -978,6 +994,7 @@
               "perceivedTemperatureHighAlarmActive": "perceivedTemperatureHighAlarmActive",
               "relativeHumidity02": "relativeHumidity02",
               "airSpeed02": "airSpeed02",
+              "mistingRun": "mistingRun",
               "controllerOnline": "active"
             },
             "freshnessMs": {
@@ -1024,6 +1041,7 @@
               "perceivedTemperatureHighAlarmActive": 300000,
               "relativeHumidity02": 300000,
               "airSpeed02": 300000,
+              "mistingRun": 300000,
               "controllerOnline": 300000
             },
             "alarmScope": "Thiết bị mô phỏng SIM-VentController (VENT-011), chưa xác minh trên PLC thật"
@@ -1357,6 +1375,13 @@
                   "settings": {}
                 },
                 {
+                  "name": "mistingRun",
+                  "label": "mistingRun",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
                   "name": "active",
                   "label": "active",
                   "type": "attribute",
@@ -1416,6 +1441,7 @@
               "perceivedTemperatureHighAlarmActive": "perceivedTemperatureHighAlarmActive",
               "relativeHumidity02": "relativeHumidity02",
               "airSpeed02": "airSpeed02",
+              "mistingRun": "mistingRun",
               "controllerOnline": "active"
             },
             "freshnessMs": {
@@ -1462,6 +1488,7 @@
               "perceivedTemperatureHighAlarmActive": 300000,
               "relativeHumidity02": 300000,
               "airSpeed02": 300000,
+              "mistingRun": 300000,
               "controllerOnline": 300000
             },
             "alarmScope": "Thiết bị mô phỏng SIM-VentController (VENT-011), chưa xác minh trên PLC thật"
@@ -1795,6 +1822,13 @@
                   "settings": {}
                 },
                 {
+                  "name": "mistingRun",
+                  "label": "mistingRun",
+                  "type": "timeseries",
+                  "color": "#00d4e0",
+                  "settings": {}
+                },
+                {
                   "name": "active",
                   "label": "active",
                   "type": "attribute",
@@ -1854,6 +1888,7 @@
               "perceivedTemperatureHighAlarmActive": "perceivedTemperatureHighAlarmActive",
               "relativeHumidity02": "relativeHumidity02",
               "airSpeed02": "airSpeed02",
+              "mistingRun": "mistingRun",
               "controllerOnline": "active"
             },
             "freshnessMs": {
@@ -1900,6 +1935,7 @@
               "perceivedTemperatureHighAlarmActive": 300000,
               "relativeHumidity02": 300000,
               "airSpeed02": 300000,
+              "mistingRun": 300000,
               "controllerOnline": 300000
             },
             "alarmScope": "Thiết bị mô phỏng SIM-VentController (VENT-011), chưa xác minh trên PLC thật"
